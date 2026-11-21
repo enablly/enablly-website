@@ -544,3 +544,203 @@ section {
   font-weight: 500;
   max-width: 740px;
 }
+
+/* Use-Case Detail Page */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--muted);
+}
+
+.breadcrumb a:hover {
+  color: var(--ink);
+}
+
+.uc-hero {
+  padding: 40px 0 32px;
+}
+
+.uc-hero h1 {
+  margin: 10px 0 14px;
+  font-size: clamp(30px, 4.2vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.uc-intro {
+  margin: 0;
+  max-width: 760px;
+  font-size: 17.5px;
+  color: var(--muted);
+}
+
+.player-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 48px;
+}
+
+.player-stage {
+  width: 100%;
+  aspect-ratio: 640 / 400;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.player-stage svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.player-stage svg.is-paused,
+.player-stage svg.is-paused * {
+  animation-play-state: paused !important;
+}
+
+.player-stage svg.is-stepping .node {
+  opacity: 0.42;
+  transition: opacity 0.2s ease;
+}
+
+.player-stage svg.is-stepping .node.is-active-stage {
+  opacity: 1;
+}
+
+.player-stage svg.is-stepping .node.is-active-stage .highlight-ring {
+  opacity: 1 !important;
+  animation: none !important;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 14px 20px;
+}
+
+.player-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.player-btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.player-btn:hover {
+  border-color: var(--accent);
+}
+
+.player-caption {
+  flex: 1;
+  min-width: 240px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.player-caption strong {
+  color: var(--accent);
+}
+
+.uc-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.uc-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+
+.uc-block h2 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.uc-block p {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+
+.tools-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pager-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+.pager-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+

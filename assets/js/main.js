@@ -85,11 +85,71 @@
         if (svg) {
           if (accent) svg.style.setProperty("--accent", accent);
           attachStageTooltips(svg);
+          if (slot.id === "player-stage") {
+            initStepPlayer(svg);
+          }
         }
       } catch (_) {
         // Ignore fetch errors in non-server contexts
       }
     }));
+  }
+
+  function initStepPlayer(svg) {
+    const capEl = document.getElementById("player-caption");
+    const toggleBtn = document.getElementById("player-toggle");
+    const prevBtn = document.getElementById("player-prev");
+    const nextBtn = document.getElementById("player-next");
+    const stagesData = window.ENABLLY_STAGES || [];
+    if (!capEl || !toggleBtn || !prevBtn || !nextBtn || !stagesData.length) return;
+
+    let current = -1; // -1 = free-running loop
+    let paused = false;
+
+    function renderStep() {
+      svg.querySelectorAll(".node").forEach((n) => n.classList.remove("is-active-stage"));
+      if (current < 0) {
+        svg.classList.remove("is-stepping");
+        capEl.innerHTML = "<strong>Playing full workflow</strong> — click Prev / Next to step through each stage.";
+        return;
+      }
+      svg.classList.add("is-stepping");
+      const stageId = `stage-${current + 1}`;
+      const target = svg.querySelector(`#${stageId}`);
+      if (target) target.classList.add("is-active-stage");
+      const item = stagesData[current];
+      capEl.innerHTML = `<strong>Stage ${current + 1} of ${stagesData.length}:</strong> ${item}`;
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      paused = !paused;
+      svg.classList.toggle("is-paused", paused);
+      toggleBtn.textContent = paused ? "Play" : "Pause";
+    });
+
+    prevBtn.addEventListener("click", () => {
+      current = current <= 0 ? stagesData.length - 1 : current - 1;
+      renderStep();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      current = current >= stagesData.length - 1 ? 0 : current + 1;
+      renderStep();
+    });
+
+    svg.querySelectorAll(".node").forEach((node) => {
+      const m = /^stage-(\d+)$/.exec(node.id);
+      if (!m) return;
+      node.addEventListener("click", () => {
+        const idx = parseInt(m[1], 10) - 1;
+        if (idx >= 0 && idx < stagesData.length) {
+          current = idx;
+          renderStep();
+        }
+      });
+    });
+
+    renderStep();
   }
 
   function initFilters() {
