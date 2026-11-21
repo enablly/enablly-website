@@ -193,40 +193,170 @@ section {
   color: var(--muted);
 }
 
-/* Hero */
+/* Hero (Full-Viewport Showcase) */
 .hero {
-  padding: 72px 0 56px;
+  min-height: calc(100vh - 68px);
+  padding: 28px 0 36px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
 }
 
 .hero h1 {
-  margin: 0 0 18px;
-  font-size: clamp(34px, 5vw, 52px);
+  margin: 0 0 10px;
+  font-size: clamp(28px, 4vw, 44px);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  max-width: 820px;
+  max-width: 780px;
 }
 
 .hero-sub {
-  margin: 0 0 28px;
-  font-size: clamp(17px, 2vw, 19px);
+  margin: 0 auto 16px;
+  font-size: clamp(15px, 1.6vw, 17px);
   color: var(--muted);
-  max-width: 740px;
+  max-width: 700px;
 }
 
 .hero-ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 18px;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .hero-note {
+  margin: 0 auto;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 680px;
+}
+
+.hero-showcase {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.uc-tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 1040px;
+}
+
+@media (max-width: 768px) {
+  .uc-tabs-bar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 4px 2px 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+}
+
+.uc-tab {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--tab-accent, var(--accent)) 35%, var(--border));
+  background: color-mix(in srgb, var(--tab-accent, var(--accent)) 8%, var(--card));
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+}
+
+.uc-tab:hover,
+.uc-tab[aria-selected="true"] {
+  background: var(--tab-accent, var(--accent));
+  border-color: var(--tab-accent, var(--accent));
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.hero-stage-card {
+  width: 100%;
+  max-width: 820px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-align: left;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.hero-stage-card.is-switching {
+  opacity: 0.65;
+  transform: scale(0.992);
+}
+
+.hero-stage-anim {
+  width: 100%;
+  aspect-ratio: 640 / 400;
+  max-height: 44vh;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-stage-anim svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-stage-anim svg .node {
+  cursor: pointer;
+}
+
+.hero-stage-meta {
+  padding: 16px 22px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-stage-copy {
+  flex: 1;
+  min-width: 240px;
+}
+
+.hero-stage-copy h2 {
+  margin: 6px 0 4px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.hero-stage-copy p {
   margin: 0;
   font-size: 14px;
   color: var(--muted);
-  max-width: 700px;
 }
 
 /* Steps Grid */

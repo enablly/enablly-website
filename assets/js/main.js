@@ -169,10 +169,77 @@
     });
   }
 
+  function initHeroShowcase() {
+    const tabs = document.querySelectorAll(".uc-tab");
+    const stageCard = document.getElementById("hero-stage-card");
+    const stageAnim = document.getElementById("hero-stage-anim");
+    const stageCat = document.getElementById("hero-stage-cat");
+    const stageTitle = document.getElementById("hero-stage-title");
+    const stageDesc = document.getElementById("hero-stage-desc");
+    const stageLink = document.getElementById("hero-stage-link");
+    if (!tabs.length || !stageCard || !stageAnim) return;
+
+    const svgCache = new Map();
+    let activeSlug = null;
+
+    async function selectTab(tab) {
+      const slug = tab.getAttribute("data-slug");
+      if (!slug || slug === activeSlug) return;
+      activeSlug = slug;
+
+      const title = tab.getAttribute("data-title");
+      const desc = tab.getAttribute("data-desc");
+      const cat = tab.getAttribute("data-category");
+      const accent = tab.getAttribute("data-accent");
+      const animSrc = tab.getAttribute("data-anim");
+
+      tabs.forEach((t) => t.setAttribute("aria-selected", String(t === tab)));
+      stageCard.classList.add("is-switching");
+      stageCard.style.setProperty("--card-accent", accent);
+      stageCat.textContent = cat;
+      stageCat.style.setProperty("--card-accent", accent);
+      stageTitle.textContent = title;
+      stageDesc.textContent = desc;
+      stageLink.setAttribute("href", `use-cases/${slug}.html`);
+
+      let svgText = svgCache.get(animSrc);
+      if (!svgText) {
+        try {
+          const res = await fetch(animSrc);
+          if (res.ok) {
+            svgText = await res.text();
+            svgCache.set(animSrc, svgText);
+          }
+        } catch (_) {
+          // Ignore fetch errors in non-server contexts
+        }
+      }
+
+      if (activeSlug !== slug) return;
+      if (svgText) {
+        stageAnim.innerHTML = svgText;
+        const svg = stageAnim.querySelector("svg");
+        if (svg) {
+          if (accent) svg.style.setProperty("--accent", accent);
+          attachStageTooltips(svg);
+        }
+      }
+      requestAnimationFrame(() => stageCard.classList.remove("is-switching"));
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => selectTab(tab));
+      tab.addEventListener("mouseenter", () => selectTab(tab));
+    });
+
+    selectTab(tabs[0]);
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     initCTAs();
     initFilters();
+    initHeroShowcase();
     initAnimations();
   });
 })();

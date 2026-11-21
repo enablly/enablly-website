@@ -38,16 +38,66 @@
   </header>
 
   <main>
-    <!-- Hero -->
+    <!-- Full-Viewport Hero with 24 Use-Case Tabs & Stage -->
     <section class="hero">
-      <div class="container">
-        <h1>AI automation specialists, embedded in your team.</h1>
-        <p class="hero-sub">Enablly works inside your company, finds the repetitive manual work your team does every day, and builds small, focused AI tools that take it off their plate — so people get time back for the work that actually needs a human.</p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
-          <a href="#use-cases" class="btn btn-secondary">See what we automate</a>
+      <div class="container hero-inner">
+        <div>
+          <h1>AI automation specialists, embedded in your team.</h1>
+          <p class="hero-sub">Enablly works inside your company, finds the repetitive manual work your team does every day, and builds small, focused AI tools that take it off their plate — so people get time back for the work that actually needs a human.</p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+            <a href="#use-cases" class="btn btn-secondary">See what we automate</a>
+          </div>
+          <p class="hero-note">This way of working is called forward deployed: we sit with your team, learn the real workflow, and ship working fixes instead of slide decks.</p>
         </div>
-        <p class="hero-note">This way of working is called forward deployed: we sit with your team, learn the real workflow, and ship working fixes instead of slide decks.</p>
+
+        <div id="use-cases" class="hero-showcase">
+          <div class="uc-tabs-bar" role="tablist" aria-label="AI automation use cases">
+            <!-- Creative (#8b5cf6) -->
+            <button class="uc-tab" type="button" role="tab" aria-selected="true" style="--tab-accent: #8b5cf6;" data-slug="graphic-design" data-category="Creative" data-accent="#8b5cf6" data-anim="assets/anim/fde-graphic-design.svg" data-title="AI Automation for Graphic Design" data-desc="Briefs in, on-brand designs out — without the blank-canvas hours.">Graphic Design</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #8b5cf6;" data-slug="video-creation" data-category="Creative" data-accent="#8b5cf6" data-anim="assets/anim/fde-video-creation.svg" data-title="AI Automation for Video Creation" data-desc="Raw clips in, captioned, sized, ready-to-post videos out.">Video Creation</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #8b5cf6;" data-slug="content-creation" data-category="Creative" data-accent="#8b5cf6" data-anim="assets/anim/fde-content-creation.svg" data-title="AI Automation for Content Creation" data-desc="One idea becomes a week of on-brand content.">Content Creation</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #8b5cf6;" data-slug="social-media" data-category="Creative" data-accent="#8b5cf6" data-anim="assets/anim/fde-social-media.svg" data-title="AI Automation for Social Media" data-desc="A month of posts, drafted, designed and scheduled.">Social Media</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #8b5cf6;" data-slug="presentations-and-decks" data-category="Creative" data-accent="#8b5cf6" data-anim="assets/anim/fde-presentations-and-decks.svg" data-title="AI Automation for Presentations &amp; Decks" data-desc="Bullet points in, a polished deck out.">Presentations &amp; Decks</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #8b5cf6;" data-slug="product-photos-and-images" data-category="Creative" data-accent="#8b5cf6" data-anim="assets/anim/fde-product-photos-and-images.svg" data-title="AI Automation for Product Photos &amp; Images" data-desc="Phone photos become clean, listing-ready product images.">Product Photos &amp; Images</button>
+
+            <!-- Marketing & Sales (#3b82f6) -->
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #3b82f6;" data-slug="seo" data-category="Marketing &amp; Sales" data-accent="#3b82f6" data-anim="assets/anim/fde-seo.svg" data-title="AI Automation for SEO" data-desc="Research, briefs and drafts that used to take days, done in hours.">SEO</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #3b82f6;" data-slug="paid-ads" data-category="Marketing &amp; Sales" data-accent="#3b82f6" data-anim="assets/anim/fde-paid-ads.svg" data-title="AI Automation for Paid Ads" data-desc="Variants, checks and reports handled — you keep the decisions.">Paid Ads</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #3b82f6;" data-slug="email-campaigns" data-category="Marketing &amp; Sales" data-accent="#3b82f6" data-anim="assets/anim/fde-email-campaigns.svg" data-title="AI Automation for Email Campaigns" data-desc="Segments, drafts and sends prepared for your approval.">Email Campaigns</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #3b82f6;" data-slug="lead-research" data-category="Marketing &amp; Sales" data-accent="#3b82f6" data-anim="assets/anim/fde-lead-research.svg" data-title="AI Automation for Lead Research" data-desc="Lists of the right companies and people, built for you.">Lead Research</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #3b82f6;" data-slug="crm-cleanup-and-updates" data-category="Marketing &amp; Sales" data-accent="#3b82f6" data-anim="assets/anim/fde-crm-cleanup-and-updates.svg" data-title="AI Automation for CRM Cleanup &amp; Updates" data-desc="Duplicates merged, gaps filled, records kept current.">CRM Cleanup &amp; Updates</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #3b82f6;" data-slug="proposals-and-quotations" data-category="Marketing &amp; Sales" data-accent="#3b82f6" data-anim="assets/anim/fde-proposals-and-quotations.svg" data-title="AI Automation for Proposals &amp; Quotations" data-desc="Client-ready proposals drafted from your own templates.">Proposals &amp; Quotations</button>
+
+            <!-- Operations (#14b8a6) -->
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #14b8a6;" data-slug="team-management" data-category="Operations" data-accent="#14b8a6" data-anim="assets/anim/fde-team-management.svg" data-title="AI Automation for Team Management" data-desc="Tasks assigned, chased and summarised without the nagging.">Team Management</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #14b8a6;" data-slug="reporting-and-dashboards" data-category="Operations" data-accent="#14b8a6" data-anim="assets/anim/fde-reporting-and-dashboards.svg" data-title="AI Automation for Reporting &amp; Dashboards" data-desc="Numbers pulled, charts built, story explained — automatically.">Reporting &amp; Dashboards</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #14b8a6;" data-slug="spreadsheets-and-data" data-category="Operations" data-accent="#14b8a6" data-anim="assets/anim/fde-spreadsheets-and-data.svg" data-title="AI Automation for Spreadsheets &amp; Data" data-desc="Messy sheets cleaned, matched and kept up to date.">Spreadsheets &amp; Data</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #14b8a6;" data-slug="meetings" data-category="Operations" data-accent="#14b8a6" data-anim="assets/anim/fde-meetings.svg" data-title="AI Automation for Meetings" data-desc="Recordings turned into notes, decisions and follow-ups.">Meetings</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #14b8a6;" data-slug="customer-support" data-category="Operations" data-accent="#14b8a6" data-anim="assets/anim/fde-customer-support.svg" data-title="AI Automation for Customer Support" data-desc="Common questions answered instantly; tricky ones routed to a human.">Customer Support</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #14b8a6;" data-slug="documents-and-invoices" data-category="Operations" data-accent="#14b8a6" data-anim="assets/anim/fde-documents-and-invoices.svg" data-title="AI Automation for Documents &amp; Invoices" data-desc="Documents read, checked and filed without manual data entry.">Documents &amp; Invoices</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #14b8a6;" data-slug="research-and-market-intel" data-category="Operations" data-accent="#14b8a6" data-anim="assets/anim/fde-research-and-market-intel.svg" data-title="AI Automation for Research &amp; Market Intel" data-desc="Competitors and markets watched, briefed to you weekly.">Research &amp; Market Intel</button>
+
+            <!-- Back Office (#f59e0b) -->
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #f59e0b;" data-slug="recruitment" data-category="Back Office" data-accent="#f59e0b" data-anim="assets/anim/fde-recruitment.svg" data-title="AI Automation for Recruitment" data-desc="CVs screened and shortlists prepared for your interviews.">Recruitment</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #f59e0b;" data-slug="onboarding-and-training" data-category="Back Office" data-accent="#f59e0b" data-anim="assets/anim/fde-onboarding-and-training.svg" data-title="AI Automation for Onboarding &amp; Training" data-desc="New hires set up, trained and ready on day one.">Onboarding &amp; Training</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #f59e0b;" data-slug="finance-admin" data-category="Back Office" data-accent="#f59e0b" data-anim="assets/anim/fde-finance-admin.svg" data-title="AI Automation for Finance Admin" data-desc="Receipts, invoices and records matched and reconciled.">Finance Admin</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #f59e0b;" data-slug="translation-and-localisation" data-category="Back Office" data-accent="#f59e0b" data-anim="assets/anim/fde-translation-and-localisation.svg" data-title="AI Automation for Translation &amp; Localisation" data-desc="Content translated and adapted for every market you serve.">Translation &amp; Localisation</button>
+            <button class="uc-tab" type="button" role="tab" aria-selected="false" style="--tab-accent: #f59e0b;" data-slug="online-store-ops" data-category="Back Office" data-accent="#f59e0b" data-anim="assets/anim/fde-online-store-ops.svg" data-title="AI Automation for Online Store Ops" data-desc="Listings, stock and orders kept in sync across your store.">Online Store Ops</button>
+          </div>
+
+          <div id="hero-stage-card" class="hero-stage-card" style="--card-accent: #8b5cf6;">
+            <div id="hero-stage-anim" class="hero-stage-anim"></div>
+            <div class="hero-stage-meta">
+              <div class="hero-stage-copy">
+                <span id="hero-stage-cat" class="cat-badge">Creative</span>
+                <h2 id="hero-stage-title">AI Automation for Graphic Design</h2>
+                <p id="hero-stage-desc">Briefs in, on-brand designs out — without the blank-canvas hours.</p>
+              </div>
+              <a id="hero-stage-link" class="btn btn-secondary" href="use-cases/graphic-design.html">Explore workflow →</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -80,246 +130,6 @@
           </article>
         </div>
         <a href="how-it-works.html" class="text-link">See how it works in detail →</a>
-      </div>
-    </section>
-
-    <!-- Use-case grid -->
-    <section id="use-cases">
-      <div class="container">
-        <div class="section-header">
-          <h2>What we automate.</h2>
-          <p>Pick a function. Each one shows a real everyday workflow, the manual friction inside it, and the small AI solution we build to remove it.</p>
-        </div>
-
-        <div class="filter-bar" role="group" aria-label="Filter use cases by category">
-          <button class="filter-tab" type="button" data-filter="all" aria-pressed="true">All</button>
-          <button class="filter-tab" type="button" data-filter="Creative" aria-pressed="false">Creative</button>
-          <button class="filter-tab" type="button" data-filter="Marketing &amp; Sales" aria-pressed="false">Marketing &amp; Sales</button>
-          <button class="filter-tab" type="button" data-filter="Operations" aria-pressed="false">Operations</button>
-          <button class="filter-tab" type="button" data-filter="Back Office" aria-pressed="false">Back Office</button>
-        </div>
-
-        <div class="usecase-grid">
-          <!-- Creative (#8b5cf6) -->
-          <a class="usecase-card" href="use-cases/graphic-design.html" data-category="Creative" style="--card-accent: #8b5cf6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-graphic-design.svg" data-accent="#8b5cf6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Creative</span>
-              <h3>AI Automation for Graphic Design</h3>
-              <p>Briefs in, on-brand designs out — without the blank-canvas hours.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/video-creation.html" data-category="Creative" style="--card-accent: #8b5cf6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-video-creation.svg" data-accent="#8b5cf6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Creative</span>
-              <h3>AI Automation for Video Creation</h3>
-              <p>Raw clips in, captioned, sized, ready-to-post videos out.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/content-creation.html" data-category="Creative" style="--card-accent: #8b5cf6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-content-creation.svg" data-accent="#8b5cf6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Creative</span>
-              <h3>AI Automation for Content Creation</h3>
-              <p>One idea becomes a week of on-brand content.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/social-media.html" data-category="Creative" style="--card-accent: #8b5cf6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-social-media.svg" data-accent="#8b5cf6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Creative</span>
-              <h3>AI Automation for Social Media</h3>
-              <p>A month of posts, drafted, designed and scheduled.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/presentations-and-decks.html" data-category="Creative" style="--card-accent: #8b5cf6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-presentations-and-decks.svg" data-accent="#8b5cf6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Creative</span>
-              <h3>AI Automation for Presentations &amp; Decks</h3>
-              <p>Bullet points in, a polished deck out.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/product-photos-and-images.html" data-category="Creative" style="--card-accent: #8b5cf6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-product-photos-and-images.svg" data-accent="#8b5cf6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Creative</span>
-              <h3>AI Automation for Product Photos &amp; Images</h3>
-              <p>Phone photos become clean, listing-ready product images.</p>
-            </div>
-          </a>
-
-          <!-- Marketing & Sales (#3b82f6) -->
-          <a class="usecase-card" href="use-cases/seo.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-seo.svg" data-accent="#3b82f6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Marketing &amp; Sales</span>
-              <h3>AI Automation for SEO</h3>
-              <p>Research, briefs and drafts that used to take days, done in hours.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/paid-ads.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-paid-ads.svg" data-accent="#3b82f6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Marketing &amp; Sales</span>
-              <h3>AI Automation for Paid Ads</h3>
-              <p>Variants, checks and reports handled — you keep the decisions.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/email-campaigns.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-email-campaigns.svg" data-accent="#3b82f6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Marketing &amp; Sales</span>
-              <h3>AI Automation for Email Campaigns</h3>
-              <p>Segments, drafts and sends prepared for your approval.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/lead-research.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-lead-research.svg" data-accent="#3b82f6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Marketing &amp; Sales</span>
-              <h3>AI Automation for Lead Research</h3>
-              <p>Lists of the right companies and people, built for you.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/crm-cleanup-and-updates.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-crm-cleanup-and-updates.svg" data-accent="#3b82f6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Marketing &amp; Sales</span>
-              <h3>AI Automation for CRM Cleanup &amp; Updates</h3>
-              <p>Duplicates merged, gaps filled, records kept current.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/proposals-and-quotations.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-proposals-and-quotations.svg" data-accent="#3b82f6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Marketing &amp; Sales</span>
-              <h3>AI Automation for Proposals &amp; Quotations</h3>
-              <p>Client-ready proposals drafted from your own templates.</p>
-            </div>
-          </a>
-
-          <!-- Operations (#14b8a6) -->
-          <a class="usecase-card" href="use-cases/team-management.html" data-category="Operations" style="--card-accent: #14b8a6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-team-management.svg" data-accent="#14b8a6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Operations</span>
-              <h3>AI Automation for Team Management</h3>
-              <p>Tasks assigned, chased and summarised without the nagging.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/reporting-and-dashboards.html" data-category="Operations" style="--card-accent: #14b8a6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-reporting-and-dashboards.svg" data-accent="#14b8a6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Operations</span>
-              <h3>AI Automation for Reporting &amp; Dashboards</h3>
-              <p>Numbers pulled, charts built, story explained — automatically.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/spreadsheets-and-data.html" data-category="Operations" style="--card-accent: #14b8a6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-spreadsheets-and-data.svg" data-accent="#14b8a6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Operations</span>
-              <h3>AI Automation for Spreadsheets &amp; Data</h3>
-              <p>Messy sheets cleaned, matched and kept up to date.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/meetings.html" data-category="Operations" style="--card-accent: #14b8a6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-meetings.svg" data-accent="#14b8a6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Operations</span>
-              <h3>AI Automation for Meetings</h3>
-              <p>Recordings turned into notes, decisions and follow-ups.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/customer-support.html" data-category="Operations" style="--card-accent: #14b8a6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-customer-support.svg" data-accent="#14b8a6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Operations</span>
-              <h3>AI Automation for Customer Support</h3>
-              <p>Common questions answered instantly; tricky ones routed to a human.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/documents-and-invoices.html" data-category="Operations" style="--card-accent: #14b8a6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-documents-and-invoices.svg" data-accent="#14b8a6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Operations</span>
-              <h3>AI Automation for Documents &amp; Invoices</h3>
-              <p>Documents read, checked and filed without manual data entry.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/research-and-market-intel.html" data-category="Operations" style="--card-accent: #14b8a6;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-research-and-market-intel.svg" data-accent="#14b8a6"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Operations</span>
-              <h3>AI Automation for Research &amp; Market Intel</h3>
-              <p>Competitors and markets watched, briefed to you weekly.</p>
-            </div>
-          </a>
-
-          <!-- Back Office (#f59e0b) -->
-          <a class="usecase-card" href="use-cases/recruitment.html" data-category="Back Office" style="--card-accent: #f59e0b;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-recruitment.svg" data-accent="#f59e0b"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Back Office</span>
-              <h3>AI Automation for Recruitment</h3>
-              <p>CVs screened and shortlists prepared for your interviews.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/onboarding-and-training.html" data-category="Back Office" style="--card-accent: #f59e0b;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-onboarding-and-training.svg" data-accent="#f59e0b"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Back Office</span>
-              <h3>AI Automation for Onboarding &amp; Training</h3>
-              <p>New hires set up, trained and ready on day one.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/finance-admin.html" data-category="Back Office" style="--card-accent: #f59e0b;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-finance-admin.svg" data-accent="#f59e0b"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Back Office</span>
-              <h3>AI Automation for Finance Admin</h3>
-              <p>Receipts, invoices and records matched and reconciled.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/translation-and-localisation.html" data-category="Back Office" style="--card-accent: #f59e0b;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-translation-and-localisation.svg" data-accent="#f59e0b"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Back Office</span>
-              <h3>AI Automation for Translation &amp; Localisation</h3>
-              <p>Content translated and adapted for every market you serve.</p>
-            </div>
-          </a>
-
-          <a class="usecase-card" href="use-cases/online-store-ops.html" data-category="Back Office" style="--card-accent: #f59e0b;">
-            <div class="usecase-anim" data-anim="assets/anim/fde-online-store-ops.svg" data-accent="#f59e0b"></div>
-            <div class="usecase-body">
-              <span class="cat-badge">Back Office</span>
-              <h3>AI Automation for Online Store Ops</h3>
-              <p>Listings, stock and orders kept in sync across your store.</p>
-            </div>
-          </a>
-        </div>
       </div>
     </section>
 
