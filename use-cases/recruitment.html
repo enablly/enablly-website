@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Automation for Recruitment — Enablly</title>
+  <meta name="description" content="AI automation for recruitment: CVs screened against your criteria, shortlists prepared and interview admin handled." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("enablly-theme");
+      var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", saved || (dark ? "dark" : "light"));
+    })();
+  </script>
+</head>
+<body style="--accent: #f59e0b;">
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand"><span class="brand-dot" aria-hidden="true"></span><span>Enablly</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../index.html#use-cases">Use cases</a>
+        <a href="../how-it-works.html">How it works</a>
+        <a href="../index.html#tools">Tools</a>
+        <a href="../index.html#faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+        <button id="theme-toggle" class="theme-toggle" type="button">Light mode</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="uc-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a><span>/</span>
+          <a href="../index.html#use-cases">Back Office</a><span>/</span>
+          <span>AI Automation for Recruitment</span>
+        </nav>
+        <span class="cat-badge" style="--card-accent: #f59e0b;">Back Office</span>
+        <h1>AI Automation for Recruitment</h1>
+        <p class="uc-intro">Hiring managers drown in CVs. We automate the screening and admin so your time goes to interviews, not sifting.</p>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="player-wrap">
+          <div id="player-stage" class="player-stage" data-anim="../assets/anim/fde-recruitment.svg" data-accent="#f59e0b"></div>
+          <div class="player-controls">
+            <div class="player-buttons">
+              <button id="player-toggle" class="player-btn" type="button">Pause</button>
+              <button id="player-prev" class="player-btn" type="button">Prev</button>
+              <button id="player-next" class="player-btn" type="button">Next</button>
+            </div>
+            <div id="player-caption" class="player-caption"></div>
+          </div>
+        </div>
+
+        <div class="uc-sections">
+          <article class="uc-block">
+            <h2>The situation</h2>
+            <p>A role opens, a hundred CVs arrive, and someone reads all of them against the same criteria — slowly, and inconsistently by Friday.</p>
+          </article>
+          <article class="uc-block">
+            <h2>Where the time goes</h2>
+            <p>Reading CVs, checking must-have criteria, building a shortlist, and scheduling admin.</p>
+          </article>
+          <article class="uc-block">
+            <h2>The micro-solution</h2>
+            <p>An agent reads every CV against your criteria, sorts applicants into shortlist, maybe and no piles with reasons shown, and prepares interview scheduling. Every decision is reviewable — a human makes the final call on who advances.</p>
+          </article>
+          <article class="uc-block">
+            <h2>How it helps</h2>
+            <p>Every applicant is screened against the same standard, fast, and the shortlist arrives with its reasoning visible.</p>
+          </article>
+          <article class="uc-block">
+            <h2>What changes day to day</h2>
+            <p>You interview a prepared shortlist instead of reading a pile.</p>
+          </article>
+          <article class="uc-block">
+            <h2>Tools used</h2>
+            <div class="tools-chips">
+              <span class="tool-chip">Claude</span>
+              <span class="tool-chip">OpenAI</span>
+              <span class="tool-chip">your ATS or inbox</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-header">
+          <h2>Quick questions</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Does the AI reject people on its own?</summary>
+            <p>No — it sorts and explains; humans decide who advances.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is it fair?</summary>
+            <p>Every CV is measured against the same written criteria, and decisions are auditable.</p>
+          </details>
+        </div>
+
+        <nav class="pager-nav" aria-label="Use case navigation">
+          <a class="pager-link" href="research-and-market-intel.html">← Prev: AI Automation for Research &amp; Market Intel</a>
+          <a class="pager-link" href="onboarding-and-training.html">Next: AI Automation for Onboarding &amp; Training →</a>
+        </nav>
+
+        <div class="section-header">
+          <h2>Related in Back Office</h2>
+        </div>
+        <div class="related-grid">
+          <a class="usecase-card" href="onboarding-and-training.html" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="../assets/anim/fde-onboarding-and-training.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Onboarding &amp; Training</h3>
+              <p>New hires set up, trained and ready on day one.</p>
+            </div>
+          </a>
+          <a class="usecase-card" href="finance-admin.html" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="../assets/anim/fde-finance-admin.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Finance Admin</h3>
+              <p>Receipts, invoices and records matched and reconciled.</p>
+            </div>
+          </a>
+          <a class="usecase-card" href="translation-and-localisation.html" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="../assets/anim/fde-translation-and-localisation.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Translation &amp; Localisation</h3>
+              <p>Content translated and adapted for every market you serve.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Tell us the task your team repeats every day.</h2>
+          <p>One workflow is all we need to start. Book a scoping call and we will map it with you — where the time goes, what an AI micro-solution would look like, and what it would take off your team's plate.</p>
+          <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Enablly. AI automation specialists for everyday business work.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.ENABLLY_STAGES = [
+      "1 CVs in — applications arrive.",
+      "2 Criteria applied — each CV read against your must-haves.",
+      "3 Sorted — shortlist, maybe and no piles formed.",
+      "4 Reasons shown — every sort decision explained.",
+      "5 Human decides — you pick who advances.",
+      "6 Interviews arranged — scheduling prepared."
+    ];
+  </script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
