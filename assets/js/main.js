@@ -229,7 +229,6 @@
 
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => selectTab(tab));
-      tab.addEventListener("mouseenter", () => selectTab(tab));
     });
 
     selectTab(tabs[0]);
