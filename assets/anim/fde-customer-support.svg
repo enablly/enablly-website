@@ -1,0 +1,605 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">AI Automation for Customer Support</title>
+  <desc id="svg-desc">Animated branching decision-tree workflow showing how Enablly's forward-deployed AI automation handles customer support: customer messages arrive via email, chat, and WhatsApp; an AI triage agent sorts intent and urgency at a decision diamond into three branches — Branch A (common questions answered automatically via RAG with OpenAI and Claude), Branch B (billing or account issues prepared via tool calling with HubSpot and Zendesk), and Branch C (urgent or angry customers fast-tracked straight to a human without automation). Branches B and C merge at a human-in-the-loop check, and three outcome cards show every message handled.</desc>
+
+  <style>
+    svg {
+      --bg: transparent;
+      --surface: rgba(59, 130, 246, 0.06);
+      --ink: #18181b;
+      --muted: #71717a;
+      --line: rgba(113, 113, 122, 0.32);
+      --accent: #3b82f6;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+    }
+
+    /* Typography */
+    .title-main {
+      font-size: 14.5px;
+      font-weight: 700;
+      fill: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .stage-num {
+      font-size: 8px;
+      font-weight: 700;
+      fill: var(--accent);
+      letter-spacing: 0.04em;
+    }
+    .stage-title {
+      font-size: 10px;
+      font-weight: 700;
+      fill: var(--ink);
+    }
+    .stage-copy {
+      font-size: 7.8px;
+      fill: var(--muted);
+    }
+    .branch-label {
+      font-size: 7.4px;
+      font-weight: 700;
+      fill: var(--accent);
+    }
+    .tag-text {
+      font-size: 7.2px;
+      font-weight: 600;
+      fill: var(--ink);
+    }
+    .tag-text-accent {
+      font-size: 7.2px;
+      font-weight: 600;
+      fill: var(--accent);
+    }
+    .brand-text {
+      font-size: 7.6px;
+      font-weight: 600;
+      fill: var(--ink);
+    }
+    .method-text {
+      font-size: 8px;
+      font-weight: 600;
+      fill: var(--muted);
+    }
+
+    /* Card and Badge Surfaces */
+    .card-bg {
+      fill: var(--surface);
+      stroke: var(--line);
+      stroke-width: 1.1;
+    }
+    .card-urgent {
+      fill: var(--accent);
+      fill-opacity: 0.11;
+      stroke: var(--accent);
+      stroke-opacity: 0.7;
+      stroke-width: 1.2;
+      stroke-dasharray: 4 2;
+    }
+    .card-soft {
+      fill: var(--accent);
+      fill-opacity: 0.04;
+      stroke: var(--accent);
+      stroke-opacity: 0.4;
+      stroke-width: 1.1;
+    }
+    .pill-bg {
+      fill: var(--surface);
+      stroke: var(--line);
+      stroke-width: 0.9;
+    }
+    .ai-badge .pill-bg {
+      stroke: var(--accent);
+      stroke-opacity: 0.55;
+    }
+    .node {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    /* Flow Lines (three distinct accent tints) */
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-dasharray: 5 5;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-branch-a {
+      stroke: var(--accent);
+      stroke-opacity: 0.5;
+    }
+    .flow-branch-b {
+      stroke: var(--accent);
+      stroke-opacity: 0.8;
+    }
+    .flow-branch-c {
+      stroke: var(--accent);
+      stroke-opacity: 1;
+      stroke-width: 1.9;
+    }
+
+    @keyframes dashFlow {
+      from { stroke-dashoffset: 20; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Travelling Data Packets */
+    .packet {
+      fill: var(--accent);
+      opacity: 0;
+    }
+    .packet-in {
+      offset-path: path("M 98 200 L 126 200");
+      animation: pktIn 9s linear infinite;
+    }
+    .packet-a1 {
+      offset-path: path("M 174 146 C 194 92, 232 92, 270 92");
+      animation: pktBranch 9s linear infinite;
+    }
+    .packet-a2 {
+      offset-path: path("M 396 92 L 522 92");
+      animation: pktAOut 9s linear infinite;
+    }
+    .packet-b1 {
+      offset-path: path("M 222 200 L 270 200");
+      animation: pktBranch 9s linear infinite;
+    }
+    .packet-b2 {
+      offset-path: path("M 396 200 C 408 200, 408 220, 418 220");
+      animation: pktMerge 9s linear infinite;
+    }
+    .packet-c1 {
+      offset-path: path("M 174 254 C 194 312, 232 312, 270 312");
+      animation: pktFastC 9s linear infinite;
+    }
+    .packet-c2 {
+      offset-path: path("M 396 312 C 408 312, 408 274, 418 274");
+      animation: pktFastC2 9s linear infinite;
+    }
+    .packet-h1 {
+      offset-path: path("M 504 220 L 522 206");
+      animation: pktEndBC 9s linear infinite;
+    }
+    .packet-h2 {
+      offset-path: path("M 504 274 L 522 298");
+      animation: pktEndBC 9s linear infinite;
+    }
+
+    @keyframes pktIn {
+      0%, 8% { offset-distance: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      18% { offset-distance: 100%; opacity: 1; }
+      20%, 100% { offset-distance: 100%; opacity: 0; }
+    }
+    @keyframes pktBranch {
+      0%, 24% { offset-distance: 0%; opacity: 0; }
+      26% { opacity: 1; }
+      38% { offset-distance: 100%; opacity: 1; }
+      40%, 100% { offset-distance: 100%; opacity: 0; }
+    }
+    @keyframes pktFastC {
+      0%, 24% { offset-distance: 0%; opacity: 0; }
+      26% { opacity: 1; }
+      34% { offset-distance: 100%; opacity: 1; }
+      36%, 100% { offset-distance: 100%; opacity: 0; }
+    }
+    @keyframes pktAOut {
+      0%, 48% { offset-distance: 0%; opacity: 0; }
+      50% { opacity: 1; }
+      64% { offset-distance: 100%; opacity: 1; }
+      66%, 100% { offset-distance: 100%; opacity: 0; }
+    }
+    @keyframes pktMerge {
+      0%, 48% { offset-distance: 0%; opacity: 0; }
+      50% { opacity: 1; }
+      58% { offset-distance: 100%; opacity: 1; }
+      60%, 100% { offset-distance: 100%; opacity: 0; }
+    }
+    @keyframes pktFastC2 {
+      0%, 40% { offset-distance: 0%; opacity: 0; }
+      42% { opacity: 1; }
+      50% { offset-distance: 100%; opacity: 1; }
+      52%, 100% { offset-distance: 100%; opacity: 0; }
+    }
+    @keyframes pktEndBC {
+      0%, 72% { offset-distance: 0%; opacity: 0; }
+      74% { opacity: 1; }
+      82% { offset-distance: 100%; opacity: 1; }
+      84%, 100% { offset-distance: 100%; opacity: 0; }
+    }
+
+    /* Sequential Node Lighting */
+    .highlight-ring {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2;
+      opacity: 0;
+    }
+    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
+    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
+    #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
+    #stage-4 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
+    #branch-c .highlight-ring { animation: litC 9s ease-in-out infinite; }
+    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
+    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+
+    @keyframes lit1 {
+      0%, 96%, 100% { opacity: 0.15; }
+      4%, 14% { opacity: 1; }
+      20% { opacity: 0.25; }
+    }
+    @keyframes lit2 {
+      0%, 16% { opacity: 0; }
+      20%, 30% { opacity: 1; }
+      36%, 95% { opacity: 0.25; }
+      100% { opacity: 0; }
+    }
+    @keyframes lit3 {
+      0%, 36% { opacity: 0; }
+      40%, 54% { opacity: 1; }
+      60%, 95% { opacity: 0.25; }
+      100% { opacity: 0; }
+    }
+    @keyframes litC {
+      0%, 32% { opacity: 0; }
+      35%, 48% { opacity: 1; }
+      54%, 95% { opacity: 0.35; }
+      100% { opacity: 0; }
+    }
+    @keyframes lit5 {
+      0%, 56% { opacity: 0; }
+      60%, 74% { opacity: 1; }
+      80%, 95% { opacity: 0.25; }
+      100% { opacity: 0; }
+    }
+    @keyframes lit6 {
+      0%, 76% { opacity: 0; }
+      80%, 95% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    /* AI Node Pulse */
+    .ai-pulse-dot {
+      fill: var(--accent);
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: aiPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes aiPulse {
+      0%, 100% { opacity: 0.45; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1.25); }
+    }
+
+    /* Stage 1 Message Bubbles Arriving */
+    .msg-1, .msg-2, .msg-3 {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .msg-1 { animation: msgPop1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .msg-2 { animation: msgPop2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .msg-3 { animation: msgPop3 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes msgPop1 {
+      0%, 96%, 100% { opacity: 0.25; transform: translateY(-5px) scale(0.7); }
+      3%, 92% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes msgPop2 {
+      0%, 3%, 96%, 100% { opacity: 0.25; transform: translateY(-5px) scale(0.7); }
+      7%, 92% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes msgPop3 {
+      0%, 6%, 96%, 100% { opacity: 0.25; transform: translateY(-5px) scale(0.7); }
+      11%, 92% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Stage 3 Branch A Answer Text Lines Typing */
+    .ans-line-1, .ans-line-2 {
+      transform-box: fill-box;
+      transform-origin: left center;
+    }
+    .ans-line-1 { animation: ansType1 9s ease-out infinite; }
+    .ans-line-2 { animation: ansType2 9s ease-out infinite; }
+    @keyframes ansType1 {
+      0%, 36% { opacity: 0.15; transform: scaleX(0.05); }
+      44%, 94% { opacity: 0.95; transform: scaleX(1); }
+      98%, 100% { opacity: 0.15; transform: scaleX(0.05); }
+    }
+    @keyframes ansType2 {
+      0%, 42% { opacity: 0.15; transform: scaleX(0.05); }
+      50%, 94% { opacity: 0.75; transform: scaleX(1); }
+      98%, 100% { opacity: 0.15; transform: scaleX(0.05); }
+    }
+
+    /* Human Approval Check Self-Drawing */
+    .check-pop {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: checkPop 9s ease-out infinite;
+    }
+    .check-stroke {
+      stroke-dasharray: 16;
+      stroke-dashoffset: 16;
+      animation: checkDraw 9s ease-out infinite;
+    }
+    @keyframes checkPop {
+      0%, 58% { opacity: 0.3; transform: scale(0.8); }
+      63%, 94% { opacity: 1; transform: scale(1.05); }
+      98%, 100% { opacity: 0.3; transform: scale(0.8); }
+    }
+    @keyframes checkDraw {
+      0%, 60% { stroke-dashoffset: 16; }
+      68%, 94% { stroke-dashoffset: 0; }
+      98%, 100% { stroke-dashoffset: 16; }
+    }
+
+    /* End Cards Assembling */
+    .end-card-a { animation: endA 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .end-card-b { animation: endBC 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .end-card-c { animation: endBC 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+
+    @keyframes endA {
+      0%, 62% { opacity: 0.35; transform: translateX(8px); }
+      68%, 95% { opacity: 1; transform: translateX(0); }
+      99%, 100% { opacity: 0.35; transform: translateX(8px); }
+    }
+    @keyframes endBC {
+      0%, 80% { opacity: 0.35; transform: translateX(8px); }
+      86%, 95% { opacity: 1; transform: translateX(0); }
+      99%, 100% { opacity: 0.35; transform: translateX(8px); }
+    }
+
+    /* Progress Bar */
+    .progress-fill {
+      fill: var(--accent);
+      transform-box: fill-box;
+      transform-origin: left center;
+      animation: progressLoop 9s linear infinite;
+    }
+    @keyframes progressLoop {
+      0% { transform: scaleX(0.05); opacity: 0.8; }
+      94% { transform: scaleX(1); opacity: 1; }
+      99%, 100% { transform: scaleX(0.05); opacity: 0.3; }
+    }
+  </style>
+
+  <defs>
+    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
+    </pattern>
+  </defs>
+
+  <!-- Subtle Background Grid (no hard-coded background color) -->
+  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+
+  <!-- Header -->
+  <g id="header">
+    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
+    <text x="32" y="30" class="title-main">AI Automation for Customer Support</text>
+    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
+    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
+    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  </g>
+
+  <!-- Flow Paths -->
+  <g id="flow-paths">
+    <!-- 1 -> Decision Diamond -->
+    <path class="flow-path" d="M 98 200 L 126 200" />
+    <!-- Diamond -> Branch A (Common) -->
+    <path class="flow-path flow-branch-a" d="M 174 146 C 194 92, 232 92, 270 92" />
+    <!-- Branch A -> End Card A (direct, no human check) -->
+    <path class="flow-path flow-branch-a" d="M 396 92 L 522 92" />
+    <!-- Diamond -> Branch B (Billing) -->
+    <path class="flow-path flow-branch-b" d="M 222 200 L 270 200" />
+    <!-- Branch B -> Human Check (merge) -->
+    <path class="flow-path flow-branch-b" d="M 396 200 C 408 200, 408 220, 418 220" />
+    <!-- Diamond -> Branch C (Urgent) -->
+    <path class="flow-path flow-branch-c" d="M 174 254 C 194 312, 232 312, 270 312" />
+    <!-- Branch C -> Human Check (merge) -->
+    <path class="flow-path flow-branch-c" d="M 396 312 C 408 312, 408 274, 418 274" />
+    <!-- Human Check -> End Cards B & C -->
+    <path class="flow-path flow-branch-b" d="M 504 220 L 522 206" />
+    <path class="flow-path flow-branch-c" d="M 504 274 L 522 298" />
+  </g>
+
+  <!-- Branch Labels on Fan-Out -->
+  <g id="branch-labels">
+    <text x="206" y="84" class="branch-label">A · Common</text>
+    <text x="227" y="193" class="branch-label">B · Billing</text>
+    <text x="208" y="326" class="branch-label">C · Urgent</text>
+  </g>
+
+  <!-- Travelling Data Packets -->
+  <g id="packets">
+    <circle class="packet packet-in" r="3.2" />
+    <circle class="packet packet-a1" r="3.2" />
+    <circle class="packet packet-a2" r="3.2" />
+    <circle class="packet packet-b1" r="3.2" />
+    <circle class="packet packet-b2" r="3.2" />
+    <circle class="packet packet-c1" r="3.8" />
+    <circle class="packet packet-c2" r="3.8" />
+    <circle class="packet packet-h1" r="3.2" />
+    <circle class="packet packet-h2" r="3.2" />
+  </g>
+
+  <!-- STAGE 1: Task In -->
+  <g id="stage-1" class="node">
+    <rect x="14" y="148" width="84" height="104" rx="10" class="card-bg" />
+    <rect x="14" y="148" width="84" height="104" rx="10" class="highlight-ring" />
+    <text x="22" y="164" class="stage-num">01 · TASK IN</text>
+    <text x="22" y="178" class="stage-title">Messages</text>
+    <!-- Mini channel bubbles arriving: email, chat, WhatsApp -->
+    <rect x="22" y="186" width="68" height="24" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
+    <g class="msg-1">
+      <rect x="27" y="192" width="14" height="10" rx="2" fill="none" stroke="var(--accent)" stroke-width="1" />
+      <path d="M27 193 L34 198 L41 193" fill="none" stroke="var(--accent)" stroke-width="0.9" />
+    </g>
+    <rect x="47" y="192" width="14" height="10" rx="4" fill="var(--accent)" fill-opacity="0.45" class="msg-2" />
+    <circle cx="75" cy="197" r="5" fill="var(--accent)" fill-opacity="0.7" class="msg-3" />
+    <text x="22" y="224" class="stage-copy">Email, chat,</text>
+    <text x="22" y="235" class="stage-copy">WhatsApp</text>
+  </g>
+
+  <!-- STAGE 2: Decision Diamond (Triage Agent) -->
+  <g id="stage-2" class="node">
+    <polygon points="174,146 222,200 174,254 126,200" class="card-bg" />
+    <polygon points="174,146 222,200 174,254 126,200" class="highlight-ring" />
+    <text x="150" y="185" class="stage-num">02 · TRIAGE</text>
+    <text x="143" y="199" class="stage-title">Triage agent</text>
+    <text x="145" y="211" class="stage-copy">Sorts intent</text>
+    <text x="149" y="221" class="stage-copy">&amp; urgency</text>
+
+    <!-- Tags below diamond: AI agent, LLM, intent classification -->
+    <g class="ai-badge">
+      <rect x="122" y="264" width="48" height="14" rx="7" class="pill-bg" />
+      <circle cx="130" cy="271" r="2" class="ai-pulse-dot" />
+      <text x="135" y="273.5" class="tag-text-accent">AI agent</text>
+      <rect x="174" y="264" width="34" height="14" rx="7" class="pill-bg" />
+      <text x="184" y="273.5" class="tag-text">LLM</text>
+      <rect x="122" y="282" width="86" height="14" rx="7" class="pill-bg" />
+      <text x="129" y="291.5" class="tag-text">intent classification</text>
+    </g>
+  </g>
+
+  <!-- STAGE 3: Branch A - Common Question -->
+  <g id="stage-3" class="node">
+    <rect x="270" y="48" width="126" height="90" rx="10" class="card-soft" />
+    <rect x="270" y="48" width="126" height="90" rx="10" class="highlight-ring" />
+    <text x="279" y="62" class="stage-num">BRANCH A · AUTO</text>
+    <circle cx="384" cy="60" r="2.6" class="ai-pulse-dot" />
+    <text x="279" y="75" class="stage-title">Common question</text>
+    <text x="279" y="86" class="stage-copy">Drafts from help centre</text>
+
+    <!-- Logos: OpenAI, Claude -->
+    <g transform="translate(279, 93)">
+      <polygon points="4,0.6 7.2,2.4 7.2,6 4,7.8 0.8,6 0.8,2.4" fill="none" stroke="var(--accent)" stroke-width="1.1" />
+      <text x="10" y="6.8" class="brand-text">OpenAI</text>
+    </g>
+    <g transform="translate(335, 93)">
+      <path d="M4 0.8 L4 7.2 M0.8 4 L7.2 4 M1.8 1.8 L6.2 6.2 M6.2 1.8 L1.8 6.2" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round" />
+      <text x="10" y="6.8" class="brand-text">Claude</text>
+    </g>
+
+    <!-- Tag: RAG + typing answer lines -->
+    <g class="ai-badge">
+      <rect x="279" y="114" width="38" height="15" rx="7.5" class="pill-bg" />
+      <text x="289" y="124" class="tag-text-accent">RAG</text>
+    </g>
+    <rect x="323" y="117" width="62" height="3" rx="1.5" fill="var(--accent)" class="ans-line-1" />
+    <rect x="323" y="123" width="44" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.65" class="ans-line-2" />
+  </g>
+
+  <!-- STAGE 4: Branch B - Billing / Account Issue -->
+  <g id="stage-4" class="node">
+    <rect x="270" y="154" width="126" height="92" rx="10" class="card-bg" />
+    <rect x="270" y="154" width="126" height="92" rx="10" class="highlight-ring" />
+    <text x="279" y="168" class="stage-num">BRANCH B · PREPARE</text>
+    <circle cx="384" cy="166" r="2.6" class="ai-pulse-dot" />
+    <text x="279" y="181" class="stage-title">Billing or account</text>
+    <text x="279" y="192" class="stage-copy">Pulls invoice &amp; preps fix</text>
+
+    <!-- Logos: HubSpot, Zendesk -->
+    <g transform="translate(279, 199)">
+      <!-- Simplified HubSpot sprocket mark -->
+      <circle cx="4" cy="4.5" r="2.2" fill="none" stroke="var(--accent)" stroke-width="1.1" />
+      <circle cx="4" cy="1" r="1" fill="var(--accent)" />
+      <circle cx="7.2" cy="6.2" r="1" fill="var(--accent)" />
+      <circle cx="0.8" cy="6.2" r="1" fill="var(--accent)" />
+      <text x="11" y="7" class="brand-text">HubSpot</text>
+    </g>
+    <g transform="translate(335, 199)">
+      <!-- Simplified Zendesk opposing triangles mark -->
+      <polygon points="1,1 5,1 1,5" fill="var(--accent)" />
+      <polygon points="7,7 3,7 7,3" fill="var(--ink)" fill-opacity="0.65" />
+      <text x="10" y="7" class="brand-text">Zendesk</text>
+    </g>
+
+    <!-- Tag: tool calling -->
+    <g class="ai-badge">
+      <rect x="279" y="221" width="60" height="15" rx="7.5" class="pill-bg" />
+      <text x="287" y="231" class="tag-text-accent">tool calling</text>
+    </g>
+  </g>
+
+  <!-- BRANCH C: Urgent / Angry Customer (No Automation) -->
+  <g id="branch-c" class="node">
+    <rect x="270" y="274" width="126" height="76" rx="10" class="card-urgent" />
+    <rect x="270" y="274" width="126" height="76" rx="10" class="highlight-ring" />
+    <text x="279" y="288" class="stage-num">BRANCH C · NO AI</text>
+    <circle cx="384" cy="286" r="3" class="ai-pulse-dot" />
+    <text x="279" y="302" class="stage-title">Urgent or angry</text>
+    <text x="279" y="314" class="stage-copy">Fast-tracks straight to</text>
+    <text x="279" y="324" class="stage-copy">a senior person</text>
+    <rect x="279" y="330" width="48" height="14" rx="7" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.8" />
+    <text x="286" y="339.5" class="tag-text-accent">URGENT</text>
+  </g>
+
+  <!-- STAGE 5: Human Check (Branches B & C merge) -->
+  <g id="stage-5" class="node">
+    <rect x="418" y="182" width="86" height="120" rx="10" class="card-bg" />
+    <rect x="418" y="182" width="86" height="120" rx="10" class="highlight-ring" />
+    <text x="426" y="198" class="stage-num">04 · REVIEW</text>
+    <text x="426" y="212" class="stage-title">Human check</text>
+    <text x="426" y="225" class="stage-copy">Approves fix or</text>
+    <text x="426" y="235" class="stage-copy">takes urgent</text>
+
+    <!-- Approval check badge (self-drawing tick) -->
+    <g class="check-pop" transform="translate(451, 245)">
+      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
+      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-stroke" />
+    </g>
+
+    <!-- Badge: human-in-the-loop -->
+    <rect x="423" y="278" width="76" height="15" rx="7.5" class="pill-bg" />
+    <text x="427" y="288" class="tag-text-accent" style="font-size: 6.5px;">human-in-the-loop</text>
+  </g>
+
+  <!-- STAGE 6: End Result (3 Outcome Cards) -->
+  <g id="stage-6" class="node">
+    <rect x="516" y="46" width="112" height="310" rx="10" class="card-bg" />
+    <rect x="516" y="46" width="112" height="310" rx="10" class="highlight-ring" />
+    <text x="524" y="61" class="stage-num">05 · OUTCOMES</text>
+
+    <!-- Outcome Card A -->
+    <g class="end-card-a">
+      <rect x="522" y="70" width="100" height="72" rx="8" class="card-soft" />
+      <circle cx="534" cy="84" r="5" fill="var(--accent)" fill-opacity="0.7" />
+      <path d="M531.5 84 L533.3 85.8 L536.5 82.5" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" />
+      <text x="543" y="87" class="stage-title" style="font-size: 9px;">Answered</text>
+      <text x="529" y="101" class="stage-copy">automatically</text>
+      <text x="529" y="114" class="stage-copy">Simple questions</text>
+      <text x="529" y="124" class="stage-copy">resolved in seconds</text>
+    </g>
+
+    <!-- Outcome Card B -->
+    <g class="end-card-b">
+      <rect x="522" y="162" width="100" height="82" rx="8" class="card-bg" />
+      <circle cx="534" cy="176" r="5" fill="var(--accent)" fill-opacity="0.85" />
+      <path d="M531.5 176 L533.3 177.8 L536.5 174.5" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" />
+      <text x="543" y="179" class="stage-title" style="font-size: 9px;">Fix approved</text>
+      <text x="529" y="193" class="stage-copy">Billing &amp; account</text>
+      <text x="529" y="204" class="stage-copy">checked by a person</text>
+      <text x="529" y="215" class="stage-copy">before sending</text>
+    </g>
+
+    <!-- Outcome Card C -->
+    <g class="end-card-c">
+      <rect x="522" y="262" width="100" height="82" rx="8" class="card-urgent" />
+      <circle cx="534" cy="276" r="5" fill="var(--accent)" />
+      <text x="532.5" y="279" fill="#ffffff" font-size="8" font-weight="800">!</text>
+      <text x="543" y="279" class="stage-title" style="font-size: 9px;">Escalated</text>
+      <text x="529" y="293" class="stage-copy">immediately</text>
+      <text x="529" y="306" class="stage-copy">Senior lead handles</text>
+      <text x="529" y="317" class="stage-copy">the urgent case</text>
+    </g>
+  </g>
+
+  <!-- Footer: Workflow Automation + Loop Progress -->
+  <g id="footer">
+    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
+    <text x="22" y="386.5" class="tag-text">workflow automation</text>
+
+    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
+    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+  </g>
+</svg>

@@ -1,0 +1,248 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">AI Automation for Paid Ads</title>
+  <desc id="svg-desc">Animated branching workflow with a feedback loop showing how Enablly's forward-deployed AI automation runs paid ads: a campaign goal arrives, a creative agent splits into Variant A and Variant B using Meta and Adobe Firefly, both launch, performance is compared with ticking counters and a drawing winner chart, budget shifts toward the winner with a loop-back arrow, and the winning campaign scales.</desc>
+
+  <style>
+    svg {
+      --bg: transparent;
+      --surface: rgba(59, 130, 246, 0.06);
+      --ink: #18181b;
+      --muted: #71717a;
+      --line: rgba(113, 113, 122, 0.32);
+      --accent: #3b82f6;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+    }
+    .title-main { font-size: 15px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 7.8px; fill: var(--muted); }
+    .branch-label { font-size: 7.4px; font-weight: 700; fill: var(--accent); }
+    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
+    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
+    .brand-text { font-size: 7.6px; font-weight: 600; fill: var(--ink); }
+    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.5; stroke-width: 1.1; }
+    .card-win { fill: var(--accent); fill-opacity: 0.1; stroke: var(--accent); stroke-opacity: 0.85; stroke-width: 1.3; }
+    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
+    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .node { transform-box: fill-box; transform-origin: center; }
+
+    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
+    .flow-branch-a { stroke: var(--accent); stroke-opacity: 0.9; }
+    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.5; }
+    .flow-loop { fill: none; stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 4 4; stroke-opacity: 0.75; animation: dashFlow 1s linear infinite; }
+    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+
+    .packet { fill: var(--accent); opacity: 0; }
+    .packet-in { offset-path: path("M 96 196 L 126 196"); animation: pktIn 9s linear infinite; }
+    .packet-a1 { offset-path: path("M 174 142 C 194 104, 224 104, 254 104"); animation: pktBranch 9s linear infinite; }
+    .packet-b1 { offset-path: path("M 174 250 C 194 282, 224 282, 254 282"); animation: pktBranch 9s linear infinite; }
+    .packet-a2 { offset-path: path("M 378 104 C 398 104, 398 174, 412 182"); animation: pktMerge 9s linear infinite; }
+    .packet-b2 { offset-path: path("M 378 282 C 398 282, 398 220, 412 212"); animation: pktMerge 9s linear infinite; }
+    .packet-out { offset-path: path("M 508 196 L 530 196"); animation: pktOut 9s linear infinite; }
+    .packet-loop { offset-path: path("M 460 258 C 460 340, 174 340, 174 256"); animation: pktLoop 9s linear infinite; }
+
+    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 36% { offset-distance: 100%; opacity: 1; } 38%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktMerge { 0%, 48% { offset-distance: 0%; opacity: 0; } 50% { opacity: 1; } 58% { offset-distance: 100%; opacity: 1; } 60%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktLoop { 0%, 66% { offset-distance: 0%; opacity: 0; } 68% { opacity: 1; } 84% { offset-distance: 100%; opacity: 1; } 86%, 100% { offset-distance: 100%; opacity: 0; } }
+
+    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
+    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
+    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
+    #stage-3 .highlight-ring, #stage-4 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
+    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
+    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+
+    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
+    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 52% { opacity: 1; } 58%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit5 { 0%, 56% { opacity: 0; } 60%, 74% { opacity: 1; } 80%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit6 { 0%, 76% { opacity: 0; } 80%, 95% { opacity: 1; } 100% { opacity: 0; } }
+
+    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
+    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+
+    /* Winner chart line drawing inside Variant A */
+    .win-chart { stroke-dasharray: 56; stroke-dashoffset: 56; animation: winDraw 9s ease-out infinite; }
+    @keyframes winDraw { 0%, 36% { stroke-dashoffset: 56; } 48%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 56; } }
+
+    /* Compare card: ROAS counter ticking */
+    .roas-num { font-size: 8.5px; font-weight: 800; fill: var(--accent); }
+    .roas-1 { animation: r1 9s linear infinite; }
+    .roas-2 { animation: r2 9s linear infinite; }
+    .roas-3 { animation: r3 9s linear infinite; }
+    @keyframes r1 { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0; } }
+    @keyframes r2 { 0%, 60% { opacity: 0; } 61%, 67% { opacity: 1; } 68%, 100% { opacity: 0; } }
+    @keyframes r3 { 0%, 67% { opacity: 0; } 68%, 96% { opacity: 1; } 98%, 100% { opacity: 0; } }
+
+    /* Budget bar sliding toward winner */
+    .budget-knob { animation: budSlide 9s ease-in-out infinite; }
+    @keyframes budSlide {
+      0%, 58% { transform: translateX(0px); }
+      68%, 94% { transform: translateX(34px); }
+      98%, 100% { transform: translateX(0px); }
+    }
+
+    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
+    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+  </style>
+
+  <defs>
+    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+
+  <g id="header">
+    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
+    <text x="32" y="30" class="title-main">AI Automation for Paid Ads</text>
+    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
+    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
+    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  </g>
+
+  <g id="flow-paths">
+    <path class="flow-path" d="M 96 196 L 126 196" />
+    <path class="flow-path flow-branch-a" d="M 174 142 C 194 104, 224 104, 254 104" />
+    <path class="flow-path flow-branch-b" d="M 174 250 C 194 282, 224 282, 254 282" />
+    <path class="flow-path flow-branch-a" d="M 378 104 C 398 104, 398 174, 412 182" />
+    <path class="flow-path flow-branch-b" d="M 378 282 C 398 282, 398 220, 412 212" />
+    <path class="flow-path" d="M 508 196 L 530 196" />
+    <!-- Loop-back arrow from Compare to Creative Agent -->
+    <path class="flow-loop" d="M 460 258 C 460 340, 174 340, 174 256" />
+    <polygon points="170,261 174,253 178,261" fill="var(--accent)" />
+    <text x="275" y="349" class="branch-label">Budget &amp; learnings loop back</text>
+  </g>
+
+  <g id="branch-labels">
+    <text x="192" y="96" class="branch-label">Variant A</text>
+    <text x="192" y="295" class="branch-label">Variant B</text>
+  </g>
+
+  <g id="packets">
+    <circle class="packet packet-in" r="3.2" />
+    <circle class="packet packet-a1" r="3.2" />
+    <circle class="packet packet-b1" r="3.2" />
+    <circle class="packet packet-a2" r="3.2" />
+    <circle class="packet packet-b2" r="3.2" />
+    <circle class="packet packet-out" r="3.5" />
+    <circle class="packet packet-loop" r="3.2" />
+  </g>
+
+  <!-- STAGE 1: Campaign Goal In -->
+  <g id="stage-1" class="node">
+    <rect x="14" y="144" width="82" height="104" rx="10" class="card-bg" />
+    <rect x="14" y="144" width="82" height="104" rx="10" class="highlight-ring" />
+    <text x="22" y="160" class="stage-num">01 · GOAL IN</text>
+    <text x="22" y="174" class="stage-title">Ad goal</text>
+    <circle cx="55" cy="196" r="10" fill="none" stroke="var(--accent)" stroke-width="1.2" />
+    <circle cx="55" cy="196" r="4" fill="var(--accent)" />
+    <text x="22" y="222" class="stage-copy">Target CPA,</text>
+    <text x="22" y="233" class="stage-copy">budget &amp; offer</text>
+  </g>
+
+  <!-- STAGE 2: Creative Agent (Diamond) -->
+  <g id="stage-2" class="node">
+    <polygon points="174,142 222,196 174,250 126,196" class="card-bg" />
+    <polygon points="174,142 222,196 174,250 126,196" class="highlight-ring" />
+    <text x="148" y="182" class="stage-num">02 · CREATIVE</text>
+    <text x="142" y="196" class="stage-title">Creative agent</text>
+    <text x="146" y="208" class="stage-copy">Splits A / B</text>
+    <g class="ai-badge">
+      <rect x="128" y="254" width="48" height="14" rx="7" class="pill-bg" />
+      <circle cx="136" cy="261" r="2" class="ai-pulse-dot" />
+      <text x="141" y="263.5" class="tag-text-accent">AI agent</text>
+    </g>
+  </g>
+
+  <!-- STAGE 3: Variant A (Winner with drawing chart line) -->
+  <g id="stage-3" class="node">
+    <rect x="254" y="56" width="124" height="96" rx="10" class="card-win" />
+    <rect x="254" y="56" width="124" height="96" rx="10" class="highlight-ring" />
+    <text x="263" y="70" class="stage-num">VARIANT A · WINNER</text>
+    <text x="263" y="83" class="stage-title">Hook + lifestyle</text>
+
+    <!-- Chart line drawing inside winner card -->
+    <rect x="263" y="90" width="44" height="22" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
+    <path d="M267 108 L276 104 L285 106 L295 96 L303 94" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="win-chart" />
+
+    <!-- Logo: Meta -->
+    <g transform="translate(314, 96)">
+      <path d="M1 5 C1 2, 4 2, 5.5 5 C7 8, 10 8, 10 5 C10 2, 7 2, 5.5 5 C4 8, 1 8, 1 5 Z" fill="none" stroke="var(--accent)" stroke-width="1.2" />
+      <text x="13" y="7" class="brand-text">Meta</text>
+    </g>
+
+    <g class="ai-badge">
+      <rect x="263" y="122" width="60" height="15" rx="7.5" class="pill-bg" />
+      <text x="269" y="132" class="tag-text-accent">generative AI</text>
+    </g>
+  </g>
+
+  <!-- STAGE 4: Variant B (Adobe Firefly) -->
+  <g id="stage-4" class="node">
+    <rect x="254" y="232" width="124" height="92" rx="10" class="card-soft" />
+    <rect x="254" y="232" width="124" height="92" rx="10" class="highlight-ring" />
+    <text x="263" y="246" class="stage-num">VARIANT B · TEST</text>
+    <text x="263" y="259" class="stage-title">Studio product</text>
+    <text x="263" y="270" class="stage-copy">Launched in parallel</text>
+
+    <!-- Logo: Adobe Firefly -->
+    <g transform="translate(263, 278)">
+      <path d="M4.5 1 C6 3.5, 8 4.8, 8 6.5 C8 8.2, 6.4 9.5, 4.5 9.5 C2.6 9.5, 1 8.2, 1 6.5 C1 4.8, 3 3.5, 4.5 1 Z" fill="var(--accent)" />
+      <text x="12" y="8" class="brand-text">Adobe Firefly</text>
+    </g>
+
+    <g class="ai-badge">
+      <rect x="263" y="298" width="58" height="15" rx="7.5" class="pill-bg" />
+      <text x="269" y="308" class="tag-text">text-to-image</text>
+    </g>
+  </g>
+
+  <!-- STAGE 5: Compare & Shift Budget (Ticking counters + sliding budget bar) -->
+  <g id="stage-5" class="node">
+    <rect x="412" y="136" width="96" height="122" rx="10" class="card-bg" />
+    <rect x="412" y="136" width="96" height="122" rx="10" class="highlight-ring" />
+    <text x="420" y="152" class="stage-num">04 · COMPARE</text>
+    <text x="420" y="166" class="stage-title">Winner picked</text>
+
+    <!-- Ticking ROAS counter -->
+    <rect x="420" y="174" width="80" height="22" rx="4" fill="var(--accent)" fill-opacity="0.1" stroke="var(--line)" stroke-width="0.7" />
+    <text x="426" y="188" class="stage-copy">ROAS:</text>
+    <text x="456" y="188" class="roas-num roas-1">1.8x</text>
+    <text x="456" y="188" class="roas-num roas-2">2.5x</text>
+    <text x="456" y="188" class="roas-num roas-3">3.4x</text>
+
+    <!-- Budget bar sliding toward winner -->
+    <text x="420" y="210" class="stage-copy">Budget shift → A</text>
+    <rect x="420" y="216" width="80" height="8" rx="4" fill="var(--line)" opacity="0.4" />
+    <rect x="422" y="217" width="42" height="6" rx="3" fill="var(--accent)" class="budget-knob" />
+
+    <rect x="420" y="234" width="78" height="15" rx="7.5" class="pill-bg" />
+    <text x="426" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
+  </g>
+
+  <!-- STAGE 6: Scaled Campaign -->
+  <g id="stage-6" class="node">
+    <rect x="530" y="140" width="98" height="114" rx="10" class="card-win" />
+    <rect x="530" y="140" width="98" height="114" rx="10" class="highlight-ring" />
+    <text x="538" y="156" class="stage-num">05 · SCALED</text>
+    <text x="538" y="170" class="stage-title">Scaled ad set</text>
+    <circle cx="579" cy="196" r="14" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
+    <path d="M573 200 L578 195 L581 198 L586 191" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" />
+    <text x="538" y="228" class="stage-copy">Budget focused on</text>
+    <text x="538" y="239" class="stage-copy">winning creative</text>
+  </g>
+
+  <g id="footer">
+    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
+    <text x="22" y="386.5" class="tag-text">workflow automation</text>
+    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
+    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+  </g>
+</svg>

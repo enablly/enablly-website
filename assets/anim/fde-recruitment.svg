@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">AI Automation for Recruitment</title>
+  <desc id="svg-desc">Animated branching workflow showing how Enablly's forward-deployed AI automation handles recruitment: applications arrive, a screening agent flips through CV cards and sorts them into Strong fit (with score badges stamping onto the card), Maybe (holding note), and Not a fit (polite rejection), before human interviews and an assembling calendar invite.</desc>
+
+  <style>
+    svg {
+      --bg: transparent;
+      --surface: rgba(245, 158, 11, 0.06);
+      --ink: #18181b;
+      --muted: #71717a;
+      --line: rgba(113, 113, 122, 0.32);
+      --accent: #f59e0b;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+    }
+    .title-main { font-size: 15px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 7.8px; fill: var(--muted); }
+    .branch-label { font-size: 7.2px; font-weight: 700; fill: var(--accent); }
+    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
+    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
+    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1.1; }
+    .card-rich { fill: var(--accent); fill-opacity: 0.1; stroke: var(--accent); stroke-opacity: 0.8; stroke-width: 1.2; }
+    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
+    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .node { transform-box: fill-box; transform-origin: center; }
+
+    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
+    .flow-branch-a { stroke: var(--accent); stroke-opacity: 1; }
+    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.65; }
+    .flow-branch-c { stroke: var(--accent); stroke-opacity: 0.4; }
+    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+
+    .packet { fill: var(--accent); opacity: 0; }
+    .packet-in { offset-path: path("M 98 200 L 126 200"); animation: pktIn 9s linear infinite; }
+    .packet-a1 { offset-path: path("M 174 146 C 194 92, 232 92, 270 92"); animation: pktBranch 9s linear infinite; }
+    .packet-b1 { offset-path: path("M 222 200 L 270 200"); animation: pktBranch 9s linear infinite; }
+    .packet-c1 { offset-path: path("M 174 254 C 194 312, 232 312, 270 312"); animation: pktBranch 9s linear infinite; }
+    .packet-a2 { offset-path: path("M 396 92 L 424 176"); animation: pktMerge 9s linear infinite; }
+    .packet-out { offset-path: path("M 512 200 L 534 200"); animation: pktOut 9s linear infinite; }
+
+    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 40%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktMerge { 0%, 50% { offset-distance: 0%; opacity: 0; } 52% { opacity: 1; } 62% { offset-distance: 100%; opacity: 1; } 64%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+
+    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
+    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
+    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
+    #stage-3 .highlight-ring, #stage-4 .highlight-ring, #branch-c .highlight-ring { animation: lit3 9s ease-in-out infinite; }
+    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
+    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+
+    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
+    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 54% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit5 { 0%, 58% { opacity: 0; } 62%, 76% { opacity: 1; } 82%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit6 { 0%, 78% { opacity: 0; } 82%, 95% { opacity: 1; } 100% { opacity: 0; } }
+
+    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
+    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+
+    /* Stage 2: CV cards flipping through inside Screening */
+    .cv-flip { transform-box: fill-box; transform-origin: center; animation: cvFlip 9s ease-in-out infinite; }
+    @keyframes cvFlip {
+      0%, 18% { transform: scaleX(1); }
+      22% { transform: scaleX(0.15); }
+      26% { transform: scaleX(1); }
+      30% { transform: scaleX(0.15); }
+      34%, 100% { transform: scaleX(1); }
+    }
+
+    /* Branch A: Score badge stamping onto card */
+    .score-stamp { transform-box: fill-box; transform-origin: center; animation: stamp 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes stamp {
+      0%, 36% { opacity: 0; transform: scale(1.8); }
+      44%, 94% { opacity: 1; transform: scale(1); }
+      98%, 100% { opacity: 0; transform: scale(1.8); }
+    }
+
+    /* Final card: Calendar invite assembling */
+    .cal-inv-1 { animation: ci1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .cal-inv-2 { animation: ci2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes ci1 { 0%, 78% { opacity: 0; transform: translateY(-6px); } 85%, 95% { opacity: 1; transform: translateY(0); } 99%, 100% { opacity: 0; transform: translateY(-6px); } }
+    @keyframes ci2 { 0%, 82% { opacity: 0; transform: translateY(6px); } 89%, 95% { opacity: 1; transform: translateY(0); } 99%, 100% { opacity: 0; transform: translateY(6px); } }
+
+    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
+    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+  </style>
+
+  <defs>
+    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+
+  <g id="header">
+    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
+    <text x="32" y="30" class="title-main">AI Automation for Recruitment</text>
+    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
+    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
+    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  </g>
+
+  <g id="flow-paths">
+    <path class="flow-path" d="M 98 200 L 126 200" />
+    <path class="flow-path flow-branch-a" d="M 174 146 C 194 92, 232 92, 270 92" />
+    <path class="flow-path flow-branch-b" d="M 222 200 L 270 200" />
+    <path class="flow-path flow-branch-c" d="M 174 254 C 194 312, 232 312, 270 312" />
+    <path class="flow-path flow-branch-a" d="M 396 92 C 414 92, 414 176, 424 188" />
+    <path class="flow-path" d="M 512 200 L 534 200" />
+  </g>
+
+  <g id="branch-labels">
+    <text x="198" y="84" class="branch-label">A · Strong fit</text>
+    <text x="223" y="193" class="branch-label">B · Maybe</text>
+    <text x="202" y="326" class="branch-label">C · Not a fit</text>
+  </g>
+
+  <g id="packets">
+    <circle class="packet packet-in" r="3.2" />
+    <circle class="packet packet-a1" r="3.2" />
+    <circle class="packet packet-b1" r="3.2" />
+    <circle class="packet packet-c1" r="3.2" />
+    <circle class="packet packet-a2" r="3.2" />
+    <circle class="packet packet-out" r="3.5" />
+  </g>
+
+  <!-- STAGE 1: Applications In -->
+  <g id="stage-1" class="node">
+    <rect x="14" y="148" width="84" height="104" rx="10" class="card-bg" />
+    <rect x="14" y="148" width="84" height="104" rx="10" class="highlight-ring" />
+    <text x="22" y="164" class="stage-num">01 · APPS IN</text>
+    <text x="22" y="178" class="stage-title">Applications</text>
+    <rect x="26" y="186" width="60" height="24" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
+    <circle cx="38" cy="198" r="4.5" fill="var(--accent)" fill-opacity="0.45" />
+    <line x1="48" y1="195" x2="78" y2="195" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="48" y1="201" x2="70" y2="201" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.3" stroke-linecap="round" />
+    <text x="22" y="224" class="stage-copy">CVs &amp; cover notes</text>
+    <text x="22" y="235" class="stage-copy">from job boards</text>
+  </g>
+
+  <!-- STAGE 2: Screening Agent (CV cards flipping) -->
+  <g id="stage-2" class="node">
+    <polygon points="174,146 222,200 174,254 126,200" class="card-bg" />
+    <polygon points="174,146 222,200 174,254 126,200" class="highlight-ring" />
+    <text x="148" y="180" class="stage-num">02 · SCREEN</text>
+    <text x="145" y="193" class="stage-title">CV screener</text>
+    <rect x="163" y="200" width="22" height="26" rx="3" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="0.9" class="cv-flip" />
+    <g class="ai-badge">
+      <rect x="126" y="262" width="48" height="14" rx="7" class="pill-bg" />
+      <circle cx="134" cy="269" r="2" class="ai-pulse-dot" />
+      <text x="139" y="271.5" class="tag-text-accent">AI agent</text>
+      <rect x="178" y="262" width="34" height="14" rx="7" class="pill-bg" />
+      <text x="188" y="271.5" class="tag-text">LLM</text>
+    </g>
+  </g>
+
+  <!-- STAGE 3: Branch A - Strong Fit (Score badge stamping) -->
+  <g id="stage-3" class="node">
+    <rect x="270" y="48" width="126" height="88" rx="10" class="card-rich" />
+    <rect x="270" y="48" width="126" height="88" rx="10" class="highlight-ring" />
+    <text x="279" y="62" class="stage-num">BRANCH A · STRONG</text>
+    <text x="279" y="75" class="stage-title">Strong fit</text>
+    <text x="279" y="87" class="stage-copy">Interview invite sent</text>
+    <g class="score-stamp" transform="translate(279, 96)">
+      <rect x="0" y="0" width="42" height="18" rx="4" fill="var(--accent)" />
+      <text x="8" y="12" fill="#ffffff" font-size="8.5" font-weight="800">94%</text>
+    </g>
+  </g>
+
+  <!-- STAGE 4: Branch B - Maybe -->
+  <g id="stage-4" class="node">
+    <rect x="270" y="156" width="126" height="88" rx="10" class="card-bg" />
+    <rect x="270" y="156" width="126" height="88" rx="10" class="highlight-ring" />
+    <text x="279" y="170" class="stage-num">BRANCH B · MAYBE</text>
+    <text x="279" y="183" class="stage-title">Holding note</text>
+    <text x="279" y="195" class="stage-copy">Kept warm in talent pool</text>
+    <text x="279" y="206" class="stage-copy">for future roles</text>
+  </g>
+
+  <!-- BRANCH C: Not a Fit -->
+  <g id="branch-c" class="node">
+    <rect x="270" y="268" width="126" height="82" rx="10" class="card-soft" />
+    <rect x="270" y="268" width="126" height="82" rx="10" class="highlight-ring" />
+    <text x="279" y="282" class="stage-num">BRANCH C · PASS</text>
+    <text x="279" y="295" class="stage-title">Polite rejection</text>
+    <text x="279" y="307" class="stage-copy">Respectful, timely</text>
+    <text x="279" y="317" class="stage-copy">update sent</text>
+  </g>
+
+  <!-- STAGE 5: Human Interviews Shortlist -->
+  <g id="stage-5" class="node">
+    <rect x="424" y="140" width="88" height="122" rx="10" class="card-bg" />
+    <rect x="424" y="140" width="88" height="122" rx="10" class="highlight-ring" />
+    <text x="432" y="156" class="stage-num">04 · INTERVIEW</text>
+    <text x="432" y="170" class="stage-title">Human interviews</text>
+    <text x="432" y="182" class="stage-copy">Hiring manager</text>
+    <text x="432" y="192" class="stage-copy">meets shortlist</text>
+    <circle cx="468" cy="212" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
+    <path d="M464 212 L466.8 214.8 L472.2 209.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" />
+    <rect x="431" y="234" width="74" height="15" rx="7.5" class="pill-bg" />
+    <text x="436" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
+  </g>
+
+  <!-- STAGE 6: Calendar Invite Assembling -->
+  <g id="stage-6" class="node">
+    <rect x="534" y="136" width="94" height="130" rx="10" class="card-bg" />
+    <rect x="534" y="136" width="94" height="130" rx="10" class="highlight-ring" />
+    <text x="542" y="152" class="stage-num">05 · BOOKED</text>
+    <text x="542" y="166" class="stage-title">Shortlist booked</text>
+
+    <g transform="translate(542, 176)">
+      <rect x="0" y="0" width="78" height="44" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.8" />
+      <rect x="6" y="6" width="66" height="10" rx="2" fill="var(--accent)" fill-opacity="0.65" class="cal-inv-1" />
+      <rect x="6" y="20" width="66" height="16" rx="2" fill="var(--accent)" fill-opacity="0.25" class="cal-inv-2" />
+      <text x="12" y="31" class="tag-text">Tue · 10:00 AM</text>
+    </g>
+
+    <text x="542" y="236" class="stage-copy">Calendar invites</text>
+    <text x="542" y="247" class="stage-copy">confirmed</text>
+  </g>
+
+  <g id="footer">
+    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
+    <text x="22" y="386.5" class="tag-text">workflow automation</text>
+    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
+    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+  </g>
+</svg>

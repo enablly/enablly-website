@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enablly — AI Automation Specialists, Embedded in Your Team</title>
+  <meta name="description" content="Enablly is an AI automation specialist team that works inside your company, finds the repetitive manual work, and builds small AI tools that take it off your team's plate." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("enablly-theme");
+      var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", saved || (dark ? "dark" : "light"));
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Enablly</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#use-cases">Use cases</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="#tools">Tools</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+        <button id="theme-toggle" class="theme-toggle" type="button">Light mode</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>AI automation specialists, embedded in your team.</h1>
+        <p class="hero-sub">Enablly works inside your company, finds the repetitive manual work your team does every day, and builds small, focused AI tools that take it off their plate — so people get time back for the work that actually needs a human.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+          <a href="#use-cases" class="btn btn-secondary">See what we automate</a>
+        </div>
+        <p class="hero-note">This way of working is called forward deployed: we sit with your team, learn the real workflow, and ship working fixes instead of slide decks.</p>
+      </div>
+    </section>
+
+    <!-- How it works (4 steps) -->
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2>How it works</h2>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-num">01</span>
+            <h3>1. We embed and observe</h3>
+            <p>We sit with your team and map the work they repeat every day: the copying, chasing, reformatting and re-typing.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">02</span>
+            <h3>2. We pick the worst bottleneck</h3>
+            <p>Together we choose the one workflow that wastes the most time or causes the most errors.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">03</span>
+            <h3>3. We build a micro-solution</h3>
+            <p>A small AI tool or automated workflow, built for that one job, using the tools your team already uses.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">04</span>
+            <h3>4. Your team checks, we refine</h3>
+            <p>A human always reviews the output. We tune it until it fits how your team actually works.</p>
+          </article>
+        </div>
+        <a href="how-it-works.html" class="text-link">See how it works in detail →</a>
+      </div>
+    </section>
+
+    <!-- Use-case grid -->
+    <section id="use-cases">
+      <div class="container">
+        <div class="section-header">
+          <h2>What we automate.</h2>
+          <p>Pick a function. Each one shows a real everyday workflow, the manual friction inside it, and the small AI solution we build to remove it.</p>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter use cases by category">
+          <button class="filter-tab" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-tab" type="button" data-filter="Creative" aria-pressed="false">Creative</button>
+          <button class="filter-tab" type="button" data-filter="Marketing &amp; Sales" aria-pressed="false">Marketing &amp; Sales</button>
+          <button class="filter-tab" type="button" data-filter="Operations" aria-pressed="false">Operations</button>
+          <button class="filter-tab" type="button" data-filter="Back Office" aria-pressed="false">Back Office</button>
+        </div>
+
+        <div class="usecase-grid">
+          <!-- Creative (#8b5cf6) -->
+          <a class="usecase-card" href="use-cases/graphic-design.html" data-category="Creative" style="--card-accent: #8b5cf6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-graphic-design.svg" data-accent="#8b5cf6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Creative</span>
+              <h3>AI Automation for Graphic Design</h3>
+              <p>Briefs in, on-brand designs out — without the blank-canvas hours.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/video-creation.html" data-category="Creative" style="--card-accent: #8b5cf6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-video-creation.svg" data-accent="#8b5cf6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Creative</span>
+              <h3>AI Automation for Video Creation</h3>
+              <p>Raw clips in, captioned, sized, ready-to-post videos out.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/content-creation.html" data-category="Creative" style="--card-accent: #8b5cf6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-content-creation.svg" data-accent="#8b5cf6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Creative</span>
+              <h3>AI Automation for Content Creation</h3>
+              <p>One idea becomes a week of on-brand content.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/social-media.html" data-category="Creative" style="--card-accent: #8b5cf6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-social-media.svg" data-accent="#8b5cf6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Creative</span>
+              <h3>AI Automation for Social Media</h3>
+              <p>A month of posts, drafted, designed and scheduled.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/presentations-and-decks.html" data-category="Creative" style="--card-accent: #8b5cf6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-presentations-and-decks.svg" data-accent="#8b5cf6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Creative</span>
+              <h3>AI Automation for Presentations &amp; Decks</h3>
+              <p>Bullet points in, a polished deck out.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/product-photos-and-images.html" data-category="Creative" style="--card-accent: #8b5cf6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-product-photos-and-images.svg" data-accent="#8b5cf6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Creative</span>
+              <h3>AI Automation for Product Photos &amp; Images</h3>
+              <p>Phone photos become clean, listing-ready product images.</p>
+            </div>
+          </a>
+
+          <!-- Marketing & Sales (#3b82f6) -->
+          <a class="usecase-card" href="use-cases/seo.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-seo.svg" data-accent="#3b82f6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Marketing &amp; Sales</span>
+              <h3>AI Automation for SEO</h3>
+              <p>Research, briefs and drafts that used to take days, done in hours.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/paid-ads.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-paid-ads.svg" data-accent="#3b82f6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Marketing &amp; Sales</span>
+              <h3>AI Automation for Paid Ads</h3>
+              <p>Variants, checks and reports handled — you keep the decisions.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/email-campaigns.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-email-campaigns.svg" data-accent="#3b82f6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Marketing &amp; Sales</span>
+              <h3>AI Automation for Email Campaigns</h3>
+              <p>Segments, drafts and sends prepared for your approval.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/lead-research.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-lead-research.svg" data-accent="#3b82f6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Marketing &amp; Sales</span>
+              <h3>AI Automation for Lead Research</h3>
+              <p>Lists of the right companies and people, built for you.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/crm-cleanup-and-updates.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-crm-cleanup-and-updates.svg" data-accent="#3b82f6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Marketing &amp; Sales</span>
+              <h3>AI Automation for CRM Cleanup &amp; Updates</h3>
+              <p>Duplicates merged, gaps filled, records kept current.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/proposals-and-quotations.html" data-category="Marketing &amp; Sales" style="--card-accent: #3b82f6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-proposals-and-quotations.svg" data-accent="#3b82f6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Marketing &amp; Sales</span>
+              <h3>AI Automation for Proposals &amp; Quotations</h3>
+              <p>Client-ready proposals drafted from your own templates.</p>
+            </div>
+          </a>
+
+          <!-- Operations (#14b8a6) -->
+          <a class="usecase-card" href="use-cases/team-management.html" data-category="Operations" style="--card-accent: #14b8a6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-team-management.svg" data-accent="#14b8a6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Operations</span>
+              <h3>AI Automation for Team Management</h3>
+              <p>Tasks assigned, chased and summarised without the nagging.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/reporting-and-dashboards.html" data-category="Operations" style="--card-accent: #14b8a6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-reporting-and-dashboards.svg" data-accent="#14b8a6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Operations</span>
+              <h3>AI Automation for Reporting &amp; Dashboards</h3>
+              <p>Numbers pulled, charts built, story explained — automatically.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/spreadsheets-and-data.html" data-category="Operations" style="--card-accent: #14b8a6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-spreadsheets-and-data.svg" data-accent="#14b8a6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Operations</span>
+              <h3>AI Automation for Spreadsheets &amp; Data</h3>
+              <p>Messy sheets cleaned, matched and kept up to date.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/meetings.html" data-category="Operations" style="--card-accent: #14b8a6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-meetings.svg" data-accent="#14b8a6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Operations</span>
+              <h3>AI Automation for Meetings</h3>
+              <p>Recordings turned into notes, decisions and follow-ups.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/customer-support.html" data-category="Operations" style="--card-accent: #14b8a6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-customer-support.svg" data-accent="#14b8a6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Operations</span>
+              <h3>AI Automation for Customer Support</h3>
+              <p>Common questions answered instantly; tricky ones routed to a human.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/documents-and-invoices.html" data-category="Operations" style="--card-accent: #14b8a6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-documents-and-invoices.svg" data-accent="#14b8a6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Operations</span>
+              <h3>AI Automation for Documents &amp; Invoices</h3>
+              <p>Documents read, checked and filed without manual data entry.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/research-and-market-intel.html" data-category="Operations" style="--card-accent: #14b8a6;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-research-and-market-intel.svg" data-accent="#14b8a6"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Operations</span>
+              <h3>AI Automation for Research &amp; Market Intel</h3>
+              <p>Competitors and markets watched, briefed to you weekly.</p>
+            </div>
+          </a>
+
+          <!-- Back Office (#f59e0b) -->
+          <a class="usecase-card" href="use-cases/recruitment.html" data-category="Back Office" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-recruitment.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Recruitment</h3>
+              <p>CVs screened and shortlists prepared for your interviews.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/onboarding-and-training.html" data-category="Back Office" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-onboarding-and-training.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Onboarding &amp; Training</h3>
+              <p>New hires set up, trained and ready on day one.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/finance-admin.html" data-category="Back Office" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-finance-admin.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Finance Admin</h3>
+              <p>Receipts, invoices and records matched and reconciled.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/translation-and-localisation.html" data-category="Back Office" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-translation-and-localisation.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Translation &amp; Localisation</h3>
+              <p>Content translated and adapted for every market you serve.</p>
+            </div>
+          </a>
+
+          <a class="usecase-card" href="use-cases/online-store-ops.html" data-category="Back Office" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="assets/anim/fde-online-store-ops.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Online Store Ops</h3>
+              <p>Listings, stock and orders kept in sync across your store.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools wall -->
+    <section id="tools">
+      <div class="container">
+        <div class="section-header">
+          <h2>Tools and models we build with.</h2>
+          <p>We are tool-agnostic. We build with the AI models and the software your team already uses, and we pick what fits the job.</p>
+        </div>
+        <div class="tools-wall">
+          <span class="tool-mark">OpenAI</span>
+          <span class="tool-mark">Claude</span>
+          <span class="tool-mark">Gemini</span>
+          <span class="tool-mark">Meta</span>
+          <span class="tool-mark">Mistral</span>
+          <span class="tool-mark">Microsoft Copilot</span>
+          <span class="tool-mark">Perplexity</span>
+          <span class="tool-mark">Midjourney</span>
+          <span class="tool-mark">Runway</span>
+          <span class="tool-mark">Adobe Firefly</span>
+          <span class="tool-mark">Canva</span>
+          <span class="tool-mark">Figma</span>
+          <span class="tool-mark">ElevenLabs</span>
+          <span class="tool-mark">HeyGen</span>
+          <span class="tool-mark">HubSpot</span>
+          <span class="tool-mark">Salesforce</span>
+          <span class="tool-mark">Zapier</span>
+          <span class="tool-mark">Make</span>
+          <span class="tool-mark">n8n</span>
+          <span class="tool-mark">Notion</span>
+          <span class="tool-mark">Airtable</span>
+        </div>
+        <p class="disclaimer">Enablly is independent — naming a tool means we build with it, not that we are endorsed by or partnered with its maker.</p>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section id="capabilities">
+      <div class="container">
+        <div class="section-header">
+          <h2>How the technology works, in plain words.</h2>
+        </div>
+        <div class="cap-grid">
+          <div class="cap-item"><strong>Agentic AI</strong> — Instead of one question and one answer, AI agents carry a small job from start to finish: gather, draft, check, hand over.</div>
+          <div class="cap-item"><strong>Multi-agent orchestration</strong> — Several agents split a bigger workflow between them, each doing the stage it is best at, like a small team.</div>
+          <div class="cap-item"><strong>Large language models (LLMs)</strong> — The technology behind tools like ChatGPT and Claude. It reads, writes and reasons over text — the raw material of most office work.</div>
+          <div class="cap-item"><strong>Retrieval-augmented generation (RAG)</strong> — The AI answers from your documents and data, not from guesswork, so outputs match your facts and your wording.</div>
+          <div class="cap-item"><strong>Tool calling and MCP</strong> — The AI can use your actual software — CRM, inbox, spreadsheets, store — instead of just talking about it.</div>
+          <div class="cap-item"><strong>Copilots</strong> — AI assistance inside the tools your team already opens every day, helping while they work.</div>
+          <div class="cap-item"><strong>Computer vision</strong> — AI that reads images and documents: product photos, invoices, receipts, screenshots.</div>
+          <div class="cap-item"><strong>Speech-to-text and voice</strong> — Meetings and voice notes become text that can be summarised, searched and acted on.</div>
+          <div class="cap-item"><strong>Text-to-image and video</strong> — New visuals and clips generated and adapted for designs, posts and listings.</div>
+          <div class="cap-item"><strong>Evals and guardrails</strong> — Every build is tested against real examples and fenced with rules, so it stays accurate and on-brand.</div>
+          <div class="cap-item"><strong>Human-in-the-loop</strong> — A person checks the important outputs before anything reaches a customer. Always.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2>FAQ</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>What does an AI automation specialist actually do?</summary>
+            <p>We find the repetitive, manual work inside a team — copying data, drafting the same documents, chasing updates, cleaning lists — and build small AI tools that do that work, with a human checking the results. You keep the judgement calls; the machines take the repetition.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What does "forward deployed" mean?</summary>
+            <p>It means we work inside your team while we build, not from outside. We learn the real workflow first, then build for it. It is how the solution ends up fitting your day instead of forcing your day to fit the solution.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you replace our staff or our existing tools?</summary>
+            <p>Neither. The micro-solutions plug into the tools you already use and take the repetitive parts off your people's plates. Your team keeps the decisions, the relationships and the final say.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How big is a typical project?</summary>
+            <p>Deliberately small. One workflow at a time — a micro-solution. It proves itself in daily use, then we pick the next bottleneck together.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is our company data safe?</summary>
+            <p>Builds run inside your accounts and permissions wherever possible, outputs are human-checked, and guardrails limit what the AI can touch. We scope data access with you before anything is built.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which tools and AI models do you work with?</summary>
+            <p>Most major ones — see the list above. We are independent and tool-agnostic, so the choice follows your stack and the job, not our partnerships.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Tell us the task your team repeats every day.</h2>
+          <p>One workflow is all we need to start. Book a scoping call and we will map it with you — where the time goes, what an AI micro-solution would look like, and what it would take off your team's plate.</p>
+          <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Enablly. AI automation specialists for everyday business work.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

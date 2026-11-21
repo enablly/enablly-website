@@ -1,0 +1,274 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">AI Automation for Email Campaigns</title>
+  <desc id="svg-desc">Animated branching workflow showing how Enablly's forward-deployed AI automation runs email campaigns: a campaign brief arrives, a segment agent visibly splits list rows into three branches (New leads, Existing customers, Dormant contacts) with tailored copy via Claude and HubSpot, all merge into Send with streaming envelope packets, and a results dashboard shows growing open-rate bars.</desc>
+
+  <style>
+    svg {
+      --bg: transparent;
+      --surface: rgba(59, 130, 246, 0.06);
+      --ink: #18181b;
+      --muted: #71717a;
+      --line: rgba(113, 113, 122, 0.32);
+      --accent: #3b82f6;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+    }
+    .title-main { font-size: 14.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 7.8px; fill: var(--muted); }
+    .branch-label { font-size: 7.2px; font-weight: 700; fill: var(--accent); }
+    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
+    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
+    .brand-text { font-size: 7.6px; font-weight: 600; fill: var(--ink); }
+    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1.1; }
+    .card-rich { fill: var(--accent); fill-opacity: 0.09; stroke: var(--accent); stroke-opacity: 0.7; stroke-width: 1.1; }
+    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
+    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .node { transform-box: fill-box; transform-origin: center; }
+
+    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
+    .flow-branch-a { stroke: var(--accent); stroke-opacity: 0.55; }
+    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.8; }
+    .flow-branch-c { stroke: var(--accent); stroke-opacity: 1; }
+    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+
+    .packet { fill: var(--accent); opacity: 0; }
+    .packet-in { offset-path: path("M 98 200 L 126 200"); animation: pktIn 9s linear infinite; }
+    .packet-a1 { offset-path: path("M 174 146 C 194 92, 232 92, 270 92"); animation: pktBranch 9s linear infinite; }
+    .packet-b1 { offset-path: path("M 222 200 L 270 200"); animation: pktBranch 9s linear infinite; }
+    .packet-c1 { offset-path: path("M 174 254 C 194 312, 232 312, 270 312"); animation: pktBranch 9s linear infinite; }
+    .packet-a2 { offset-path: path("M 396 92 C 414 92, 414 176, 424 188"); animation: pktMerge 9s linear infinite; }
+    .packet-b2 { offset-path: path("M 396 200 L 424 200"); animation: pktMerge 9s linear infinite; }
+    .packet-c2 { offset-path: path("M 396 312 C 414 312, 414 236, 424 226"); animation: pktMerge 9s linear infinite; }
+    .packet-out { offset-path: path("M 512 200 L 534 200"); animation: pktOut 9s linear infinite; }
+
+    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 40%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktMerge { 0%, 50% { offset-distance: 0%; opacity: 0; } 52% { opacity: 1; } 62% { offset-distance: 100%; opacity: 1; } 64%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+
+    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
+    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
+    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
+    #stage-3 .highlight-ring, #stage-4 .highlight-ring, #branch-c .highlight-ring { animation: lit3 9s ease-in-out infinite; }
+    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
+    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+
+    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
+    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 54% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit5 { 0%, 58% { opacity: 0; } 62%, 76% { opacity: 1; } 82%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit6 { 0%, 78% { opacity: 0; } 82%, 95% { opacity: 1; } 100% { opacity: 0; } }
+
+    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
+    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+
+    /* Stage 2: List rows visibly splitting inside Segment node */
+    .seg-row-1 { animation: sr1 9s ease-out infinite; }
+    .seg-row-3 { animation: sr3 9s ease-out infinite; }
+    @keyframes sr1 { 0%, 18% { transform: translateY(0); } 26%, 94% { transform: translateY(-4px); } 98%, 100% { transform: translateY(0); } }
+    @keyframes sr3 { 0%, 18% { transform: translateY(0); } 26%, 94% { transform: translateY(4px); } 98%, 100% { transform: translateY(0); } }
+
+    /* Stage 5: Envelope packets streaming inside Send */
+    .env-stream-1 { animation: env1 1.5s linear infinite; }
+    .env-stream-2 { animation: env1 1.5s linear infinite 0.75s; }
+    @keyframes env1 {
+      0% { transform: translateX(-8px); opacity: 0; }
+      25% { opacity: 1; }
+      75% { opacity: 1; }
+      100% { transform: translateX(30px); opacity: 0; }
+    }
+
+    /* Stage 6: Open-rate bars growing inside Results */
+    .open-b1, .open-b2, .open-b3 { transform-box: fill-box; transform-origin: left center; }
+    .open-b1 { animation: ob1 9s ease-out infinite; }
+    .open-b2 { animation: ob2 9s ease-out infinite; }
+    .open-b3 { animation: ob3 9s ease-out infinite; }
+    @keyframes ob1 { 0%, 78% { transform: scaleX(0.15); } 86%, 95% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0.15); } }
+    @keyframes ob2 { 0%, 80% { transform: scaleX(0.15); } 88%, 95% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0.15); } }
+    @keyframes ob3 { 0%, 82% { transform: scaleX(0.15); } 90%, 95% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0.15); } }
+
+    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
+    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+  </style>
+
+  <defs>
+    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+
+  <g id="header">
+    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
+    <text x="32" y="30" class="title-main">AI Automation for Email Campaigns</text>
+    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
+    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
+    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  </g>
+
+  <g id="flow-paths">
+    <path class="flow-path" d="M 98 200 L 126 200" />
+    <path class="flow-path flow-branch-a" d="M 174 146 C 194 92, 232 92, 270 92" />
+    <path class="flow-path flow-branch-b" d="M 222 200 L 270 200" />
+    <path class="flow-path flow-branch-c" d="M 174 254 C 194 312, 232 312, 270 312" />
+    <path class="flow-path flow-branch-a" d="M 396 92 C 414 92, 414 176, 424 188" />
+    <path class="flow-path flow-branch-b" d="M 396 200 L 424 200" />
+    <path class="flow-path flow-branch-c" d="M 396 312 C 414 312, 414 236, 424 226" />
+    <path class="flow-path" d="M 512 200 L 534 200" />
+  </g>
+
+  <g id="branch-labels">
+    <text x="206" y="84" class="branch-label">A · New</text>
+    <text x="223" y="193" class="branch-label">B · Existing</text>
+    <text x="206" y="326" class="branch-label">C · Dormant</text>
+  </g>
+
+  <g id="packets">
+    <circle class="packet packet-in" r="3.2" />
+    <circle class="packet packet-a1" r="3.2" />
+    <circle class="packet packet-b1" r="3.2" />
+    <circle class="packet packet-c1" r="3.2" />
+    <circle class="packet packet-a2" r="3.2" />
+    <circle class="packet packet-b2" r="3.2" />
+    <circle class="packet packet-c2" r="3.2" />
+    <circle class="packet packet-out" r="3.5" />
+  </g>
+
+  <!-- STAGE 1: Campaign Brief In -->
+  <g id="stage-1" class="node">
+    <rect x="14" y="148" width="84" height="104" rx="10" class="card-bg" />
+    <rect x="14" y="148" width="84" height="104" rx="10" class="highlight-ring" />
+    <text x="22" y="164" class="stage-num">01 · BRIEF IN</text>
+    <text x="22" y="178" class="stage-title">Campaign brief</text>
+    <rect x="26" y="188" width="60" height="22" rx="4" fill="var(--accent)" fill-opacity="0.1" stroke="var(--line)" stroke-width="0.7" />
+    <path d="M26 190 L56 201 L86 190" fill="none" stroke="var(--accent)" stroke-width="1" />
+    <text x="22" y="226" class="stage-copy">Offer, goal &amp;</text>
+    <text x="22" y="237" class="stage-copy">contact list</text>
+  </g>
+
+  <!-- STAGE 2: Segment Agent (List rows visibly splitting) -->
+  <g id="stage-2" class="node">
+    <polygon points="174,146 222,200 174,254 126,200" class="card-bg" />
+    <polygon points="174,146 222,200 174,254 126,200" class="highlight-ring" />
+    <text x="148" y="180" class="stage-num">02 · SEGMENT</text>
+    <text x="143" y="193" class="stage-title">Segment agent</text>
+    <!-- Splitting list rows -->
+    <rect x="152" y="200" width="44" height="3" rx="1.5" fill="var(--accent)" class="seg-row-1" />
+    <rect x="152" y="207" width="44" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.7" />
+    <rect x="152" y="214" width="44" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.45" class="seg-row-3" />
+
+    <g class="ai-badge">
+      <rect x="148" y="262" width="54" height="14" rx="7" class="pill-bg" />
+      <circle cx="156" cy="269" r="2" class="ai-pulse-dot" />
+      <text x="162" y="271.5" class="tag-text-accent">AI agent</text>
+    </g>
+  </g>
+
+  <!-- STAGE 3: Branch A - New Leads -->
+  <g id="stage-3" class="node">
+    <rect x="270" y="50" width="126" height="84" rx="10" class="card-soft" />
+    <rect x="270" y="50" width="126" height="84" rx="10" class="highlight-ring" />
+    <text x="279" y="64" class="stage-num">BRANCH A · NEW</text>
+    <circle cx="384" cy="62" r="2.6" class="ai-pulse-dot" />
+    <text x="279" y="77" class="stage-title">New leads</text>
+    <text x="279" y="88" class="stage-copy">Warm intro &amp; value proof</text>
+    <g class="ai-badge">
+      <rect x="279" y="102" width="38" height="15" rx="7.5" class="pill-bg" />
+      <text x="290" y="112" class="tag-text-accent">LLM</text>
+    </g>
+  </g>
+
+  <!-- STAGE 4: Branch B - Existing Customers (Claude, HubSpot) -->
+  <g id="stage-4" class="node">
+    <rect x="270" y="152" width="126" height="96" rx="10" class="card-bg" />
+    <rect x="270" y="152" width="126" height="96" rx="10" class="highlight-ring" />
+    <text x="279" y="166" class="stage-num">BRANCH B · EXISTING</text>
+    <circle cx="384" cy="164" r="2.6" class="ai-pulse-dot" />
+    <text x="279" y="179" class="stage-title">Existing customers</text>
+    <text x="279" y="190" class="stage-copy">Tailored upsell &amp; tips</text>
+
+    <!-- Logos: Claude, HubSpot -->
+    <g transform="translate(279, 198)">
+      <path d="M4 0.8 L4 7.2 M0.8 4 L7.2 4 M1.8 1.8 L6.2 6.2 M6.2 1.8 L1.8 6.2" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round" />
+      <text x="10" y="6.8" class="brand-text">Claude</text>
+    </g>
+    <g transform="translate(335, 198)">
+      <circle cx="4" cy="4.5" r="2.2" fill="none" stroke="var(--accent)" stroke-width="1.1" />
+      <circle cx="4" cy="1" r="1" fill="var(--accent)" />
+      <circle cx="7.2" cy="6.2" r="1" fill="var(--accent)" />
+      <circle cx="0.8" cy="6.2" r="1" fill="var(--accent)" />
+      <text x="11" y="7" class="brand-text">HubSpot</text>
+    </g>
+
+    <g class="ai-badge">
+      <rect x="279" y="220" width="70" height="15" rx="7.5" class="pill-bg" />
+      <text x="286" y="230" class="tag-text-accent">personalisation</text>
+    </g>
+  </g>
+
+  <!-- BRANCH C: Dormant Contacts -->
+  <g id="branch-c" class="node">
+    <rect x="270" y="268" width="126" height="82" rx="10" class="card-rich" />
+    <rect x="270" y="268" width="126" height="82" rx="10" class="highlight-ring" />
+    <text x="279" y="282" class="stage-num">BRANCH C · DORMANT</text>
+    <circle cx="384" cy="280" r="2.6" class="ai-pulse-dot" />
+    <text x="279" y="295" class="stage-title">Dormant contacts</text>
+    <text x="279" y="306" class="stage-copy">Win-back offer &amp; check-in</text>
+    <g class="ai-badge">
+      <rect x="279" y="320" width="54" height="15" rx="7.5" class="pill-bg" />
+      <text x="287" y="330" class="tag-text-accent">AI agent</text>
+    </g>
+  </g>
+
+  <!-- STAGE 5: Send (Envelope packets streaming inside) -->
+  <g id="stage-5" class="node">
+    <rect x="424" y="140" width="88" height="122" rx="10" class="card-bg" />
+    <rect x="424" y="140" width="88" height="122" rx="10" class="highlight-ring" />
+    <text x="432" y="156" class="stage-num">04 · SEND</text>
+    <text x="432" y="170" class="stage-title">Send</text>
+    <text x="432" y="182" class="stage-copy">Staggered delivery</text>
+
+    <!-- Streaming envelope packets -->
+    <rect x="432" y="192" width="72" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
+    <g class="env-stream-1">
+      <rect x="442" y="200" width="14" height="10" rx="2" fill="none" stroke="var(--accent)" stroke-width="1.1" />
+      <path d="M442 201 L449 206 L456 201" fill="none" stroke="var(--accent)" stroke-width="0.9" />
+    </g>
+    <g class="env-stream-2">
+      <rect x="442" y="200" width="14" height="10" rx="2" fill="none" stroke="var(--accent)" stroke-width="1.1" />
+      <path d="M442 201 L449 206 L456 201" fill="none" stroke="var(--accent)" stroke-width="0.9" />
+    </g>
+
+    <rect x="431" y="234" width="74" height="15" rx="7.5" class="pill-bg" />
+    <text x="436" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
+  </g>
+
+  <!-- STAGE 6: Results Dashboard (Open-rate bars growing) -->
+  <g id="stage-6" class="node">
+    <rect x="534" y="136" width="94" height="130" rx="10" class="card-bg" />
+    <rect x="534" y="136" width="94" height="130" rx="10" class="highlight-ring" />
+    <text x="542" y="152" class="stage-num">05 · RESULTS</text>
+    <text x="542" y="166" class="stage-title">Open &amp; reply rates</text>
+
+    <g transform="translate(542, 178)">
+      <text x="0" y="8" class="stage-copy">A · 48%</text>
+      <rect x="0" y="12" width="76" height="6" rx="3" fill="var(--accent)" class="open-b1" />
+      <text x="0" y="30" class="stage-copy">B · 62%</text>
+      <rect x="0" y="34" width="76" height="6" rx="3" fill="var(--accent)" fill-opacity="0.8" class="open-b2" />
+      <text x="0" y="52" class="stage-copy">C · 34%</text>
+      <rect x="0" y="56" width="56" height="6" rx="3" fill="var(--accent)" fill-opacity="0.55" class="open-b3" />
+    </g>
+  </g>
+
+  <g id="footer">
+    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
+    <text x="22" y="386.5" class="tag-text">workflow automation</text>
+    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
+    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+  </g>
+</svg>

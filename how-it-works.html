@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — Enablly's Forward-Deployed AI Automation</title>
+  <meta name="description" content="How Enablly works inside your team: observe the real workflow, pick the worst bottleneck, build a small AI micro-solution, and refine it with human checks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("enablly-theme");
+      var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", saved || (dark ? "dark" : "light"));
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Enablly</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#use-cases">Use cases</a>
+        <a href="how-it-works.html" aria-current="page">How it works</a>
+        <a href="index.html#tools">Tools</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+        <button id="theme-toggle" class="theme-toggle" type="button">Light mode</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="prose-hero">
+      <div class="container">
+        <h1>Embedded first. Automated second.</h1>
+        <p>Most automation fails because it is designed from outside the team that has to live with it. We do it the other way round: we embed with your team first — the forward-deployed way — and automate what we have actually seen.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-num">01</span>
+            <h3>1. Embed and observe</h3>
+            <p>We join your team's daily rhythm for a short discovery: shadowing the work, reading the documents, mapping every hand-off. We are looking for the tasks that are repetitive, rule-based and frequent — the ones quietly eating your week.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">02</span>
+            <h3>2. Pick the worst bottleneck</h3>
+            <p>You get a short list of candidate workflows with the friction in each made plain. Together we pick one. Small scope is a feature: it ships fast and proves itself in real use.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">03</span>
+            <h3>3. Build the micro-solution</h3>
+            <p>We build an AI workflow for that one job: agents that gather, draft and check; connected to your tools through tool calling and MCP; grounded in your documents through retrieval (RAG); tested with evals before anyone relies on it.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">04</span>
+            <h3>4. Human checks, we refine</h3>
+            <p>Your team reviews outputs in a simple checkpoint. Anything uncertain is flagged, not shipped. We refine until the team trusts it — then we pick the next bottleneck.</p>
+          </article>
+        </div>
+        <p class="closing-note">The result is not a platform to learn or a strategy to admire. It is hours handed back, every week, in the work your team already does.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Tell us the task your team repeats every day.</h2>
+          <p>One workflow is all we need to start. Book a scoping call and we will map it with you — where the time goes, what an AI micro-solution would look like, and what it would take off your team's plate.</p>
+          <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Enablly. AI automation specialists for everyday business work.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

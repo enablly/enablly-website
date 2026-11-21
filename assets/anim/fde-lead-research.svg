@@ -1,0 +1,274 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">AI Automation for Lead Research</title>
+  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation handles lead research: an ideal-customer profile arrives, Clay and Apollo search companies with a scanning magnifier, LinkedIn enriches people with stacking profile cards, AI scores leads with a filling score ring, a human spot-checks, and a clean lead list is delivered into the CRM.</desc>
+
+  <style>
+    svg {
+      --bg: transparent;
+      --surface: rgba(59, 130, 246, 0.06);
+      --ink: #18181b;
+      --muted: #71717a;
+      --line: rgba(113, 113, 122, 0.32);
+      --accent: #3b82f6;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+    }
+    .title-main { font-size: 15px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .stage-num { font-size: 8.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 11px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 8.2px; fill: var(--muted); }
+    .tag-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
+    .tag-text-accent { font-size: 7.4px; font-weight: 600; fill: var(--accent); }
+    .brand-text { font-size: 7.8px; font-weight: 600; fill: var(--ink); }
+    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
+    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .node { transform-box: fill-box; transform-origin: center; }
+
+    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
+    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+
+    .packet { fill: var(--accent); opacity: 0; }
+    .packet-1 { offset-path: path("M 102 174 C 102 204, 128 204, 128 232"); animation: pkt1 9s linear infinite; }
+    .packet-2 { offset-path: path("M 218 278 C 248 278, 250 232, 250 194"); animation: pkt2 9s linear infinite; }
+    .packet-3 { offset-path: path("M 330 132 C 354 132, 354 188, 354 224"); animation: pkt3 9s linear infinite; }
+    .packet-4 { offset-path: path("M 440 280 C 468 280, 468 220, 468 178"); animation: pkt4 9s linear infinite; }
+    .packet-5 { offset-path: path("M 526 126 C 562 126, 562 182, 562 224"); animation: pkt5 9s linear infinite; }
+
+    @keyframes pkt1 { 0%, 10% { offset-distance: 0%; opacity: 0; } 12% { opacity: 1; } 20% { offset-distance: 100%; opacity: 1; } 22%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pkt2 { 0%, 25% { offset-distance: 0%; opacity: 0; } 27% { opacity: 1; } 35% { offset-distance: 100%; opacity: 1; } 37%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pkt3 { 0%, 44% { offset-distance: 0%; opacity: 0; } 46% { opacity: 1; } 54% { offset-distance: 100%; opacity: 1; } 56%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pkt4 { 0%, 62% { offset-distance: 0%; opacity: 0; } 64% { opacity: 1; } 72% { offset-distance: 100%; opacity: 1; } 74%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pkt5 { 0%, 76% { offset-distance: 0%; opacity: 0; } 78% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+
+    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
+    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
+    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
+    #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
+    #stage-4 .highlight-ring { animation: lit4 9s ease-in-out infinite; }
+    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
+    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+
+    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
+    @keyframes lit2 { 0%, 15% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit3 { 0%, 30% { opacity: 0; } 35%, 48% { opacity: 1; } 54%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit4 { 0%, 48% { opacity: 0; } 53%, 66% { opacity: 1; } 72%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit5 { 0%, 66% { opacity: 0; } 71%, 80% { opacity: 1; } 86%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit6 { 0%, 80% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+
+    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
+    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+
+    /* Stage 2: Magnifier scanning rows inside Search */
+    .mag-scan { animation: magMove 9s ease-in-out infinite; }
+    @keyframes magMove {
+      0%, 16% { transform: translate(0px, 0px); opacity: 0.35; }
+      20% { opacity: 1; }
+      25% { transform: translate(12px, 8px); opacity: 1; }
+      30% { transform: translate(4px, 16px); opacity: 1; }
+      35%, 100% { transform: translate(0px, 0px); opacity: 0.35; }
+    }
+
+    /* Stage 3: Profile cards stacking inside Enrich */
+    .prof-1 { animation: pr1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .prof-2 { animation: pr2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .prof-3 { animation: pr3 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes pr1 { 0%, 32% { opacity: 0.2; transform: translateY(6px); } 37%, 94% { opacity: 0.95; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
+    @keyframes pr2 { 0%, 36% { opacity: 0.2; transform: translateY(6px); } 41%, 94% { opacity: 0.95; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
+    @keyframes pr3 { 0%, 40% { opacity: 0.2; transform: translateY(6px); } 45%, 94% { opacity: 0.95; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
+
+    /* Stage 4: Score ring filling inside Scored */
+    .score-ring { stroke-dasharray: 63; stroke-dashoffset: 63; animation: scoreFill 9s ease-out infinite; }
+    @keyframes scoreFill { 0%, 51% { stroke-dashoffset: 63; } 64%, 94% { stroke-dashoffset: 10; } 98%, 100% { stroke-dashoffset: 63; } }
+
+    /* Stage 5: Self-drawing check */
+    .check-pop { transform-box: fill-box; transform-origin: center; animation: checkPop 9s ease-out infinite; }
+    .check-stroke { stroke-dasharray: 16; stroke-dashoffset: 16; animation: checkDraw 9s ease-out infinite; }
+    @keyframes checkPop { 0%, 70% { opacity: 0.25; transform: scale(0.75); } 74%, 94% { opacity: 1; transform: scale(1.05); } 98%, 100% { opacity: 0.25; transform: scale(0.75); } }
+    @keyframes checkDraw { 0%, 71% { stroke-dashoffset: 16; } 78%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 16; } }
+
+    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
+    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+  </style>
+
+  <defs>
+    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+
+  <g id="header">
+    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
+    <text x="34" y="32" class="title-main">AI Automation for Lead Research</text>
+    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
+    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
+    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+  </g>
+
+  <g id="flow-paths">
+    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
+    <path class="flow-path" d="M 218 278 C 248 278, 250 232, 250 194" />
+    <path class="flow-path" d="M 330 132 C 354 132, 354 188, 354 224" />
+    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
+    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
+  </g>
+
+  <g id="packets">
+    <circle class="packet packet-1" r="3.5" />
+    <circle class="packet packet-2" r="3.5" />
+    <circle class="packet packet-3" r="3.5" />
+    <circle class="packet packet-4" r="3.5" />
+    <circle class="packet packet-5" r="3.5" />
+  </g>
+
+  <!-- STAGE 1: ICP In -->
+  <g id="stage-1" class="node">
+    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
+    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
+    <text x="26" y="86" class="stage-num">01 · TASK IN</text>
+    <text x="26" y="101" class="stage-title">ICP criteria</text>
+    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
+    <circle cx="38" cy="124" r="6" fill="none" stroke="var(--accent)" stroke-width="1" />
+    <circle cx="38" cy="124" r="2.2" fill="var(--accent)" />
+    <line x1="50" y1="121" x2="104" y2="121" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="50" y1="127" x2="88" y2="127" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.3" stroke-linecap="round" />
+    <text x="26" y="152" class="stage-copy">Industry, size, role</text>
+    <text x="26" y="163" class="stage-copy">&amp; buying signals</text>
+  </g>
+
+  <!-- STAGE 2: Companies Searched (Magnifier scanning rows) -->
+  <g id="stage-2" class="node">
+    <rect x="92" y="232" width="126" height="114" rx="10" class="card-bg" />
+    <rect x="92" y="232" width="126" height="114" rx="10" class="highlight-ring" />
+    <text x="102" y="248" class="stage-num">02 · SEARCH</text>
+    <text x="102" y="263" class="stage-title">Companies searched</text>
+
+    <!-- Magnifier scanning rows -->
+    <g transform="translate(102, 272)">
+      <rect x="0" y="0" width="36" height="28" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
+      <rect x="4" y="5" width="24" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.4" />
+      <rect x="4" y="12" width="28" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.6" />
+      <rect x="4" y="19" width="20" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.4" />
+      <g class="mag-scan">
+        <circle cx="10" cy="8" r="4" fill="none" stroke="var(--ink)" stroke-width="1.2" />
+        <line x1="13" y1="11" x2="16" y2="14" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- Logos: Clay, Apollo -->
+    <g transform="translate(145, 274)">
+      <circle cx="4" cy="4.5" r="3.5" fill="var(--accent)" fill-opacity="0.65" />
+      <text x="11" y="7.5" class="brand-text">Clay</text>
+    </g>
+    <g transform="translate(145, 290)">
+      <polygon points="4.5,1 8,8 1,8" fill="none" stroke="var(--accent)" stroke-width="1.2" />
+      <text x="11" y="7.5" class="brand-text">Apollo</text>
+    </g>
+
+    <g class="ai-badge">
+      <rect x="102" y="318" width="54" height="16" rx="8" class="pill-bg" />
+      <circle cx="111" cy="326" r="2.2" class="ai-pulse-dot" />
+      <text x="117" y="328.5" class="tag-text-accent">AI agent</text>
+    </g>
+  </g>
+
+  <!-- STAGE 3: People Enriched (Profile cards stacking) -->
+  <g id="stage-3" class="node">
+    <rect x="192" y="62" width="138" height="132" rx="10" class="card-bg" />
+    <rect x="192" y="62" width="138" height="132" rx="10" class="highlight-ring" />
+    <text x="202" y="78" class="stage-num">03 · AI STAGE A</text>
+    <circle cx="316" cy="75" r="3" class="ai-pulse-dot" />
+    <text x="202" y="92" class="stage-title">People enriched</text>
+    <text x="202" y="104" class="stage-copy">Decision makers &amp; emails</text>
+
+    <!-- Profile cards stacking -->
+    <g transform="translate(202, 114)">
+      <rect x="0" y="0" width="36" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.7" class="prof-1" />
+      <rect x="2" y="12" width="36" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.32" stroke="var(--accent)" stroke-width="0.7" class="prof-2" />
+      <rect x="4" y="24" width="36" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.48" stroke="var(--accent)" stroke-width="0.7" class="prof-3" />
+    </g>
+
+    <!-- Logo: LinkedIn -->
+    <g transform="translate(248, 124)">
+      <rect x="0.5" y="0.5" width="9" height="9" rx="2" fill="var(--accent)" />
+      <text x="2.2" y="7.5" fill="#ffffff" font-size="6.5" font-weight="800">in</text>
+      <text x="12" y="7.8" class="brand-text">LinkedIn</text>
+    </g>
+
+    <g class="ai-badge">
+      <rect x="200" y="162" width="76" height="15" rx="7.5" class="pill-bg" />
+      <text x="207" y="172" class="tag-text-accent">data enrichment</text>
+    </g>
+  </g>
+
+  <!-- STAGE 4: Leads Scored (Score ring filling) -->
+  <g id="stage-4" class="node">
+    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
+    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
+    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
+    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
+    <text x="312" y="254" class="stage-title">Leads scored</text>
+    <text x="312" y="266" class="stage-copy">Ranked by fit &amp; intent</text>
+
+    <!-- Score ring filling -->
+    <g transform="translate(314, 276)">
+      <circle cx="14" cy="14" r="10" fill="none" stroke="var(--line)" stroke-width="2.5" />
+      <circle cx="14" cy="14" r="10" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" transform="rotate(-90 14 14)" class="score-ring" />
+      <text x="8" y="17" font-size="7.5" font-weight="800" fill="var(--accent)">92</text>
+    </g>
+    <text x="348" y="293" class="stage-copy">Top-fit leads</text>
+    <text x="348" y="303" class="stage-copy">flagged first</text>
+
+    <g class="ai-badge">
+      <rect x="312" y="326" width="42" height="16" rx="8" class="pill-bg" />
+      <circle cx="321" cy="334" r="2" class="ai-pulse-dot" />
+      <text x="327" y="336.5" class="tag-text-accent">LLM</text>
+    </g>
+  </g>
+
+  <!-- STAGE 5: Human Spot-Check -->
+  <g id="stage-5" class="node">
+    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
+    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
+    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
+    <text x="426" y="100" class="stage-title">Human spot-check</text>
+    <text x="426" y="113" class="stage-copy">Rep verifies top</text>
+    <text x="426" y="123" class="stage-copy">accounts &amp; notes</text>
+    <g class="check-pop" transform="translate(494, 92)">
+      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
+      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-stroke" />
+    </g>
+    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
+    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
+  </g>
+
+  <!-- STAGE 6: Clean Lead List into CRM -->
+  <g id="stage-6" class="node">
+    <rect x="502" y="224" width="122" height="130" rx="10" class="card-bg" />
+    <rect x="502" y="224" width="122" height="130" rx="10" class="highlight-ring" />
+    <text x="512" y="240" class="stage-num">06 · DELIVERED</text>
+    <text x="512" y="254" class="stage-title">Clean CRM list</text>
+
+    <g transform="translate(512, 263)">
+      <rect x="0" y="0" width="102" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
+      <rect x="8" y="8" width="58" height="7" rx="2" fill="var(--accent)" fill-opacity="0.35" />
+      <rect x="8" y="19" width="58" height="7" rx="2" fill="var(--accent)" fill-opacity="0.25" />
+      <rect x="8" y="30" width="58" height="7" rx="2" fill="var(--accent)" fill-opacity="0.45" />
+      <circle cx="84" cy="22" r="8" fill="var(--accent)" />
+      <path d="M80.5 22 L83 24.5 L87.8 19.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <text x="512" y="324" class="stage-copy">Verified contacts</text>
+    <text x="512" y="335" class="stage-copy">synced to your CRM</text>
+  </g>
+
+  <g id="footer">
+    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
+    <text x="24" y="386.5" class="tag-text">workflow automation</text>
+    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
+    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+  </g>
+</svg>
