@@ -235,11 +235,30 @@
     selectTab(tabs[0]);
   }
 
+  function initWhatsAppFloat() {
+    if (document.querySelector(".wa-float")) return;
+    const url = window.CTA_URL || "#contact";
+    const btn = document.createElement("a");
+    btn.className = "wa-float";
+    btn.href = url;
+    btn.target = "_blank";
+    btn.rel = "noopener noreferrer";
+    btn.setAttribute("aria-label", "Chat with us on WhatsApp");
+    btn.innerHTML = `
+      <span class="wa-float-tip">Chat with us on WhatsApp</span>
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 3C8.82 3 3 8.82 3 16c0 2.31.61 4.56 1.77 6.55L3 29l6.63-1.74A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.93 1.03 1.05-3.83-.27-.42A10.56 10.56 0 0 1 5.4 16C5.4 10.16 10.16 5.4 16 5.4S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.8-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.36-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66s1.15 3.09 1.31 3.3c.16.21 2.26 3.45 5.48 4.84.77.33 1.37.53 1.83.68.77.24 1.47.21 2.02.13.62-.09 1.88-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37z"/>
+      </svg>
+    `;
+    document.body.appendChild(btn);
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     initCTAs();
     initFilters();
     initHeroShowcase();
     initAnimations();
+    initWhatsAppFloat();
   });
 })();
