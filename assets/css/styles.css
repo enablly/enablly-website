@@ -271,12 +271,12 @@ section {
   flex: 0 0 auto;
   min-height: 26px;
   padding: 3px 9px;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--tab-accent, var(--accent)) 35%, var(--border));
-  background: color-mix(in srgb, var(--tab-accent, var(--accent)) 8%, var(--card));
-  color: var(--ink);
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--tab-accent, var(--accent)) 40%, #cbd5e1);
+  background: #ffffff;
+  color: #0f172a;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   cursor: pointer;
   white-space: nowrap;
