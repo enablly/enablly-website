@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Automation for Finance Admin — Enablly</title>
+  <meta name="description" content="AI automation for finance admin: transactions matched to invoices and receipts, records reconciled and exceptions flagged." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("enablly-theme");
+      var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", saved || (dark ? "dark" : "light"));
+    })();
+  </script>
+</head>
+<body style="--accent: #f59e0b;">
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand"><span class="brand-dot" aria-hidden="true"></span><span>Enablly</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../index.html#use-cases">Use cases</a>
+        <a href="../how-it-works.html">How it works</a>
+        <a href="../index.html#tools">Tools</a>
+        <a href="../index.html#faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+        <button id="theme-toggle" class="theme-toggle" type="button">Light mode</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="uc-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a><span>/</span>
+          <a href="../index.html#use-cases">Back Office</a><span>/</span>
+          <span>AI Automation for Finance Admin</span>
+        </nav>
+        <span class="cat-badge" style="--card-accent: #f59e0b;">Back Office</span>
+        <h1>AI Automation for Finance Admin</h1>
+        <p class="uc-intro">Month-end reconciliation is matching hundreds of lines by eye. We automate the matching and leave humans the exceptions.</p>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="player-wrap">
+          <div id="player-stage" class="player-stage" data-anim="../assets/anim/fde-finance-admin.svg" data-accent="#f59e0b"></div>
+          <div class="player-controls">
+            <div class="player-buttons">
+              <button id="player-toggle" class="player-btn" type="button">Pause</button>
+              <button id="player-prev" class="player-btn" type="button">Prev</button>
+              <button id="player-next" class="player-btn" type="button">Next</button>
+            </div>
+            <div id="player-caption" class="player-caption"></div>
+          </div>
+        </div>
+
+        <div class="uc-sections">
+          <article class="uc-block">
+            <h2>The situation</h2>
+            <p>Bank lines, invoices and receipts live in three places. Reconciling them is slow, and a single mismatch can hide for an hour.</p>
+          </article>
+          <article class="uc-block">
+            <h2>Where the time goes</h2>
+            <p>Line-by-line matching, hunting missing receipts, and re-checking totals.</p>
+          </article>
+          <article class="uc-block">
+            <h2>The micro-solution</h2>
+            <p>An agent matches transactions to invoices and receipts by amount, date and reference; matched items are reconciled, near-matches are proposed, and true exceptions are listed with the evidence. Your finance person approves the proposals and works the exceptions.</p>
+          </article>
+          <article class="uc-block">
+            <h2>How it helps</h2>
+            <p>Most of the book matches itself, and human time goes only to the lines that genuinely don't fit.</p>
+          </article>
+          <article class="uc-block">
+            <h2>What changes day to day</h2>
+            <p>Month-end stops being a weekend.</p>
+          </article>
+          <article class="uc-block">
+            <h2>Tools used</h2>
+            <div class="tools-chips">
+              <span class="tool-chip">Claude</span>
+              <span class="tool-chip">your accounting software</span>
+              <span class="tool-chip">spreadsheets</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-header">
+          <h2>Quick questions</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Does it post to our accounts?</summary>
+            <p>Entries are prepared and approved by your finance person before anything is final.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What about errors?</summary>
+            <p>Every match shows its evidence, and uncertain pairs are never forced.</p>
+          </details>
+        </div>
+
+        <nav class="pager-nav" aria-label="Use case navigation">
+          <a class="pager-link" href="onboarding-and-training.html">← Prev: AI Automation for Onboarding &amp; Training</a>
+          <a class="pager-link" href="translation-and-localisation.html">Next: AI Automation for Translation &amp; Localisation →</a>
+        </nav>
+
+        <div class="section-header">
+          <h2>Related in Back Office</h2>
+        </div>
+        <div class="related-grid">
+          <a class="usecase-card" href="recruitment.html" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="../assets/anim/fde-recruitment.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Recruitment</h3>
+              <p>CVs screened and shortlists prepared for your interviews.</p>
+            </div>
+          </a>
+          <a class="usecase-card" href="onboarding-and-training.html" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="../assets/anim/fde-onboarding-and-training.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Onboarding &amp; Training</h3>
+              <p>New hires set up, trained and ready on day one.</p>
+            </div>
+          </a>
+          <a class="usecase-card" href="online-store-ops.html" style="--card-accent: #f59e0b;">
+            <div class="usecase-anim" data-anim="../assets/anim/fde-online-store-ops.svg" data-accent="#f59e0b"></div>
+            <div class="usecase-body">
+              <span class="cat-badge">Back Office</span>
+              <h3>AI Automation for Online Store Ops</h3>
+              <p>Listings, stock and orders kept in sync across your store.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Tell us the task your team repeats every day.</h2>
+          <p>One workflow is all we need to start. Book a scoping call and we will map it with you — where the time goes, what an AI micro-solution would look like, and what it would take off your team's plate.</p>
+          <a href="#contact" class="btn btn-primary" data-cta>Book a scoping call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Enablly. AI automation specialists for everyday business work.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.ENABLLY_STAGES = [
+      "1 Records in — bank lines, invoices and receipts gathered.",
+      "2 Matching runs — items paired by amount and reference.",
+      "3 Near-matches proposed — likely pairs suggested.",
+      "4 Exceptions listed — unmatched items surfaced with evidence.",
+      "5 Human approves — proposals confirmed.",
+      "6 Books reconciled — records clean and current."
+    ];
+  </script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

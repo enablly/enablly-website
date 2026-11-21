@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>index.html</loc>
-  </url>
-  <url>
-    <loc>how-it-works.html</loc>
-  </url>
+  <url><loc>index.html</loc></url>
+  <url><loc>how-it-works.html</loc></url>
+  <url><loc>use-cases/graphic-design.html</loc></url>
+  <url><loc>use-cases/video-creation.html</loc></url>
+  <url><loc>use-cases/content-creation.html</loc></url>
+  <url><loc>use-cases/social-media.html</loc></url>
+  <url><loc>use-cases/presentations-and-decks.html</loc></url>
+  <url><loc>use-cases/product-photos-and-images.html</loc></url>
+  <url><loc>use-cases/seo.html</loc></url>
+  <url><loc>use-cases/paid-ads.html</loc></url>
+  <url><loc>use-cases/email-campaigns.html</loc></url>
+  <url><loc>use-cases/lead-research.html</loc></url>
+  <url><loc>use-cases/crm-cleanup-and-updates.html</loc></url>
+  <url><loc>use-cases/proposals-and-quotations.html</loc></url>
+  <url><loc>use-cases/team-management.html</loc></url>
+  <url><loc>use-cases/reporting-and-dashboards.html</loc></url>
+  <url><loc>use-cases/spreadsheets-and-data.html</loc></url>
+  <url><loc>use-cases/meetings.html</loc></url>
+  <url><loc>use-cases/customer-support.html</loc></url>
+  <url><loc>use-cases/documents-and-invoices.html</loc></url>
+  <url><loc>use-cases/research-and-market-intel.html</loc></url>
+  <url><loc>use-cases/recruitment.html</loc></url>
+  <url><loc>use-cases/onboarding-and-training.html</loc></url>
+  <url><loc>use-cases/finance-admin.html</loc></url>
+  <url><loc>use-cases/translation-and-localisation.html</loc></url>
+  <url><loc>use-cases/online-store-ops.html</loc></url>
 </urlset>
