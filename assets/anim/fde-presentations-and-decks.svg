@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Presentations &amp; Decks</title>
-  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation builds presentations and decks: rough notes arrive, Claude structures the outline, Gamma and Microsoft Copilot generate slides with self-assembling thumbnails, AI adds charts with a drawing bar chart, a human reviews, and a board-ready deck is delivered.</desc>
+  <desc id="svg-desc">Seven-stage vertical slide-stack assembly workflow for presentations and decks: bullets and data arrive from a shared doc and Sheet, Claude structures the narrative, Power Automate builds PowerPoint slides in a growing layered stack, Microsoft Copilot draws charts from data, speaker notes write to the notes pane, a human refines, and the finished deck saves to Google Drive or SharePoint.</desc>
 
   <style>
     svg {
@@ -14,256 +14,251 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 15px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 11px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 8.2px; fill: var(--muted); }
-    .tag-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.4px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.6px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
-    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+
+    .title-main { font-size: 14px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.8px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 7.4px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 9.8px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 7.4px; fill: var(--muted); }
+    .brand-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
+    .chip-text { font-size: 6.8px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.8px; font-weight: 700; fill: var(--accent); }
+
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .slide-layer { fill: var(--surface); stroke: var(--accent); stroke-opacity: 0.5; stroke-width: 1.1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-1 { offset-path: path("M 102 174 C 102 204, 128 204, 128 232"); animation: pkt1 9s linear infinite; }
-    .packet-2 { offset-path: path("M 218 278 C 248 278, 250 232, 250 194"); animation: pkt2 9s linear infinite; }
-    .packet-3 { offset-path: path("M 332 132 C 354 132, 354 188, 354 224"); animation: pkt3 9s linear infinite; }
-    .packet-4 { offset-path: path("M 440 280 C 468 280, 468 220, 468 178"); animation: pkt4 9s linear infinite; }
-    .packet-5 { offset-path: path("M 526 126 C 562 126, 562 182, 562 224"); animation: pkt5 9s linear infinite; }
+    .p-12 { offset-path: path("M 100 122 L 100 152"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 186 196 C 230 196, 250 180, 290 180"); animation: p23 9s linear infinite; }
+    .p-34 { offset-path: path("M 430 190 L 430 140"); animation: p34 9s linear infinite; }
+    .p-45 { offset-path: path("M 290 220 C 230 250, 210 296, 186 296"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 186 334 L 222 350"); animation: p56 9s linear infinite; }
+    .p-67 { offset-path: path("M 390 350 L 466 350"); animation: p67 9s linear infinite; }
 
-    @keyframes pkt1 { 0%, 10% { offset-distance: 0%; opacity: 0; } 12% { opacity: 1; } 20% { offset-distance: 100%; opacity: 1; } 22%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt2 { 0%, 25% { offset-distance: 0%; opacity: 0; } 27% { opacity: 1; } 35% { offset-distance: 100%; opacity: 1; } 37%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt3 { 0%, 44% { offset-distance: 0%; opacity: 0; } 46% { opacity: 1; } 54% { offset-distance: 100%; opacity: 1; } 56%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt4 { 0%, 62% { offset-distance: 0%; opacity: 0; } 64% { opacity: 1; } 72% { offset-distance: 100%; opacity: 1; } 74%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt5 { 0%, 76% { offset-distance: 0%; opacity: 0; } 78% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p23 { 0%, 22% { offset-distance: 0%; opacity: 0; } 24% { opacity: 1; } 32% { offset-distance: 100%; opacity: 1; } 34%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p34 { 0%, 38% { offset-distance: 0%; opacity: 0; } 40% { opacity: 1; } 48% { offset-distance: 100%; opacity: 1; } 50%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p45 { 0%, 52% { offset-distance: 0%; opacity: 0; } 54% { opacity: 1; } 62% { offset-distance: 100%; opacity: 1; } 64%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p56 { 0%, 66% { offset-distance: 0%; opacity: 0; } 68% { opacity: 1; } 75% { offset-distance: 100%; opacity: 1; } 77%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p67 { 0%, 79% { offset-distance: 0%; opacity: 0; } 81% { opacity: 1; } 89% { offset-distance: 100%; opacity: 1; } 91%, 100% { offset-distance: 100%; opacity: 0; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
+    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 1.8; opacity: 0; }
     #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
     #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
     #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
     #stage-4 .highlight-ring { animation: lit4 9s ease-in-out infinite; }
     #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
     #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    #stage-7 .highlight-ring { animation: lit7 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 15% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 30% { opacity: 0; } 35%, 48% { opacity: 1; } 54%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit4 { 0%, 48% { opacity: 0; } 53%, 66% { opacity: 1; } 72%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 66% { opacity: 0; } 71%, 80% { opacity: 1; } 86%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 80% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.2; } 3%, 12% { opacity: 1; } 16% { opacity: 0.25; } }
+    @keyframes lit2 { 0%, 14% { opacity: 0; } 18%, 27% { opacity: 1; } 31%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit3 { 0%, 28% { opacity: 0; } 32%, 44% { opacity: 1; } 48%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit4 { 0%, 44% { opacity: 0; } 48%, 58% { opacity: 1; } 62%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit5 { 0%, 58% { opacity: 0; } 62%, 71% { opacity: 1; } 75%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit6 { 0%, 71% { opacity: 0; } 75%, 83% { opacity: 1; } 87%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit7 { 0%, 84% { opacity: 0; } 88%, 96% { opacity: 1; } 100% { opacity: 0; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
+    .ai-pulse { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
     @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
 
-    /* Stage 3: Slide thumbnails self-assembling */
-    .slide-t1 { animation: sl1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .slide-t2 { animation: sl2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .slide-t3 { animation: sl3 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    @keyframes sl1 { 0%, 32% { opacity: 0.2; transform: translate(-6px, -4px); } 38%, 94% { opacity: 0.95; transform: translate(0, 0); } 98%, 100% { opacity: 0.2; transform: translate(-6px, -4px); } }
-    @keyframes sl2 { 0%, 35% { opacity: 0.2; transform: translate(0, 6px); } 41%, 94% { opacity: 0.95; transform: translate(0, 0); } 98%, 100% { opacity: 0.2; transform: translate(0, 6px); } }
-    @keyframes sl3 { 0%, 38% { opacity: 0.2; transform: translate(6px, -4px); } 44%, 94% { opacity: 0.95; transform: translate(0, 0); } 98%, 100% { opacity: 0.2; transform: translate(6px, -4px); } }
+    /* Stage 1: Bullet lines typing */
+    .bul-1, .bul-2 { transform-box: fill-box; transform-origin: left center; }
+    .bul-1 { animation: b1 9s ease-out infinite; }
+    .bul-2 { animation: b2 9s ease-out infinite; }
+    @keyframes b1 { 0%, 96%, 100% { transform: scaleX(0.1); opacity: 0.2; } 5%, 92% { transform: scaleX(1); opacity: 0.95; } }
+    @keyframes b2 { 0%, 3%, 96%, 100% { transform: scaleX(0.1); opacity: 0.2; } 9%, 92% { transform: scaleX(1); opacity: 0.8; } }
 
-    /* Stage 4: Bar chart drawing itself */
-    .dbar-1, .dbar-2, .dbar-3 { transform-box: fill-box; transform-origin: bottom center; }
-    .dbar-1 { animation: db1 9s ease-out infinite; }
-    .dbar-2 { animation: db2 9s ease-out infinite; }
-    .dbar-3 { animation: db3 9s ease-out infinite; }
-    @keyframes db1 { 0%, 51% { transform: scaleY(0.1); opacity: 0.25; } 57%, 94% { transform: scaleY(1); opacity: 0.9; } 98%, 100% { transform: scaleY(0.1); opacity: 0.25; } }
-    @keyframes db2 { 0%, 54% { transform: scaleY(0.1); opacity: 0.25; } 60%, 94% { transform: scaleY(1); opacity: 0.8; } 98%, 100% { transform: scaleY(0.1); opacity: 0.25; } }
-    @keyframes db3 { 0%, 57% { transform: scaleY(0.1); opacity: 0.25; } 63%, 94% { transform: scaleY(1); opacity: 1; } 98%, 100% { transform: scaleY(0.1); opacity: 0.25; } }
+    /* Stage 2: Bullet rows shuffling */
+    .shf-1 { animation: sf1 9s ease-in-out infinite; }
+    .shf-2 { animation: sf2 9s ease-in-out infinite; }
+    @keyframes sf1 { 0%, 16% { transform: translateY(8px); } 23%, 94% { transform: translateY(0px); } 98%, 100% { transform: translateY(8px); } }
+    @keyframes sf2 { 0%, 16% { transform: translateY(-8px); } 23%, 94% { transform: translateY(0px); } 98%, 100% { transform: translateY(-8px); } }
 
-    /* Stage 5: Self-drawing check */
-    .check-pop { transform-box: fill-box; transform-origin: center; animation: checkPop 9s ease-out infinite; }
-    .check-stroke { stroke-dasharray: 16; stroke-dashoffset: 16; animation: checkDraw 9s ease-out infinite; }
-    @keyframes checkPop { 0%, 70% { opacity: 0.25; transform: scale(0.75); } 74%, 94% { opacity: 1; transform: scale(1.05); } 98%, 100% { opacity: 0.25; transform: scale(0.75); } }
-    @keyframes checkDraw { 0%, 71% { stroke-dashoffset: 16; } 78%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 16; } }
+    /* Stage 3: Slide layers sliding onto the stack */
+    .sl-1 { animation: slA 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .sl-2 { animation: slB 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .sl-3 { animation: slC 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes slA { 0%, 30% { opacity: 0.2; transform: translateX(18px); } 36%, 94% { opacity: 1; transform: translateX(0); } 98%, 100% { opacity: 0.2; transform: translateX(18px); } }
+    @keyframes slB { 0%, 34% { opacity: 0.2; transform: translateX(18px); } 40%, 94% { opacity: 1; transform: translateX(0); } 98%, 100% { opacity: 0.2; transform: translateX(18px); } }
+    @keyframes slC { 0%, 38% { opacity: 0.2; transform: translateX(18px); } 44%, 94% { opacity: 1; transform: translateX(0); } 98%, 100% { opacity: 0.2; transform: translateX(18px); } }
 
-    /* Stage 6: Deck assembling */
-    .deck-1 { animation: dk1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .deck-2 { animation: dk2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    @keyframes dk1 { 0%, 82% { opacity: 0; transform: translate(-8px, 0); } 87%, 95% { opacity: 1; transform: translate(0, 0); } 99%, 100% { opacity: 0; transform: translate(-8px, 0); } }
-    @keyframes dk2 { 0%, 85% { opacity: 0; transform: translate(8px, 0); } 90%, 95% { opacity: 1; transform: translate(0, 0); } 99%, 100% { opacity: 0; transform: translate(8px, 0); } }
+    /* Stage 4: Chart bars growing inside top slide */
+    .cbar-1, .cbar-2, .cbar-3 { transform-box: fill-box; transform-origin: bottom center; }
+    .cbar-1 { animation: cb1 9s ease-out infinite; }
+    .cbar-2 { animation: cb2 9s ease-out infinite; }
+    .cbar-3 { animation: cb3 9s ease-out infinite; }
+    @keyframes cb1 { 0%, 46% { transform: scaleY(0.15); } 53%, 94% { transform: scaleY(1); } 98%, 100% { transform: scaleY(0.15); } }
+    @keyframes cb2 { 0%, 49% { transform: scaleY(0.15); } 56%, 94% { transform: scaleY(1); } 98%, 100% { transform: scaleY(0.15); } }
+    @keyframes cb3 { 0%, 52% { transform: scaleY(0.15); } 59%, 94% { transform: scaleY(1); } 98%, 100% { transform: scaleY(0.15); } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 5: Speaker note lines typing */
+    .note-1, .note-2 { transform-box: fill-box; transform-origin: left center; }
+    .note-1 { animation: nt1 9s ease-out infinite; }
+    .note-2 { animation: nt2 9s ease-out infinite; }
+    @keyframes nt1 { 0%, 59% { transform: scaleX(0.1); opacity: 0.2; } 66%, 94% { transform: scaleX(1); opacity: 0.9; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
+    @keyframes nt2 { 0%, 63% { transform: scaleX(0.1); opacity: 0.2; } 70%, 94% { transform: scaleX(1); opacity: 0.75; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
+
+    /* Stage 6 and 7 Ticks */
+    .rev-tick { stroke-dasharray: 14; stroke-dashoffset: 14; animation: rtDraw 9s ease-out infinite; }
+    .end-tick { stroke-dasharray: 16; stroke-dashoffset: 16; animation: etDraw 9s ease-out infinite; }
+    @keyframes rtDraw { 0%, 75% { stroke-dashoffset: 14; } 81%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 14; } }
+    @keyframes etDraw { 0%, 87% { stroke-dashoffset: 16; } 93%, 96% { stroke-dashoffset: 0; } 99%, 100% { stroke-dashoffset: 16; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
-
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
-
+  <!-- Header -->
   <g id="header">
-    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
-    <text x="34" y="32" class="title-main">AI Automation for Presentations &amp; Decks</text>
-    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
-    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+    <circle cx="20" cy="22" r="3.8" fill="var(--accent)" />
+    <text x="30" y="26" class="title-main">AI Automation for Presentations &amp; Decks</text>
+    <rect x="466" y="12" width="158" height="20" rx="10" class="chip-bg" />
+    <circle cx="477" cy="22" r="2.2" fill="var(--accent)" />
+    <text x="484" y="25" class="method-text">Forward-deployed · Embedded</text>
   </g>
 
+  <!-- Flow Paths -->
   <g id="flow-paths">
-    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
-    <path class="flow-path" d="M 218 278 C 248 278, 250 232, 250 194" />
-    <path class="flow-path" d="M 332 132 C 354 132, 354 188, 354 224" />
-    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
-    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
+    <path class="flow-path flow-accent" d="M 100 122 L 100 152" />
+    <path class="flow-path" d="M 186 196 C 230 196, 250 180, 290 180" />
+    <path class="flow-path flow-accent" d="M 430 190 L 430 140" />
+    <path class="flow-path" d="M 290 220 C 230 250, 210 296, 186 296" />
+    <path class="flow-path" d="M 186 334 L 222 350" />
+    <path class="flow-path flow-accent" d="M 390 350 L 466 350" />
   </g>
 
   <g id="packets">
-    <circle class="packet packet-1" r="3.5" />
-    <circle class="packet packet-2" r="3.5" />
-    <circle class="packet packet-3" r="3.5" />
-    <circle class="packet packet-4" r="3.5" />
-    <circle class="packet packet-5" r="3.5" />
+    <circle class="packet p-12" r="3" />
+    <circle class="packet p-23" r="3" />
+    <circle class="packet p-34" r="3" />
+    <circle class="packet p-45" r="3" />
+    <circle class="packet p-56" r="3" />
+    <circle class="packet p-67" r="3.2" />
   </g>
 
-  <!-- STAGE 1: Rough Notes In -->
+  <!-- Connector Chips -->
+  <g id="connector-chips">
+    <rect x="46" y="130" width="90" height="14" rx="7" class="chip-bg" />
+    <text x="53" y="139.5" class="chip-text-accent">Shared doc + Sheet</text>
+
+    <rect x="192" y="164" width="76" height="14" rx="7" class="chip-bg" />
+    <text x="199" y="173.5" class="chip-text">outline → sections</text>
+
+    <rect x="192" y="206" width="108" height="14" rx="7" class="chip-bg" />
+    <text x="198" y="215.5" class="chip-text-accent">Power Automate → PPT</text>
+
+    <rect x="498" y="166" width="58" height="14" rx="7" class="chip-bg" />
+    <text x="505" y="175.5" class="chip-text-accent">data → chart</text>
+
+    <rect x="192" y="276" width="60" height="14" rx="7" class="chip-bg" />
+    <text x="200" y="285.5" class="chip-text">→ notes pane</text>
+
+    <rect x="382" y="343" width="96" height="15" rx="7.5" class="chip-bg" />
+    <text x="387" y="353" class="chip-text-accent">→ Drive / SharePoint</text>
+  </g>
+
+  <!-- STAGE 1 (Left Top): TRIGGER Bullets + data land -->
   <g id="stage-1" class="node">
-    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
-    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
-    <text x="26" y="86" class="stage-num">01 · TASK IN</text>
-    <text x="26" y="101" class="stage-title">Rough notes in</text>
-    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <circle cx="35" cy="119" r="1.8" fill="var(--accent)" />
-    <line x1="41" y1="119" x2="98" y2="119" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.3" stroke-linecap="round" />
-    <circle cx="35" cy="127" r="1.8" fill="var(--accent)" />
-    <line x1="41" y1="127" x2="82" y2="127" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.3" stroke-linecap="round" />
-    <text x="26" y="152" class="stage-copy">Bullet points, docs</text>
-    <text x="26" y="163" class="stage-copy">&amp; raw numbers</text>
+    <rect x="14" y="42" width="172" height="80" rx="10" class="card-bg" />
+    <rect x="14" y="42" width="172" height="80" rx="10" class="highlight-ring" />
+    <text x="24" y="56" class="stage-num">01 · TRIGGER</text>
+    <text x="24" y="69" class="stage-title">Bullets + data land</text>
+    <rect x="24" y="78" width="144" height="4" rx="2" fill="var(--accent)" class="bul-1" />
+    <rect x="24" y="88" width="116" height="4" rx="2" fill="var(--accent)" fill-opacity="0.7" class="bul-2" />
+    <text x="24" y="109" class="stage-copy">Rough notes + raw sheet</text>
   </g>
 
-  <!-- STAGE 2: Outline Built -->
+  <!-- STAGE 2 (Left Middle): Story structured -->
   <g id="stage-2" class="node">
-    <rect x="92" y="232" width="126" height="114" rx="10" class="card-bg" />
-    <rect x="92" y="232" width="126" height="114" rx="10" class="highlight-ring" />
-    <text x="102" y="248" class="stage-num">02 · OUTLINE</text>
-    <text x="102" y="263" class="stage-title">Outline built</text>
-    <text x="102" y="275" class="stage-copy">Story arc &amp; slide plan</text>
-
-    <!-- Logo: Claude -->
-    <g transform="translate(102, 286)">
-      <path d="M4.5 1 L4.5 8 M1 4.5 L8 4.5 M2 2 L7 7 M7 2 L2 7" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" />
-      <text x="12" y="7.5" class="brand-text">Claude</text>
-    </g>
-
+    <rect x="14" y="152" width="172" height="90" rx="10" class="card-bg" />
+    <rect x="14" y="152" width="172" height="90" rx="10" class="highlight-ring" />
+    <text x="24" y="166" class="stage-num">02 · STRUCTURE</text>
+    <circle cx="172" cy="164" r="2.6" class="ai-pulse" />
+    <text x="24" y="179" class="stage-title">Story structured</text>
+    <rect x="24" y="188" width="96" height="4" rx="2" fill="var(--accent)" class="shf-1" />
+    <rect x="24" y="198" width="84" height="4" rx="2" fill="var(--accent)" fill-opacity="0.65" class="shf-2" />
     <g class="ai-badge">
-      <rect x="102" y="318" width="54" height="16" rx="8" class="pill-bg" />
-      <circle cx="111" cy="326" r="2.2" class="ai-pulse-dot" />
-      <text x="117" y="328.5" class="tag-text-accent">AI agent</text>
-      <rect x="160" y="318" width="38" height="16" rx="8" class="pill-bg" />
-      <text x="171" y="328.5" class="tag-text">LLM</text>
+      <rect x="24" y="214" width="46" height="15" rx="7.5" class="chip-bg" />
+      <text x="33" y="224" class="chip-text-accent">Claude</text>
     </g>
   </g>
 
-  <!-- STAGE 3: AI Stage A - Slides Generated -->
-  <g id="stage-3" class="node">
-    <rect x="190" y="62" width="142" height="132" rx="10" class="card-bg" />
-    <rect x="190" y="62" width="142" height="132" rx="10" class="highlight-ring" />
-    <text x="200" y="78" class="stage-num">03 · AI STAGE A</text>
-    <circle cx="318" cy="75" r="3" class="ai-pulse-dot" />
-    <text x="200" y="92" class="stage-title">Slides generated</text>
-    <text x="200" y="104" class="stage-copy">Layouts in brand theme</text>
-
-    <!-- Slide thumbnails self-assembling -->
-    <g transform="translate(200, 114)">
-      <rect x="0" y="0" width="18" height="12" rx="2" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="0.8" class="slide-t1" />
-      <rect x="20" y="0" width="18" height="12" rx="2" fill="var(--accent)" fill-opacity="0.4" stroke="var(--accent)" stroke-width="0.8" class="slide-t2" />
-      <rect x="10" y="15" width="18" height="12" rx="2" fill="var(--accent)" fill-opacity="0.55" stroke="var(--accent)" stroke-width="0.8" class="slide-t3" />
-    </g>
-
-    <!-- Logos: Gamma, Microsoft Copilot -->
-    <g transform="translate(244, 115)">
-      <rect x="1" y="1" width="7" height="7" rx="2" fill="var(--accent)" fill-opacity="0.75" />
-      <text x="11" y="7.5" class="brand-text">Gamma</text>
-    </g>
-    <g transform="translate(244, 130)">
-      <rect x="1" y="1" width="3.5" height="3.5" rx="0.8" fill="var(--accent)" />
-      <rect x="5" y="1" width="3.5" height="3.5" rx="0.8" fill="var(--ink)" fill-opacity="0.55" />
-      <rect x="1" y="5" width="3.5" height="3.5" rx="0.8" fill="var(--ink)" fill-opacity="0.55" />
-      <rect x="5" y="5" width="3.5" height="3.5" rx="0.8" fill="var(--accent)" fill-opacity="0.7" />
-      <text x="11" y="7.5" class="brand-text">Microsoft Copilot</text>
-    </g>
-
-    <g class="ai-badge">
-      <rect x="200" y="162" width="62" height="15" rx="7.5" class="pill-bg" />
-      <text x="206" y="172" class="tag-text-accent">generative AI</text>
-      <rect x="266" y="162" width="54" height="15" rx="7.5" class="pill-bg" />
-      <text x="274" y="172" class="tag-text">AI copilot</text>
-    </g>
-  </g>
-
-  <!-- STAGE 4: AI Stage B - Charts & Visuals Added -->
-  <g id="stage-4" class="node">
-    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
-    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
-    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
-    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
-    <text x="312" y="254" class="stage-title">Charts &amp; visuals</text>
-    <text x="312" y="266" class="stage-copy">Data charts &amp; graphics</text>
-
-    <!-- Bar chart drawing itself inside Charts card -->
-    <g transform="translate(312, 276)">
-      <rect x="0" y="0" width="44" height="32" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="7" y="15" width="7" height="13" rx="1.5" fill="var(--accent)" class="dbar-1" />
-      <rect x="18" y="9" width="7" height="19" rx="1.5" fill="var(--accent)" class="dbar-2" />
-      <rect x="29" y="5" width="7" height="23" rx="1.5" fill="var(--accent)" class="dbar-3" />
-    </g>
-
-    <g class="ai-badge">
-      <rect x="312" y="326" width="70" height="16" rx="8" class="pill-bg" />
-      <circle cx="321" cy="334" r="2" class="ai-pulse-dot" />
-      <text x="327" y="336.5" class="tag-text-accent">multimodal AI</text>
-    </g>
-  </g>
-
-  <!-- STAGE 5: Human Review -->
+  <!-- STAGE 5 (Left Bottom): Speaker notes written -->
   <g id="stage-5" class="node">
-    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
-    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
-    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
-    <text x="426" y="100" class="stage-title">Human review</text>
-    <text x="426" y="113" class="stage-copy">Lead polishes key</text>
-    <text x="426" y="123" class="stage-copy">slides &amp; takeaways</text>
-    <g class="check-pop" transform="translate(494, 92)">
-      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-stroke" />
-    </g>
-    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
-    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
+    <rect x="14" y="264" width="172" height="74" rx="10" class="card-bg" />
+    <rect x="14" y="264" width="172" height="74" rx="10" class="highlight-ring" />
+    <text x="24" y="278" class="stage-num">05 · NOTES</text>
+    <circle cx="172" cy="276" r="2.6" class="ai-pulse" />
+    <text x="24" y="291" class="stage-title">Speaker notes written</text>
+    <rect x="24" y="301" width="136" height="3.5" rx="1.5" fill="var(--accent)" class="note-1" />
+    <rect x="24" y="310" width="108" height="3.5" rx="1.5" fill="var(--accent)" fill-opacity="0.7" class="note-2" />
+    <text x="24" y="328" class="stage-copy">Talk track per slide</text>
   </g>
 
-  <!-- STAGE 6: Board-Ready Deck -->
+  <!-- STAGE 3 (Right Stack Base): Slides built -->
+  <g id="stage-3" class="node">
+    <text x="316" y="48" class="stage-num">03 · SLIDES BUILT (LAYERED STACK)</text>
+    <rect x="306" y="168" width="286" height="122" rx="10" class="slide-layer sl-1" />
+    <rect x="320" y="152" width="286" height="122" rx="10" class="slide-layer sl-2" />
+    <rect x="334" y="136" width="286" height="122" rx="10" class="slide-layer sl-3" />
+    <rect x="306" y="136" width="314" height="154" rx="10" class="highlight-ring" />
+    <text x="320" y="276" class="stage-copy">Team template applied layer by layer</text>
+  </g>
+
+  <!-- STAGE 4 (Top Slide of Stack): Charts drawn -->
+  <g id="stage-4" class="node">
+    <rect x="348" y="60" width="276" height="114" rx="10" class="card-bg" />
+    <rect x="348" y="60" width="276" height="114" rx="10" class="highlight-ring" />
+    <text x="360" y="75" class="stage-num">04 · CHARTS DRAWN</text>
+    <circle cx="610" cy="73" r="2.6" class="ai-pulse" />
+    <text x="360" y="88" class="stage-title">Charts drawn from numbers</text>
+
+    <!-- Growing bar chart inside top slide -->
+    <g transform="translate(360, 98)">
+      <rect x="0" y="0" width="76" height="44" rx="5" fill="none" stroke="var(--line)" stroke-width="0.8" />
+      <rect x="12" y="20" width="11" height="18" rx="1.5" fill="var(--accent)" class="cbar-1" />
+      <rect x="32" y="12" width="11" height="26" rx="1.5" fill="var(--accent)" fill-opacity="0.75" class="cbar-2" />
+      <rect x="52" y="6" width="11" height="32" rx="1.5" fill="var(--accent)" class="cbar-3" />
+    </g>
+
+    <text x="450" y="114" class="brand-text">Microsoft Copilot</text>
+    <text x="450" y="126" class="stage-copy">Live data charts</text>
+  </g>
+
+  <!-- STAGE 6 (Bottom Centre): You refine -->
   <g id="stage-6" class="node">
-    <rect x="502" y="224" width="122" height="130" rx="10" class="card-bg" />
-    <rect x="502" y="224" width="122" height="130" rx="10" class="highlight-ring" />
-    <text x="512" y="240" class="stage-num">06 · DELIVERED</text>
-    <text x="512" y="254" class="stage-title">Board-ready deck</text>
-
-    <g transform="translate(512, 263)">
-      <rect x="0" y="0" width="102" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="6" y="8" width="30" height="28" rx="3" fill="var(--accent)" fill-opacity="0.3" stroke="var(--accent)" stroke-width="0.8" class="deck-1" />
-      <rect x="40" y="8" width="30" height="28" rx="3" fill="var(--accent)" fill-opacity="0.45" stroke="var(--accent)" stroke-width="0.8" class="deck-2" />
-      <circle cx="86" cy="22" r="8" fill="var(--accent)" />
-      <path d="M82.5 22 L85 24.5 L89.8 19.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    <rect x="220" y="318" width="156" height="66" rx="10" class="card-bg" />
+    <rect x="220" y="318" width="156" height="66" rx="10" class="highlight-ring" />
+    <text x="230" y="333" class="stage-num">06 · REVIEW</text>
+    <text x="230" y="346" class="stage-title">You refine</text>
+    <g class="ai-badge">
+      <rect x="230" y="356" width="92" height="15" rx="7.5" class="chip-bg" />
+      <text x="238" y="366" class="chip-text-accent">human-in-the-loop</text>
     </g>
-
-    <text x="512" y="324" class="stage-copy">Exported to Slides /</text>
-    <text x="512" y="335" class="stage-copy">PowerPoint &amp; PDF</text>
+    <circle cx="354" cy="350" r="10" fill="var(--accent)" fill-opacity="0.18" stroke="var(--accent)" stroke-width="1.2" />
+    <path d="M350 350 L352.8 352.8 L358 347.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" class="rev-tick" />
   </g>
 
-  <g id="footer">
-    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="24" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+  <!-- STAGE 7 (Bottom Right): Deck ready -->
+  <g id="stage-7" class="node">
+    <rect x="484" y="318" width="142" height="66" rx="10" class="card-bg" />
+    <rect x="484" y="318" width="142" height="66" rx="10" class="highlight-ring" />
+    <text x="494" y="333" class="stage-num">07 · DELIVERED</text>
+    <text x="494" y="346" class="stage-title">Deck ready</text>
+    <text x="494" y="362" class="stage-copy">Polished &amp; shared</text>
+    <circle cx="604" cy="350" r="10" fill="var(--accent)" />
+    <path d="M599.5 350 L602.8 353 L608.5 347" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="end-tick" />
   </g>
 </svg>

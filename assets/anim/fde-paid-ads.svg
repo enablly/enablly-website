@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
-  <title id="svg-title">AI Automation for Paid Ads</title>
-  <desc id="svg-desc">Animated branching workflow with a feedback loop showing how Enablly's forward-deployed AI automation runs paid ads: a campaign goal arrives, a creative agent splits into Variant A and Variant B using Meta and Adobe Firefly, both launch, performance is compared with ticking counters and a drawing winner chart, budget shifts toward the winner with a loop-back arrow, and the winning campaign scales.</desc>
+  <title id="svg-title">AI Automation for Paid Ads Control Room</title>
+  <desc id="svg-desc">Seven-stage control-room feedback loop for paid ads: Meta and LinkedIn performance data streams in via Ads API hourly, Claude and OpenAI generate copy variants, campaigns go live, budget watch checks rules hourly on a loop back to variants while branching anomaly alerts to Slack or email for a human-in-the-loop decision desk at the centre, and a weekly report drops out to Google Sheets.</desc>
 
   <style>
     svg {
@@ -14,236 +14,281 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 15px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 7.8px; fill: var(--muted); }
-    .branch-label { font-size: 7.4px; font-weight: 700; fill: var(--accent); }
-    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.6px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+
+    .title-main { font-size: 14px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.8px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 7px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 9.3px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 7px; fill: var(--muted); }
+    .chip-text { font-size: 6.5px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.5px; font-weight: 700; fill: var(--accent); }
+    .counter-text { font-size: 8.4px; font-weight: 700; fill: var(--accent); }
+
     .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
-    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.5; stroke-width: 1.1; }
-    .card-win { fill: var(--accent); fill-opacity: 0.1; stroke: var(--accent); stroke-opacity: 0.85; stroke-width: 1.3; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .ring-guide { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 4 4; opacity: 0.45; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    .flow-branch-a { stroke: var(--accent); stroke-opacity: 0.9; }
-    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.5; }
-    .flow-loop { fill: none; stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 4 4; stroke-opacity: 0.75; animation: dashFlow 1s linear infinite; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-in { offset-path: path("M 96 196 L 126 196"); animation: pktIn 9s linear infinite; }
-    .packet-a1 { offset-path: path("M 174 142 C 194 104, 224 104, 254 104"); animation: pktBranch 9s linear infinite; }
-    .packet-b1 { offset-path: path("M 174 250 C 194 282, 224 282, 254 282"); animation: pktBranch 9s linear infinite; }
-    .packet-a2 { offset-path: path("M 378 104 C 398 104, 398 174, 412 182"); animation: pktMerge 9s linear infinite; }
-    .packet-b2 { offset-path: path("M 378 282 C 398 282, 398 220, 412 212"); animation: pktMerge 9s linear infinite; }
-    .packet-out { offset-path: path("M 508 196 L 530 196"); animation: pktOut 9s linear infinite; }
-    .packet-loop { offset-path: path("M 460 258 C 460 340, 174 340, 174 256"); animation: pktLoop 9s linear infinite; }
+    .p-12 { offset-path: path("M 410 70 Q 528 70 536 118"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 536 198 L 536 246"); animation: p23 9s linear infinite; }
+    .p-34 { offset-path: path("M 438 266 L 198 266"); animation: p34 9s linear infinite; }
+    .p-42 { offset-path: path("M 46 246 Q 16 112 230 68"); animation: p42 9s linear infinite; }
+    .p-45 { offset-path: path("M 140 246 L 140 194"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 228 164 L 264 164"); animation: p56 9s linear infinite; }
+    .p-37 { offset-path: path("M 320 266 L 320 326"); animation: p37 9s linear infinite; }
 
-    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 36% { offset-distance: 100%; opacity: 1; } 38%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktMerge { 0%, 48% { offset-distance: 0%; opacity: 0; } 50% { opacity: 1; } 58% { offset-distance: 100%; opacity: 1; } 60%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktLoop { 0%, 66% { offset-distance: 0%; opacity: 0; } 68% { opacity: 1; } 84% { offset-distance: 100%; opacity: 1; } 86%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,10% { opacity:0; offset-distance:0%; } 12% { opacity:1; } 19% { opacity:1; offset-distance:100%; } 22%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,24% { opacity:0; offset-distance:0%; } 26% { opacity:1; } 32% { opacity:1; offset-distance:100%; } 35%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p34 { 0%,37% { opacity:0; offset-distance:0%; } 39% { opacity:1; } 46% { opacity:1; offset-distance:100%; } 49%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p42 { 0%,49% { opacity:0; offset-distance:0%; } 51% { opacity:1; } 59% { opacity:1; offset-distance:100%; } 62%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p45 { 0%,54% { opacity:0; offset-distance:0%; } 56% { opacity:1; } 62% { opacity:1; offset-distance:100%; } 65%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,66% { opacity:0; offset-distance:0%; } 68% { opacity:1; } 74% { opacity:1; offset-distance:100%; } 77%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p37 { 0%,79% { opacity:0; offset-distance:0%; } 81% { opacity:1; } 88% { opacity:1; offset-distance:100%; } 91%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring, #stage-4 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .card-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .card-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .card-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
+    #stage-7 .card-bg { animation: s7Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 52% { opacity: 1; } 58%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 56% { opacity: 0; } 60%, 74% { opacity: 1; } 80%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 76% { opacity: 0; } 80%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,14% { stroke: var(--accent); stroke-width: 1.7; } 18%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,14% { stroke: var(--line); stroke-width: 1.1; } 18%,28% { stroke: var(--accent); stroke-width: 1.7; } 32%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,28% { stroke: var(--line); stroke-width: 1.1; } 31%,42% { stroke: var(--accent); stroke-width: 1.7; } 46%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,42% { stroke: var(--line); stroke-width: 1.1; } 45%,57% { stroke: var(--accent); stroke-width: 1.7; } 61%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,56% { stroke: var(--line); stroke-width: 1.1; } 59%,70% { stroke: var(--accent); stroke-width: 1.7; } 74%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,68% { stroke: var(--line); stroke-width: 1.1; } 72%,84% { stroke: var(--accent); stroke-width: 1.7; } 88%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s7Hi { 0%,82% { stroke: var(--line); stroke-width: 1.1; } 86%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Spend Counter + Sparkline Draw */
+    .spark-line { stroke-dasharray: 70; stroke-dashoffset: 70; animation: drawSpark 9s ease-out infinite; }
+    @keyframes drawSpark { 0%,2% { stroke-dashoffset: 70; } 14%,90% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 70; } }
+    .sp-1 { opacity: 1; animation: sp1 9s linear infinite; }
+    .sp-2 { opacity: 0; animation: sp2 9s linear infinite; }
+    .sp-3 { opacity: 0; animation: sp3 9s linear infinite; }
+    @keyframes sp1 { 0%,5% { opacity: 1; } 7%,95% { opacity: 0; } 98%,100% { opacity: 1; } }
+    @keyframes sp2 { 0%,5% { opacity: 0; } 7%,11% { opacity: 1; } 13%,100% { opacity: 0; } }
+    @keyframes sp3 { 0%,11% { opacity: 0; } 13%,94% { opacity: 1; } 98%,100% { opacity: 0; } }
 
-    /* Winner chart line drawing inside Variant A */
-    .win-chart { stroke-dasharray: 56; stroke-dashoffset: 56; animation: winDraw 9s ease-out infinite; }
-    @keyframes winDraw { 0%, 36% { stroke-dashoffset: 56; } 48%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 56; } }
+    /* Stage 2: Headlines Type and Swap */
+    .hl-1 { transform-box: fill-box; transform-origin: left center; animation: hl1 9s ease-out infinite; }
+    .hl-2 { transform-box: fill-box; transform-origin: left center; animation: hl2 9s ease-out infinite; }
+    @keyframes hl1 { 0%,15% { transform: scaleX(0.1); opacity: 0.3; } 21%,90% { transform: scaleX(1); opacity: 1; } 98%,100% { transform: scaleX(0.1); opacity: 0.3; } }
+    @keyframes hl2 { 0%,19% { transform: scaleX(0.1); opacity: 0.3; } 25%,90% { transform: scaleX(1); opacity: 1; } 98%,100% { transform: scaleX(0.1); opacity: 0.3; } }
 
-    /* Compare card: ROAS counter ticking */
-    .roas-num { font-size: 8.5px; font-weight: 800; fill: var(--accent); }
-    .roas-1 { animation: r1 9s linear infinite; }
-    .roas-2 { animation: r2 9s linear infinite; }
-    .roas-3 { animation: r3 9s linear infinite; }
-    @keyframes r1 { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0; } }
-    @keyframes r2 { 0%, 60% { opacity: 0; } 61%, 67% { opacity: 1; } 68%, 100% { opacity: 0; } }
-    @keyframes r3 { 0%, 67% { opacity: 0; } 68%, 96% { opacity: 1; } 98%, 100% { opacity: 0; } }
+    /* Stage 3: Three Mini Ad Cards Pulse */
+    .ad-1 { animation: adP1 9s ease-in-out infinite; }
+    .ad-2 { animation: adP2 9s ease-in-out infinite; }
+    .ad-3 { animation: adP3 9s ease-in-out infinite; }
+    @keyframes adP1 { 0%,30%,44%,100% { stroke: var(--line); } 34%,38% { stroke: var(--accent); stroke-width: 1.5; } }
+    @keyframes adP2 { 0%,33%,46%,100% { stroke: var(--line); } 37%,41% { stroke: var(--accent); stroke-width: 1.5; } }
+    @keyframes adP3 { 0%,36%,48%,100% { stroke: var(--line); } 40%,44% { stroke: var(--accent); stroke-width: 1.5; } }
 
-    /* Budget bar sliding toward winner */
-    .budget-knob { animation: budSlide 9s ease-in-out infinite; }
-    @keyframes budSlide {
-      0%, 58% { transform: translateX(0px); }
-      68%, 94% { transform: translateX(34px); }
-      98%, 100% { transform: translateX(0px); }
+    /* Stage 4: Gauge Needle Sweeps */
+    .gauge-needle { transform-box: fill-box; transform-origin: 50% 90%; animation: sweepGauge 9s ease-in-out infinite; }
+    @keyframes sweepGauge {
+      0%,42% { transform: rotate(-32deg); }
+      50% { transform: rotate(18deg); }
+      56%,90% { transform: rotate(8deg); }
+      98%,100% { transform: rotate(-32deg); }
     }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 5: Warning Triangle Flashes Once */
+    .warn-tri { animation: warnFlash 9s ease-in-out infinite; opacity: 0.4; }
+    @keyframes warnFlash {
+      0%,58% { opacity: 0.4; }
+      62%,66% { opacity: 1; }
+      70%,100% { opacity: 0.45; }
+    }
+
+    /* Stage 6: Approve Chip Ticks */
+    .app-tick { stroke-dasharray: 18; stroke-dashoffset: 18; animation: drawApp 9s ease-out infinite; }
+    @keyframes drawApp { 0%,73% { stroke-dashoffset: 18; } 80%,94% { stroke-dashoffset: 0; } 99%,100% { stroke-dashoffset: 18; } }
+
+    /* Stage 7: Report Rows Fill + End Tick */
+    .rep-1 { transform-box: fill-box; transform-origin: left center; animation: r1 9s ease-out infinite; }
+    .rep-2 { transform-box: fill-box; transform-origin: left center; animation: r2 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 26; stroke-dashoffset: 26; animation: drawFinal 9s ease-out infinite; }
+    @keyframes r1 { 0%,84% { transform: scaleX(0.05); opacity: 0.25; } 89%,96% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(0.05); opacity: 0.25; } }
+    @keyframes r2 { 0%,87% { transform: scaleX(0.05); opacity: 0.25; } 92%,96% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(0.05); opacity: 0.25; } }
+    @keyframes drawFinal { 0%,89% { stroke-dashoffset: 26; } 94%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 26; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="23" class="title-main">Paid Ads Control Room</text>
+  <text x="620" y="23" text-anchor="end" class="method-text">Ads API → variants → budget watch → human gate</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <!-- Subtle Circular Ring Guide -->
+  <ellipse cx="320" cy="182" rx="224" ry="118" class="ring-guide" />
 
-  <g id="header">
-    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
-    <text x="32" y="30" class="title-main">AI Automation for Paid Ads</text>
-    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
-    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  <!-- Flow Connectors -->
+  <path d="M 410 70 Q 528 70 536 118" class="flow-path flow-accent" />
+  <path d="M 536 198 L 536 246" class="flow-path" />
+  <path d="M 438 266 L 198 266" class="flow-path" />
+  <path d="M 46 246 Q 16 112 230 68" class="flow-path" />
+  <path d="M 140 246 L 140 194" class="flow-path flow-accent" />
+  <path d="M 228 164 L 264 164" class="flow-path" />
+  <path d="M 418 168 L 454 168" class="flow-path flow-accent" />
+  <path d="M 320 266 L 320 326" class="flow-path flow-accent" />
+
+  <!-- Travelling Packets -->
+  <circle r="3.4" class="packet p-12" />
+  <circle r="3.4" class="packet p-23" />
+  <circle r="3.4" class="packet p-34" />
+  <circle r="3.4" class="packet p-42" />
+  <circle r="3.4" class="packet p-45" />
+  <circle r="3.4" class="packet p-56" />
+  <circle r="3.4" class="packet p-37" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(492, 74)">
+    <rect x="-40" y="-8" width="80" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text-accent">Ads API · hourly</text>
+  </g>
+  <g transform="translate(536, 222)">
+    <rect x="-50" y="-8" width="100" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text">→ Meta / LinkedIn Ads</text>
+  </g>
+  <g transform="translate(76, 98)">
+    <rect x="-44" y="-8" width="88" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text">rules check · hourly</text>
+  </g>
+  <g transform="translate(140, 220)">
+    <rect x="-42" y="-8" width="84" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text-accent">alert → Slack/email</text>
+  </g>
+  <g transform="translate(320, 298)">
+    <rect x="-40" y="-8" width="80" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text-accent">→ Google Sheets</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 96 196 L 126 196" />
-    <path class="flow-path flow-branch-a" d="M 174 142 C 194 104, 224 104, 254 104" />
-    <path class="flow-path flow-branch-b" d="M 174 250 C 194 282, 224 282, 254 282" />
-    <path class="flow-path flow-branch-a" d="M 378 104 C 398 104, 398 174, 412 182" />
-    <path class="flow-path flow-branch-b" d="M 378 282 C 398 282, 398 220, 412 212" />
-    <path class="flow-path" d="M 508 196 L 530 196" />
-    <!-- Loop-back arrow from Compare to Creative Agent -->
-    <path class="flow-loop" d="M 460 258 C 460 340, 174 340, 174 256" />
-    <polygon points="170,261 174,253 178,261" fill="var(--accent)" />
-    <text x="275" y="349" class="branch-label">Budget &amp; learnings loop back</text>
-  </g>
-
-  <g id="branch-labels">
-    <text x="192" y="96" class="branch-label">Variant A</text>
-    <text x="192" y="295" class="branch-label">Variant B</text>
-  </g>
-
-  <g id="packets">
-    <circle class="packet packet-in" r="3.2" />
-    <circle class="packet packet-a1" r="3.2" />
-    <circle class="packet packet-b1" r="3.2" />
-    <circle class="packet packet-a2" r="3.2" />
-    <circle class="packet packet-b2" r="3.2" />
-    <circle class="packet packet-out" r="3.5" />
-    <circle class="packet packet-loop" r="3.2" />
-  </g>
-
-  <!-- STAGE 1: Campaign Goal In -->
+  <!-- STAGE 1: TRIGGER "Account data flows in" (Ring, Top) -->
   <g id="stage-1" class="node">
-    <rect x="14" y="144" width="82" height="104" rx="10" class="card-bg" />
-    <rect x="14" y="144" width="82" height="104" rx="10" class="highlight-ring" />
-    <text x="22" y="160" class="stage-num">01 · GOAL IN</text>
-    <text x="22" y="174" class="stage-title">Ad goal</text>
-    <circle cx="55" cy="196" r="10" fill="none" stroke="var(--accent)" stroke-width="1.2" />
-    <circle cx="55" cy="196" r="4" fill="var(--accent)" />
-    <text x="22" y="222" class="stage-copy">Target CPA,</text>
-    <text x="22" y="233" class="stage-copy">budget &amp; offer</text>
+    <rect x="230" y="38" width="180" height="66" rx="10" class="card-bg" />
+    <text x="240" y="53" class="stage-num">01 · TRIGGER</text>
+    <text x="240" y="65" class="stage-title">Account data flows in</text>
+    <text x="240" y="77" class="stage-copy">Meta · LinkedIn</text>
+
+    <!-- Spend Counter + Sparkline -->
+    <text x="240" y="94" class="counter-text sp-1">$1.2k</text>
+    <text x="240" y="94" class="counter-text sp-2">$1.8k</text>
+    <text x="240" y="94" class="counter-text sp-3">$2.4k</text>
+    <path d="M 284 94 L 304 89 L 324 92 L 348 82 L 372 86 L 396 77" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="spark-line" />
   </g>
 
-  <!-- STAGE 2: Creative Agent (Diamond) -->
+  <!-- STAGE 2: "Variants generated" (Ring, Right) -->
   <g id="stage-2" class="node">
-    <polygon points="174,142 222,196 174,250 126,196" class="card-bg" />
-    <polygon points="174,142 222,196 174,250 126,196" class="highlight-ring" />
-    <text x="148" y="182" class="stage-num">02 · CREATIVE</text>
-    <text x="142" y="196" class="stage-title">Creative agent</text>
-    <text x="146" y="208" class="stage-copy">Splits A / B</text>
+    <rect x="454" y="118" width="166" height="80" rx="10" class="card-bg" />
+    <text x="464" y="133" class="stage-num">02 · VARIANTS</text>
+    <text x="464" y="145" class="stage-title">Variants generated</text>
+
     <g class="ai-badge">
-      <rect x="128" y="254" width="48" height="14" rx="7" class="pill-bg" />
-      <circle cx="136" cy="261" r="2" class="ai-pulse-dot" />
-      <text x="141" y="263.5" class="tag-text-accent">AI agent</text>
+      <rect x="464" y="152" width="38" height="14" rx="7" class="chip-bg" />
+      <text x="483" y="161.5" text-anchor="middle" class="chip-text-accent">Claude</text>
+      <rect x="506" y="152" width="40" height="14" rx="7" class="chip-bg" />
+      <text x="526" y="161.5" text-anchor="middle" class="chip-text-accent">OpenAI</text>
     </g>
+
+    <rect x="464" y="173" width="136" height="4.5" rx="2.2" fill="var(--ink)" fill-opacity="0.45" class="hl-1" />
+    <rect x="464" y="182" width="112" height="4.5" rx="2.2" fill="var(--accent)" fill-opacity="0.6" class="hl-2" />
   </g>
 
-  <!-- STAGE 3: Variant A (Winner with drawing chart line) -->
+  <!-- STAGE 3: "Campaigns live" (Ring, Bottom Right) -->
   <g id="stage-3" class="node">
-    <rect x="254" y="56" width="124" height="96" rx="10" class="card-win" />
-    <rect x="254" y="56" width="124" height="96" rx="10" class="highlight-ring" />
-    <text x="263" y="70" class="stage-num">VARIANT A · WINNER</text>
-    <text x="263" y="83" class="stage-title">Hook + lifestyle</text>
+    <rect x="438" y="246" width="182" height="74" rx="10" class="card-bg" />
+    <text x="448" y="261" class="stage-num">03 · LIVE</text>
+    <text x="448" y="273" class="stage-title">Campaigns live</text>
 
-    <!-- Chart line drawing inside winner card -->
-    <rect x="263" y="90" width="44" height="22" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-    <path d="M267 108 L276 104 L285 106 L295 96 L303 94" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="win-chart" />
+    <rect x="448" y="282" width="48" height="28" rx="5" fill="var(--surface)" stroke="var(--line)" stroke-width="1" class="ad-1" />
+    <text x="472" y="299" text-anchor="middle" class="chip-text">Ad A</text>
 
-    <!-- Logo: Meta -->
-    <g transform="translate(314, 96)">
-      <path d="M1 5 C1 2, 4 2, 5.5 5 C7 8, 10 8, 10 5 C10 2, 7 2, 5.5 5 C4 8, 1 8, 1 5 Z" fill="none" stroke="var(--accent)" stroke-width="1.2" />
-      <text x="13" y="7" class="brand-text">Meta</text>
-    </g>
+    <rect x="504" y="282" width="48" height="28" rx="5" fill="var(--surface)" stroke="var(--line)" stroke-width="1" class="ad-2" />
+    <text x="528" y="299" text-anchor="middle" class="chip-text-accent">Ad B</text>
 
-    <g class="ai-badge">
-      <rect x="263" y="122" width="60" height="15" rx="7.5" class="pill-bg" />
-      <text x="269" y="132" class="tag-text-accent">generative AI</text>
-    </g>
+    <rect x="560" y="282" width="48" height="28" rx="5" fill="var(--surface)" stroke="var(--line)" stroke-width="1" class="ad-3" />
+    <text x="584" y="299" text-anchor="middle" class="chip-text">Ad C</text>
   </g>
 
-  <!-- STAGE 4: Variant B (Adobe Firefly) -->
+  <!-- STAGE 4: "Budget watch" (Ring, Bottom Left) -->
   <g id="stage-4" class="node">
-    <rect x="254" y="232" width="124" height="92" rx="10" class="card-soft" />
-    <rect x="254" y="232" width="124" height="92" rx="10" class="highlight-ring" />
-    <text x="263" y="246" class="stage-num">VARIANT B · TEST</text>
-    <text x="263" y="259" class="stage-title">Studio product</text>
-    <text x="263" y="270" class="stage-copy">Launched in parallel</text>
+    <rect x="20" y="246" width="178" height="74" rx="10" class="card-bg" />
+    <text x="30" y="261" class="stage-num">04 · WATCH</text>
+    <text x="30" y="273" class="stage-title">Budget watch</text>
+    <text x="30" y="287" class="stage-copy">Spend checked</text>
+    <text x="30" y="298" class="stage-copy">against team rules</text>
 
-    <!-- Logo: Adobe Firefly -->
-    <g transform="translate(263, 278)">
-      <path d="M4.5 1 C6 3.5, 8 4.8, 8 6.5 C8 8.2, 6.4 9.5, 4.5 9.5 C2.6 9.5, 1 8.2, 1 6.5 C1 4.8, 3 3.5, 4.5 1 Z" fill="var(--accent)" />
-      <text x="12" y="8" class="brand-text">Adobe Firefly</text>
+    <!-- Safe-band Gauge -->
+    <g transform="translate(152, 298)">
+      <path d="M -22 0 A 22 22 0 0 1 22 0" fill="none" stroke="var(--line)" stroke-width="3" stroke-linecap="round" />
+      <path d="M -12 -18 A 22 22 0 0 1 12 -18" fill="none" stroke="var(--accent)" stroke-width="3.2" stroke-linecap="round" />
+      <line x1="0" y1="0" x2="0" y2="-16" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round" class="gauge-needle" />
+      <circle cx="0" cy="0" r="2.5" fill="var(--accent)" />
     </g>
+  </g>
+
+  <!-- STAGE 5: "Anomaly flagged" (Branch Inward) -->
+  <g id="stage-5" class="node">
+    <rect x="78" y="124" width="150" height="70" rx="10" class="card-bg" />
+    <text x="88" y="139" class="stage-num">05 · ANOMALY</text>
+    <text x="88" y="151" class="stage-title">Anomaly flagged</text>
+    <text x="88" y="165" class="stage-copy">Overspend or</text>
+    <text x="88" y="176" class="stage-copy">dead ad caught</text>
+
+    <!-- Warning Triangle -->
+    <g class="warn-tri" transform="translate(198, 168)">
+      <polygon points="0,-13 12,8 -12,8" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round" />
+      <line x1="0" y1="-6" x2="0" y2="1" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" />
+      <circle cx="0" cy="4.5" r="1" fill="var(--accent)" />
+    </g>
+  </g>
+
+  <!-- STAGE 6: "You decide" (CENTRE Desk) -->
+  <g id="stage-6" class="node">
+    <rect x="264" y="132" width="154" height="86" rx="10" class="card-bg" />
+    <text x="274" y="147" class="stage-num">06 · CENTRE DESK</text>
+    <text x="274" y="159" class="stage-title">You decide</text>
 
     <g class="ai-badge">
-      <rect x="263" y="298" width="58" height="15" rx="7.5" class="pill-bg" />
-      <text x="269" y="308" class="tag-text">text-to-image</text>
+      <rect x="274" y="166" width="84" height="14" rx="7" class="chip-bg" />
+      <text x="316" y="175.5" text-anchor="middle" class="chip-text-accent">human-in-the-loop</text>
+    </g>
+
+    <!-- Approve / Decline Chips -->
+    <g transform="translate(274, 188)">
+      <rect x="0" y="0" width="66" height="18" rx="9" class="chip-bg" />
+      <path d="M 10 9 L 13 12 L 18 6" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="app-tick" />
+      <text x="41" y="11.5" text-anchor="middle" class="chip-text-accent">Approve</text>
+
+      <rect x="72" y="0" width="58" height="18" rx="9" class="chip-bg" />
+      <text x="101" y="11.5" text-anchor="middle" class="chip-text">Decline</text>
     </g>
   </g>
 
-  <!-- STAGE 5: Compare & Shift Budget (Ticking counters + sliding budget bar) -->
-  <g id="stage-5" class="node">
-    <rect x="412" y="136" width="96" height="122" rx="10" class="card-bg" />
-    <rect x="412" y="136" width="96" height="122" rx="10" class="highlight-ring" />
-    <text x="420" y="152" class="stage-num">04 · COMPARE</text>
-    <text x="420" y="166" class="stage-title">Winner picked</text>
+  <!-- STAGE 7: "Weekly report ready" (Drops Out Bottom) -->
+  <g id="stage-7" class="node">
+    <rect x="220" y="326" width="200" height="64" rx="10" class="card-bg" />
+    <text x="230" y="341" class="stage-num">07 · REPORT</text>
+    <text x="230" y="353" class="stage-title">Weekly report ready</text>
 
-    <!-- Ticking ROAS counter -->
-    <rect x="420" y="174" width="80" height="22" rx="4" fill="var(--accent)" fill-opacity="0.1" stroke="var(--line)" stroke-width="0.7" />
-    <text x="426" y="188" class="stage-copy">ROAS:</text>
-    <text x="456" y="188" class="roas-num roas-1">1.8x</text>
-    <text x="456" y="188" class="roas-num roas-2">2.5x</text>
-    <text x="456" y="188" class="roas-num roas-3">3.4x</text>
+    <rect x="230" y="362" width="136" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" class="rep-1" />
+    <rect x="230" y="371" width="110" height="4.5" rx="2" fill="var(--muted)" fill-opacity="0.5" class="rep-2" />
 
-    <!-- Budget bar sliding toward winner -->
-    <text x="420" y="210" class="stage-copy">Budget shift → A</text>
-    <rect x="420" y="216" width="80" height="8" rx="4" fill="var(--line)" opacity="0.4" />
-    <rect x="422" y="217" width="42" height="6" rx="3" fill="var(--accent)" class="budget-knob" />
-
-    <rect x="420" y="234" width="78" height="15" rx="7.5" class="pill-bg" />
-    <text x="426" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
-  </g>
-
-  <!-- STAGE 6: Scaled Campaign -->
-  <g id="stage-6" class="node">
-    <rect x="530" y="140" width="98" height="114" rx="10" class="card-win" />
-    <rect x="530" y="140" width="98" height="114" rx="10" class="highlight-ring" />
-    <text x="538" y="156" class="stage-num">05 · SCALED</text>
-    <text x="538" y="170" class="stage-title">Scaled ad set</text>
-    <circle cx="579" cy="196" r="14" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-    <path d="M573 200 L578 195 L581 198 L586 191" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" />
-    <text x="538" y="228" class="stage-copy">Budget focused on</text>
-    <text x="538" y="239" class="stage-copy">winning creative</text>
-  </g>
-
-  <g id="footer">
-    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="22" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+    <circle cx="394" cy="360" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 389 360 L 392.5 363.5 L 399.5 356.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>
