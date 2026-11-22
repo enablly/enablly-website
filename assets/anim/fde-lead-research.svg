@@ -154,7 +154,7 @@
   </g>
   <g transform="translate(320, 290)">
     <rect x="-38" y="-7.5" width="76" height="15" rx="7.5" class="chip-bg" />
-    <text x="0" y="2.3" text-anchor="middle" class="chip-text">data provider API</text>
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text">Apollo / Clay API</text>
   </g>
   <g transform="translate(279, 368)">
     <rect x="-48" y="-8" width="96" height="16" rx="8" class="chip-bg" />

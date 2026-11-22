@@ -145,6 +145,10 @@
     <rect x="-48" y="-8" width="96" height="16" rx="8" class="chip-bg" />
     <text x="0" y="2.3" text-anchor="middle" class="chip-text">HubSpot / Salesforce sync</text>
   </g>
+  <g transform="translate(210, 112)">
+    <rect x="-39" y="-7.5" width="78" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">nightly sync · Make</text>
+  </g>
   <g transform="translate(274, 118)">
     <rect x="-24" y="-7.5" width="48" height="15" rx="7.5" class="chip-bg" />
     <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">duplicates</text>
@@ -201,8 +205,10 @@
     <line x1="170" y1="210" x2="250" y2="210" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="scan-line" />
 
     <g class="ai-badge">
-      <rect x="168" y="286" width="84" height="15" rx="7.5" class="chip-bg" />
-      <text x="210" y="296" text-anchor="middle" class="chip-text-accent">Clay · enrichment</text>
+      <rect x="148" y="286" width="80" height="15" rx="7.5" class="chip-bg" />
+      <text x="188" y="296" text-anchor="middle" class="chip-text-accent">Clay · enrichment</text>
+      <rect x="232" y="286" width="40" height="15" rx="7.5" class="chip-bg" />
+      <text x="252" y="296" text-anchor="middle" class="chip-text-accent">Claude</text>
     </g>
   </g>
 
