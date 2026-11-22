@@ -143,7 +143,20 @@
   <circle cx="512" cy="260" r="2.5" fill="var(--muted)" opacity="0.5" />
   <circle cx="608" cy="260" r="2.5" fill="var(--muted)" opacity="0.5" />
 
+    <defs>
+    <mask id="cutout-proposals-and-quotations">
+      <rect width="640" height="400" fill="white" />
+      <rect x="64.5" y="97.0" width="83.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="158.5" y="281.0" width="71.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="203.5" y="99.0" width="79.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="324.5" y="99.0" width="55.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="430.5" y="99.0" width="63.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="541.5" y="263.0" width="67.0" height="18.0" rx="7.5" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-proposals-and-quotations)">
   <path d="M 61 132 L 61 106 L 151 106 L 151 146" class="flow-path" />
   <path d="M 151 246 L 151 290 L 236 290 L 236 246" class="flow-path" />
   <path d="M 243 84 L 243 132" class="flow-path flow-accent" />
@@ -153,8 +166,8 @@
   <path d="M 462 84 L 462 132" class="flow-path flow-accent" />
   <path d="M 510 190 L 526 190" class="flow-path" />
   <path d="M 575 246 L 575 296" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3.1" class="packet p-12" />
   <circle r="3.1" class="packet p-23" />
   <circle r="3.1" class="packet p-b3" />

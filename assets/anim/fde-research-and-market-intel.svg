@@ -108,14 +108,24 @@
   <text x="20" y="21" class="title-main">Research &amp; Market Intel</text>
   <text x="620" y="21" text-anchor="end" class="method-text">Watchlist → daily radar → Notion log → Friday brief</text>
 
+    <defs>
+    <mask id="cutout-research-and-market-intel">
+      <rect width="640" height="400" fill="white" />
+      <rect x="192.5" y="83.5" width="67.0" height="17.0" rx="7.0" fill="black" />
+      <rect x="298.5" y="63.0" width="67.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="458.5" y="308.0" width="95.0" height="18.0" rx="7.5" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-research-and-market-intel)">
   <path d="M 230 80 L 200 104" class="flow-path" />
   <path d="M 250 156 Q 324 72 388 72" class="flow-path flow-accent" />
   <path d="M 506 108 L 506 126" class="flow-path" />
   <path d="M 506 218 L 506 234" class="flow-path" />
   <path d="M 506 304 L 506 330" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3.1" class="packet p-12" />
   <circle r="3.2" class="packet p-34" />
   <circle r="3" class="packet p-45" />
@@ -178,21 +188,21 @@
 
   <!-- STAGE 3: "Changes blip" (Three Nodes on Radar) -->
   <g id="stage-3" class="node">
-    <g class="blip-1" transform="translate(244, 156)">
+    <g transform="translate(244, 156)"><g class="blip-1">
       <circle cx="0" cy="0" r="8" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="1.4" />
       <rect x="10" y="-8" width="42" height="15" rx="7.5" class="chip-bg" />
       <text x="31" y="2" text-anchor="middle" class="chip-text-accent">price ↓</text>
-    </g>
-    <g class="blip-2" transform="translate(238, 286)">
+    </g></g>
+    <g transform="translate(238, 286)"><g class="blip-2">
       <circle cx="0" cy="0" r="8" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="1.4" />
       <rect x="10" y="-8" width="54" height="15" rx="7.5" class="chip-bg" />
       <text x="37" y="2" text-anchor="middle" class="chip-text-accent">new launch</text>
-    </g>
-    <g class="blip-3" transform="translate(108, 304)">
+    </g></g>
+    <g transform="translate(108, 304)"><g class="blip-3">
       <circle cx="0" cy="0" r="8" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="1.4" />
       <rect x="-54" y="-8" width="44" height="15" rx="7.5" class="chip-bg" />
       <text x="-32" y="2" text-anchor="middle" class="chip-text-accent">new ads</text>
-    </g>
+    </g></g>
   </g>
 
   <!-- STAGE 4: "Evidence captured" (Right Top) -->
@@ -201,11 +211,11 @@
     <text x="398" y="51" class="stage-num">04 · EVIDENCE</text>
     <text x="398" y="63" class="stage-title">Evidence captured</text>
     <text x="398" y="75" class="stage-copy">Source link + snapshot saved</text>
-    <g class="ev-stack" transform="translate(528, 46)">
+    <g transform="translate(528, 46)"><g class="ev-stack">
       <rect x="0" y="0" width="80" height="22" rx="4" class="chip-bg" />
       <rect x="6" y="18" width="80" height="22" rx="4" class="chip-bg" />
       <text x="46" y="32" text-anchor="middle" class="chip-text-accent">3 snapshots</text>
-    </g>
+    </g></g>
   </g>
 
   <!-- STAGE 5: "Brief compiled" (Right Centre) -->

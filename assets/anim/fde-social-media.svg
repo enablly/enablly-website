@@ -305,14 +305,14 @@
     <text x="480" y="296" class="stage-num">07 · QUEUED</text>
     <text x="480" y="309" class="stage-title">Queued to post</text>
 
-    <g class="q-item" transform="translate(480, 316)">
+    <g transform="translate(480, 316)"><g class="q-item">
       <rect x="0" y="0" width="98" height="16" rx="4" class="chip-bg" />
       <text x="8" y="10.5" class="chip-text">LinkedIn · Mon 9am</text>
       <rect x="0" y="20" width="98" height="16" rx="4" class="chip-bg" />
       <text x="8" y="30.5" class="chip-text">Instagram · Tue 12pm</text>
       <rect x="0" y="40" width="98" height="16" rx="4" class="chip-bg" />
       <text x="8" y="50.5" class="chip-text">TikTok · Thu 6pm</text>
-    </g>
+    </g></g>
 
     <circle cx="602" cy="344" r="10" fill="var(--accent)" />
     <path d="M597.5 344 L600.8 347 L606.5 341" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="end-tick" />

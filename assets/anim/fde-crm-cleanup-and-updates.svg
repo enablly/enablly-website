@@ -114,7 +114,21 @@
   <text x="20" y="21" class="title-main">CRM Cleanup &amp; Enrichment</text>
   <text x="620" y="21" text-anchor="end" class="method-text">Messy sync → 3-way sorter → approval gate → clean CRM</text>
 
+    <defs>
+    <mask id="cutout-crm-cleanup-and-updates">
+      <rect width="640" height="400" fill="white" />
+      <rect x="88.5" y="72.5" width="99.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="169.5" y="103.0" width="81.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="248.5" y="109.0" width="51.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="267.5" y="201.0" width="33.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="255.5" y="295.0" width="37.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="413.5" y="185.0" width="51.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="524.5" y="232.5" width="95.0" height="19.0" rx="8.0" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-crm-cleanup-and-updates)">
   <path d="M 64 112 L 64 82 L 210 82 L 210 142" class="flow-path" />
   <path d="M 252 178 Q 274 96 304 96" class="flow-path flow-accent" />
   <path d="M 268 210 L 304 210" class="flow-path flow-accent" />
@@ -126,8 +140,8 @@
   <path d="M 500 210 Q 522 210 544 166" class="flow-path flow-accent" />
   <path d="M 500 324 Q 524 324 544 188" class="flow-path flow-accent" />
   <path d="M 585 210 L 585 274" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3.2" class="packet p-12" />
   <circle r="3.1" class="packet p-23a" />
   <circle r="3.1" class="packet p-23b" />
@@ -178,21 +192,21 @@
     <text x="25" y="152" class="stage-copy">Messy pile</text>
 
     <!-- Overlapping / Jittering Messy Cards -->
-    <g class="jitter-1" transform="translate(25, 166)">
+    <g transform="translate(25, 166)"><g class="jitter-1">
       <rect x="0" y="0" width="76" height="30" rx="5" class="chip-bg" />
       <text x="8" y="13" class="chip-text">Acme Co</text>
       <text x="8" y="23" class="stage-copy">no email</text>
-    </g>
-    <g class="jitter-2" transform="translate(30, 192)">
+    </g></g>
+    <g transform="translate(30, 192)"><g class="jitter-2">
       <rect x="0" y="0" width="76" height="30" rx="5" class="chip-bg" />
       <text x="8" y="13" class="chip-text">Acme Co</text>
       <text x="8" y="23" class="stage-copy">duplicate</text>
-    </g>
-    <g class="jitter-1" transform="translate(25, 236)">
+    </g></g>
+    <g transform="translate(25, 236)"><g class="jitter-1">
       <rect x="0" y="0" width="76" height="30" rx="5" class="chip-bg" />
       <text x="8" y="13" class="chip-text">Beta Ltd</text>
       <text x="8" y="23" class="stage-copy">stale phone</text>
-    </g>
+    </g></g>
   </g>
 
   <!-- STAGE 2: "Sorter checks every record" (Centre Diamond) -->
@@ -234,10 +248,10 @@
     <rect x="304" y="282" width="120" height="84" rx="9" class="card-bg lane-bg" />
     <text x="313" y="297" class="stage-num">03C · CLEAN</text>
     <text x="313" y="309" class="stage-title">Clean — passes</text>
-    <g class="clean-glide" transform="translate(342, 322)">
+    <g transform="translate(342, 322)"><g class="clean-glide">
       <rect x="0" y="0" width="44" height="24" rx="4" class="chip-bg" />
       <path d="M 16 12 L 20 16 L 28 8" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" />
-    </g>
+    </g></g>
     <text x="364" y="358" text-anchor="middle" class="stage-copy">Straight through</text>
   </g>
 

@@ -166,15 +166,26 @@
   <rect x="218" y="54" width="12" height="218" rx="6" class="beam-halo" />
   <rect x="222" y="58" width="4" height="210" rx="2" class="beam-core" />
 
+    <defs>
+    <mask id="cutout-product-photos-and-images">
+      <rect width="640" height="400" fill="white" />
+      <rect x="64.5" y="177.5" width="95.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="204.5" y="175.5" width="39.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="488.5" y="202.5" width="87.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="385.5" y="342.5" width="87.0" height="19.0" rx="8.0" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-product-photos-and-images)">
   <path d="M 112 168 L 112 206" class="flow-path" />
   <path d="M 204 264 L 224 264 L 224 106 L 254 106" class="flow-path flow-accent" />
   <path d="M 418 106 L 444 106" class="flow-path flow-accent" />
   <path d="M 532 196 L 532 228" class="flow-path" />
   <path d="M 444 274 L 386 300" class="flow-path" />
   <path d="M 386 352 L 472 352" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3.4" class="packet p-12" />
   <circle r="3.4" class="packet p-23" />
   <circle r="3.4" class="packet p-34" />
@@ -340,18 +351,18 @@
     <text x="454" y="256" class="stage-title">Channel sizes exported</text>
 
     <!-- 3 Size Chips popping onto mini export cards -->
-    <g class="size-pop-1" transform="translate(454, 265)">
+    <g transform="translate(454, 265)"><g class="size-pop-1">
       <rect x="0" y="0" width="46" height="22" rx="5" class="chip-bg" />
       <text x="23" y="14" text-anchor="middle" class="chip-text-accent">1:1</text>
-    </g>
-    <g class="size-pop-2" transform="translate(508, 265)">
+    </g></g>
+    <g transform="translate(508, 265)"><g class="size-pop-2">
       <rect x="0" y="0" width="46" height="22" rx="5" class="chip-bg" />
       <text x="23" y="14" text-anchor="middle" class="chip-text-accent">4:5</text>
-    </g>
-    <g class="size-pop-3" transform="translate(562, 265)">
+    </g></g>
+    <g transform="translate(562, 265)"><g class="size-pop-3">
       <rect x="0" y="0" width="48" height="22" rx="5" class="chip-bg" />
       <text x="24" y="14" text-anchor="middle" class="chip-text-accent">A+</text>
-    </g>
+    </g></g>
   </g>
 
   <!-- STAGE 6: "You pick the finals" -->

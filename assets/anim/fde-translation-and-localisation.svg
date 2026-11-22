@@ -104,7 +104,17 @@
     <rect x="320" y="32" width="38" height="13" rx="6.5" class="chip-bg" /><text x="339" y="41" text-anchor="middle" class="chip-text-accent">DeepL</text>
   </g>
 
+    <defs>
+    <mask id="cutout-translation-and-localisation">
+      <rect width="640" height="400" fill="white" />
+      <rect x="46.5" y="29.5" width="83.0" height="17.0" rx="7.0" fill="black" />
+      <rect x="147.5" y="29.5" width="55.0" height="17.0" rx="7.0" fill="black" />
+      <rect x="550.5" y="83.0" width="75.0" height="18.0" rx="7.5" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-translation-and-localisation)">
   <path d="M 110 214 L 138 214" class="flow-path" />
   <path d="M 212 79 L 234 79" class="flow-path flow-accent" />
   <path d="M 212 145 L 234 145" class="flow-path flow-accent" />
@@ -112,8 +122,8 @@
   <path d="M 212 277 L 234 277" class="flow-path flow-accent" />
   <path d="M 212 343 L 234 343" class="flow-path flow-accent" />
   <path d="M 538 211 L 556 211" class="flow-path flow-accent" />
-
-  <!-- Finish Line -->
+  </g>
+<!-- Finish Line -->
   <line x1="546" y1="52" x2="546" y2="370" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.65" />
 
   <!-- Travelling Packets -->
@@ -241,13 +251,13 @@
     <text x="591" y="135" text-anchor="middle" class="stage-num">06 · LIVE</text>
     <text x="591" y="147" text-anchor="middle" class="stage-title">All markets</text>
 
-    <g class="pack-stack" transform="translate(566, 160)">
+    <g transform="translate(566, 160)"><g class="pack-stack">
       <rect x="0" y="0" width="50" height="11" rx="3" class="chip-bg" />
       <rect x="0" y="15" width="50" height="11" rx="3" class="chip-bg" />
       <rect x="0" y="30" width="50" height="11" rx="3" class="chip-bg" />
       <rect x="0" y="45" width="50" height="11" rx="3" class="chip-bg" />
       <rect x="0" y="60" width="50" height="11" rx="3" class="chip-bg" />
-    </g>
+    </g></g>
 
     <circle cx="591" cy="272" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
     <path d="M 586 272 L 589.5 275.5 L 596.5 268.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />

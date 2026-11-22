@@ -124,7 +124,19 @@
   <text x="20" y="23" class="title-main">Email Campaigns &amp; Segmentation</text>
   <text x="620" y="23" text-anchor="end" class="method-text">HubSpot list → 3 segment lanes → Mailchimp / Brevo</text>
 
+    <defs>
+    <mask id="cutout-email-campaigns">
+      <rect width="640" height="400" fill="white" />
+      <rect x="110.5" y="82.5" width="95.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="220.5" y="124.5" width="67.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="370.5" y="195.5" width="71.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="422.5" y="86.5" width="87.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="526.5" y="192.5" width="95.0" height="19.0" rx="8.0" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-email-campaigns)">
   <path d="M 108 92 L 192 92 L 192 128" class="flow-path" />
   <path d="M 238 164 Q 258 95 276 95" class="flow-path flow-accent" />
   <path d="M 238 205 L 276 205" class="flow-path flow-accent" />
@@ -134,8 +146,8 @@
   <path d="M 388 311 Q 406 311 426 234" class="flow-path" />
   <path d="M 466 136 L 466 96 L 522 96" class="flow-path flow-accent" />
   <path d="M 574 148 L 574 256" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3.4" class="packet p-12" />
   <circle r="3.2" class="packet p-23a" />
   <circle r="3.2" class="packet p-23b" />
@@ -182,31 +194,31 @@
     <text x="23" y="133" class="stage-copy">contacts</text>
 
     <!-- Stacking Contact Rows -->
-    <g class="row-1" transform="translate(23, 150)">
+    <g transform="translate(23, 150)"><g class="row-1">
       <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
       <circle cx="10" cy="12" r="3.5" fill="var(--accent)" />
       <rect x="18" y="9" width="48" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
-    </g>
-    <g class="row-2" transform="translate(23, 182)">
+    </g></g>
+    <g transform="translate(23, 182)"><g class="row-2">
       <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
       <circle cx="10" cy="12" r="3.5" fill="var(--ink)" fill-opacity="0.65" />
       <rect x="18" y="9" width="42" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
-    </g>
-    <g class="row-3" transform="translate(23, 214)">
+    </g></g>
+    <g transform="translate(23, 214)"><g class="row-3">
       <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
       <circle cx="10" cy="12" r="3.5" fill="var(--muted)" />
       <rect x="18" y="9" width="50" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
-    </g>
-    <g class="row-3" transform="translate(23, 246)">
+    </g></g>
+    <g transform="translate(23, 246)"><g class="row-3">
       <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
       <circle cx="10" cy="12" r="3.5" fill="var(--accent)" fill-opacity="0.5" />
       <rect x="18" y="9" width="38" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
-    </g>
-    <g class="row-3" transform="translate(23, 278)">
+    </g></g>
+    <g transform="translate(23, 278)"><g class="row-3">
       <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
       <circle cx="10" cy="12" r="3.5" fill="var(--ink)" fill-opacity="0.5" />
       <rect x="18" y="9" width="46" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
-    </g>
+    </g></g>
     <text x="61" y="346" text-anchor="middle" class="stage-copy">HubSpot pool</text>
   </g>
 
@@ -222,21 +234,21 @@
     </g>
 
     <!-- Dots Sorting into 3 Groups -->
-    <g class="dot-g1" transform="translate(158, 194)">
+    <g transform="translate(158, 194)"><g class="dot-g1">
       <circle cx="6" cy="6" r="3.5" fill="var(--accent)" />
       <circle cx="18" cy="6" r="3.5" fill="var(--accent)" />
       <text x="30" y="8.5" class="stage-copy">New</text>
-    </g>
-    <g class="dot-g2" transform="translate(158, 220)">
+    </g></g>
+    <g transform="translate(158, 220)"><g class="dot-g2">
       <circle cx="6" cy="6" r="3.5" fill="var(--ink)" fill-opacity="0.75" />
       <circle cx="18" cy="6" r="3.5" fill="var(--ink)" fill-opacity="0.75" />
       <text x="30" y="8.5" class="stage-copy">Active</text>
-    </g>
-    <g class="dot-g3" transform="translate(158, 246)">
+    </g></g>
+    <g transform="translate(158, 246)"><g class="dot-g3">
       <circle cx="6" cy="6" r="3.5" fill="none" stroke="var(--accent)" stroke-width="1.4" />
       <circle cx="18" cy="6" r="3.5" fill="none" stroke="var(--accent)" stroke-width="1.4" />
       <text x="30" y="8.5" class="stage-copy">Dormant</text>
-    </g>
+    </g></g>
   </g>
 
   <!-- STAGE 3: THREE PARALLEL LANES (One Stage Group, 3 Lane Cards) -->

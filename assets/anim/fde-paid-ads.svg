@@ -136,7 +136,19 @@
   <!-- Subtle Circular Ring Guide -->
   <ellipse cx="320" cy="182" rx="224" ry="118" class="ring-guide" />
 
+    <defs>
+    <mask id="cutout-paid-ads">
+      <rect width="640" height="400" fill="white" />
+      <rect x="450.5" y="64.5" width="83.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="484.5" y="212.5" width="103.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="30.5" y="88.5" width="91.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="96.5" y="210.5" width="87.0" height="19.0" rx="8.0" fill="black" />
+      <rect x="278.5" y="288.5" width="83.0" height="19.0" rx="8.0" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-paid-ads)">
   <path d="M 410 70 Q 528 70 536 118" class="flow-path flow-accent" />
   <path d="M 536 198 L 536 246" class="flow-path" />
   <path d="M 438 266 L 198 266" class="flow-path" />
@@ -145,8 +157,8 @@
   <path d="M 228 164 L 264 164" class="flow-path" />
   <path d="M 418 168 L 454 168" class="flow-path flow-accent" />
   <path d="M 320 266 L 320 326" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3.4" class="packet p-12" />
   <circle r="3.4" class="packet p-23" />
   <circle r="3.4" class="packet p-34" />

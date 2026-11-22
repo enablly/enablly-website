@@ -114,15 +114,26 @@
   <text x="20" y="21" class="title-main">Reporting &amp; Dashboards</text>
   <text x="620" y="21" text-anchor="end" class="method-text">Monday 8:00 cron → API pull → chart wall → Looker Studio</text>
 
+    <defs>
+    <mask id="cutout-reporting-and-dashboards">
+      <rect width="640" height="400" fill="white" />
+      <rect x="199.5" y="57.0" width="63.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="368.5" y="104.0" width="51.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="106.5" y="292.0" width="79.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="397.5" y="342.5" width="99.0" height="19.0" rx="8.0" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-reporting-and-dashboards)">
   <path d="M 196 66 L 266 66" class="flow-path" />
   <path d="M 394 98 L 394 128" class="flow-path flow-accent" />
   <path d="M 444 206 L 454 206" class="flow-path flow-accent" />
   <path d="M 146 286 L 146 316" class="flow-path" />
   <path d="M 244 352 L 262 352" class="flow-path" />
   <path d="M 392 352 L 502 352" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3.1" class="packet p-12" />
   <circle r="3.1" class="packet p-23" />
   <circle r="3.1" class="packet p-34" />

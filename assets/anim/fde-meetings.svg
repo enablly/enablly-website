@@ -112,7 +112,18 @@
   <text x="20" y="21" class="title-main">Meetings &amp; Action Items</text>
   <text x="620" y="21" text-anchor="end" class="method-text">Recording → transcript → 3-way extract → email + Planner/Asana</text>
 
+    <defs>
+    <mask id="cutout-meetings">
+      <rect width="640" height="400" fill="white" />
+      <rect x="38.5" y="91.0" width="87.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="62.5" y="254.0" width="39.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="156.5" y="191.0" width="43.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="379.5" y="332.5" width="91.0" height="19.0" rx="8.0" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-meetings)">
   <path d="M 82 82 L 82 118" class="flow-path" />
   <path d="M 82 242 L 82 284" class="flow-path flow-accent" />
   <path d="M 152 304 L 178 304 L 178 98 L 558 98 L 558 118" class="flow-path flow-accent" />
@@ -122,8 +133,8 @@
   <path d="M 414 228 Q 414 268 330 296" class="flow-path" />
   <path d="M 558 228 Q 558 274 360 296" class="flow-path" />
   <path d="M 376 342 L 474 342" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3.1" class="packet p-12" />
   <circle r="3.1" class="packet p-23" />
   <circle r="3" class="packet p-34a" />
@@ -227,10 +238,10 @@
     <rect x="204" y="118" width="132" height="110" rx="10" class="card-bg fan-bg" />
     <text x="214" y="134" class="stage-num">04A · EXTRACT</text>
     <text x="214" y="146" class="stage-title">Decisions</text>
-    <g class="stamp-d" transform="translate(242, 162)">
+    <g transform="translate(242, 162)"><g class="stamp-d">
       <rect x="0" y="0" width="56" height="28" rx="5" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
       <text x="28" y="17" text-anchor="middle" class="chip-text-accent">DECIDED</text>
-    </g>
+    </g></g>
     <text x="214" y="212" class="stage-copy">Key call outcomes</text>
 
     <!-- Action items + owners -->
@@ -238,23 +249,23 @@
     <text x="358" y="134" class="stage-num">04B · EXTRACT</text>
     <text x="358" y="146" class="stage-title">Action items</text>
     <text x="358" y="157" class="stage-copy">+ owners</text>
-    <g class="av-pop" transform="translate(360, 168)">
+    <g transform="translate(360, 168)"><g class="av-pop">
       <circle cx="8" cy="8" r="7" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="1" />
       <rect x="20" y="5" width="76" height="5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
       <circle cx="8" cy="28" r="7" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="1" />
       <rect x="20" y="25" width="66" height="5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
-    </g>
+    </g></g>
 
     <!-- Open questions -->
     <rect x="492" y="118" width="132" height="110" rx="10" class="card-bg fan-bg" />
     <text x="502" y="134" class="stage-num">04C · EXTRACT</text>
     <text x="502" y="146" class="stage-title">Open questions</text>
-    <g class="q-pop" transform="translate(528, 166)">
+    <g transform="translate(528, 166)"><g class="q-pop">
       <circle cx="12" cy="14" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.1" />
       <text x="12" y="18" text-anchor="middle" class="stage-title">?</text>
       <circle cx="46" cy="14" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.1" />
       <text x="46" y="18" text-anchor="middle" class="stage-title">?</text>
-    </g>
+    </g></g>
     <text x="502" y="212" class="stage-copy">Follow-up items</text>
   </g>
 
@@ -278,12 +289,12 @@
     <text x="484" y="312" class="stage-num">06 · SENT</text>
     <text x="484" y="325" class="stage-title">Notes + tasks sent</text>
 
-    <g class="send-fly" transform="translate(484, 336)">
+    <g transform="translate(484, 336)"><g class="send-fly">
       <rect x="0" y="0" width="46" height="16" rx="4" class="chip-bg" />
       <text x="23" y="10.5" text-anchor="middle" class="chip-text">Notes</text>
       <rect x="52" y="0" width="46" height="16" rx="4" class="chip-bg" />
       <text x="75" y="10.5" text-anchor="middle" class="chip-text-accent">Tasks</text>
-    </g>
+    </g></g>
 
     <circle cx="598" cy="364" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
     <path d="M 593 364 L 596.5 367.5 L 603.5 360.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />

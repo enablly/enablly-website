@@ -272,14 +272,14 @@
     <text x="333" y="81" class="stage-copy">Burned-in captions</text>
 
     <!-- Three mini-frames popping out -->
-    <g class="size-pop" transform="translate(333, 90)">
+    <g transform="translate(333, 90)"><g class="size-pop">
       <rect x="0" y="0" width="32" height="30" rx="4" class="chip-bg" />
       <text x="7" y="18" class="chip-text-accent">9:16</text>
       <rect x="38" y="0" width="32" height="30" rx="4" class="chip-bg" />
       <text x="47" y="18" class="chip-text-accent">1:1</text>
       <rect x="76" y="0" width="34" height="30" rx="4" class="chip-bg" />
       <text x="83" y="18" class="chip-text-accent">16:9</text>
-    </g>
+    </g></g>
   </g>
 
   <!-- STAGE 6 (Below, Right): Human review -->

@@ -110,7 +110,20 @@
   <text x="20" y="21" class="title-main">Spreadsheets &amp; Data Cleanup</text>
   <text x="620" y="21" text-anchor="end" class="method-text">3 messy files → Power Automate → match + tray → Sheets / Excel</text>
 
+    <defs>
+    <mask id="cutout-spreadsheets-and-data">
+      <rect width="640" height="400" fill="white" />
+      <rect x="112.5" y="77.5" width="71.0" height="17.0" rx="7.0" fill="black" />
+      <rect x="122.5" y="147.5" width="55.0" height="17.0" rx="7.0" fill="black" />
+      <rect x="118.5" y="217.5" width="59.0" height="17.0" rx="7.0" fill="black" />
+      <rect x="264.5" y="147.0" width="79.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="292.5" y="247.0" width="59.0" height="18.0" rx="7.5" fill="black" />
+      <rect x="530.5" y="191.0" width="91.0" height="18.0" rx="7.5" fill="black" />
+    </mask>
+  </defs>
+
   <!-- Flow Connectors -->
+  <g mask="url(#cutout-spreadsheets-and-data)">
   <path d="M 118 76 L 184 134" class="flow-path" />
   <path d="M 118 156 L 184 156" class="flow-path flow-accent" />
   <path d="M 118 236 L 184 178" class="flow-path" />
@@ -120,8 +133,8 @@
   <path d="M 326 338 L 350 338" class="flow-path" />
   <path d="M 526 156 L 576 156 L 576 244" class="flow-path flow-accent" />
   <path d="M 484 338 L 516 338" class="flow-path flow-accent" />
-
-  <!-- Travelling Packets -->
+  </g>
+<!-- Travelling Packets -->
   <circle r="3" class="packet p-12a" />
   <circle r="3" class="packet p-12b" />
   <circle r="3" class="packet p-12c" />
