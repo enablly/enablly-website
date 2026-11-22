@@ -72,7 +72,7 @@
   }
 
   async function initAnimations() {
-    const slots = document.querySelectorAll("[data-anim]");
+    const slots = document.querySelectorAll("[data-anim]:not(.uc-tab)");
     await Promise.all(Array.from(slots).map(async (slot) => {
       const src = slot.getAttribute("data-anim");
       const accent = slot.getAttribute("data-accent");
