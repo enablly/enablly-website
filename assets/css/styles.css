@@ -313,14 +313,10 @@ section {
 
 .hero-stage-anim {
   width: 100%;
-  flex: 1;
-  min-height: 360px;
   aspect-ratio: 640 / 400;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 .hero-stage-anim svg {
@@ -405,39 +401,7 @@ section {
   color: var(--accent);
 }
 
-/* Filter Tabs */
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-
-.filter-tab {
-  min-height: 44px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.filter-tab[aria-pressed="true"] {
-  background: var(--accent);
-  color: #ffffff;
-  border-color: var(--accent);
-}
-
-/* Use-Case Grid */
-.usecase-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 22px;
-}
+/* Use-Case Cards (Related Grid on Detail Pages) */
 
 .usecase-card {
   display: flex;

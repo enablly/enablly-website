@@ -152,23 +152,6 @@
     renderStep();
   }
 
-  function initFilters() {
-    const tabs = document.querySelectorAll(".filter-tab");
-    const cards = document.querySelectorAll(".usecase-card");
-    if (!tabs.length || !cards.length) return;
-
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const cat = tab.getAttribute("data-filter");
-        tabs.forEach((t) => t.setAttribute("aria-pressed", String(t === tab)));
-        cards.forEach((card) => {
-          const match = cat === "all" || card.getAttribute("data-category") === cat;
-          card.classList.toggle("is-hidden", !match);
-        });
-      });
-    });
-  }
-
   function initHeroShowcase() {
     const tabs = document.querySelectorAll(".uc-tab");
     const stageCard = document.getElementById("hero-stage-card");
@@ -181,6 +164,18 @@
 
     const svgCache = new Map();
     let activeSlug = null;
+
+    // If default SVG is already inline in #hero-stage-anim, wire it immediately
+    const initialTab = tabs[0];
+    const initialSvg = stageAnim.querySelector("svg");
+    if (initialTab && initialSvg) {
+      activeSlug = initialTab.getAttribute("data-slug");
+      const initialAccent = initialTab.getAttribute("data-accent");
+      const initialAnim = initialTab.getAttribute("data-anim");
+      if (initialAccent) initialSvg.style.setProperty("--accent", initialAccent);
+      if (initialAnim) svgCache.set(initialAnim, stageAnim.innerHTML);
+      attachStageTooltips(initialSvg);
+    }
 
     async function selectTab(tab) {
       const slug = tab.getAttribute("data-slug");
@@ -211,7 +206,7 @@
             svgCache.set(animSrc, svgText);
           }
         } catch (_) {
-          // Ignore fetch errors in non-server contexts
+          // Fallback to <img> below
         }
       }
 
@@ -223,6 +218,8 @@
           if (accent) svg.style.setProperty("--accent", accent);
           attachStageTooltips(svg);
         }
+      } else {
+        stageAnim.innerHTML = `<img src="${animSrc}" alt="${title}" style="width:100%;height:100%;display:block;" />`;
       }
       requestAnimationFrame(() => stageCard.classList.remove("is-switching"));
     }
@@ -231,7 +228,9 @@
       tab.addEventListener("click", () => selectTab(tab));
     });
 
-    selectTab(tabs[0]);
+    if (!initialSvg && initialTab) {
+      selectTab(initialTab);
+    }
   }
 
   function initWhatsAppFloat() {
@@ -255,7 +254,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     initCTAs();
-    initFilters();
     initHeroShowcase();
     initAnimations();
     initWhatsAppFloat();
