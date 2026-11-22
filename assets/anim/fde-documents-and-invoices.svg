@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Documents &amp; Invoices</title>
-  <desc id="svg-desc">Animated branching workflow showing how Enablly's forward-deployed AI automation processes documents and invoices: emails and scans arrive, a classifier with a sweeping scanner sorts them into Invoice (key fields highlighting), Contract (dates and parties), and Receipt (total extracted), all route to human review, and a document slides into the accounts folder.</desc>
+  <desc id="svg-desc">Six-stage sorting conveyor with scanner arch workflow for documents and invoices: PDFs, scans and photos drop onto the conveyor belt from email inbox and upload, pass under a Claude and OpenAI computer-vision scanner arch that reads fields, get classified by type, verify totals, drop into three labelled bins (Accounting, Expenses, Contracts) while a mismatched card diverts down the exception chute to a human tray, and file into Drive folders.</desc>
 
   <style>
     svg {
@@ -14,223 +14,253 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 14.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 7.8px; fill: var(--muted); }
-    .branch-label { font-size: 7.2px; font-weight: 700; fill: var(--accent); }
-    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+
+    .title-main { font-size: 13.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.4px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 6.6px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 8.6px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.5px; fill: var(--muted); }
+    .chip-text { font-size: 6.1px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.1px; font-weight: 700; fill: var(--accent); }
+
     .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
-    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1.1; }
-    .card-rich { fill: var(--accent); fill-opacity: 0.09; stroke: var(--accent); stroke-opacity: 0.7; stroke-width: 1.1; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .belt-track { fill: var(--surface); stroke: var(--line); stroke-width: 1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    .flow-branch-a { stroke: var(--accent); stroke-opacity: 0.55; }
-    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.8; }
-    .flow-branch-c { stroke: var(--accent); stroke-opacity: 1; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-in { offset-path: path("M 98 200 L 126 200"); animation: pktIn 9s linear infinite; }
-    .packet-a1 { offset-path: path("M 174 146 C 194 92, 232 92, 270 92"); animation: pktBranch 9s linear infinite; }
-    .packet-b1 { offset-path: path("M 222 200 L 270 200"); animation: pktBranch 9s linear infinite; }
-    .packet-c1 { offset-path: path("M 174 254 C 194 312, 232 312, 270 312"); animation: pktBranch 9s linear infinite; }
-    .packet-a2 { offset-path: path("M 396 92 C 414 92, 414 176, 424 188"); animation: pktMerge 9s linear infinite; }
-    .packet-b2 { offset-path: path("M 396 200 L 424 200"); animation: pktMerge 9s linear infinite; }
-    .packet-c2 { offset-path: path("M 396 312 C 414 312, 414 236, 424 226"); animation: pktMerge 9s linear infinite; }
-    .packet-out { offset-path: path("M 512 200 L 534 200"); animation: pktOut 9s linear infinite; }
+    .p-12 { offset-path: path("M 63 106 L 63 72 L 184 72 L 184 92"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 242 152 L 258 152"); animation: p23 9s linear infinite; }
+    .p-34 { offset-path: path("M 342 152 L 356 152"); animation: p34 9s linear infinite; }
+    .p-45a { offset-path: path("M 450 132 Q 474 74 498 74"); animation: p45 9s linear infinite; }
+    .p-45b { offset-path: path("M 450 152 L 498 152"); animation: p45 9s linear infinite; }
+    .p-45c { offset-path: path("M 450 172 Q 474 230 498 230"); animation: p45 9s linear infinite; }
+    .p-4t { offset-path: path("M 403 196 L 403 238 L 342 238 L 342 278"); animation: p4t 9s linear infinite; }
+    .p-56 { offset-path: path("M 561 264 L 561 312"); animation: p56 9s linear infinite; }
+    .p-t6 { offset-path: path("M 428 348 L 478 348"); animation: p56 9s linear infinite; }
 
-    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 40%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktMerge { 0%, 50% { offset-distance: 0%; opacity: 0; } 52% { opacity: 1; } 62% { offset-distance: 100%; opacity: 1; } 64%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,8% { opacity:0; offset-distance:0%; } 10% { opacity:1; } 17% { opacity:1; offset-distance:100%; } 20%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,30% { opacity:0; offset-distance:0%; } 32% { opacity:1; } 36% { opacity:1; offset-distance:100%; } 39%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p34 { 0%,42% { opacity:0; offset-distance:0%; } 44% { opacity:1; } 48% { opacity:1; offset-distance:100%; } 51%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p45 { 0%,56% { opacity:0; offset-distance:0%; } 58% { opacity:1; } 64% { opacity:1; offset-distance:100%; } 67%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p4t { 0%,58% { opacity:0; offset-distance:0%; } 60% { opacity:1; } 67% { opacity:1; offset-distance:100%; } 70%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,78% { opacity:0; offset-distance:0%; } 80% { opacity:1; } 87% { opacity:1; offset-distance:100%; } 90%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring, #stage-4 .highlight-ring, #branch-c .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .card-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .card-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .bin-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 54% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 58% { opacity: 0; } 62%, 76% { opacity: 1; } 82%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 78% { opacity: 0; } 82%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,14% { stroke: var(--accent); stroke-width: 1.7; } 18%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,14% { stroke: var(--line); stroke-width: 1.1; } 18%,34% { stroke: var(--accent); stroke-width: 1.7; } 38%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,32% { stroke: var(--line); stroke-width: 1.1; } 35%,46% { stroke: var(--accent); stroke-width: 1.7; } 50%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,44% { stroke: var(--line); stroke-width: 1.1; } 47%,60% { stroke: var(--accent); stroke-width: 1.7; } 64%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,58% { stroke: var(--line); stroke-width: 1.1; } 62%,80% { stroke: var(--accent); stroke-width: 1.7; } 84%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,80% { stroke: var(--line); stroke-width: 1.1; } 84%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Cards Drop onto Belt */
+    .doc-drop { animation: dDrop 9s ease-out infinite; }
+    @keyframes dDrop { 0% { opacity:0.25; transform:translateY(-8px); } 10%,90% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.25; } }
 
-    /* Stage 2: Scanner sweep inside Classifier */
-    .cls-sweep { animation: clsSw 9s ease-in-out infinite; }
-    @keyframes clsSw { 0%, 16% { transform: translateY(0px); opacity: 0.25; } 21% { opacity: 1; } 29% { transform: translateY(16px); opacity: 1; } 34%, 100% { transform: translateY(0px); opacity: 0.25; } }
+    /* Stage 2: Arch Light Sweep + Field Chips Pop */
+    .ocr-sweep { animation: ocrBar 9s ease-in-out infinite; opacity: 0; }
+    .fld-pop { transform-box: fill-box; transform-origin: center; animation: fPop 9s ease-out infinite; }
+    @keyframes ocrBar { 0%,18% { opacity:0; transform:translateY(0); } 21% { opacity:0.95; transform:translateY(0); } 30% { opacity:0.95; transform:translateY(30px); } 33%,100% { opacity:0; transform:translateY(30px); } }
+    @keyframes fPop { 0%,22% { opacity:0.2; transform:scale(0.6); } 31%,90% { opacity:1; transform:scale(1); } 98%,100% { opacity:0.2; } }
 
-    /* Branch A: Key fields highlighting one by one */
-    .inv-f1 { animation: iv1 9s ease-out infinite; }
-    .inv-f2 { animation: iv2 9s ease-out infinite; }
-    @keyframes iv1 { 0%, 36% { fill-opacity: 0.2; } 42%, 94% { fill-opacity: 0.9; } 98%, 100% { fill-opacity: 0.2; } }
-    @keyframes iv2 { 0%, 42% { fill-opacity: 0.2; } 48%, 94% { fill-opacity: 0.9; } 98%, 100% { fill-opacity: 0.2; } }
+    /* Stage 3: Type Stamp Lands */
+    .type-stamp { transform-box: fill-box; transform-origin: center; animation: stType 9s ease-out infinite; }
+    @keyframes stType { 0%,34% { opacity:0.2; transform:scale(1.3); } 42%,92% { opacity:1; transform:scale(1); } 98%,100% { opacity:0.2; } }
 
-    /* Final card: Document sliding into folder */
-    .doc-slide { animation: docIn 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    @keyframes docIn { 0%, 78% { transform: translateY(-10px); opacity: 0.2; } 86%, 95% { transform: translateY(0px); opacity: 1; } 99%, 100% { transform: translateY(-10px); opacity: 0.2; } }
+    /* Stage 4: Match Tick + Mismatch Wobble */
+    .tot-tick { stroke-dasharray: 14; stroke-dashoffset: 14; animation: tTick 9s ease-out infinite; }
+    .wobble-card { transform-box: fill-box; transform-origin: center; animation: wob 9s ease-in-out infinite; }
+    @keyframes tTick { 0%,46% { stroke-dashoffset: 14; } 53%,92% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 14; } }
+    @keyframes wob { 0%,48%,62%,100% { transform: rotate(0deg); } 52% { transform: rotate(-4deg); } 56% { transform: rotate(4deg); } 60% { transform: rotate(-3deg); } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 5: Bins Fill Staggered + Tray Drop */
+    .bin-fill-1 { transform-box: fill-box; transform-origin: left center; animation: bf1 9s ease-out infinite; }
+    .bin-fill-2 { transform-box: fill-box; transform-origin: left center; animation: bf2 9s ease-out infinite; }
+    .bin-fill-3 { transform-box: fill-box; transform-origin: left center; animation: bf3 9s ease-out infinite; }
+    .tray-drop { animation: trIn 9s ease-out infinite; }
+    @keyframes bf1 { 0%,60% { transform: scaleX(0.15); opacity:0.35; } 68%,92% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.15); } }
+    @keyframes bf2 { 0%,64% { transform: scaleX(0.15); opacity:0.35; } 72%,92% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.15); } }
+    @keyframes bf3 { 0%,68% { transform: scaleX(0.15); opacity:0.35; } 76%,92% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.15); } }
+    @keyframes trIn { 0%,60% { opacity:0.25; transform:translateY(-8px); } 70%,92% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.25; } }
+
+    /* Stage 6: Final Tick */
+    .final-tick { stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawFinal 9s ease-out infinite; }
+    @keyframes drawFinal { 0%,86% { stroke-dashoffset: 24; } 93%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 24; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="21" class="title-main">Documents &amp; Invoices</text>
+  <text x="620" y="21" text-anchor="end" class="method-text">Inbox + upload → OCR scanner arch → 3 bins + human tray → Drive</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <!-- Horizontal Conveyor Belt -->
+  <rect x="16" y="196" width="434" height="12" rx="6" class="belt-track" />
+  <circle cx="32" cy="202" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="132" cy="202" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="232" cy="202" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="332" cy="202" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="432" cy="202" r="2.5" fill="var(--muted)" opacity="0.5" />
 
-  <g id="header">
-    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
-    <text x="32" y="30" class="title-main">AI Automation for Documents &amp; Invoices</text>
-    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
-    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  <!-- Flow Connectors -->
+  <path d="M 63 106 L 63 72 L 184 72 L 184 92" class="flow-path" />
+  <path d="M 242 152 L 258 152" class="flow-path flow-accent" />
+  <path d="M 342 152 L 356 152" class="flow-path flow-accent" />
+  <path d="M 450 132 Q 474 74 498 74" class="flow-path flow-accent" />
+  <path d="M 450 152 L 498 152" class="flow-path" />
+  <path d="M 450 172 Q 474 230 498 230" class="flow-path" />
+  <path d="M 403 196 L 403 238 L 342 238 L 342 278" class="flow-path" />
+  <path d="M 561 264 L 561 312" class="flow-path flow-accent" />
+  <path d="M 428 348 L 478 348" class="flow-path flow-accent" />
+
+  <!-- Travelling Packets -->
+  <circle r="3.1" class="packet p-12" />
+  <circle r="3" class="packet p-23" />
+  <circle r="3" class="packet p-34" />
+  <circle r="3" class="packet p-45a" />
+  <circle r="3" class="packet p-45b" />
+  <circle r="3" class="packet p-45c" />
+  <circle r="3.1" class="packet p-4t" />
+  <circle r="3.1" class="packet p-56" />
+  <circle r="3.1" class="packet p-t6" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(124, 72)">
+    <rect x="-42" y="-7.5" width="84" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text">email inbox + upload</text>
+  </g>
+  <g transform="translate(462, 46)">
+    <rect x="-42" y="-7.5" width="84" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">→ accounting software</text>
+  </g>
+  <g transform="translate(561, 288)">
+    <rect x="-32" y="-7.5" width="64" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">→ Drive folders</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 98 200 L 126 200" />
-    <path class="flow-path flow-branch-a" d="M 174 146 C 194 92, 232 92, 270 92" />
-    <path class="flow-path flow-branch-b" d="M 222 200 L 270 200" />
-    <path class="flow-path flow-branch-c" d="M 174 254 C 194 312, 232 312, 270 312" />
-    <path class="flow-path flow-branch-a" d="M 396 92 C 414 92, 414 176, 424 188" />
-    <path class="flow-path flow-branch-b" d="M 396 200 L 424 200" />
-    <path class="flow-path flow-branch-c" d="M 396 312 C 414 312, 414 236, 424 226" />
-    <path class="flow-path" d="M 512 200 L 534 200" />
-  </g>
-
-  <g id="branch-labels">
-    <text x="200" y="84" class="branch-label">A · Invoice</text>
-    <text x="223" y="193" class="branch-label">B · Contract</text>
-    <text x="204" y="326" class="branch-label">C · Receipt</text>
-  </g>
-
-  <g id="packets">
-    <circle class="packet packet-in" r="3.2" />
-    <circle class="packet packet-a1" r="3.2" />
-    <circle class="packet packet-b1" r="3.2" />
-    <circle class="packet packet-c1" r="3.2" />
-    <circle class="packet packet-a2" r="3.2" />
-    <circle class="packet packet-b2" r="3.2" />
-    <circle class="packet packet-c2" r="3.2" />
-    <circle class="packet packet-out" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: Documents In -->
+  <!-- STAGE 1: TRIGGER "Documents land" (Belt Start) -->
   <g id="stage-1" class="node">
-    <rect x="14" y="148" width="84" height="104" rx="10" class="card-bg" />
-    <rect x="14" y="148" width="84" height="104" rx="10" class="highlight-ring" />
-    <text x="22" y="164" class="stage-num">01 · DOCS IN</text>
-    <text x="22" y="178" class="stage-title">Emails &amp; scans</text>
-    <rect x="26" y="186" width="60" height="24" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="33" y1="194" x2="72" y2="194" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.3" stroke-linecap="round" />
-    <line x1="33" y1="201" x2="60" y2="201" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.3" stroke-linecap="round" />
-    <text x="22" y="224" class="stage-copy">PDFs, photos &amp;</text>
-    <text x="22" y="235" class="stage-copy">attachments</text>
+    <rect x="16" y="106" width="94" height="90" rx="9" class="card-bg" />
+    <text x="24" y="121" class="stage-num">01 · TRIGGER</text>
+    <text x="24" y="133" class="stage-title">Documents land</text>
+    <g class="doc-drop" transform="translate(26, 144)">
+      <rect x="0" y="0" width="20" height="26" rx="3" class="chip-bg" />
+      <rect x="24" y="4" width="20" height="26" rx="3" class="chip-bg" />
+      <rect x="48" y="0" width="20" height="26" rx="3" class="chip-bg" />
+    </g>
+    <text x="24" y="186" class="stage-copy">PDFs, scans, photos</text>
   </g>
 
-  <!-- STAGE 2: Classifier (Scanner sweep inside) -->
+  <!-- STAGE 2: "Scanner reads" (Scanner Arch Bridge) -->
   <g id="stage-2" class="node">
-    <polygon points="174,146 222,200 174,254 126,200" class="card-bg" />
-    <polygon points="174,146 222,200 174,254 126,200" class="highlight-ring" />
-    <text x="148" y="180" class="stage-num">02 · CLASSIFY</text>
-    <text x="147" y="193" class="stage-title">Classifier</text>
-    <rect x="156" y="198" width="36" height="20" rx="3" fill="none" stroke="var(--line)" stroke-width="0.8" />
-    <line x1="158" y1="201" x2="190" y2="201" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" class="cls-sweep" />
+    <rect x="126" y="92" width="116" height="104" rx="12" class="card-bg" />
+    <text x="134" y="107" class="stage-num">02 · ARCH</text>
+    <text x="134" y="119" class="stage-title">Scanner reads</text>
     <g class="ai-badge">
-      <rect x="147" y="262" width="54" height="14" rx="7" class="pill-bg" />
-      <circle cx="155" cy="269" r="2" class="ai-pulse-dot" />
-      <text x="161" y="271.5" class="tag-text-accent">AI agent</text>
+      <rect x="134" y="125" width="34" height="12" rx="6" class="chip-bg" />
+      <text x="151" y="133.5" text-anchor="middle" class="chip-text-accent">Claude</text>
+      <rect x="171" y="125" width="36" height="12" rx="6" class="chip-bg" />
+      <text x="189" y="133.5" text-anchor="middle" class="chip-text-accent">OpenAI</text>
+      <rect x="134" y="140" width="76" height="12" rx="6" class="chip-bg" />
+      <text x="172" y="148.5" text-anchor="middle" class="chip-text-accent">computer vision · OCR</text>
+    </g>
+
+    <!-- Document + Light Sweep + Field Chips -->
+    <rect x="136" y="157" width="30" height="32" rx="3" class="chip-bg" />
+    <line x1="138" y1="158" x2="164" y2="158" stroke="var(--accent)" stroke-width="1.6" class="ocr-sweep" />
+    <g class="fld-pop">
+      <rect x="172" y="157" width="28" height="12" rx="6" class="chip-bg" /><text x="186" y="165.5" text-anchor="middle" class="chip-text">date</text>
+      <rect x="204" y="157" width="28" height="12" rx="6" class="chip-bg" /><text x="218" y="165.5" text-anchor="middle" class="chip-text-accent">total</text>
+      <rect x="172" y="173" width="30" height="12" rx="6" class="chip-bg" /><text x="187" y="181.5" text-anchor="middle" class="chip-text">from</text>
     </g>
   </g>
 
-  <!-- STAGE 3: Branch A - Invoice (Key fields highlighting) -->
+  <!-- STAGE 3: "Type sorted" (Centre) -->
   <g id="stage-3" class="node">
-    <rect x="270" y="48" width="126" height="88" rx="10" class="card-soft" />
-    <rect x="270" y="48" width="126" height="88" rx="10" class="highlight-ring" />
-    <text x="279" y="62" class="stage-num">BRANCH A · INVOICE</text>
-    <text x="279" y="75" class="stage-title">Amounts extracted</text>
-    <rect x="279" y="83" width="106" height="24" rx="4" fill="none" stroke="var(--line)" stroke-width="0.7" />
-    <rect x="284" y="88" width="44" height="5" rx="1.5" fill="var(--accent)" class="inv-f1" />
-    <rect x="284" y="96" width="66" height="5" rx="1.5" fill="var(--accent)" class="inv-f2" />
-    <g class="ai-badge">
-      <rect x="279" y="112" width="40" height="15" rx="7.5" class="pill-bg" />
-      <text x="290" y="122" class="tag-text-accent">OCR</text>
+    <rect x="258" y="108" width="84" height="88" rx="9" class="card-bg" />
+    <text x="266" y="123" class="stage-num">03 · SORT</text>
+    <text x="266" y="135" class="stage-title">Type sorted</text>
+    <g class="type-stamp" transform="translate(274, 146)">
+      <rect x="0" y="0" width="52" height="22" rx="4" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.2" />
+      <text x="26" y="13.5" text-anchor="middle" class="chip-text-accent">INVOICE</text>
     </g>
+    <text x="266" y="184" class="stage-copy">Inv / Rec / Cont</text>
   </g>
 
-  <!-- STAGE 4: Branch B - Contract -->
+  <!-- STAGE 4: "Totals checked" (Centre Right) -->
   <g id="stage-4" class="node">
-    <rect x="270" y="152" width="126" height="96" rx="10" class="card-bg" />
-    <rect x="270" y="152" width="126" height="96" rx="10" class="highlight-ring" />
-    <text x="279" y="166" class="stage-num">BRANCH B · CONTRACT</text>
-    <circle cx="384" cy="164" r="2.6" class="ai-pulse-dot" />
-    <text x="279" y="179" class="stage-title">Dates &amp; parties</text>
-    <text x="279" y="191" class="stage-copy">Renewal dates, terms</text>
-    <text x="279" y="201" class="stage-copy">&amp; signatories pulled</text>
-    <g class="ai-badge">
-      <rect x="279" y="218" width="42" height="15" rx="7.5" class="pill-bg" />
-      <text x="290" y="228" class="tag-text-accent">LLM</text>
+    <rect x="356" y="108" width="94" height="88" rx="9" class="card-bg" />
+    <text x="364" y="123" class="stage-num">04 · CHECK</text>
+    <text x="364" y="135" class="stage-title">Totals checked</text>
+
+    <text x="364" y="154" class="chip-text">$420 = $420</text>
+    <path d="M 426 149 L 429 152 L 435 146" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" class="tot-tick" />
+
+    <g class="wobble-card" transform="translate(364, 162)">
+      <rect x="0" y="0" width="68" height="22" rx="4" class="chip-bg" />
+      <text x="8" y="13.5" class="stage-copy">1 mismatch !</text>
     </g>
   </g>
 
-  <!-- BRANCH C: Receipt -->
-  <g id="branch-c" class="node">
-    <rect x="270" y="268" width="126" height="82" rx="10" class="card-rich" />
-    <rect x="270" y="268" width="126" height="82" rx="10" class="highlight-ring" />
-    <text x="279" y="282" class="stage-num">BRANCH C · RECEIPT</text>
-    <text x="279" y="295" class="stage-title">Total extracted</text>
-    <text x="279" y="307" class="stage-copy">Merchant, tax &amp; total</text>
-    <text x="279" y="317" class="stage-copy">matched to expense</text>
-  </g>
-
-  <!-- STAGE 5: Review -->
+  <!-- STAGE 5: THREE BINS + HUMAN TRAY -->
   <g id="stage-5" class="node">
-    <rect x="424" y="140" width="88" height="122" rx="10" class="card-bg" />
-    <rect x="424" y="140" width="88" height="122" rx="10" class="highlight-ring" />
-    <text x="432" y="156" class="stage-num">04 · REVIEW</text>
-    <text x="432" y="170" class="stage-title">Review</text>
-    <text x="432" y="182" class="stage-copy">Finance checks</text>
-    <text x="432" y="192" class="stage-copy">coded entries</text>
-    <circle cx="468" cy="212" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-    <path d="M464 212 L466.8 214.8 L472.2 209.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" />
-    <rect x="431" y="234" width="74" height="15" rx="7.5" class="pill-bg" />
-    <text x="436" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
-  </g>
+    <!-- Bin 1: Accounting -->
+    <rect x="498" y="60" width="126" height="52" rx="8" class="card-bg bin-bg" />
+    <text x="508" y="75" class="stage-num">05A · BIN</text>
+    <text x="508" y="88" class="stage-title">Accounting</text>
+    <rect x="508" y="96" width="98" height="5" rx="2.5" fill="var(--accent)" class="bin-fill-1" />
 
-  <!-- STAGE 6: Filed + Entered into Accounts (Document sliding into folder) -->
-  <g id="stage-6" class="node">
-    <rect x="534" y="136" width="94" height="130" rx="10" class="card-bg" />
-    <rect x="534" y="136" width="94" height="130" rx="10" class="highlight-ring" />
-    <text x="542" y="152" class="stage-num">05 · FILED</text>
-    <text x="542" y="166" class="stage-title">In accounts</text>
+    <!-- Bin 2: Expenses -->
+    <rect x="498" y="124" width="126" height="52" rx="8" class="card-bg bin-bg" />
+    <text x="508" y="139" class="stage-num">05B · BIN</text>
+    <text x="508" y="152" class="stage-title">Expenses</text>
+    <rect x="508" y="160" width="98" height="5" rx="2.5" fill="var(--accent)" fill-opacity="0.7" class="bin-fill-2" />
 
-    <!-- Document sliding into folder -->
-    <g transform="translate(546, 178)">
-      <rect x="14" y="2" width="32" height="22" rx="2" fill="var(--accent)" fill-opacity="0.45" stroke="var(--accent)" stroke-width="0.8" class="doc-slide" />
-      <path d="M4 16 L24 16 L28 20 L60 20 L60 40 L4 40 Z" fill="var(--accent)" fill-opacity="0.22" stroke="var(--accent)" stroke-width="1" />
+    <!-- Bin 3: Contracts -->
+    <rect x="498" y="188" width="126" height="76" rx="8" class="card-bg bin-bg" />
+    <text x="508" y="203" class="stage-num">05C · BIN</text>
+    <text x="508" y="216" class="stage-title">Contracts</text>
+    <text x="508" y="229" class="stage-copy">Key dates noted</text>
+    <rect x="508" y="242" width="98" height="5" rx="2.5" fill="var(--accent)" fill-opacity="0.55" class="bin-fill-3" />
+
+    <!-- Human Tray (Foreground) -->
+    <rect x="256" y="278" width="172" height="106" rx="10" class="card-bg bin-bg" />
+    <text x="266" y="295" class="stage-num">05D · EXCEPTION CHUTE</text>
+    <text x="266" y="308" class="stage-title">Human tray</text>
+    <g class="tray-drop" transform="translate(266, 320)">
+      <rect x="0" y="0" width="148" height="36" rx="6" class="chip-bg" />
+      <text x="10" y="16" class="chip-text-accent">Mismatched invoice #408</text>
+      <text x="10" y="28" class="stage-copy">Held for quick review</text>
     </g>
-
-    <text x="542" y="236" class="stage-copy">Filed &amp; posted to</text>
-    <text x="542" y="247" class="stage-copy">accounting ledger</text>
   </g>
 
-  <g id="footer">
-    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="22" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+  <!-- STAGE 6: "Filed + entered" (Bottom Right, End) -->
+  <g id="stage-6" class="node">
+    <rect x="478" y="312" width="146" height="74" rx="10" class="card-bg" />
+    <text x="488" y="328" class="stage-num">06 · FILED</text>
+    <text x="488" y="341" class="stage-title">Filed + entered</text>
+    <text x="488" y="357" class="stage-copy">Data in systems</text>
+    <text x="488" y="368" class="stage-copy">Docs stored</text>
+
+    <circle cx="598" cy="354" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 593 354 L 596.5 357.5 L 603.5 350.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>
