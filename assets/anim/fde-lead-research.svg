@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Lead Research</title>
-  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation handles lead research: an ideal-customer profile arrives, Clay and Apollo search companies with a scanning magnifier, LinkedIn enriches people with stacking profile cards, AI scores leads with a filling score ring, a human spot-checks, and a clean lead list is delivered into the CRM.</desc>
+  <desc id="svg-desc">Seven-stage sieve cascade workflow for lead research: ICP criteria trigger a four-stage narrowing sieve cascade where Perplexity and LinkedIn sweep companies, off-fit records fall off the sides, surviving companies are fit-checked, Claude identifies decision-makers, a data provider API verifies details and deduplicates, a human spot-checks sample rows, and the clean table delivers to Google Sheets or CRM.</desc>
 
   <style>
     svg {
@@ -14,262 +14,288 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 15px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 11px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 8.2px; fill: var(--muted); }
-    .tag-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.4px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.8px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
-    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+
+    .title-main { font-size: 13.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.6px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 6.9px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 9.2px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.9px; fill: var(--muted); }
+    .chip-text { font-size: 6.4px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.4px; font-weight: 700; fill: var(--accent); }
+
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .sieve-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-1 { offset-path: path("M 102 174 C 102 204, 128 204, 128 232"); animation: pkt1 9s linear infinite; }
-    .packet-2 { offset-path: path("M 218 278 C 248 278, 250 232, 250 194"); animation: pkt2 9s linear infinite; }
-    .packet-3 { offset-path: path("M 330 132 C 354 132, 354 188, 354 224"); animation: pkt3 9s linear infinite; }
-    .packet-4 { offset-path: path("M 440 280 C 468 280, 468 220, 468 178"); animation: pkt4 9s linear infinite; }
-    .packet-5 { offset-path: path("M 526 126 C 562 126, 562 182, 562 224"); animation: pkt5 9s linear infinite; }
+    .p-12 { offset-path: path("M 320 84 L 320 104"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 320 152 L 320 172"); animation: p23 9s linear infinite; }
+    .p-34 { offset-path: path("M 320 216 L 320 236"); animation: p34 9s linear infinite; }
+    .p-45 { offset-path: path("M 320 280 L 320 300"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 204 326 L 140 342"); animation: p56 9s linear infinite; }
+    .p-67 { offset-path: path("M 214 368 L 344 368"); animation: p67 9s linear infinite; }
 
-    @keyframes pkt1 { 0%, 10% { offset-distance: 0%; opacity: 0; } 12% { opacity: 1; } 20% { offset-distance: 100%; opacity: 1; } 22%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt2 { 0%, 25% { offset-distance: 0%; opacity: 0; } 27% { opacity: 1; } 35% { offset-distance: 100%; opacity: 1; } 37%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt3 { 0%, 44% { offset-distance: 0%; opacity: 0; } 46% { opacity: 1; } 54% { offset-distance: 100%; opacity: 1; } 56%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt4 { 0%, 62% { offset-distance: 0%; opacity: 0; } 64% { opacity: 1; } 72% { offset-distance: 100%; opacity: 1; } 74%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt5 { 0%, 76% { offset-distance: 0%; opacity: 0; } 78% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,10% { opacity:0; offset-distance:0%; } 12% { opacity:1; } 17% { opacity:1; offset-distance:100%; } 20%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,24% { opacity:0; offset-distance:0%; } 26% { opacity:1; } 31% { opacity:1; offset-distance:100%; } 34%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p34 { 0%,38% { opacity:0; offset-distance:0%; } 40% { opacity:1; } 45% { opacity:1; offset-distance:100%; } 48%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p45 { 0%,52% { opacity:0; offset-distance:0%; } 54% { opacity:1; } 59% { opacity:1; offset-distance:100%; } 62%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,65% { opacity:0; offset-distance:0%; } 67% { opacity:1; } 72% { opacity:1; offset-distance:100%; } 75%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p67 { 0%,78% { opacity:0; offset-distance:0%; } 80% { opacity:1; } 87% { opacity:1; offset-distance:100%; } 90%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-4 .highlight-ring { animation: lit4 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .sieve-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .sieve-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .sieve-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .sieve-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
+    #stage-7 .card-bg { animation: s7Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 15% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 30% { opacity: 0; } 35%, 48% { opacity: 1; } 54%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit4 { 0%, 48% { opacity: 0; } 53%, 66% { opacity: 1; } 72%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 66% { opacity: 0; } 71%, 80% { opacity: 1; } 86%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 80% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,14% { stroke: var(--accent); stroke-width: 1.7; } 18%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,14% { stroke: var(--line); stroke-width: 1.1; } 17%,29% { stroke: var(--accent); stroke-width: 1.7; } 33%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,28% { stroke: var(--line); stroke-width: 1.1; } 31%,43% { stroke: var(--accent); stroke-width: 1.7; } 47%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,42% { stroke: var(--line); stroke-width: 1.1; } 45%,57% { stroke: var(--accent); stroke-width: 1.7; } 61%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,56% { stroke: var(--line); stroke-width: 1.1; } 59%,70% { stroke: var(--accent); stroke-width: 1.7; } 74%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,69% { stroke: var(--line); stroke-width: 1.1; } 72%,83% { stroke: var(--accent); stroke-width: 1.7; } 87%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s7Hi { 0%,82% { stroke: var(--line); stroke-width: 1.1; } 86%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Criteria Chips Slot In */
+    .icp-1 { animation: icpA 9s ease-out infinite; }
+    .icp-2 { animation: icpB 9s ease-out infinite; }
+    .icp-3 { animation: icpC 9s ease-out infinite; }
+    .icp-4 { animation: icpD 9s ease-out infinite; }
+    @keyframes icpA { 0%,1% { opacity:0.2; transform:translateY(-4px); } 5%,90% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.2; } }
+    @keyframes icpB { 0%,3% { opacity:0.2; transform:translateY(-4px); } 7%,90% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.2; } }
+    @keyframes icpC { 0%,5% { opacity:0.2; transform:translateY(-4px); } 9%,90% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.2; } }
+    @keyframes icpD { 0%,7% { opacity:0.2; transform:translateY(-4px); } 11%,90% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.2; } }
 
-    /* Stage 2: Magnifier scanning rows inside Search */
-    .mag-scan { animation: magMove 9s ease-in-out infinite; }
-    @keyframes magMove {
-      0%, 16% { transform: translate(0px, 0px); opacity: 0.35; }
-      20% { opacity: 1; }
-      25% { transform: translate(12px, 8px); opacity: 1; }
-      30% { transform: translate(4px, 16px); opacity: 1; }
-      35%, 100% { transform: translate(0px, 0px); opacity: 0.35; }
-    }
+    /* Stage 2: Cloud Pours + Edge Rejects Fall Away */
+    .reject-l { animation: rejL 9s ease-in infinite; }
+    .reject-r { animation: rejR 9s ease-in infinite; }
+    @keyframes rejL { 0%,16% { opacity:0.75; transform:translate(0,0); } 28%,90% { opacity:0; transform:translate(-14px, 16px); } 98%,100% { opacity:0.75; transform:translate(0,0); } }
+    @keyframes rejR { 0%,16% { opacity:0.75; transform:translate(0,0); } 28%,90% { opacity:0; transform:translate(14px, 16px); } 98%,100% { opacity:0.75; transform:translate(0,0); } }
 
-    /* Stage 3: Profile cards stacking inside Enrich */
-    .prof-1 { animation: pr1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .prof-2 { animation: pr2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .prof-3 { animation: pr3 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    @keyframes pr1 { 0%, 32% { opacity: 0.2; transform: translateY(6px); } 37%, 94% { opacity: 0.95; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
-    @keyframes pr2 { 0%, 36% { opacity: 0.2; transform: translateY(6px); } 41%, 94% { opacity: 0.95; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
-    @keyframes pr3 { 0%, 40% { opacity: 0.2; transform: translateY(6px); } 45%, 94% { opacity: 0.95; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
+    /* Stage 3: Surviving Dots Grow + Gain Tick */
+    .fit-dot { transform-box: fill-box; transform-origin: center; animation: growDot 9s ease-out infinite; }
+    .fit-tick { stroke-dasharray: 12; stroke-dashoffset: 12; animation: fitCk 9s ease-out infinite; }
+    @keyframes growDot { 0%,28% { transform: scale(0.85); } 38%,90% { transform: scale(1.2); } 98%,100% { transform: scale(0.85); } }
+    @keyframes fitCk { 0%,30% { stroke-dashoffset: 12; } 40%,90% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 12; } }
 
-    /* Stage 4: Score ring filling inside Scored */
-    .score-ring { stroke-dasharray: 63; stroke-dashoffset: 63; animation: scoreFill 9s ease-out infinite; }
-    @keyframes scoreFill { 0%, 51% { stroke-dashoffset: 63; } 64%, 94% { stroke-dashoffset: 10; } 98%, 100% { stroke-dashoffset: 63; } }
+    /* Stage 4: Person Icons Pop Inside Dots */
+    .person-pop { transform-box: fill-box; transform-origin: center; animation: popP 9s ease-out infinite; }
+    @keyframes popP { 0%,42% { opacity: 0.25; transform: scale(0.6); } 52%,90% { opacity: 1; transform: scale(1); } 98%,100% { opacity: 0.25; transform: scale(0.6); } }
 
-    /* Stage 5: Self-drawing check */
-    .check-pop { transform-box: fill-box; transform-origin: center; animation: checkPop 9s ease-out infinite; }
-    .check-stroke { stroke-dasharray: 16; stroke-dashoffset: 16; animation: checkDraw 9s ease-out infinite; }
-    @keyframes checkPop { 0%, 70% { opacity: 0.25; transform: scale(0.75); } 74%, 94% { opacity: 1; transform: scale(1.05); } 98%, 100% { opacity: 0.25; transform: scale(0.75); } }
-    @keyframes checkDraw { 0%, 71% { stroke-dashoffset: 16; } 78%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 16; } }
+    /* Stage 5: Duplicates Merge + Shield Ticks */
+    .dup-l { animation: mergeL 9s ease-in-out infinite; }
+    .dup-r { animation: mergeR 9s ease-in-out infinite; }
+    .shield-tick { stroke-dasharray: 14; stroke-dashoffset: 14; animation: shCk 9s ease-out infinite; }
+    @keyframes mergeL { 0%,56% { transform: translateX(0px); } 64%,90% { transform: translateX(7px); } 98%,100% { transform: translateX(0px); } }
+    @keyframes mergeR { 0%,56% { transform: translateX(0px); opacity:1; } 64%,90% { transform: translateX(-7px); opacity:0; } 98%,100% { transform: translateX(0px); opacity:1; } }
+    @keyframes shCk { 0%,58% { stroke-dashoffset: 14; } 66%,90% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 14; } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 6: Magnifier Passes Over Rows */
+    .mag-glass { animation: magSweep 9s ease-in-out infinite; }
+    @keyframes magSweep { 0%,68% { transform: translateX(0px); } 78%,90% { transform: translateX(46px); } 98%,100% { transform: translateX(0px); } }
+
+    /* Stage 7: Table Rows Fill + End Tick */
+    .tbl-1 { transform-box: fill-box; transform-origin: left center; animation: tb1 9s ease-out infinite; }
+    .tbl-2 { transform-box: fill-box; transform-origin: left center; animation: tb2 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawFinal 9s ease-out infinite; }
+    @keyframes tb1 { 0%,82% { transform: scaleX(0.05); opacity: 0.25; } 88%,96% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(0.05); opacity: 0.25; } }
+    @keyframes tb2 { 0%,85% { transform: scaleX(0.05); opacity: 0.25; } 91%,96% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(0.05); opacity: 0.25; } }
+    @keyframes drawFinal { 0%,88% { stroke-dashoffset: 24; } 94%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 24; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="21" class="title-main">Lead Research &amp; Qualification</text>
+  <text x="620" y="21" text-anchor="end" class="method-text">ICP brief → 4-stage sieve → Sheets / CRM</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <!-- Flow Connectors -->
+  <path d="M 320 84 L 320 104" class="flow-path flow-accent" />
+  <path d="M 320 152 L 320 172" class="flow-path" />
+  <path d="M 320 216 L 320 236" class="flow-path flow-accent" />
+  <path d="M 320 280 L 320 300" class="flow-path" />
+  <path d="M 204 326 L 140 342" class="flow-path" />
+  <path d="M 214 368 L 344 368" class="flow-path flow-accent" />
 
-  <g id="header">
-    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
-    <text x="34" y="32" class="title-main">AI Automation for Lead Research</text>
-    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
-    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+  <!-- Travelling Packets -->
+  <circle r="3.2" class="packet p-12" />
+  <circle r="3.2" class="packet p-23" />
+  <circle r="3.2" class="packet p-34" />
+  <circle r="3.2" class="packet p-45" />
+  <circle r="3.2" class="packet p-56" />
+  <circle r="3.2" class="packet p-67" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(320, 94)">
+    <rect x="-24" y="-7.5" width="48" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">ICP brief</text>
+  </g>
+  <g transform="translate(320, 162)">
+    <rect x="-26" y="-7.5" width="52" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text">web sweep</text>
+  </g>
+  <g transform="translate(320, 226)">
+    <rect x="-26" y="-7.5" width="52" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">org lookup</text>
+  </g>
+  <g transform="translate(320, 290)">
+    <rect x="-38" y="-7.5" width="76" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text">data provider API</text>
+  </g>
+  <g transform="translate(279, 368)">
+    <rect x="-48" y="-8" width="96" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text-accent">→ Google Sheets / CRM</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
-    <path class="flow-path" d="M 218 278 C 248 278, 250 232, 250 194" />
-    <path class="flow-path" d="M 330 132 C 354 132, 354 188, 354 224" />
-    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
-    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
-  </g>
-
-  <g id="packets">
-    <circle class="packet packet-1" r="3.5" />
-    <circle class="packet packet-2" r="3.5" />
-    <circle class="packet packet-3" r="3.5" />
-    <circle class="packet packet-4" r="3.5" />
-    <circle class="packet packet-5" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: ICP In -->
+  <!-- STAGE 1: TRIGGER "Criteria set" (Top Centre) -->
   <g id="stage-1" class="node">
-    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
-    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
-    <text x="26" y="86" class="stage-num">01 · TASK IN</text>
-    <text x="26" y="101" class="stage-title">ICP criteria</text>
-    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <circle cx="38" cy="124" r="6" fill="none" stroke="var(--accent)" stroke-width="1" />
-    <circle cx="38" cy="124" r="2.2" fill="var(--accent)" />
-    <line x1="50" y1="121" x2="104" y2="121" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.3" stroke-linecap="round" />
-    <line x1="50" y1="127" x2="88" y2="127" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.3" stroke-linecap="round" />
-    <text x="26" y="152" class="stage-copy">Industry, size, role</text>
-    <text x="26" y="163" class="stage-copy">&amp; buying signals</text>
+    <rect x="190" y="34" width="260" height="50" rx="10" class="card-bg" />
+    <text x="200" y="48" class="stage-num">01 · TRIGGER</text>
+    <text x="262" y="48" class="stage-title">Criteria set</text>
+
+    <g class="icp-1"><rect x="200" y="57" width="54" height="16" rx="8" class="chip-bg" /><text x="227" y="67.5" text-anchor="middle" class="chip-text">Industry</text></g>
+    <g class="icp-2"><rect x="260" y="57" width="44" height="16" rx="8" class="chip-bg" /><text x="282" y="67.5" text-anchor="middle" class="chip-text">Size</text></g>
+    <g class="icp-3"><rect x="310" y="57" width="52" height="16" rx="8" class="chip-bg" /><text x="336" y="67.5" text-anchor="middle" class="chip-text">Region</text></g>
+    <g class="icp-4"><rect x="368" y="57" width="44" height="16" rx="8" class="chip-bg" /><text x="390" y="67.5" text-anchor="middle" class="chip-text-accent">Role</text></g>
   </g>
 
-  <!-- STAGE 2: Companies Searched (Magnifier scanning rows) -->
+  <!-- STAGE 2: "Companies swept" (Sieve 1, Widest) -->
   <g id="stage-2" class="node">
-    <rect x="92" y="232" width="126" height="114" rx="10" class="card-bg" />
-    <rect x="92" y="232" width="126" height="114" rx="10" class="highlight-ring" />
-    <text x="102" y="248" class="stage-num">02 · SEARCH</text>
-    <text x="102" y="263" class="stage-title">Companies searched</text>
-
-    <!-- Magnifier scanning rows -->
-    <g transform="translate(102, 272)">
-      <rect x="0" y="0" width="36" height="28" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="4" y="5" width="24" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.4" />
-      <rect x="4" y="12" width="28" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.6" />
-      <rect x="4" y="19" width="20" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.4" />
-      <g class="mag-scan">
-        <circle cx="10" cy="8" r="4" fill="none" stroke="var(--ink)" stroke-width="1.2" />
-        <line x1="13" y1="11" x2="16" y2="14" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round" />
-      </g>
-    </g>
-
-    <!-- Logos: Clay, Apollo -->
-    <g transform="translate(145, 274)">
-      <circle cx="4" cy="4.5" r="3.5" fill="var(--accent)" fill-opacity="0.65" />
-      <text x="11" y="7.5" class="brand-text">Clay</text>
-    </g>
-    <g transform="translate(145, 290)">
-      <polygon points="4.5,1 8,8 1,8" fill="none" stroke="var(--accent)" stroke-width="1.2" />
-      <text x="11" y="7.5" class="brand-text">Apollo</text>
-    </g>
+    <rect x="34" y="104" width="572" height="48" rx="10" class="sieve-bg" />
+    <text x="46" y="120" class="stage-num">02 · SIEVE 1</text>
+    <text x="46" y="133" class="stage-title">Companies swept</text>
 
     <g class="ai-badge">
-      <rect x="102" y="318" width="54" height="16" rx="8" class="pill-bg" />
-      <circle cx="111" cy="326" r="2.2" class="ai-pulse-dot" />
-      <text x="117" y="328.5" class="tag-text-accent">AI agent</text>
+      <rect x="488" y="111" width="52" height="14" rx="7" class="chip-bg" />
+      <text x="514" y="120.5" text-anchor="middle" class="chip-text-accent">Perplexity</text>
+      <rect x="544" y="111" width="48" height="14" rx="7" class="chip-bg" />
+      <text x="568" y="120.5" text-anchor="middle" class="chip-text-accent">LinkedIn</text>
     </g>
+
+    <!-- Cloud of Dots + Edge Rejects -->
+    <circle cx="176" cy="128" r="3" fill="var(--muted)" class="reject-l" />
+    <circle cx="192" cy="136" r="2.8" fill="var(--muted)" class="reject-l" />
+    <circle cx="240" cy="126" r="3.5" fill="var(--accent)" />
+    <circle cx="268" cy="134" r="3.5" fill="var(--accent)" />
+    <circle cx="296" cy="124" r="3.5" fill="var(--accent)" />
+    <circle cx="324" cy="134" r="3.5" fill="var(--accent)" />
+    <circle cx="352" cy="126" r="3.5" fill="var(--accent)" />
+    <circle cx="380" cy="134" r="3.5" fill="var(--accent)" />
+    <circle cx="408" cy="126" r="3.5" fill="var(--accent)" />
+    <circle cx="446" cy="128" r="3" fill="var(--muted)" class="reject-r" />
+    <circle cx="462" cy="136" r="2.8" fill="var(--muted)" class="reject-r" />
   </g>
 
-  <!-- STAGE 3: People Enriched (Profile cards stacking) -->
+  <!-- STAGE 3: "Fit checked" (Sieve 2) -->
   <g id="stage-3" class="node">
-    <rect x="192" y="62" width="138" height="132" rx="10" class="card-bg" />
-    <rect x="192" y="62" width="138" height="132" rx="10" class="highlight-ring" />
-    <text x="202" y="78" class="stage-num">03 · AI STAGE A</text>
-    <circle cx="316" cy="75" r="3" class="ai-pulse-dot" />
-    <text x="202" y="92" class="stage-title">People enriched</text>
-    <text x="202" y="104" class="stage-copy">Decision makers &amp; emails</text>
+    <rect x="92" y="172" width="456" height="44" rx="10" class="sieve-bg" />
+    <text x="104" y="188" class="stage-num">03 · SIEVE 2</text>
+    <text x="104" y="201" class="stage-title">Fit checked</text>
 
-    <!-- Profile cards stacking -->
-    <g transform="translate(202, 114)">
-      <rect x="0" y="0" width="36" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.7" class="prof-1" />
-      <rect x="2" y="12" width="36" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.32" stroke="var(--accent)" stroke-width="0.7" class="prof-2" />
-      <rect x="4" y="24" width="36" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.48" stroke="var(--accent)" stroke-width="0.7" class="prof-3" />
+    <!-- Surviving Dots Grow + Gain Ticks -->
+    <g transform="translate(232, 194)">
+      <circle cx="0" cy="0" r="8" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.2" class="fit-dot" />
+      <path d="M -3 0 L -1 2.5 L 3.5 -2.5" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" class="fit-tick" />
     </g>
-
-    <!-- Logo: LinkedIn -->
-    <g transform="translate(248, 124)">
-      <rect x="0.5" y="0.5" width="9" height="9" rx="2" fill="var(--accent)" />
-      <text x="2.2" y="7.5" fill="#ffffff" font-size="6.5" font-weight="800">in</text>
-      <text x="12" y="7.8" class="brand-text">LinkedIn</text>
+    <g transform="translate(284, 194)">
+      <circle cx="0" cy="0" r="8" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.2" class="fit-dot" />
+      <path d="M -3 0 L -1 2.5 L 3.5 -2.5" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" class="fit-tick" />
     </g>
-
-    <g class="ai-badge">
-      <rect x="200" y="162" width="76" height="15" rx="7.5" class="pill-bg" />
-      <text x="207" y="172" class="tag-text-accent">data enrichment</text>
+    <g transform="translate(356, 194)">
+      <circle cx="0" cy="0" r="8" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.2" class="fit-dot" />
+      <path d="M -3 0 L -1 2.5 L 3.5 -2.5" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" class="fit-tick" />
     </g>
+    <g transform="translate(408, 194)">
+      <circle cx="0" cy="0" r="8" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.2" class="fit-dot" />
+      <path d="M -3 0 L -1 2.5 L 3.5 -2.5" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" class="fit-tick" />
+    </g>
+    <text x="454" y="197" class="stage-copy">ICP match</text>
   </g>
 
-  <!-- STAGE 4: Leads Scored (Score ring filling) -->
+  <!-- STAGE 4: "People identified" (Sieve 3) -->
   <g id="stage-4" class="node">
-    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
-    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
-    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
-    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
-    <text x="312" y="254" class="stage-title">Leads scored</text>
-    <text x="312" y="266" class="stage-copy">Ranked by fit &amp; intent</text>
-
-    <!-- Score ring filling -->
-    <g transform="translate(314, 276)">
-      <circle cx="14" cy="14" r="10" fill="none" stroke="var(--line)" stroke-width="2.5" />
-      <circle cx="14" cy="14" r="10" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" transform="rotate(-90 14 14)" class="score-ring" />
-      <text x="8" y="17" font-size="7.5" font-weight="800" fill="var(--accent)">92</text>
-    </g>
-    <text x="348" y="293" class="stage-copy">Top-fit leads</text>
-    <text x="348" y="303" class="stage-copy">flagged first</text>
+    <rect x="150" y="236" width="340" height="44" rx="10" class="sieve-bg" />
+    <text x="162" y="252" class="stage-num">04 · SIEVE 3</text>
+    <text x="162" y="265" class="stage-title">People identified</text>
 
     <g class="ai-badge">
-      <rect x="312" y="326" width="42" height="16" rx="8" class="pill-bg" />
-      <circle cx="321" cy="334" r="2" class="ai-pulse-dot" />
-      <text x="327" y="336.5" class="tag-text-accent">LLM</text>
+      <rect x="434" y="243" width="44" height="14" rx="7" class="chip-bg" />
+      <text x="456" y="252.5" text-anchor="middle" class="chip-text-accent">Claude</text>
+    </g>
+
+    <!-- Person Icons Inside Dots -->
+    <g class="person-pop" transform="translate(274, 258)">
+      <circle cx="0" cy="0" r="10" fill="var(--accent)" fill-opacity="0.14" stroke="var(--accent)" stroke-width="1.1" />
+      <circle cx="0" cy="-2.5" r="2.5" fill="var(--accent)" />
+      <path d="M -4.5 5 C -4.5 2 4.5 2 4.5 5" fill="none" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" />
+    </g>
+    <g class="person-pop" transform="translate(366, 258)">
+      <circle cx="0" cy="0" r="10" fill="var(--accent)" fill-opacity="0.14" stroke="var(--accent)" stroke-width="1.1" />
+      <circle cx="0" cy="-2.5" r="2.5" fill="var(--accent)" />
+      <path d="M -4.5 5 C -4.5 2 4.5 2 4.5 5" fill="none" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" />
     </g>
   </g>
 
-  <!-- STAGE 5: Human Spot-Check -->
+  <!-- STAGE 5: "Details verified" (Sieve 4, Narrowest) -->
   <g id="stage-5" class="node">
-    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
-    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
-    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
-    <text x="426" y="100" class="stage-title">Human spot-check</text>
-    <text x="426" y="113" class="stage-copy">Rep verifies top</text>
-    <text x="426" y="123" class="stage-copy">accounts &amp; notes</text>
-    <g class="check-pop" transform="translate(494, 92)">
-      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-stroke" />
+    <rect x="204" y="300" width="232" height="40" rx="10" class="sieve-bg" />
+    <text x="214" y="314" class="stage-num">05 · SIEVE 4</text>
+    <text x="214" y="327" class="stage-title">Details verified</text>
+
+    <!-- Duplicate Dots Merge + Verification Shield -->
+    <circle cx="348" cy="320" r="5" fill="var(--accent)" fill-opacity="0.7" class="dup-l" />
+    <circle cx="362" cy="320" r="5" fill="var(--ink)" fill-opacity="0.45" class="dup-r" />
+
+    <g transform="translate(402, 320)">
+      <path d="M 0 -10 L 8 -6 V 1 C 8 6 0 10 0 10 C 0 10 -8 6 -8 1 V -6 Z" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.2" />
+      <path d="M -3.5 0 L -1 2.5 L 3.5 -2.5" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" class="shield-tick" />
     </g>
-    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
-    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
   </g>
 
-  <!-- STAGE 6: Clean Lead List into CRM -->
+  <!-- STAGE 6: "Human spot-check" (Bottom Left Tray Edge) -->
   <g id="stage-6" class="node">
-    <rect x="502" y="224" width="122" height="130" rx="10" class="card-bg" />
-    <rect x="502" y="224" width="122" height="130" rx="10" class="highlight-ring" />
-    <text x="512" y="240" class="stage-num">06 · DELIVERED</text>
-    <text x="512" y="254" class="stage-title">Clean CRM list</text>
+    <rect x="24" y="342" width="190" height="50" rx="10" class="card-bg" />
+    <text x="34" y="356" class="stage-num">06 · SPOT-CHECK</text>
+    <text x="34" y="368" class="stage-title">Human spot-check</text>
 
-    <g transform="translate(512, 263)">
-      <rect x="0" y="0" width="102" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="8" y="8" width="58" height="7" rx="2" fill="var(--accent)" fill-opacity="0.35" />
-      <rect x="8" y="19" width="58" height="7" rx="2" fill="var(--accent)" fill-opacity="0.25" />
-      <rect x="8" y="30" width="58" height="7" rx="2" fill="var(--accent)" fill-opacity="0.45" />
-      <circle cx="84" cy="22" r="8" fill="var(--accent)" />
-      <path d="M80.5 22 L83 24.5 L87.8 19.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    <g class="ai-badge">
+      <rect x="122" y="347" width="84" height="14" rx="7" class="chip-bg" />
+      <text x="164" y="356.5" text-anchor="middle" class="chip-text-accent">human-in-the-loop</text>
     </g>
 
-    <text x="512" y="324" class="stage-copy">Verified contacts</text>
-    <text x="512" y="335" class="stage-copy">synced to your CRM</text>
+    <!-- 3 Mini Rows + Magnifier Sweep -->
+    <rect x="34" y="376" width="86" height="3.5" rx="1.5" fill="var(--muted)" fill-opacity="0.45" />
+    <rect x="34" y="382" width="74" height="3.5" rx="1.5" fill="var(--muted)" fill-opacity="0.45" />
+    <g class="mag-glass" transform="translate(48, 379)">
+      <circle cx="0" cy="0" r="5" fill="none" stroke="var(--accent)" stroke-width="1.5" />
+      <line x1="3.5" y1="3.5" x2="7.5" y2="7.5" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" />
+    </g>
   </g>
 
-  <g id="footer">
-    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="24" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+  <!-- STAGE 7: "Clean list delivered" (Bottom Tray, End) -->
+  <g id="stage-7" class="node">
+    <rect x="344" y="342" width="272" height="50" rx="10" class="card-bg" />
+    <text x="354" y="356" class="stage-num">07 · DELIVERED</text>
+    <text x="354" y="368" class="stage-title">Clean list delivered</text>
+
+    <rect x="354" y="375" width="204" height="4" rx="2" fill="var(--ink)" fill-opacity="0.45" class="tbl-1" />
+    <rect x="354" y="382" width="176" height="4" rx="2" fill="var(--muted)" fill-opacity="0.45" class="tbl-2" />
+
+    <circle cx="592" cy="367" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 587 367 L 590.5 370.5 L 597.5 363.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>

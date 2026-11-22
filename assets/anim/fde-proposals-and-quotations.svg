@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Proposals &amp; Quotations</title>
-  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation builds proposals and quotations: a client brief arrives, past work and pricing are pulled from Notion, Claude and OpenAI draft the proposal with assembling document pages, a price table builds with a ticking running total, a human reviews, and the proposal is sent.</desc>
+  <desc id="svg-desc">Seven-stage document assembly line workflow for proposals and quotations: a client enquiry arrives via Zapier, a template is placed on the horizontal conveyor, Claude slots in sections from past proposals, client details fill from CRM, Microsoft Copilot builds pricing from the rate card, a human reviews and approves, and the final proposal seals to PDF and Google Drive.</desc>
 
   <style>
     svg {
@@ -14,243 +14,272 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 14.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 11px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 8.2px; fill: var(--muted); }
-    .tag-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.4px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.8px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
-    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+
+    .title-main { font-size: 13.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.6px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 6.7px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 8.6px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.6px; fill: var(--muted); }
+    .chip-text { font-size: 6.2px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.2px; font-weight: 700; fill: var(--accent); }
+    .counter-text { font-size: 8.2px; font-weight: 700; fill: var(--accent); }
+
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .bin-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 2; }
+    .belt-track { fill: var(--surface); stroke: var(--line); stroke-width: 1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-1 { offset-path: path("M 102 174 C 102 204, 128 204, 128 232"); animation: pkt1 9s linear infinite; }
-    .packet-2 { offset-path: path("M 218 278 C 248 278, 250 232, 250 194"); animation: pkt2 9s linear infinite; }
-    .packet-3 { offset-path: path("M 330 132 C 354 132, 354 188, 354 224"); animation: pkt3 9s linear infinite; }
-    .packet-4 { offset-path: path("M 440 280 C 468 280, 468 220, 468 178"); animation: pkt4 9s linear infinite; }
-    .packet-5 { offset-path: path("M 526 126 C 562 126, 562 182, 562 224"); animation: pkt5 9s linear infinite; }
+    .p-12 { offset-path: path("M 61 132 L 61 106 L 151 106 L 151 146"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 151 246 L 151 290 L 236 290 L 236 246"); animation: p23 9s linear infinite; }
+    .p-b3 { offset-path: path("M 243 84 L 243 132"); animation: pb3 9s linear infinite; }
+    .p-34 { offset-path: path("M 290 190 L 306 190"); animation: p34 9s linear infinite; }
+    .p-b4 { offset-path: path("M 352 84 L 352 132"); animation: pb4 9s linear infinite; }
+    .p-45 { offset-path: path("M 398 190 L 414 190"); animation: p45 9s linear infinite; }
+    .p-b5 { offset-path: path("M 462 84 L 462 132"); animation: pb5 9s linear infinite; }
+    .p-56 { offset-path: path("M 510 190 L 526 190"); animation: p56 9s linear infinite; }
+    .p-67 { offset-path: path("M 575 246 L 575 296"); animation: p67 9s linear infinite; }
 
-    @keyframes pkt1 { 0%, 10% { offset-distance: 0%; opacity: 0; } 12% { opacity: 1; } 20% { offset-distance: 100%; opacity: 1; } 22%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt2 { 0%, 25% { offset-distance: 0%; opacity: 0; } 27% { opacity: 1; } 35% { offset-distance: 100%; opacity: 1; } 37%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt3 { 0%, 44% { offset-distance: 0%; opacity: 0; } 46% { opacity: 1; } 54% { offset-distance: 100%; opacity: 1; } 56%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt4 { 0%, 62% { offset-distance: 0%; opacity: 0; } 64% { opacity: 1; } 72% { offset-distance: 100%; opacity: 1; } 74%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt5 { 0%, 76% { offset-distance: 0%; opacity: 0; } 78% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,8% { opacity:0; offset-distance:0%; } 10% { opacity:1; } 17% { opacity:1; offset-distance:100%; } 20%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,20% { opacity:0; offset-distance:0%; } 22% { opacity:1; } 29% { opacity:1; offset-distance:100%; } 32%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes pb3 { 0%,30% { opacity:0; offset-distance:0%; } 32% { opacity:1; } 38% { opacity:1; offset-distance:100%; } 41%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p34 { 0%,41% { opacity:0; offset-distance:0%; } 43% { opacity:1; } 47% { opacity:1; offset-distance:100%; } 50%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes pb4 { 0%,44% { opacity:0; offset-distance:0%; } 46% { opacity:1; } 52% { opacity:1; offset-distance:100%; } 55%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p45 { 0%,55% { opacity:0; offset-distance:0%; } 57% { opacity:1; } 61% { opacity:1; offset-distance:100%; } 64%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes pb5 { 0%,58% { opacity:0; offset-distance:0%; } 60% { opacity:1; } 66% { opacity:1; offset-distance:100%; } 69%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,69% { opacity:0; offset-distance:0%; } 71% { opacity:1; } 75% { opacity:1; offset-distance:100%; } 78%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p67 { 0%,80% { opacity:0; offset-distance:0%; } 82% { opacity:1; } 89% { opacity:1; offset-distance:100%; } 92%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-4 .highlight-ring { animation: lit4 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .card-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .card-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .card-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
+    #stage-7 .card-bg { animation: s7Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 15% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 30% { opacity: 0; } 35%, 48% { opacity: 1; } 54%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit4 { 0%, 48% { opacity: 0; } 53%, 66% { opacity: 1; } 72%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 66% { opacity: 0; } 71%, 80% { opacity: 1; } 86%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 80% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,13% { stroke: var(--accent); stroke-width: 1.7; } 17%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,14% { stroke: var(--line); stroke-width: 1.1; } 17%,28% { stroke: var(--accent); stroke-width: 1.7; } 32%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,28% { stroke: var(--line); stroke-width: 1.1; } 31%,44% { stroke: var(--accent); stroke-width: 1.7; } 48%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,43% { stroke: var(--line); stroke-width: 1.1; } 46%,58% { stroke: var(--accent); stroke-width: 1.7; } 62%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,57% { stroke: var(--line); stroke-width: 1.1; } 60%,72% { stroke: var(--accent); stroke-width: 1.7; } 76%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,71% { stroke: var(--line); stroke-width: 1.1; } 74%,84% { stroke: var(--accent); stroke-width: 1.7; } 88%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s7Hi { 0%,84% { stroke: var(--line); stroke-width: 1.1; } 87%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Email Lines Highlight */
+    .em-line { animation: emHl 9s ease-out infinite; }
+    @keyframes emHl { 0%,2% { opacity: 0.35; } 8%,90% { opacity: 1; } 98%,100% { opacity: 0.35; } }
 
-    /* Stage 3: Document pages assembling inside Draft */
-    .doc-p1 { animation: dp1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .doc-p2 { animation: dp2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    @keyframes dp1 { 0%, 33% { opacity: 0.2; transform: translate(-5px, -4px); } 40%, 94% { opacity: 0.95; transform: translate(0, 0); } 98%, 100% { opacity: 0.2; transform: translate(-5px, -4px); } }
-    @keyframes dp2 { 0%, 37% { opacity: 0.2; transform: translate(5px, 4px); } 44%, 94% { opacity: 0.95; transform: translate(0, 0); } 98%, 100% { opacity: 0.2; transform: translate(5px, 4px); } }
+    /* Stage 2: Empty Outline Fades In */
+    .doc-skel { animation: skelIn 9s ease-out infinite; }
+    @keyframes skelIn { 0%,16% { opacity: 0.2; } 24%,90% { opacity: 1; } 98%,100% { opacity: 0.2; } }
 
-    /* Stage 4: Price table rows adding up + running total ticking */
-    .pt-row-1 { animation: ptr1 9s ease-out infinite; }
-    .pt-row-2 { animation: ptr2 9s ease-out infinite; }
-    .tot-num { font-size: 8.5px; font-weight: 800; fill: var(--accent); }
-    .tot-1 { animation: tn1 9s linear infinite; }
-    .tot-2 { animation: tn2 9s linear infinite; }
-    .tot-3 { animation: tn3 9s linear infinite; }
-    @keyframes ptr1 { 0%, 51% { opacity: 0.2; } 55%, 94% { opacity: 0.95; } 98%, 100% { opacity: 0.2; } }
-    @keyframes ptr2 { 0%, 55% { opacity: 0.2; } 59%, 94% { opacity: 0.95; } 98%, 100% { opacity: 0.2; } }
-    @keyframes tn1 { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
-    @keyframes tn2 { 0%, 55% { opacity: 0; } 56%, 61% { opacity: 1; } 62%, 100% { opacity: 0; } }
-    @keyframes tn3 { 0%, 61% { opacity: 0; } 62%, 96% { opacity: 1; } 98%, 100% { opacity: 0; } }
+    /* Stage 3: Section Blocks Drop In */
+    .sec-drop-1 { animation: drop1 9s ease-out infinite; }
+    .sec-drop-2 { animation: drop2 9s ease-out infinite; }
+    @keyframes drop1 { 0%,31% { opacity:0.2; transform:translateY(-8px); } 38%,90% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.2; } }
+    @keyframes drop2 { 0%,35% { opacity:0.2; transform:translateY(-8px); } 42%,90% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.2; } }
 
-    /* Stage 5: Self-drawing check */
-    .check-pop { transform-box: fill-box; transform-origin: center; animation: checkPop 9s ease-out infinite; }
-    .check-stroke { stroke-dasharray: 16; stroke-dashoffset: 16; animation: checkDraw 9s ease-out infinite; }
-    @keyframes checkPop { 0%, 70% { opacity: 0.25; transform: scale(0.75); } 74%, 94% { opacity: 1; transform: scale(1.05); } 98%, 100% { opacity: 0.25; transform: scale(0.75); } }
-    @keyframes checkDraw { 0%, 71% { stroke-dashoffset: 16; } 78%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 16; } }
+    /* Stage 4: Blank Fields Fill */
+    .fld-1 { transform-box: fill-box; transform-origin: left center; animation: fl1 9s ease-out infinite; }
+    .fld-2 { transform-box: fill-box; transform-origin: left center; animation: fl2 9s ease-out infinite; }
+    @keyframes fl1 { 0%,46% { transform: scaleX(0.1); opacity:0.25; } 52%,90% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.1); opacity:0.25; } }
+    @keyframes fl2 { 0%,49% { transform: scaleX(0.1); opacity:0.25; } 55%,90% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.1); opacity:0.25; } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 5: Pricing Rows + Total Counts Up */
+    .tot-1 { opacity: 1; animation: t1 9s linear infinite; }
+    .tot-2 { opacity: 0; animation: t2 9s linear infinite; }
+    .tot-3 { opacity: 0; animation: t3 9s linear infinite; }
+    @keyframes t1 { 0%,62% { opacity:1; } 64%,95% { opacity:0; } 98%,100% { opacity:1; } }
+    @keyframes t2 { 0%,62% { opacity:0; } 64%,68% { opacity:1; } 70%,100% { opacity:0; } }
+    @keyframes t3 { 0%,68% { opacity:0; } 70%,94% { opacity:1; } 98%,100% { opacity:0; } }
+
+    /* Stage 6 and 7: Review Tick + Final Seal Tick */
+    .rev-tick { stroke-dasharray: 18; stroke-dashoffset: 18; animation: drawRev 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 26; stroke-dashoffset: 26; animation: drawFinal 9s ease-out infinite; }
+    @keyframes drawRev { 0%,74% { stroke-dashoffset: 18; } 81%,94% { stroke-dashoffset: 0; } 99%,100% { stroke-dashoffset: 18; } }
+    @keyframes drawFinal { 0%,88% { stroke-dashoffset: 26; } 94%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 26; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="21" class="title-main">Proposals &amp; Quotations</text>
+  <text x="620" y="21" text-anchor="end" class="method-text">Email → Zapier → feeder bins → PDF + Drive</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <!-- Three Overhead Feeder Bins -->
+  <g>
+    <rect x="196" y="42" width="94" height="42" rx="8" class="bin-bg" />
+    <text x="243" y="59" text-anchor="middle" class="stage-copy">FEEDER BIN 1</text>
+    <text x="243" y="72" text-anchor="middle" class="stage-title">Past proposals</text>
 
-  <g id="header">
-    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
-    <text x="34" y="32" class="title-main">AI Automation for Proposals &amp; Quotations</text>
-    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
-    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+    <rect x="306" y="42" width="92" height="42" rx="8" class="bin-bg" />
+    <text x="352" y="59" text-anchor="middle" class="stage-copy">FEEDER BIN 2</text>
+    <text x="352" y="72" text-anchor="middle" class="stage-title">Client details</text>
+
+    <rect x="414" y="42" width="96" height="42" rx="8" class="bin-bg" />
+    <text x="462" y="59" text-anchor="middle" class="stage-copy">FEEDER BIN 3</text>
+    <text x="462" y="72" text-anchor="middle" class="stage-title">Rate card</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
-    <path class="flow-path" d="M 218 278 C 248 278, 250 232, 250 194" />
-    <path class="flow-path" d="M 330 132 C 354 132, 354 188, 354 224" />
-    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
-    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
+  <!-- Horizontal Conveyor Belt -->
+  <rect x="16" y="254" width="608" height="12" rx="6" class="belt-track" />
+  <circle cx="32" cy="260" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="152" cy="260" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="272" cy="260" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="392" cy="260" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="512" cy="260" r="2.5" fill="var(--muted)" opacity="0.5" />
+  <circle cx="608" cy="260" r="2.5" fill="var(--muted)" opacity="0.5" />
+
+  <!-- Flow Connectors -->
+  <path d="M 61 132 L 61 106 L 151 106 L 151 146" class="flow-path" />
+  <path d="M 151 246 L 151 290 L 236 290 L 236 246" class="flow-path" />
+  <path d="M 243 84 L 243 132" class="flow-path flow-accent" />
+  <path d="M 290 190 L 306 190" class="flow-path flow-accent" />
+  <path d="M 352 84 L 352 132" class="flow-path flow-accent" />
+  <path d="M 398 190 L 414 190" class="flow-path flow-accent" />
+  <path d="M 462 84 L 462 132" class="flow-path flow-accent" />
+  <path d="M 510 190 L 526 190" class="flow-path" />
+  <path d="M 575 246 L 575 296" class="flow-path flow-accent" />
+
+  <!-- Travelling Packets -->
+  <circle r="3.1" class="packet p-12" />
+  <circle r="3.1" class="packet p-23" />
+  <circle r="3.1" class="packet p-b3" />
+  <circle r="3.1" class="packet p-34" />
+  <circle r="3.1" class="packet p-b4" />
+  <circle r="3.1" class="packet p-45" />
+  <circle r="3.1" class="packet p-b5" />
+  <circle r="3.1" class="packet p-56" />
+  <circle r="3.2" class="packet p-67" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(106, 106)">
+    <rect x="-40" y="-7.5" width="80" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text">New email → Zapier</text>
+  </g>
+  <g transform="translate(194, 290)">
+    <rect x="-34" y="-7.5" width="68" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text">template library</text>
+  </g>
+  <g transform="translate(243, 108)">
+    <rect x="-38" y="-7.5" width="76" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">from past proposals</text>
+  </g>
+  <g transform="translate(352, 108)">
+    <rect x="-26" y="-7.5" width="52" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">CRM record</text>
+  </g>
+  <g transform="translate(462, 108)">
+    <rect x="-30" y="-7.5" width="60" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">rate structure</text>
+  </g>
+  <g transform="translate(575, 272)">
+    <rect x="-32" y="-7.5" width="64" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">→ PDF + Drive</text>
   </g>
 
-  <g id="packets">
-    <circle class="packet packet-1" r="3.5" />
-    <circle class="packet packet-2" r="3.5" />
-    <circle class="packet packet-3" r="3.5" />
-    <circle class="packet packet-4" r="3.5" />
-    <circle class="packet packet-5" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: Client Brief In -->
+  <!-- STAGE 1: TRIGGER "Enquiry lands" -->
   <g id="stage-1" class="node">
-    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
-    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
-    <text x="26" y="86" class="stage-num">01 · TASK IN</text>
-    <text x="26" y="101" class="stage-title">Client brief in</text>
-    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="33" y1="119" x2="90" y2="119" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.4" stroke-linecap="round" />
-    <line x1="33" y1="127" x2="72" y2="127" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.4" stroke-linecap="round" />
-    <text x="26" y="152" class="stage-copy">Scope, timeline &amp;</text>
-    <text x="26" y="163" class="stage-copy">call notes</text>
+    <rect x="16" y="132" width="90" height="114" rx="9" class="card-bg" />
+    <text x="24" y="147" class="stage-num">01 · TRIGGER</text>
+    <text x="24" y="159" class="stage-title">Enquiry lands</text>
+    <rect x="24" y="170" width="74" height="44" rx="5" class="chip-bg" />
+    <path d="M 26 172 L 61 190 L 96 172" fill="none" stroke="var(--line)" stroke-width="1" />
+    <rect x="30" y="196" width="52" height="4" rx="2" fill="var(--accent)" class="em-line" />
+    <rect x="30" y="204" width="40" height="4" rx="2" fill="var(--ink)" fill-opacity="0.45" class="em-line" />
+    <text x="24" y="232" class="stage-copy">Client request</text>
   </g>
 
-  <!-- STAGE 2: Past Work & Pricing Pulled (Notion) -->
+  <!-- STAGE 2: "Template matched" -->
   <g id="stage-2" class="node">
-    <rect x="92" y="232" width="126" height="114" rx="10" class="card-bg" />
-    <rect x="92" y="232" width="126" height="114" rx="10" class="highlight-ring" />
-    <text x="102" y="248" class="stage-num">02 · RETRIEVE</text>
-    <text x="102" y="263" class="stage-title">Past work &amp; rates</text>
-    <text x="102" y="275" class="stage-copy">Matches case studies</text>
-
-    <!-- Logo: Notion -->
-    <g transform="translate(102, 286)">
-      <rect x="1" y="1" width="9" height="9" rx="1.5" fill="none" stroke="var(--accent)" stroke-width="1.2" />
-      <text x="3.2" y="7.8" fill="var(--ink)" font-size="6.5" font-weight="800">N</text>
-      <text x="14" y="8" class="brand-text">Notion</text>
-    </g>
-
-    <g class="ai-badge">
-      <rect x="102" y="318" width="42" height="16" rx="8" class="pill-bg" />
-      <circle cx="111" cy="326" r="2.2" class="ai-pulse-dot" />
-      <text x="117" y="328.5" class="tag-text-accent">RAG</text>
-    </g>
+    <rect x="118" y="146" width="66" height="100" rx="9" class="card-bg" />
+    <text x="125" y="160" class="stage-num">02 · BASE</text>
+    <text x="125" y="172" class="stage-title">Template</text>
+    <rect x="131" y="182" width="40" height="48" rx="4" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 2" class="doc-skel" />
+    <text x="151" y="208" text-anchor="middle" class="stage-copy">Doc</text>
   </g>
 
-  <!-- STAGE 3: Proposal Drafted (Document pages assembling) -->
+  <!-- STAGE 3: "Sections slotted in" -->
   <g id="stage-3" class="node">
-    <rect x="192" y="62" width="138" height="132" rx="10" class="card-bg" />
-    <rect x="192" y="62" width="138" height="132" rx="10" class="highlight-ring" />
-    <text x="202" y="78" class="stage-num">03 · AI STAGE A</text>
-    <circle cx="316" cy="75" r="3" class="ai-pulse-dot" />
-    <text x="202" y="92" class="stage-title">Proposal drafted</text>
-    <text x="202" y="104" class="stage-copy">Tailored scope &amp; plan</text>
-
-    <!-- Document pages assembling -->
-    <g transform="translate(202, 114)">
-      <rect x="0" y="0" width="22" height="28" rx="3" fill="var(--accent)" fill-opacity="0.22" stroke="var(--accent)" stroke-width="0.8" class="doc-p1" />
-      <rect x="10" y="4" width="22" height="28" rx="3" fill="var(--accent)" fill-opacity="0.38" stroke="var(--accent)" stroke-width="0.8" class="doc-p2" />
-    </g>
-
-    <!-- Logos: Claude, OpenAI -->
-    <g transform="translate(244, 116)">
-      <path d="M4.5 1 L4.5 8 M1 4.5 L8 4.5 M2 2 L7 7 M7 2 L2 7" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" />
-      <text x="12" y="7.5" class="brand-text">Claude</text>
-    </g>
-    <g transform="translate(244, 132)">
-      <polygon points="4.5,0.6 8,2.6 8,6.6 4.5,8.6 1,6.6 1,2.6" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <text x="12" y="7.5" class="brand-text">OpenAI</text>
-    </g>
-
+    <rect x="196" y="132" width="94" height="114" rx="9" class="card-bg" />
+    <text x="204" y="147" class="stage-num">03 · SECTIONS</text>
+    <text x="204" y="159" class="stage-title">Sections slotted</text>
     <g class="ai-badge">
-      <rect x="200" y="162" width="42" height="15" rx="7.5" class="pill-bg" />
-      <text x="211" y="172" class="tag-text-accent">LLM</text>
-      <rect x="246" y="162" width="64" height="15" rx="7.5" class="pill-bg" />
-      <text x="253" y="172" class="tag-text">generative AI</text>
+      <rect x="204" y="165" width="38" height="13" rx="6.5" class="chip-bg" />
+      <text x="223" y="174" text-anchor="middle" class="chip-text-accent">Claude</text>
     </g>
+    <!-- Growing Doc -->
+    <rect x="206" y="184" width="74" height="52" rx="4" class="chip-bg" />
+    <rect x="212" y="191" width="62" height="12" rx="3" fill="var(--accent)" fill-opacity="0.22" class="sec-drop-1" />
+    <rect x="212" y="207" width="62" height="12" rx="3" fill="var(--accent)" fill-opacity="0.35" class="sec-drop-2" />
+    <rect x="212" y="223" width="44" height="6" rx="2" fill="var(--ink)" fill-opacity="0.35" class="sec-drop-2" />
   </g>
 
-  <!-- STAGE 4: Price Table Built (Running total ticking) -->
+  <!-- STAGE 4: "Client details filled" -->
   <g id="stage-4" class="node">
-    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
-    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
-    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
-    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
-    <text x="312" y="254" class="stage-title">Price table built</text>
-
-    <!-- Price table rows + ticking total -->
-    <rect x="312" y="264" width="118" height="46" rx="5" fill="none" stroke="var(--line)" stroke-width="0.8" />
-    <rect x="318" y="270" width="64" height="4" rx="1.5" fill="var(--accent)" fill-opacity="0.5" class="pt-row-1" />
-    <rect x="318" y="278" width="54" height="4" rx="1.5" fill="var(--accent)" fill-opacity="0.7" class="pt-row-2" />
-    <line x1="318" y1="288" x2="424" y2="288" stroke="var(--line)" stroke-width="0.8" />
-    <text x="318" y="302" class="stage-copy">Total:</text>
-    <text x="350" y="302" class="tot-num tot-1">$4.2k</text>
-    <text x="350" y="302" class="tot-num tot-2">$8.5k</text>
-    <text x="350" y="302" class="tot-num tot-3">$12.4k</text>
-
-    <g class="ai-badge">
-      <rect x="312" y="326" width="54" height="16" rx="8" class="pill-bg" />
-      <circle cx="321" cy="334" r="2" class="ai-pulse-dot" />
-      <text x="327" y="336.5" class="tag-text-accent">AI agent</text>
-    </g>
+    <rect x="306" y="132" width="92" height="114" rx="9" class="card-bg" />
+    <text x="314" y="147" class="stage-num">04 · DETAILS</text>
+    <text x="314" y="159" class="stage-title">Client filled</text>
+    <rect x="314" y="170" width="76" height="66" rx="4" class="chip-bg" />
+    <text x="320" y="183" class="stage-copy">Name &amp; scope</text>
+    <rect x="320" y="189" width="62" height="5" rx="2" fill="var(--accent)" fill-opacity="0.65" class="fld-1" />
+    <rect x="320" y="199" width="54" height="5" rx="2" fill="var(--ink)" fill-opacity="0.45" class="fld-2" />
+    <rect x="320" y="209" width="48" height="5" rx="2" fill="var(--ink)" fill-opacity="0.45" class="fld-2" />
+    <rect x="320" y="219" width="58" height="5" rx="2" fill="var(--accent)" fill-opacity="0.45" class="fld-2" />
   </g>
 
-  <!-- STAGE 5: Human Review -->
+  <!-- STAGE 5: "Pricing built" -->
   <g id="stage-5" class="node">
-    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
-    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
-    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
-    <text x="426" y="100" class="stage-title">Human review</text>
-    <text x="426" y="113" class="stage-copy">Partner approves</text>
-    <text x="426" y="123" class="stage-copy">terms &amp; pricing</text>
-    <g class="check-pop" transform="translate(494, 92)">
-      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-stroke" />
+    <rect x="414" y="132" width="96" height="114" rx="9" class="card-bg" />
+    <text x="422" y="147" class="stage-num">05 · PRICING</text>
+    <text x="422" y="159" class="stage-title">Pricing built</text>
+    <g class="ai-badge">
+      <rect x="422" y="165" width="74" height="13" rx="6.5" class="chip-bg" />
+      <text x="459" y="174" text-anchor="middle" class="chip-text-accent">Microsoft Copilot</text>
     </g>
-    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
-    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
+    <rect x="422" y="184" width="80" height="52" rx="4" class="chip-bg" />
+    <rect x="428" y="191" width="66" height="4" rx="2" fill="var(--ink)" fill-opacity="0.4" />
+    <rect x="428" y="199" width="66" height="4" rx="2" fill="var(--ink)" fill-opacity="0.4" />
+    <text x="462" y="224" text-anchor="middle" class="counter-text tot-1">$4,200</text>
+    <text x="462" y="224" text-anchor="middle" class="counter-text tot-2">$8,600</text>
+    <text x="462" y="224" text-anchor="middle" class="counter-text tot-3">$12,400</text>
   </g>
 
-  <!-- STAGE 6: Proposal Sent -->
+  <!-- STAGE 6: "You review" (Conveyor End, Gate) -->
   <g id="stage-6" class="node">
-    <rect x="502" y="224" width="122" height="130" rx="10" class="card-bg" />
-    <rect x="502" y="224" width="122" height="130" rx="10" class="highlight-ring" />
-    <text x="512" y="240" class="stage-num">06 · DELIVERED</text>
-    <text x="512" y="254" class="stage-title">Proposal sent</text>
-    <g transform="translate(512, 263)">
-      <rect x="0" y="0" width="102" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="8" y="9" width="60" height="26" rx="3" fill="var(--accent)" fill-opacity="0.28" stroke="var(--accent)" stroke-width="0.8" />
-      <circle cx="84" cy="22" r="8" fill="var(--accent)" />
-      <path d="M80.5 22 L83 24.5 L87.8 19.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    <rect x="526" y="132" width="98" height="114" rx="9" class="card-bg" />
+    <text x="534" y="147" class="stage-num">06 · GATE</text>
+    <text x="534" y="159" class="stage-title">You review</text>
+    <g class="ai-badge">
+      <rect x="534" y="165" width="82" height="13" rx="6.5" class="chip-bg" />
+      <text x="575" y="174" text-anchor="middle" class="chip-text-accent">human-in-the-loop</text>
     </g>
-    <text x="512" y="324" class="stage-copy">Branded PDF + quote</text>
-    <text x="512" y="335" class="stage-copy">ready for e-signature</text>
+    <rect x="546" y="186" width="58" height="44" rx="4" class="chip-bg" />
+    <path d="M 566 208 L 572 214 L 584 202" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="rev-tick" />
   </g>
 
-  <g id="footer">
-    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="24" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+  <!-- STAGE 7: "Proposal ready" (Far Right Bottom, End) -->
+  <g id="stage-7" class="node">
+    <rect x="468" y="296" width="156" height="90" rx="10" class="card-bg" />
+    <text x="478" y="312" class="stage-num">07 · READY</text>
+    <text x="478" y="325" class="stage-title">Proposal ready</text>
+    <text x="478" y="341" class="stage-copy">Polished, sendable</text>
+    <text x="478" y="352" class="stage-copy">quote &amp; terms</text>
+
+    <circle cx="598" cy="348" r="12" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 592 348 L 596 352 L 604 344" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>

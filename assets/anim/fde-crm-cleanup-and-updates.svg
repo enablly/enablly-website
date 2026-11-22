@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for CRM Cleanup &amp; Updates</title>
-  <desc id="svg-desc">Animated branching workflow showing how Enablly's forward-deployed AI automation cleans CRM records: messy records arrive, a checker agent splits them into duplicates that slide together and merge, missing fields filled from the web with Clay, and clean records that pass through, merging into verification and a tidy CRM in HubSpot and Salesforce with a settling record counter.</desc>
+  <desc id="svg-desc">Five-stage three-path sorter with approval gate workflow for CRM cleanup: messy records sync from HubSpot or Salesforce, a Clay enrichment sorter diamond checks every record and splits them into three paths (duplicates paired, missing fields filled via web lookup, clean records passing straight through), all three paths hit a single human-in-the-loop approval gate bar, and clean records settle into the CRM cylinder.</desc>
 
   <style>
     svg {
@@ -14,255 +14,273 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 14.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 7.8px; fill: var(--muted); }
-    .branch-label { font-size: 7.2px; font-weight: 700; fill: var(--accent); }
-    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.6px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+
+    .title-main { font-size: 13.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.6px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 6.9px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 9px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.8px; fill: var(--muted); }
+    .chip-text { font-size: 6.3px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.3px; font-weight: 700; fill: var(--accent); }
+
     .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
-    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1.1; }
-    .card-rich { fill: var(--accent); fill-opacity: 0.09; stroke: var(--accent); stroke-opacity: 0.7; stroke-width: 1.1; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    .flow-branch-a { stroke: var(--accent); stroke-opacity: 0.55; }
-    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.8; }
-    .flow-branch-c { stroke: var(--accent); stroke-opacity: 1; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-in { offset-path: path("M 98 200 L 126 200"); animation: pktIn 9s linear infinite; }
-    .packet-a1 { offset-path: path("M 174 146 C 194 92, 232 92, 270 92"); animation: pktBranch 9s linear infinite; }
-    .packet-b1 { offset-path: path("M 222 200 L 270 200"); animation: pktBranch 9s linear infinite; }
-    .packet-c1 { offset-path: path("M 174 254 C 194 312, 232 312, 270 312"); animation: pktBranch 9s linear infinite; }
-    .packet-a2 { offset-path: path("M 396 92 C 414 92, 414 176, 424 188"); animation: pktMerge 9s linear infinite; }
-    .packet-b2 { offset-path: path("M 396 200 L 424 200"); animation: pktMerge 9s linear infinite; }
-    .packet-c2 { offset-path: path("M 396 312 C 414 312, 414 236, 424 226"); animation: pktMerge 9s linear infinite; }
-    .packet-out { offset-path: path("M 512 200 L 534 200"); animation: pktOut 9s linear infinite; }
+    .p-12 { offset-path: path("M 64 112 L 64 82 L 210 82 L 210 142"); animation: p12 9s linear infinite; }
+    .p-23a { offset-path: path("M 252 178 Q 274 96 304 96"); animation: p23 9s linear infinite; }
+    .p-23b { offset-path: path("M 268 210 L 304 210"); animation: p23 9s linear infinite; }
+    .p-23c { offset-path: path("M 252 242 Q 274 324 304 324"); animation: p23 9s linear infinite; }
+    .p-34a { offset-path: path("M 424 96 L 454 96"); animation: p34 9s linear infinite; }
+    .p-34b { offset-path: path("M 424 210 L 454 210"); animation: p34 9s linear infinite; }
+    .p-34c { offset-path: path("M 424 324 L 454 324"); animation: p34 9s linear infinite; }
+    .p-45a { offset-path: path("M 500 96 L 544 128"); animation: p45 9s linear infinite; }
+    .p-45b { offset-path: path("M 500 210 Q 522 210 544 166"); animation: p45 9s linear infinite; }
+    .p-45c { offset-path: path("M 500 324 Q 524 324 544 188"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 585 210 L 585 274"); animation: p56 9s linear infinite; }
 
-    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 40%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktMerge { 0%, 50% { offset-distance: 0%; opacity: 0; } 52% { opacity: 1; } 62% { offset-distance: 100%; opacity: 1; } 64%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,10% { opacity:0; offset-distance:0%; } 12% { opacity:1; } 20% { opacity:1; offset-distance:100%; } 23%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,29% { opacity:0; offset-distance:0%; } 31% { opacity:1; } 38% { opacity:1; offset-distance:100%; } 41%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p34 { 0%,56% { opacity:0; offset-distance:0%; } 58% { opacity:1; } 64% { opacity:1; offset-distance:100%; } 67%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p45 { 0%,71% { opacity:0; offset-distance:0%; } 73% { opacity:1; } 79% { opacity:1; offset-distance:100%; } 82%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,81% { opacity:0; offset-distance:0%; } 83% { opacity:1; } 89% { opacity:1; offset-distance:100%; } 92%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring, #stage-4 .highlight-ring, #branch-c .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .lane-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .card-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .card-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 54% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 58% { opacity: 0; } 62%, 76% { opacity: 1; } 82%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 78% { opacity: 0; } 82%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,16% { stroke: var(--accent); stroke-width: 1.7; } 20%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,16% { stroke: var(--line); stroke-width: 1.1; } 20%,34% { stroke: var(--accent); stroke-width: 1.7; } 38%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,34% { stroke: var(--line); stroke-width: 1.1; } 38%,60% { stroke: var(--accent); stroke-width: 1.7; } 64%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,60% { stroke: var(--line); stroke-width: 1.1; } 64%,76% { stroke: var(--accent); stroke-width: 1.7; } 80%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,75% { stroke: var(--line); stroke-width: 1.1; } 78%,86% { stroke: var(--accent); stroke-width: 1.7; } 90%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,85% { stroke: var(--line); stroke-width: 1.1; } 88%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Messy Cards Jitter */
+    .jitter-1 { animation: jitA 9s ease-in-out infinite; }
+    .jitter-2 { animation: jitB 9s ease-in-out infinite; }
+    @keyframes jitA { 0%,100% { transform: rotate(-2deg); } 6%,12% { transform: rotate(2deg); } 18% { transform: rotate(-2deg); } }
+    @keyframes jitB { 0%,100% { transform: translate(0,0); } 8% { transform: translate(2px,-2px); } 16% { transform: translate(0,0); } }
 
-    /* Branch A: Two duplicate cards sliding together and merging */
-    .dup-left { animation: dupL 9s ease-in-out infinite; }
-    .dup-right { animation: dupR 9s ease-in-out infinite; }
-    @keyframes dupL { 0%, 34% { transform: translateX(0px); } 46%, 94% { transform: translateX(10px); } 98%, 100% { transform: translateX(0px); } }
-    @keyframes dupR { 0%, 34% { transform: translateX(0px); opacity: 0.9; } 46%, 94% { transform: translateX(-10px); opacity: 0.25; } 98%, 100% { transform: translateX(0px); opacity: 0.9; } }
+    /* Stage 2: Scan Line Sweeps Diamond */
+    .scan-line { animation: scanD 9s ease-in-out infinite; opacity: 0; }
+    @keyframes scanD { 0%,17% { opacity:0; transform:translateY(-28px); } 22% { opacity:0.95; transform:translateY(-28px); } 31% { opacity:0.95; transform:translateY(28px); } 34%,100% { opacity:0; transform:translateY(28px); } }
 
-    /* Branch B: Empty fields filling in */
-    .fill-f1, .fill-f2 { transform-box: fill-box; transform-origin: left center; }
-    .fill-f1 { animation: ff1 9s ease-out infinite; }
-    .fill-f2 { animation: ff2 9s ease-out infinite; }
-    @keyframes ff1 { 0%, 36% { transform: scaleX(0.1); opacity: 0.2; } 45%, 94% { transform: scaleX(1); opacity: 0.95; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
-    @keyframes ff2 { 0%, 40% { transform: scaleX(0.1); opacity: 0.2; } 49%, 94% { transform: scaleX(1); opacity: 0.95; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
+    /* Stage 3: Three Lane Internal Animations */
+    .dup-a { animation: dupL 9s ease-in-out infinite; }
+    .dup-b { animation: dupR 9s ease-in-out infinite; }
+    @keyframes dupL { 0%,37% { transform: translateX(0px); } 45%,90% { transform: translateX(12px); } 98%,100% { transform: translateX(0px); } }
+    @keyframes dupR { 0%,37% { transform: translateX(0px); opacity:0.85; } 45%,90% { transform: translateX(-12px); opacity:0; } 98%,100% { transform: translateX(0px); opacity:0.85; } }
 
-    /* Stage 6: Record counter settling */
-    .rec-num { font-size: 9.5px; font-weight: 800; fill: var(--accent); }
-    .rec-1 { animation: rc1 9s linear infinite; }
-    .rec-2 { animation: rc2 9s linear infinite; }
-    .rec-3 { animation: rc3 9s linear infinite; }
-    @keyframes rc1 { 0%, 80% { opacity: 1; } 81%, 100% { opacity: 0; } }
-    @keyframes rc2 { 0%, 80% { opacity: 0; } 81%, 86% { opacity: 1; } 87%, 100% { opacity: 0; } }
-    @keyframes rc3 { 0%, 86% { opacity: 0; } 87%, 96% { opacity: 1; } 98%, 100% { opacity: 0; } }
+    .gap-1 { transform-box: fill-box; transform-origin: left center; animation: gp1 9s ease-out infinite; }
+    .gap-2 { transform-box: fill-box; transform-origin: left center; animation: gp2 9s ease-out infinite; }
+    @keyframes gp1 { 0%,41% { transform: scaleX(0.15); opacity:0.3; } 49%,90% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.15); opacity:0.3; } }
+    @keyframes gp2 { 0%,44% { transform: scaleX(0.15); opacity:0.3; } 52%,90% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.15); opacity:0.3; } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    .clean-glide { animation: clGlide 9s ease-in-out infinite; }
+    @keyframes clGlide { 0%,47% { transform: translateX(-14px); opacity:0.55; } 55%,90% { transform: translateX(14px); opacity:1; } 98%,100% { transform: translateX(-14px); opacity:0.55; } }
+
+    /* Stage 4: Gate Tick then Lift */
+    .gate-tick { stroke-dasharray: 20; stroke-dashoffset: 20; animation: gTick 9s ease-out infinite; }
+    .gate-bar { animation: gLift 9s ease-in-out infinite; }
+    @keyframes gTick { 0%,64% { stroke-dashoffset: 20; } 70%,92% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 20; } }
+    @keyframes gLift { 0%,69% { transform: translateY(0px); opacity:0.9; } 75%,90% { transform: translateY(-16px); opacity:0.35; } 98%,100% { transform: translateY(0px); opacity:0.9; } }
+
+    /* Stage 5: CRM Cylinder Rows Settle + End Tick */
+    .crm-row { animation: crmSettle 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawFinal 9s ease-out infinite; }
+    @keyframes crmSettle { 0%,81% { opacity:0.3; transform:translateY(-4px); } 88%,96% { opacity:1; transform:translateY(0); } 100% { opacity:0.3; } }
+    @keyframes drawFinal { 0%,88% { stroke-dashoffset: 24; } 94%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 24; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="21" class="title-main">CRM Cleanup &amp; Enrichment</text>
+  <text x="620" y="21" text-anchor="end" class="method-text">Messy sync → 3-way sorter → approval gate → clean CRM</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <!-- Flow Connectors -->
+  <path d="M 64 112 L 64 82 L 210 82 L 210 142" class="flow-path" />
+  <path d="M 252 178 Q 274 96 304 96" class="flow-path flow-accent" />
+  <path d="M 268 210 L 304 210" class="flow-path flow-accent" />
+  <path d="M 252 242 Q 274 324 304 324" class="flow-path" />
+  <path d="M 424 96 L 454 96" class="flow-path" />
+  <path d="M 424 210 L 454 210" class="flow-path flow-accent" />
+  <path d="M 424 324 L 454 324" class="flow-path" />
+  <path d="M 500 96 L 544 128" class="flow-path flow-accent" />
+  <path d="M 500 210 Q 522 210 544 166" class="flow-path flow-accent" />
+  <path d="M 500 324 Q 524 324 544 188" class="flow-path flow-accent" />
+  <path d="M 585 210 L 585 274" class="flow-path flow-accent" />
 
-  <g id="header">
-    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
-    <text x="32" y="30" class="title-main">AI Automation for CRM Cleanup &amp; Updates</text>
-    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
-    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  <!-- Travelling Packets -->
+  <circle r="3.2" class="packet p-12" />
+  <circle r="3.1" class="packet p-23a" />
+  <circle r="3.1" class="packet p-23b" />
+  <circle r="3.1" class="packet p-23c" />
+  <circle r="3.1" class="packet p-34a" />
+  <circle r="3.1" class="packet p-34b" />
+  <circle r="3.1" class="packet p-34c" />
+  <circle r="3.1" class="packet p-45a" />
+  <circle r="3.1" class="packet p-45b" />
+  <circle r="3.1" class="packet p-45c" />
+  <circle r="3.2" class="packet p-56" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(138, 82)">
+    <rect x="-48" y="-8" width="96" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text">HubSpot / Salesforce sync</text>
+  </g>
+  <g transform="translate(274, 118)">
+    <rect x="-24" y="-7.5" width="48" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">duplicates</text>
+  </g>
+  <g transform="translate(284, 210)">
+    <rect x="-15" y="-7.5" width="30" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">gaps</text>
+  </g>
+  <g transform="translate(274, 304)">
+    <rect x="-17" y="-7.5" width="34" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text">clean</text>
+  </g>
+  <g transform="translate(439, 194)">
+    <rect x="-24" y="-7.5" width="48" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">web lookup</text>
+  </g>
+  <g transform="translate(572, 242)">
+    <rect x="-46" y="-8" width="92" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">→ HubSpot / Salesforce</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 98 200 L 126 200" />
-    <path class="flow-path flow-branch-a" d="M 174 146 C 194 92, 232 92, 270 92" />
-    <path class="flow-path flow-branch-b" d="M 222 200 L 270 200" />
-    <path class="flow-path flow-branch-c" d="M 174 254 C 194 312, 232 312, 270 312" />
-    <path class="flow-path flow-branch-a" d="M 396 92 C 414 92, 414 176, 424 188" />
-    <path class="flow-path flow-branch-b" d="M 396 200 L 424 200" />
-    <path class="flow-path flow-branch-c" d="M 396 312 C 414 312, 414 236, 424 226" />
-    <path class="flow-path" d="M 512 200 L 534 200" />
-  </g>
-
-  <g id="branch-labels">
-    <text x="200" y="84" class="branch-label">A · Dupes</text>
-    <text x="223" y="193" class="branch-label">B · Missing</text>
-    <text x="206" y="326" class="branch-label">C · Clean</text>
-  </g>
-
-  <g id="packets">
-    <circle class="packet packet-in" r="3.2" />
-    <circle class="packet packet-a1" r="3.2" />
-    <circle class="packet packet-b1" r="3.2" />
-    <circle class="packet packet-c1" r="3.2" />
-    <circle class="packet packet-a2" r="3.2" />
-    <circle class="packet packet-b2" r="3.2" />
-    <circle class="packet packet-c2" r="3.2" />
-    <circle class="packet packet-out" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: Messy CRM Records In -->
+  <!-- STAGE 1: TRIGGER "Records flow in" (Far Left, Messy Pile) -->
   <g id="stage-1" class="node">
-    <rect x="14" y="148" width="84" height="104" rx="10" class="card-bg" />
-    <rect x="14" y="148" width="84" height="104" rx="10" class="highlight-ring" />
-    <text x="22" y="164" class="stage-num">01 · RECORDS</text>
-    <text x="22" y="178" class="stage-title">Messy CRM</text>
-    <rect x="22" y="186" width="68" height="24" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="28" y1="194" x2="68" y2="194" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.3" stroke-linecap="round" />
-    <line x1="28" y1="201" x2="54" y2="201" stroke="var(--accent)" stroke-opacity="0.6" stroke-width="1.3" stroke-linecap="round" />
-    <text x="22" y="224" class="stage-copy">Dupes, blanks &amp;</text>
-    <text x="22" y="235" class="stage-copy">stale contacts</text>
+    <rect x="16" y="112" width="102" height="186" rx="10" class="card-bg" />
+    <text x="25" y="128" class="stage-num">01 · TRIGGER</text>
+    <text x="25" y="140" class="stage-title">Records flow in</text>
+    <text x="25" y="152" class="stage-copy">Messy pile</text>
+
+    <!-- Overlapping / Jittering Messy Cards -->
+    <g class="jitter-1" transform="translate(25, 166)">
+      <rect x="0" y="0" width="76" height="30" rx="5" class="chip-bg" />
+      <text x="8" y="13" class="chip-text">Acme Co</text>
+      <text x="8" y="23" class="stage-copy">no email</text>
+    </g>
+    <g class="jitter-2" transform="translate(30, 192)">
+      <rect x="0" y="0" width="76" height="30" rx="5" class="chip-bg" />
+      <text x="8" y="13" class="chip-text">Acme Co</text>
+      <text x="8" y="23" class="stage-copy">duplicate</text>
+    </g>
+    <g class="jitter-1" transform="translate(25, 236)">
+      <rect x="0" y="0" width="76" height="30" rx="5" class="chip-bg" />
+      <text x="8" y="13" class="chip-text">Beta Ltd</text>
+      <text x="8" y="23" class="stage-copy">stale phone</text>
+    </g>
   </g>
 
-  <!-- STAGE 2: Checker Agent (Diamond) -->
+  <!-- STAGE 2: "Sorter checks every record" (Centre Diamond) -->
   <g id="stage-2" class="node">
-    <polygon points="174,146 222,200 174,254 126,200" class="card-bg" />
-    <polygon points="174,146 222,200 174,254 126,200" class="highlight-ring" />
-    <text x="148" y="186" class="stage-num">02 · CHECKER</text>
-    <text x="140" y="200" class="stage-title">Checker agent</text>
-    <text x="144" y="212" class="stage-copy">Sorts records</text>
+    <polygon points="210,142 268,210 210,278 152,210" class="card-bg" />
+    <text x="210" y="198" text-anchor="middle" class="stage-num">02 · SORTER</text>
+    <text x="210" y="211" text-anchor="middle" class="stage-title">Sorter checks</text>
+    <text x="210" y="222" text-anchor="middle" class="stage-copy">every record</text>
+
+    <line x1="170" y1="210" x2="250" y2="210" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="scan-line" />
+
     <g class="ai-badge">
-      <rect x="147" y="262" width="54" height="14" rx="7" class="pill-bg" />
-      <circle cx="155" cy="269" r="2" class="ai-pulse-dot" />
-      <text x="161" y="271.5" class="tag-text-accent">AI agent</text>
+      <rect x="168" y="286" width="84" height="15" rx="7.5" class="chip-bg" />
+      <text x="210" y="296" text-anchor="middle" class="chip-text-accent">Clay · enrichment</text>
     </g>
   </g>
 
-  <!-- STAGE 3: Branch A - Duplicates Merged -->
+  <!-- STAGE 3: THREE PATHS (One Stage Group, Three Lane Cards) -->
   <g id="stage-3" class="node">
-    <rect x="270" y="48" width="126" height="88" rx="10" class="card-soft" />
-    <rect x="270" y="48" width="126" height="88" rx="10" class="highlight-ring" />
-    <text x="279" y="62" class="stage-num">BRANCH A · MERGE</text>
-    <text x="279" y="75" class="stage-title">Duplicates merged</text>
+    <!-- Top Lane: Duplicates paired -->
+    <rect x="304" y="54" width="120" height="84" rx="9" class="card-bg lane-bg" />
+    <text x="313" y="69" class="stage-num">03A · DUPLICATES</text>
+    <text x="313" y="81" class="stage-title">Duplicates paired</text>
+    <rect x="318" y="92" width="38" height="28" rx="4" class="chip-bg dup-a" />
+    <rect x="364" y="92" width="38" height="28" rx="4" class="chip-bg dup-b" />
+    <text x="364" y="131" text-anchor="middle" class="stage-copy">2 → 1 merged</text>
 
-    <!-- Two duplicate cards sliding together -->
-    <g transform="translate(279, 84)">
-      <rect x="0" y="0" width="24" height="16" rx="3" fill="var(--accent)" fill-opacity="0.35" stroke="var(--accent)" stroke-width="0.8" class="dup-left" />
-      <rect x="20" y="0" width="24" height="16" rx="3" fill="var(--accent)" fill-opacity="0.35" stroke="var(--accent)" stroke-width="0.8" class="dup-right" />
-      <text x="52" y="11" class="stage-copy">2 → 1 record</text>
-    </g>
+    <!-- Middle Lane: Missing fields filled -->
+    <rect x="304" y="168" width="120" height="84" rx="9" class="card-bg lane-bg" />
+    <text x="313" y="183" class="stage-num">03B · GAPS</text>
+    <text x="313" y="195" class="stage-title">Missing fields filled</text>
+    <rect x="314" y="206" width="96" height="5" rx="2.5" fill="var(--accent)" fill-opacity="0.7" class="gap-1" />
+    <rect x="314" y="216" width="80" height="5" rx="2.5" fill="var(--ink)" fill-opacity="0.45" class="gap-2" />
+    <text x="313" y="238" class="stage-copy">From web + docs</text>
 
-    <g class="ai-badge">
-      <rect x="279" y="110" width="66" height="15" rx="7.5" class="pill-bg" />
-      <text x="285" y="120" class="tag-text-accent">deduplication</text>
+    <!-- Bottom Lane: Clean — passes through -->
+    <rect x="304" y="282" width="120" height="84" rx="9" class="card-bg lane-bg" />
+    <text x="313" y="297" class="stage-num">03C · CLEAN</text>
+    <text x="313" y="309" class="stage-title">Clean — passes</text>
+    <g class="clean-glide" transform="translate(342, 322)">
+      <rect x="0" y="0" width="44" height="24" rx="4" class="chip-bg" />
+      <path d="M 16 12 L 20 16 L 28 8" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" />
     </g>
+    <text x="364" y="358" text-anchor="middle" class="stage-copy">Straight through</text>
   </g>
 
-  <!-- STAGE 4: Branch B - Missing Fields Filled (Clay) -->
+  <!-- STAGE 4: "You approve changes" (Vertical Gate Bar, Right Centre) -->
   <g id="stage-4" class="node">
-    <rect x="270" y="152" width="126" height="96" rx="10" class="card-bg" />
-    <rect x="270" y="152" width="126" height="96" rx="10" class="highlight-ring" />
-    <text x="279" y="166" class="stage-num">BRANCH B · ENRICH</text>
-    <circle cx="384" cy="164" r="2.6" class="ai-pulse-dot" />
-    <text x="279" y="179" class="stage-title">Missing fields filled</text>
-
-    <!-- Empty fields filling in -->
-    <rect x="279" y="186" width="46" height="22" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-    <rect x="283" y="191" width="36" height="3.5" rx="1.5" fill="var(--accent)" class="fill-f1" />
-    <rect x="283" y="198" width="28" height="3.5" rx="1.5" fill="var(--accent)" fill-opacity="0.7" class="fill-f2" />
-
-    <!-- Logo: Clay -->
-    <g transform="translate(335, 192)">
-      <circle cx="4" cy="4.5" r="3.5" fill="var(--accent)" fill-opacity="0.7" />
-      <text x="11" y="7.5" class="brand-text">Clay</text>
-    </g>
-
+    <rect x="454" y="54" width="46" height="312" rx="10" class="card-bg" />
     <g class="ai-badge">
-      <rect x="279" y="220" width="76" height="15" rx="7.5" class="pill-bg" />
-      <text x="286" y="230" class="tag-text-accent">data enrichment</text>
+      <rect x="435" y="34" width="84" height="14" rx="7" class="chip-bg" />
+      <text x="477" y="43.5" text-anchor="middle" class="chip-text-accent">human-in-the-loop</text>
     </g>
+
+    <text x="477" y="76" text-anchor="middle" class="stage-num">04 · GATE</text>
+    <text x="477" y="90" text-anchor="middle" class="stage-title">Approve</text>
+
+    <!-- Gate Barrier + Tick -->
+    <rect x="466" y="130" width="22" height="140" rx="5" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.2" class="gate-bar" />
+    <circle cx="477" cy="316" r="11" fill="var(--accent)" fill-opacity="0.18" stroke="var(--accent)" stroke-width="1.2" />
+    <path d="M 472 316 L 475.5 319.5 L 482.5 312.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="gate-tick" />
   </g>
 
-  <!-- BRANCH C: Clean Pass Through -->
-  <g id="branch-c" class="node">
-    <rect x="270" y="268" width="126" height="82" rx="10" class="card-rich" />
-    <rect x="270" y="268" width="126" height="82" rx="10" class="highlight-ring" />
-    <text x="279" y="282" class="stage-num">BRANCH C · CLEAN</text>
-    <text x="279" y="295" class="stage-title">Clean records</text>
-    <text x="279" y="307" class="stage-copy">Verified &amp; passed</text>
-    <text x="279" y="317" class="stage-copy">straight through</text>
-  </g>
-
-  <!-- STAGE 5: Verify -->
+  <!-- STAGE 5: "CRM updated" (Far Right, Cylinder) -->
   <g id="stage-5" class="node">
-    <rect x="424" y="140" width="88" height="122" rx="10" class="card-bg" />
-    <rect x="424" y="140" width="88" height="122" rx="10" class="highlight-ring" />
-    <text x="432" y="156" class="stage-num">04 · VERIFY</text>
-    <text x="432" y="170" class="stage-title">Verify</text>
-    <text x="432" y="182" class="stage-copy">Ops lead approves</text>
-    <text x="432" y="192" class="stage-copy">bulk updates</text>
-    <circle cx="468" cy="212" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-    <path d="M464 212 L466.8 214.8 L472.2 209.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" />
-    <rect x="431" y="234" width="74" height="15" rx="7.5" class="pill-bg" />
-    <text x="436" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
+    <path d="M 544 76 V 196 A 41 12 0 0 0 626 196 V 76 Z" class="card-bg" />
+    <ellipse cx="585" cy="76" rx="41" ry="12" class="card-bg" />
+
+    <text x="585" y="104" text-anchor="middle" class="stage-num">05 · CRM</text>
+    <text x="585" y="117" text-anchor="middle" class="stage-title">CRM updated</text>
+
+    <!-- Clean Settling Rows -->
+    <g class="crm-row">
+      <rect x="556" y="130" width="58" height="5" rx="2.5" fill="var(--accent)" fill-opacity="0.6" />
+      <rect x="556" y="140" width="52" height="5" rx="2.5" fill="var(--ink)" fill-opacity="0.45" />
+      <rect x="556" y="150" width="56" height="5" rx="2.5" fill="var(--ink)" fill-opacity="0.45" />
+    </g>
+    <text x="585" y="176" text-anchor="middle" class="stage-copy">1 record / acct</text>
   </g>
 
-  <!-- STAGE 6: Tidy CRM (HubSpot, Salesforce + Settling Record Counter) -->
+  <!-- STAGE 6: "Pipeline you can trust" (Far Right Bottom, End) -->
   <g id="stage-6" class="node">
-    <rect x="534" y="136" width="94" height="130" rx="10" class="card-bg" />
-    <rect x="534" y="136" width="94" height="130" rx="10" class="highlight-ring" />
-    <text x="542" y="152" class="stage-num">05 · TIDY CRM</text>
-    <text x="542" y="166" class="stage-title">Synced &amp; clean</text>
+    <rect x="516" y="274" width="112" height="114" rx="10" class="card-bg" />
+    <text x="525" y="290" class="stage-num">06 · TRUSTED</text>
+    <text x="525" y="303" class="stage-title">Pipeline you</text>
+    <text x="525" y="314" class="stage-title">can trust</text>
 
-    <!-- Record counter settling -->
-    <rect x="542" y="174" width="78" height="24" rx="5" fill="var(--accent)" fill-opacity="0.1" stroke="var(--line)" stroke-width="0.7" />
-    <text x="548" y="190" class="rec-num rec-1">1,420</text>
-    <text x="548" y="190" class="rec-num rec-2">1,180</text>
-    <text x="548" y="190" class="rec-num rec-3">1,142</text>
-    <text x="582" y="189" class="stage-copy">clean</text>
+    <text x="525" y="332" class="stage-copy">Open deals only</text>
+    <text x="525" y="343" class="stage-copy">Follow-ups set</text>
+    <text x="525" y="354" class="stage-copy">Stale ones cleared</text>
 
-    <!-- Logos: HubSpot, Salesforce -->
-    <g transform="translate(542, 208)">
-      <circle cx="4" cy="4.5" r="2.2" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <circle cx="4" cy="1" r="1" fill="var(--accent)" />
-      <text x="11" y="7" class="brand-text">HubSpot</text>
-    </g>
-    <g transform="translate(542, 224)">
-      <path d="M2 6.5 A2.5 2.5 0 0 1 4 2.5 A3 3 0 0 1 9 4 A2 2 0 0 1 8.5 7.5 Z" fill="var(--accent)" fill-opacity="0.7" />
-      <text x="12" y="7" class="brand-text">Salesforce</text>
-    </g>
-  </g>
-
-  <g id="footer">
-    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="22" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+    <circle cx="604" cy="368" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 599 368 L 602.5 371.5 L 609.5 364.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Email Campaigns</title>
-  <desc id="svg-desc">Animated branching workflow showing how Enablly's forward-deployed AI automation runs email campaigns: a campaign brief arrives, a segment agent visibly splits list rows into three branches (New leads, Existing customers, Dormant contacts) with tailored copy via Claude and HubSpot, all merge into Send with streaming envelope packets, and a results dashboard shows growing open-rate bars.</desc>
+  <desc id="svg-desc">Six-stage segment branch-and-merge workflow for email campaigns: a contact list arrives from HubSpot via webhook, Claude groups contacts by behaviour into three parallel audience lanes (new leads, active customers, dormant), each lane drafts its own subject line, the three versions merge into Mailchimp or Brevo, a human approves copy, audience and links, and the campaign queues for scheduled send.</desc>
 
   <style>
     svg {
@@ -14,262 +14,308 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 14.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 7.8px; fill: var(--muted); }
-    .branch-label { font-size: 7.2px; font-weight: 700; fill: var(--accent); }
-    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.6px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+
+    .title-main { font-size: 14px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.8px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 7px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 9.2px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.9px; fill: var(--muted); }
+    .chip-text { font-size: 6.4px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.4px; font-weight: 700; fill: var(--accent); }
+    .counter-text { font-size: 9px; font-weight: 700; fill: var(--accent); }
+
     .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
-    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1.1; }
-    .card-rich { fill: var(--accent); fill-opacity: 0.09; stroke: var(--accent); stroke-opacity: 0.7; stroke-width: 1.1; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    .flow-branch-a { stroke: var(--accent); stroke-opacity: 0.55; }
-    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.8; }
-    .flow-branch-c { stroke: var(--accent); stroke-opacity: 1; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-in { offset-path: path("M 98 200 L 126 200"); animation: pktIn 9s linear infinite; }
-    .packet-a1 { offset-path: path("M 174 146 C 194 92, 232 92, 270 92"); animation: pktBranch 9s linear infinite; }
-    .packet-b1 { offset-path: path("M 222 200 L 270 200"); animation: pktBranch 9s linear infinite; }
-    .packet-c1 { offset-path: path("M 174 254 C 194 312, 232 312, 270 312"); animation: pktBranch 9s linear infinite; }
-    .packet-a2 { offset-path: path("M 396 92 C 414 92, 414 176, 424 188"); animation: pktMerge 9s linear infinite; }
-    .packet-b2 { offset-path: path("M 396 200 L 424 200"); animation: pktMerge 9s linear infinite; }
-    .packet-c2 { offset-path: path("M 396 312 C 414 312, 414 236, 424 226"); animation: pktMerge 9s linear infinite; }
-    .packet-out { offset-path: path("M 512 200 L 534 200"); animation: pktOut 9s linear infinite; }
+    .p-12 { offset-path: path("M 108 92 L 192 92 L 192 128"); animation: p12 9s linear infinite; }
+    .p-23a { offset-path: path("M 238 164 Q 258 95 276 95"); animation: p23 9s linear infinite; }
+    .p-23b { offset-path: path("M 238 205 L 276 205"); animation: p23 9s linear infinite; }
+    .p-23c { offset-path: path("M 238 246 Q 258 311 276 311"); animation: p23 9s linear infinite; }
+    .p-34a { offset-path: path("M 388 95 Q 406 95 426 174"); animation: p34 9s linear infinite; }
+    .p-34b { offset-path: path("M 388 205 L 426 205"); animation: p34 9s linear infinite; }
+    .p-34c { offset-path: path("M 388 311 Q 406 311 426 234"); animation: p34 9s linear infinite; }
+    .p-45 { offset-path: path("M 466 136 L 466 96 L 522 96"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 574 148 L 574 256"); animation: p56 9s linear infinite; }
 
-    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 40%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktMerge { 0%, 50% { offset-distance: 0%; opacity: 0; } 52% { opacity: 1; } 62% { offset-distance: 100%; opacity: 1; } 64%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,10% { opacity:0; offset-distance:0%; } 12% { opacity:1; } 19% { opacity:1; offset-distance:100%; } 22%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,28% { opacity:0; offset-distance:0%; } 30% { opacity:1; } 36% { opacity:1; offset-distance:100%; } 39%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p34 { 0%,50% { opacity:0; offset-distance:0%; } 52% { opacity:1; } 59% { opacity:1; offset-distance:100%; } 62%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p45 { 0%,64% { opacity:0; offset-distance:0%; } 66% { opacity:1; } 73% { opacity:1; offset-distance:100%; } 76%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,80% { opacity:0; offset-distance:0%; } 82% { opacity:1; } 89% { opacity:1; offset-distance:100%; } 92%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring, #stage-4 .highlight-ring, #branch-c .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .lane-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .card-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .card-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 54% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 58% { opacity: 0; } 62%, 76% { opacity: 1; } 82%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 78% { opacity: 0; } 82%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,16% { stroke: var(--accent); stroke-width: 1.7; } 20%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,15% { stroke: var(--line); stroke-width: 1.1; } 19%,33% { stroke: var(--accent); stroke-width: 1.7; } 37%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,33% { stroke: var(--line); stroke-width: 1.1; } 37%,55% { stroke: var(--accent); stroke-width: 1.7; } 59%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,54% { stroke: var(--line); stroke-width: 1.1; } 58%,70% { stroke: var(--accent); stroke-width: 1.7; } 74%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,70% { stroke: var(--line); stroke-width: 1.1; } 74%,86% { stroke: var(--accent); stroke-width: 1.7; } 90%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,84% { stroke: var(--line); stroke-width: 1.1; } 88%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Contact Rows Stack + Counter Ticks */
+    .row-1 { animation: rw1 9s ease-out infinite; }
+    .row-2 { animation: rw2 9s ease-out infinite; }
+    .row-3 { animation: rw3 9s ease-out infinite; }
+    @keyframes rw1 { 0%,2% { opacity: 0.2; transform: translateY(6px); } 8%,90% { opacity: 1; transform: translateY(0px); } 98%,100% { opacity: 0.2; transform: translateY(6px); } }
+    @keyframes rw2 { 0%,5% { opacity: 0.2; transform: translateY(6px); } 11%,90% { opacity: 1; transform: translateY(0px); } 98%,100% { opacity: 0.2; transform: translateY(6px); } }
+    @keyframes rw3 { 0%,8% { opacity: 0.2; transform: translateY(6px); } 14%,90% { opacity: 1; transform: translateY(0px); } 98%,100% { opacity: 0.2; transform: translateY(6px); } }
 
-    /* Stage 2: List rows visibly splitting inside Segment node */
-    .seg-row-1 { animation: sr1 9s ease-out infinite; }
-    .seg-row-3 { animation: sr3 9s ease-out infinite; }
-    @keyframes sr1 { 0%, 18% { transform: translateY(0); } 26%, 94% { transform: translateY(-4px); } 98%, 100% { transform: translateY(0); } }
-    @keyframes sr3 { 0%, 18% { transform: translateY(0); } 26%, 94% { transform: translateY(4px); } 98%, 100% { transform: translateY(0); } }
+    .cnt-1 { opacity: 1; animation: c1 9s linear infinite; }
+    .cnt-2 { opacity: 0; animation: c2 9s linear infinite; }
+    .cnt-3 { opacity: 0; animation: c3 9s linear infinite; }
+    @keyframes c1 { 0%,6% { opacity: 1; } 8%,95% { opacity: 0; } 98%,100% { opacity: 1; } }
+    @keyframes c2 { 0%,6% { opacity: 0; } 8%,13% { opacity: 1; } 15%,100% { opacity: 0; } }
+    @keyframes c3 { 0%,13% { opacity: 0; } 15%,94% { opacity: 1; } 98%,100% { opacity: 0; } }
 
-    /* Stage 5: Envelope packets streaming inside Send */
-    .env-stream-1 { animation: env1 1.5s linear infinite; }
-    .env-stream-2 { animation: env1 1.5s linear infinite 0.75s; }
-    @keyframes env1 {
-      0% { transform: translateX(-8px); opacity: 0; }
-      25% { opacity: 1; }
-      75% { opacity: 1; }
-      100% { transform: translateX(30px); opacity: 0; }
-    }
+    /* Stage 2: Dots Sort into 3 Groups */
+    .dot-g1 { animation: dg1 9s ease-in-out infinite; }
+    .dot-g2 { animation: dg2 9s ease-in-out infinite; }
+    .dot-g3 { animation: dg3 9s ease-in-out infinite; }
+    @keyframes dg1 { 0%,18% { transform: translate(12px, 14px); } 28%,90% { transform: translate(0px, 0px); } 98%,100% { transform: translate(12px, 14px); } }
+    @keyframes dg2 { 0%,20% { transform: translate(-10px, 4px); } 30%,90% { transform: translate(0px, 0px); } 98%,100% { transform: translate(-10px, 4px); } }
+    @keyframes dg3 { 0%,22% { transform: translate(10px, -14px); } 32%,90% { transform: translate(0px, 0px); } 98%,100% { transform: translate(10px, -14px); } }
 
-    /* Stage 6: Open-rate bars growing inside Results */
-    .open-b1, .open-b2, .open-b3 { transform-box: fill-box; transform-origin: left center; }
-    .open-b1 { animation: ob1 9s ease-out infinite; }
-    .open-b2 { animation: ob2 9s ease-out infinite; }
-    .open-b3 { animation: ob3 9s ease-out infinite; }
-    @keyframes ob1 { 0%, 78% { transform: scaleX(0.15); } 86%, 95% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0.15); } }
-    @keyframes ob2 { 0%, 80% { transform: scaleX(0.15); } 88%, 95% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0.15); } }
-    @keyframes ob3 { 0%, 82% { transform: scaleX(0.15); } 90%, 95% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0.15); } }
+    /* Stage 3: Staggered Subject Lines Type in 3 Parallel Lanes */
+    .sub-1 { transform-box: fill-box; transform-origin: left center; animation: sb1 9s ease-out infinite; }
+    .sub-2 { transform-box: fill-box; transform-origin: left center; animation: sb2 9s ease-out infinite; }
+    .sub-3 { transform-box: fill-box; transform-origin: left center; animation: sb3 9s ease-out infinite; }
+    @keyframes sb1 { 0%,37% { transform: scaleX(0.05); opacity: 0.25; } 44%,90% { transform: scaleX(1); opacity: 1; } 98%,100% { transform: scaleX(0.05); opacity: 0.25; } }
+    @keyframes sb2 { 0%,41% { transform: scaleX(0.05); opacity: 0.25; } 48%,90% { transform: scaleX(1); opacity: 1; } 98%,100% { transform: scaleX(0.05); opacity: 0.25; } }
+    @keyframes sb3 { 0%,45% { transform: scaleX(0.05); opacity: 0.25; } 52%,90% { transform: scaleX(1); opacity: 1; } 98%,100% { transform: scaleX(0.05); opacity: 0.25; } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 4: Three Lane Cards Slide Together into Envelope */
+    .m-card-1 { animation: mc1 9s ease-in-out infinite; }
+    .m-card-3 { animation: mc3 9s ease-in-out infinite; }
+    @keyframes mc1 { 0%,56% { transform: translateY(-8px); opacity: 0.45; } 64%,92% { transform: translateY(0px); opacity: 1; } 98%,100% { transform: translateY(-8px); opacity: 0.45; } }
+    @keyframes mc3 { 0%,56% { transform: translateY(8px); opacity: 0.45; } 64%,92% { transform: translateY(0px); opacity: 1; } 98%,100% { transform: translateY(8px); opacity: 0.45; } }
+
+    /* Stage 5 and 6: Checklist Ticks and Final Queue Tick */
+    .chk-1 { stroke-dasharray: 16; stroke-dashoffset: 16; animation: ck1 9s ease-out infinite; }
+    .chk-2 { stroke-dasharray: 16; stroke-dashoffset: 16; animation: ck2 9s ease-out infinite; }
+    .chk-3 { stroke-dasharray: 16; stroke-dashoffset: 16; animation: ck3 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 26; stroke-dashoffset: 26; animation: drawFinal 9s ease-out infinite; }
+    @keyframes ck1 { 0%,73% { stroke-dashoffset: 16; } 77%,94% { stroke-dashoffset: 0; } 99%,100% { stroke-dashoffset: 16; } }
+    @keyframes ck2 { 0%,76% { stroke-dashoffset: 16; } 80%,94% { stroke-dashoffset: 0; } 99%,100% { stroke-dashoffset: 16; } }
+    @keyframes ck3 { 0%,79% { stroke-dashoffset: 16; } 83%,94% { stroke-dashoffset: 0; } 99%,100% { stroke-dashoffset: 16; } }
+    @keyframes drawFinal { 0%,88% { stroke-dashoffset: 26; } 94%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 26; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="23" class="title-main">Email Campaigns &amp; Segmentation</text>
+  <text x="620" y="23" text-anchor="end" class="method-text">HubSpot list → 3 segment lanes → Mailchimp / Brevo</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <!-- Flow Connectors -->
+  <path d="M 108 92 L 192 92 L 192 128" class="flow-path" />
+  <path d="M 238 164 Q 258 95 276 95" class="flow-path flow-accent" />
+  <path d="M 238 205 L 276 205" class="flow-path flow-accent" />
+  <path d="M 238 246 Q 258 311 276 311" class="flow-path flow-accent" />
+  <path d="M 388 95 Q 406 95 426 174" class="flow-path" />
+  <path d="M 388 205 L 426 205" class="flow-path" />
+  <path d="M 388 311 Q 406 311 426 234" class="flow-path" />
+  <path d="M 466 136 L 466 96 L 522 96" class="flow-path flow-accent" />
+  <path d="M 574 148 L 574 256" class="flow-path flow-accent" />
 
-  <g id="header">
-    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
-    <text x="32" y="30" class="title-main">AI Automation for Email Campaigns</text>
-    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
-    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  <!-- Travelling Packets -->
+  <circle r="3.4" class="packet p-12" />
+  <circle r="3.2" class="packet p-23a" />
+  <circle r="3.2" class="packet p-23b" />
+  <circle r="3.2" class="packet p-23c" />
+  <circle r="3.2" class="packet p-34a" />
+  <circle r="3.2" class="packet p-34b" />
+  <circle r="3.2" class="packet p-34c" />
+  <circle r="3.4" class="packet p-45" />
+  <circle r="3.4" class="packet p-56" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(158, 92)">
+    <rect x="-46" y="-8" width="92" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text">HubSpot export · webhook</text>
+  </g>
+  <g transform="translate(254, 134)">
+    <rect x="-32" y="-8" width="64" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text-accent">behaviour data</text>
+  </g>
+  <g transform="translate(406, 205)">
+    <rect x="-34" y="-8" width="68" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text">draft per segment</text>
+  </g>
+  <g transform="translate(466, 96)">
+    <rect x="-42" y="-8" width="84" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text-accent">→ Mailchimp / Brevo</text>
+  </g>
+  <g transform="translate(574, 202)">
+    <rect x="-46" y="-8" width="92" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.5" text-anchor="middle" class="chip-text">scheduled on your word</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 98 200 L 126 200" />
-    <path class="flow-path flow-branch-a" d="M 174 146 C 194 92, 232 92, 270 92" />
-    <path class="flow-path flow-branch-b" d="M 222 200 L 270 200" />
-    <path class="flow-path flow-branch-c" d="M 174 254 C 194 312, 232 312, 270 312" />
-    <path class="flow-path flow-branch-a" d="M 396 92 C 414 92, 414 176, 424 188" />
-    <path class="flow-path flow-branch-b" d="M 396 200 L 424 200" />
-    <path class="flow-path flow-branch-c" d="M 396 312 C 414 312, 414 236, 424 226" />
-    <path class="flow-path" d="M 512 200 L 534 200" />
-  </g>
-
-  <g id="branch-labels">
-    <text x="206" y="84" class="branch-label">A · New</text>
-    <text x="223" y="193" class="branch-label">B · Existing</text>
-    <text x="206" y="326" class="branch-label">C · Dormant</text>
-  </g>
-
-  <g id="packets">
-    <circle class="packet packet-in" r="3.2" />
-    <circle class="packet packet-a1" r="3.2" />
-    <circle class="packet packet-b1" r="3.2" />
-    <circle class="packet packet-c1" r="3.2" />
-    <circle class="packet packet-a2" r="3.2" />
-    <circle class="packet packet-b2" r="3.2" />
-    <circle class="packet packet-c2" r="3.2" />
-    <circle class="packet packet-out" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: Campaign Brief In -->
+  <!-- STAGE 1: TRIGGER "List lands" (Far Left, Tall Pool Card) -->
   <g id="stage-1" class="node">
-    <rect x="14" y="148" width="84" height="104" rx="10" class="card-bg" />
-    <rect x="14" y="148" width="84" height="104" rx="10" class="highlight-ring" />
-    <text x="22" y="164" class="stage-num">01 · BRIEF IN</text>
-    <text x="22" y="178" class="stage-title">Campaign brief</text>
-    <rect x="26" y="188" width="60" height="22" rx="4" fill="var(--accent)" fill-opacity="0.1" stroke="var(--line)" stroke-width="0.7" />
-    <path d="M26 190 L56 201 L86 190" fill="none" stroke="var(--accent)" stroke-width="1" />
-    <text x="22" y="226" class="stage-copy">Offer, goal &amp;</text>
-    <text x="22" y="237" class="stage-copy">contact list</text>
+    <rect x="14" y="54" width="94" height="312" rx="10" class="card-bg" />
+    <text x="23" y="70" class="stage-num">01 · TRIGGER</text>
+    <text x="23" y="83" class="stage-title">List lands</text>
+    <text x="23" y="96" class="stage-copy">CRM contacts</text>
+
+    <!-- Contact Counter -->
+    <text x="23" y="122" class="counter-text cnt-1">1,200</text>
+    <text x="23" y="122" class="counter-text cnt-2">2,840</text>
+    <text x="23" y="122" class="counter-text cnt-3">4,120</text>
+    <text x="23" y="133" class="stage-copy">contacts</text>
+
+    <!-- Stacking Contact Rows -->
+    <g class="row-1" transform="translate(23, 150)">
+      <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
+      <circle cx="10" cy="12" r="3.5" fill="var(--accent)" />
+      <rect x="18" y="9" width="48" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
+    </g>
+    <g class="row-2" transform="translate(23, 182)">
+      <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
+      <circle cx="10" cy="12" r="3.5" fill="var(--ink)" fill-opacity="0.65" />
+      <rect x="18" y="9" width="42" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
+    </g>
+    <g class="row-3" transform="translate(23, 214)">
+      <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
+      <circle cx="10" cy="12" r="3.5" fill="var(--muted)" />
+      <rect x="18" y="9" width="50" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
+    </g>
+    <g class="row-3" transform="translate(23, 246)">
+      <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
+      <circle cx="10" cy="12" r="3.5" fill="var(--accent)" fill-opacity="0.5" />
+      <rect x="18" y="9" width="38" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
+    </g>
+    <g class="row-3" transform="translate(23, 278)">
+      <rect x="0" y="0" width="76" height="24" rx="5" class="chip-bg" />
+      <circle cx="10" cy="12" r="3.5" fill="var(--ink)" fill-opacity="0.5" />
+      <rect x="18" y="9" width="46" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" />
+    </g>
+    <text x="61" y="346" text-anchor="middle" class="stage-copy">HubSpot pool</text>
   </g>
 
-  <!-- STAGE 2: Segment Agent (List rows visibly splitting) -->
+  <!-- STAGE 2: "Segments built" (Left Centre, Splitter Node) -->
   <g id="stage-2" class="node">
-    <polygon points="174,146 222,200 174,254 126,200" class="card-bg" />
-    <polygon points="174,146 222,200 174,254 126,200" class="highlight-ring" />
-    <text x="148" y="180" class="stage-num">02 · SEGMENT</text>
-    <text x="143" y="193" class="stage-title">Segment agent</text>
-    <!-- Splitting list rows -->
-    <rect x="152" y="200" width="44" height="3" rx="1.5" fill="var(--accent)" class="seg-row-1" />
-    <rect x="152" y="207" width="44" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.7" />
-    <rect x="152" y="214" width="44" height="3" rx="1.5" fill="var(--accent)" fill-opacity="0.45" class="seg-row-3" />
+    <rect x="144" y="128" width="94" height="154" rx="10" class="card-bg" />
+    <text x="153" y="144" class="stage-num">02 · SPLIT</text>
+    <text x="153" y="157" class="stage-title">Segments built</text>
 
     <g class="ai-badge">
-      <rect x="148" y="262" width="54" height="14" rx="7" class="pill-bg" />
-      <circle cx="156" cy="269" r="2" class="ai-pulse-dot" />
-      <text x="162" y="271.5" class="tag-text-accent">AI agent</text>
+      <rect x="152" y="164" width="78" height="14" rx="7" class="chip-bg" />
+      <text x="191" y="173.5" text-anchor="middle" class="chip-text-accent">Claude · segmentation</text>
+    </g>
+
+    <!-- Dots Sorting into 3 Groups -->
+    <g class="dot-g1" transform="translate(158, 194)">
+      <circle cx="6" cy="6" r="3.5" fill="var(--accent)" />
+      <circle cx="18" cy="6" r="3.5" fill="var(--accent)" />
+      <text x="30" y="8.5" class="stage-copy">New</text>
+    </g>
+    <g class="dot-g2" transform="translate(158, 220)">
+      <circle cx="6" cy="6" r="3.5" fill="var(--ink)" fill-opacity="0.75" />
+      <circle cx="18" cy="6" r="3.5" fill="var(--ink)" fill-opacity="0.75" />
+      <text x="30" y="8.5" class="stage-copy">Active</text>
+    </g>
+    <g class="dot-g3" transform="translate(158, 246)">
+      <circle cx="6" cy="6" r="3.5" fill="none" stroke="var(--accent)" stroke-width="1.4" />
+      <circle cx="18" cy="6" r="3.5" fill="none" stroke="var(--accent)" stroke-width="1.4" />
+      <text x="30" y="8.5" class="stage-copy">Dormant</text>
     </g>
   </g>
 
-  <!-- STAGE 3: Branch A - New Leads -->
+  <!-- STAGE 3: THREE PARALLEL LANES (One Stage Group, 3 Lane Cards) -->
   <g id="stage-3" class="node">
-    <rect x="270" y="50" width="126" height="84" rx="10" class="card-soft" />
-    <rect x="270" y="50" width="126" height="84" rx="10" class="highlight-ring" />
-    <text x="279" y="64" class="stage-num">BRANCH A · NEW</text>
-    <circle cx="384" cy="62" r="2.6" class="ai-pulse-dot" />
-    <text x="279" y="77" class="stage-title">New leads</text>
-    <text x="279" y="88" class="stage-copy">Warm intro &amp; value proof</text>
-    <g class="ai-badge">
-      <rect x="279" y="102" width="38" height="15" rx="7.5" class="pill-bg" />
-      <text x="290" y="112" class="tag-text-accent">LLM</text>
-    </g>
+    <!-- Lane 1: New leads -->
+    <rect x="276" y="56" width="112" height="78" rx="9" class="card-bg lane-bg" />
+    <text x="285" y="71" class="stage-num">03A · LANE 1</text>
+    <text x="285" y="83" class="stage-title">New leads</text>
+    <text x="285" y="94" class="stage-copy">Welcome version</text>
+    <rect x="285" y="106" width="88" height="5" rx="2.5" fill="var(--accent)" fill-opacity="0.7" class="sub-1" />
+    <rect x="285" y="115" width="72" height="4" rx="2" fill="var(--muted)" fill-opacity="0.45" class="sub-1" />
+
+    <!-- Lane 2: Active customers -->
+    <rect x="276" y="166" width="112" height="78" rx="9" class="card-bg lane-bg" />
+    <text x="285" y="181" class="stage-num">03B · LANE 2</text>
+    <text x="285" y="193" class="stage-title">Active customers</text>
+    <text x="285" y="204" class="stage-copy">Offer version</text>
+    <rect x="285" y="216" width="88" height="5" rx="2.5" fill="var(--accent)" fill-opacity="0.7" class="sub-2" />
+    <rect x="285" y="225" width="66" height="4" rx="2" fill="var(--muted)" fill-opacity="0.45" class="sub-2" />
+
+    <!-- Lane 3: Dormant -->
+    <rect x="276" y="274" width="112" height="78" rx="9" class="card-bg lane-bg" />
+    <text x="285" y="289" class="stage-num">03C · LANE 3</text>
+    <text x="285" y="301" class="stage-title">Dormant</text>
+    <text x="285" y="312" class="stage-copy">Win-back version</text>
+    <rect x="285" y="324" width="88" height="5" rx="2.5" fill="var(--accent)" fill-opacity="0.7" class="sub-3" />
+    <rect x="285" y="333" width="76" height="4" rx="2" fill="var(--muted)" fill-opacity="0.45" class="sub-3" />
   </g>
 
-  <!-- STAGE 4: Branch B - Existing Customers (Claude, HubSpot) -->
+  <!-- STAGE 4: "Campaign assembled" (Right Centre, Merge Node) -->
   <g id="stage-4" class="node">
-    <rect x="270" y="152" width="126" height="96" rx="10" class="card-bg" />
-    <rect x="270" y="152" width="126" height="96" rx="10" class="highlight-ring" />
-    <text x="279" y="166" class="stage-num">BRANCH B · EXISTING</text>
-    <circle cx="384" cy="164" r="2.6" class="ai-pulse-dot" />
-    <text x="279" y="179" class="stage-title">Existing customers</text>
-    <text x="279" y="190" class="stage-copy">Tailored upsell &amp; tips</text>
+    <rect x="426" y="136" width="80" height="132" rx="10" class="card-bg" />
+    <text x="434" y="152" class="stage-num">04 · MERGE</text>
+    <text x="434" y="164" class="stage-title">Assembled</text>
 
-    <!-- Logos: Claude, HubSpot -->
-    <g transform="translate(279, 198)">
-      <path d="M4 0.8 L4 7.2 M0.8 4 L7.2 4 M1.8 1.8 L6.2 6.2 M6.2 1.8 L1.8 6.2" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round" />
-      <text x="10" y="6.8" class="brand-text">Claude</text>
+    <!-- 3 Cards Sliding into Envelope Shape -->
+    <g transform="translate(438, 180)">
+      <rect x="0" y="0" width="56" height="36" rx="4" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.2" />
+      <path d="M 2 2 L 28 20 L 54 2" fill="none" stroke="var(--accent)" stroke-width="1.2" />
+      <rect x="10" y="10" width="36" height="4" rx="2" fill="var(--accent)" fill-opacity="0.55" class="m-card-1" />
+      <rect x="10" y="24" width="36" height="4" rx="2" fill="var(--ink)" fill-opacity="0.4" class="m-card-3" />
     </g>
-    <g transform="translate(335, 198)">
-      <circle cx="4" cy="4.5" r="2.2" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <circle cx="4" cy="1" r="1" fill="var(--accent)" />
-      <circle cx="7.2" cy="6.2" r="1" fill="var(--accent)" />
-      <circle cx="0.8" cy="6.2" r="1" fill="var(--accent)" />
-      <text x="11" y="7" class="brand-text">HubSpot</text>
-    </g>
-
-    <g class="ai-badge">
-      <rect x="279" y="220" width="70" height="15" rx="7.5" class="pill-bg" />
-      <text x="286" y="230" class="tag-text-accent">personalisation</text>
-    </g>
+    <text x="466" y="240" text-anchor="middle" class="stage-copy">3 versions</text>
+    <text x="466" y="251" text-anchor="middle" class="stage-copy">in 1 send</text>
   </g>
 
-  <!-- BRANCH C: Dormant Contacts -->
-  <g id="branch-c" class="node">
-    <rect x="270" y="268" width="126" height="82" rx="10" class="card-rich" />
-    <rect x="270" y="268" width="126" height="82" rx="10" class="highlight-ring" />
-    <text x="279" y="282" class="stage-num">BRANCH C · DORMANT</text>
-    <circle cx="384" cy="280" r="2.6" class="ai-pulse-dot" />
-    <text x="279" y="295" class="stage-title">Dormant contacts</text>
-    <text x="279" y="306" class="stage-copy">Win-back offer &amp; check-in</text>
-    <g class="ai-badge">
-      <rect x="279" y="320" width="54" height="15" rx="7.5" class="pill-bg" />
-      <text x="287" y="330" class="tag-text-accent">AI agent</text>
-    </g>
-  </g>
-
-  <!-- STAGE 5: Send (Envelope packets streaming inside) -->
+  <!-- STAGE 5: "You approve" (Right) -->
   <g id="stage-5" class="node">
-    <rect x="424" y="140" width="88" height="122" rx="10" class="card-bg" />
-    <rect x="424" y="140" width="88" height="122" rx="10" class="highlight-ring" />
-    <text x="432" y="156" class="stage-num">04 · SEND</text>
-    <text x="432" y="170" class="stage-title">Send</text>
-    <text x="432" y="182" class="stage-copy">Staggered delivery</text>
+    <rect x="522" y="48" width="104" height="100" rx="10" class="card-bg" />
+    <text x="531" y="63" class="stage-num">05 · REVIEW</text>
+    <text x="531" y="75" class="stage-title">You approve</text>
 
-    <!-- Streaming envelope packets -->
-    <rect x="432" y="192" width="72" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <g class="env-stream-1">
-      <rect x="442" y="200" width="14" height="10" rx="2" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <path d="M442 201 L449 206 L456 201" fill="none" stroke="var(--accent)" stroke-width="0.9" />
-    </g>
-    <g class="env-stream-2">
-      <rect x="442" y="200" width="14" height="10" rx="2" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <path d="M442 201 L449 206 L456 201" fill="none" stroke="var(--accent)" stroke-width="0.9" />
+    <g class="ai-badge">
+      <rect x="531" y="81" width="84" height="14" rx="7" class="chip-bg" />
+      <text x="573" y="90.5" text-anchor="middle" class="chip-text-accent">human-in-the-loop</text>
     </g>
 
-    <rect x="431" y="234" width="74" height="15" rx="7.5" class="pill-bg" />
-    <text x="436" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
+    <!-- Checklist: copy, audience, links -->
+    <g transform="translate(532, 104)">
+      <path d="M 0 5 L 3 8 L 8 2" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="chk-1" />
+      <text x="14" y="7.5" class="stage-copy">Copy</text>
+
+      <path d="M 0 18 L 3 21 L 8 15" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="chk-2" />
+      <text x="14" y="20.5" class="stage-copy">Audience</text>
+
+      <path d="M 0 31 L 3 34 L 8 28" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="chk-3" />
+      <text x="14" y="33.5" class="stage-copy">Links</text>
+    </g>
   </g>
 
-  <!-- STAGE 6: Results Dashboard (Open-rate bars growing) -->
+  <!-- STAGE 6: "Ready to send" (Far Right, End) -->
   <g id="stage-6" class="node">
-    <rect x="534" y="136" width="94" height="130" rx="10" class="card-bg" />
-    <rect x="534" y="136" width="94" height="130" rx="10" class="highlight-ring" />
-    <text x="542" y="152" class="stage-num">05 · RESULTS</text>
-    <text x="542" y="166" class="stage-title">Open &amp; reply rates</text>
+    <rect x="522" y="256" width="104" height="114" rx="10" class="card-bg" />
+    <text x="531" y="272" class="stage-num">06 · QUEUED</text>
+    <text x="531" y="285" class="stage-title">Ready to send</text>
+    <text x="531" y="301" class="stage-copy">Never auto-sent</text>
+    <text x="531" y="312" class="stage-copy">until you click</text>
 
-    <g transform="translate(542, 178)">
-      <text x="0" y="8" class="stage-copy">A · 48%</text>
-      <rect x="0" y="12" width="76" height="6" rx="3" fill="var(--accent)" class="open-b1" />
-      <text x="0" y="30" class="stage-copy">B · 62%</text>
-      <rect x="0" y="34" width="76" height="6" rx="3" fill="var(--accent)" fill-opacity="0.8" class="open-b2" />
-      <text x="0" y="52" class="stage-copy">C · 34%</text>
-      <rect x="0" y="56" width="56" height="6" rx="3" fill="var(--accent)" fill-opacity="0.55" class="open-b3" />
-    </g>
-  </g>
-
-  <g id="footer">
-    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="22" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+    <circle cx="574" cy="340" r="12" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 568 340 L 572 344 L 580 336" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>
