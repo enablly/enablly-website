@@ -88,7 +88,7 @@
           <div id="hero-stage-card" class="hero-stage-card" style="--card-accent: #8b5cf6;">
             <div id="hero-stage-anim" class="hero-stage-anim"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Graphic Design</title>
-  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation handles graphic design: a design brief arrives, a router agent selects templates and sizes, generative AI drafts layouts with Adobe Firefly and Canva, multimodal AI adapts formats with Figma and Midjourney, a human designer reviews and approves, and an export pack is delivered.</desc>
+  <desc id="svg-desc">Seven-stage fan-out workflow for graphic design automation: a brief lands via form submit and Zapier, brand kit assets load from Google Drive, Adobe Firefly and Midjourney generate concepts via API call, a Make scenario builds the layout in Canva or Figma, five size variants fan out via auto-resize, a designer picks the winner, and the export pack lands in a Google Drive folder.</desc>
 
   <style>
     svg {
@@ -102,555 +102,343 @@
       background: var(--bg);
     }
 
-    /* Typography */
-    .title-main {
-      font-size: 15px;
-      font-weight: 700;
-      fill: var(--ink);
-      letter-spacing: -0.02em;
-    }
-    .stage-num {
-      font-size: 8.5px;
-      font-weight: 700;
-      fill: var(--accent);
-      letter-spacing: 0.04em;
-    }
-    .stage-title {
-      font-size: 11px;
-      font-weight: 700;
-      fill: var(--ink);
-    }
-    .stage-copy {
-      font-size: 8.5px;
-      fill: var(--muted);
-    }
-    .tag-text {
-      font-size: 7.5px;
-      font-weight: 600;
-      fill: var(--ink);
-    }
-    .tag-text-accent {
-      font-size: 7.5px;
-      font-weight: 600;
-      fill: var(--accent);
-    }
-    .brand-text {
-      font-size: 8px;
-      font-weight: 600;
-      fill: var(--ink);
-    }
-    .method-text {
-      font-size: 8px;
-      font-weight: 600;
-      fill: var(--muted);
-    }
+    .title-main { font-size: 14px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.8px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 7.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 7.6px; fill: var(--muted); }
+    .brand-text { font-size: 7.5px; font-weight: 600; fill: var(--ink); }
+    .chip-text { font-size: 7px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 7px; font-weight: 700; fill: var(--accent); }
+    .variant-label { font-size: 7.4px; font-weight: 700; fill: var(--ink); }
 
-    /* Card and Badge Surfaces */
-    .card-bg {
-      fill: var(--surface);
-      stroke: var(--line);
-      stroke-width: 1.2;
-      transition: stroke 0.3s ease;
-    }
-    .pill-bg {
-      fill: var(--surface);
-      stroke: var(--line);
-      stroke-width: 0.9;
-    }
-    .ai-badge .pill-bg {
-      stroke: var(--accent);
-      stroke-opacity: 0.55;
-    }
-    .node {
-      transform-box: fill-box;
-      transform-origin: center;
-    }
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .variant-card { fill: var(--surface); stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .node { transform-box: fill-box; transform-origin: center; }
 
-    /* Flow Lines */
     .flow-path {
       fill: none;
       stroke: var(--line);
-      stroke-width: 1.6;
+      stroke-width: 1.4;
       stroke-linecap: round;
-      stroke-dasharray: 5 5;
+      stroke-dasharray: 4 4;
       animation: dashFlow 1s linear infinite;
     }
-    .flow-path-glow {
-      fill: none;
+    .flow-accent {
       stroke: var(--accent);
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-dasharray: 5 5;
-      opacity: 0;
-      animation: dashFlow 1s linear infinite;
+      stroke-opacity: 0.55;
     }
-
     @keyframes dashFlow {
-      from { stroke-dashoffset: 20; }
+      from { stroke-dashoffset: 16; }
       to { stroke-dashoffset: 0; }
     }
 
-    /* Data Packets */
-    .packet {
-      fill: var(--accent);
-      opacity: 0;
-    }
-    .packet-1 {
-      offset-path: path("M 102 174 C 102 204, 128 204, 128 232");
-      animation: pkt1 9s linear infinite;
-    }
-    .packet-2 {
-      offset-path: path("M 216 278 C 248 278, 250 232, 250 194");
-      animation: pkt2 9s linear infinite;
-    }
-    .packet-3 {
-      offset-path: path("M 330 132 C 354 132, 354 188, 354 224");
-      animation: pkt3 9s linear infinite;
-    }
-    .packet-4 {
-      offset-path: path("M 440 280 C 468 280, 468 220, 468 178");
-      animation: pkt4 9s linear infinite;
-    }
-    .packet-5 {
-      offset-path: path("M 526 126 C 562 126, 562 182, 562 224");
-      animation: pkt5 9s linear infinite;
-    }
+    /* Travelling Packets */
+    .packet { fill: var(--accent); opacity: 0; }
+    .p-12 { offset-path: path("M 86 156 L 86 208"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 156 248 C 178 248, 174 110, 196 110"); animation: p23 9s linear infinite; }
+    .p-34 { offset-path: path("M 276 166 L 276 208"); animation: p34 9s linear infinite; }
+    .p-45a { offset-path: path("M 356 248 C 392 248, 396 66, 434 66"); animation: p45 9s linear infinite; }
+    .p-45b { offset-path: path("M 356 248 C 396 248, 404 126, 434 126"); animation: p45 9s linear infinite; }
+    .p-45c { offset-path: path("M 356 248 C 406 248, 424 190, 480 190"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 480 210 C 420 270, 390 340, 364 354"); animation: p56 9s linear infinite; }
+    .p-67 { offset-path: path("M 364 356 L 472 356"); animation: p67 9s linear infinite; }
 
-    @keyframes pkt1 {
-      0%, 10% { offset-distance: 0%; opacity: 0; }
-      12% { opacity: 1; }
-      20% { offset-distance: 100%; opacity: 1; }
-      22%, 100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes pkt2 {
-      0%, 25% { offset-distance: 0%; opacity: 0; }
-      27% { opacity: 1; }
-      35% { offset-distance: 100%; opacity: 1; }
-      37%, 100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes pkt3 {
-      0%, 44% { offset-distance: 0%; opacity: 0; }
-      46% { opacity: 1; }
-      54% { offset-distance: 100%; opacity: 1; }
-      56%, 100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes pkt4 {
-      0%, 62% { offset-distance: 0%; opacity: 0; }
-      64% { opacity: 1; }
-      72% { offset-distance: 100%; opacity: 1; }
-      74%, 100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes pkt5 {
-      0%, 76% { offset-distance: 0%; opacity: 0; }
-      78% { opacity: 1; }
-      85% { offset-distance: 100%; opacity: 1; }
-      87%, 100% { offset-distance: 100%; opacity: 0; }
-    }
+    @keyframes p12 { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p23 { 0%, 22% { offset-distance: 0%; opacity: 0; } 24% { opacity: 1; } 32% { offset-distance: 100%; opacity: 1; } 34%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p34 { 0%, 38% { offset-distance: 0%; opacity: 0; } 40% { opacity: 1; } 47% { offset-distance: 100%; opacity: 1; } 49%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p45 { 0%, 52% { offset-distance: 0%; opacity: 0; } 54% { opacity: 1; } 63% { offset-distance: 100%; opacity: 1; } 65%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p56 { 0%, 67% { offset-distance: 0%; opacity: 0; } 69% { opacity: 1; } 77% { offset-distance: 100%; opacity: 1; } 79%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p67 { 0%, 80% { offset-distance: 0%; opacity: 0; } 82% { opacity: 1; } 89% { offset-distance: 100%; opacity: 1; } 91%, 100% { offset-distance: 100%; opacity: 0; } }
 
-    /* Sequential Node Lighting */
-    .highlight-ring {
-      fill: none;
-      stroke: var(--accent);
-      stroke-width: 2;
-      opacity: 0;
-    }
+    /* Sequential Stage Lighting */
+    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 1.8; opacity: 0; }
     #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
     #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
     #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
     #stage-4 .highlight-ring { animation: lit4 9s ease-in-out infinite; }
     #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
     #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    #stage-7 .highlight-ring { animation: lit7 9s ease-in-out infinite; }
 
-    @keyframes lit1 {
-      0%, 96%, 100% { opacity: 0.15; }
-      4%, 14% { opacity: 1; }
-      20% { opacity: 0.25; }
-    }
-    @keyframes lit2 {
-      0%, 15% { opacity: 0; }
-      20%, 30% { opacity: 1; }
-      36%, 95% { opacity: 0.25; }
-      100% { opacity: 0; }
-    }
-    @keyframes lit3 {
-      0%, 30% { opacity: 0; }
-      35%, 48% { opacity: 1; }
-      54%, 95% { opacity: 0.25; }
-      100% { opacity: 0; }
-    }
-    @keyframes lit4 {
-      0%, 48% { opacity: 0; }
-      53%, 66% { opacity: 1; }
-      72%, 95% { opacity: 0.25; }
-      100% { opacity: 0; }
-    }
-    @keyframes lit5 {
-      0%, 66% { opacity: 0; }
-      71%, 80% { opacity: 1; }
-      86%, 95% { opacity: 0.25; }
-      100% { opacity: 0; }
-    }
-    @keyframes lit6 {
-      0%, 80% { opacity: 0; }
-      85%, 95% { opacity: 1; }
-      100% { opacity: 0; }
-    }
+    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.2; } 3%, 12% { opacity: 1; } 16% { opacity: 0.25; } }
+    @keyframes lit2 { 0%, 14% { opacity: 0; } 18%, 27% { opacity: 1; } 31%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit3 { 0%, 28% { opacity: 0; } 32%, 42% { opacity: 1; } 46%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit4 { 0%, 43% { opacity: 0; } 47%, 56% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit5 { 0%, 56% { opacity: 0; } 60%, 71% { opacity: 1; } 75%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit6 { 0%, 71% { opacity: 0; } 75%, 83% { opacity: 1; } 87%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit7 { 0%, 84% { opacity: 0; } 88%, 96% { opacity: 1; } 100% { opacity: 0; } }
 
-    /* AI Node Pulse */
-    .ai-pulse-dot {
-      fill: var(--accent);
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: aiPulse 1.5s ease-in-out infinite;
-    }
-    @keyframes aiPulse {
-      0%, 100% { opacity: 0.45; transform: scale(0.85); }
-      50% { opacity: 1; transform: scale(1.25); }
-    }
+    .ai-pulse { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
+    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
 
-    /* Stage 2 Router Selector */
-    .router-active {
-      fill: var(--accent);
-      opacity: 0.18;
-      animation: routerCycle 9s ease-in-out infinite;
-    }
-    @keyframes routerCycle {
-      0%, 18%, 100% { transform: translateX(0px); }
-      22%, 25% { transform: translateX(35px); }
-      27%, 95% { transform: translateX(0px); }
-    }
+    /* Stage 1: Brief lines typing in */
+    .brief-l1, .brief-l2, .brief-l3 { transform-box: fill-box; transform-origin: left center; }
+    .brief-l1 { animation: bl1 9s ease-out infinite; }
+    .brief-l2 { animation: bl2 9s ease-out infinite; }
+    .brief-l3 { animation: bl3 9s ease-out infinite; }
+    @keyframes bl1 { 0%, 96%, 100% { transform: scaleX(0.1); opacity: 0.25; } 4%, 92% { transform: scaleX(1); opacity: 0.95; } }
+    @keyframes bl2 { 0%, 3%, 96%, 100% { transform: scaleX(0.1); opacity: 0.25; } 7%, 92% { transform: scaleX(1); opacity: 0.8; } }
+    @keyframes bl3 { 0%, 6%, 96%, 100% { transform: scaleX(0.1); opacity: 0.25; } 10%, 92% { transform: scaleX(1); opacity: 0.9; } }
 
-    /* Stage 3 Generate Canvas Preview + Cycling Swatches */
-    .gen-canvas-stroke {
-      stroke-dasharray: 120;
-      stroke-dashoffset: 120;
-      animation: genCanvasDraw 9s ease-in-out infinite;
-    }
-    .gen-block-1 {
-      transform-box: fill-box;
-      transform-origin: left center;
-      animation: genDraw1 9s ease-out infinite;
-    }
-    .gen-block-2 {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: genDraw2 9s ease-out infinite;
-    }
-    .swatch-1 { animation: swatchCycle1 9s ease-in-out infinite; }
-    .swatch-2 { animation: swatchCycle2 9s ease-in-out infinite; }
-    .swatch-3 { animation: swatchCycle3 9s ease-in-out infinite; }
+    /* Stage 2: Swatches pop in + font line */
+    .sw-1, .sw-2, .sw-3 { transform-box: fill-box; transform-origin: center; }
+    .sw-1 { animation: swPop1 9s ease-out infinite; }
+    .sw-2 { animation: swPop2 9s ease-out infinite; }
+    .sw-3 { animation: swPop3 9s ease-out infinite; }
+    .font-line { transform-box: fill-box; transform-origin: left center; animation: flDraw 9s ease-out infinite; }
+    @keyframes swPop1 { 0%, 16% { transform: scale(0.4); opacity: 0.2; } 20%, 94% { transform: scale(1); opacity: 1; } 98%, 100% { transform: scale(0.4); opacity: 0.2; } }
+    @keyframes swPop2 { 0%, 19% { transform: scale(0.4); opacity: 0.2; } 23%, 94% { transform: scale(1); opacity: 0.7; } 98%, 100% { transform: scale(0.4); opacity: 0.2; } }
+    @keyframes swPop3 { 0%, 22% { transform: scale(0.4); opacity: 0.2; } 26%, 94% { transform: scale(1); opacity: 0.85; } 98%, 100% { transform: scale(0.4); opacity: 0.2; } }
+    @keyframes flDraw { 0%, 23% { transform: scaleX(0.1); opacity: 0.2; } 28%, 94% { transform: scaleX(1); opacity: 0.9; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
 
-    @keyframes genCanvasDraw {
-      0%, 30% { stroke-dashoffset: 120; }
-      38%, 94% { stroke-dashoffset: 0; }
-      98%, 100% { stroke-dashoffset: 120; }
-    }
-    @keyframes genDraw1 {
-      0%, 33% { opacity: 0.15; transform: scaleX(0.15); }
-      40%, 94% { opacity: 0.95; transform: scaleX(1); }
-      98%, 100% { opacity: 0.15; transform: scaleX(0.15); }
-    }
-    @keyframes genDraw2 {
-      0%, 36% { opacity: 0.1; transform: scale(0.35); }
-      43%, 94% { opacity: 0.9; transform: scale(1); }
-      98%, 100% { opacity: 0.1; transform: scale(0.35); }
-    }
-    @keyframes swatchCycle1 {
-      0%, 34%, 44%, 100% { transform: scale(1); opacity: 0.45; }
-      36%, 41% { transform: scale(1.35); opacity: 1; }
-    }
-    @keyframes swatchCycle2 {
-      0%, 40%, 50%, 100% { transform: scale(1); opacity: 0.45; }
-      42%, 47% { transform: scale(1.35); opacity: 1; }
-    }
-    @keyframes swatchCycle3 {
-      0%, 46%, 56%, 100% { transform: scale(1); opacity: 0.45; }
-      48%, 53% { transform: scale(1.35); opacity: 1; }
-    }
+    /* Stage 3: Three image frames sketch/draw themselves */
+    .frm-1 { stroke-dasharray: 84; stroke-dashoffset: 84; animation: frmD1 9s ease-out infinite; }
+    .frm-2 { stroke-dasharray: 84; stroke-dashoffset: 84; animation: frmD2 9s ease-out infinite; }
+    .frm-3 { stroke-dasharray: 84; stroke-dashoffset: 84; animation: frmD3 9s ease-out infinite; }
+    @keyframes frmD1 { 0%, 30% { stroke-dashoffset: 84; } 36%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 84; } }
+    @keyframes frmD2 { 0%, 33% { stroke-dashoffset: 84; } 39%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 84; } }
+    @keyframes frmD3 { 0%, 36% { stroke-dashoffset: 84; } 42%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 84; } }
 
-    /* Stage 4 Adapt Layout Blocks Sliding Into Place */
-    .adapt-tile-a { animation: adaptA 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .adapt-tile-b { animation: adaptB 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .adapt-tile-c { animation: adaptC 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    @keyframes adaptA {
-      0%, 50% { opacity: 0.15; transform: translate(-10px, 6px); }
-      57%, 94% { opacity: 0.95; transform: translate(0, 0); }
-      98%, 100% { opacity: 0.15; transform: translate(-10px, 6px); }
-    }
-    @keyframes adaptB {
-      0%, 52% { opacity: 0.15; transform: translate(12px, -6px); }
-      59%, 94% { opacity: 0.95; transform: translate(0, 0); }
-      98%, 100% { opacity: 0.15; transform: translate(12px, -6px); }
-    }
-    @keyframes adaptC {
-      0%, 54% { opacity: 0.15; transform: translate(10px, 8px); }
-      61%, 94% { opacity: 0.95; transform: translate(0, 0); }
-      98%, 100% { opacity: 0.15; transform: translate(10px, 8px); }
-    }
+    /* Stage 4: Layout blocks snap into a grid */
+    .grid-b1 { animation: gb1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .grid-b2 { animation: gb2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .grid-b3 { animation: gb3 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes gb1 { 0%, 45% { transform: translate(-6px, -4px); opacity: 0.25; } 51%, 94% { transform: translate(0, 0); opacity: 0.9; } 98%, 100% { transform: translate(-6px, -4px); opacity: 0.25; } }
+    @keyframes gb2 { 0%, 47% { transform: translate(6px, -4px); opacity: 0.25; } 53%, 94% { transform: translate(0, 0); opacity: 0.85; } 98%, 100% { transform: translate(6px, -4px); opacity: 0.25; } }
+    @keyframes gb3 { 0%, 49% { transform: translate(0, 5px); opacity: 0.25; } 55%, 94% { transform: translate(0, 0); opacity: 0.95; } 98%, 100% { transform: translate(0, 5px); opacity: 0.25; } }
 
-    /* Stage 5 Human Approval Check */
-    .check-pop {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: checkPop 9s ease-out infinite;
-    }
-    @keyframes checkPop {
-      0%, 70% { opacity: 0.25; transform: scale(0.75); }
-      74%, 94% { opacity: 1; transform: scale(1.05); }
-      98%, 100% { opacity: 0.25; transform: scale(0.75); }
-    }
+    /* Stage 5: Mini variant layouts rescaling */
+    .var-box { transform-box: fill-box; transform-origin: center; animation: varScale 9s ease-out infinite; }
+    @keyframes varScale { 0%, 58% { transform: scale(0.55); opacity: 0.3; } 65%, 94% { transform: scale(1); opacity: 0.9; } 98%, 100% { transform: scale(0.55); opacity: 0.3; } }
 
-    /* Stage 6 End Result Assembling Card */
-    .pack-item-1 { animation: pack1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .pack-item-2 { animation: pack2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .pack-item-3 { animation: pack3 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .pack-ready-badge { animation: packReady 9s ease-out infinite; }
+    /* Stage 6: Tick draws itself on chosen card */
+    .pick-tick { stroke-dasharray: 16; stroke-dashoffset: 16; animation: pickDraw 9s ease-out infinite; }
+    @keyframes pickDraw { 0%, 74% { stroke-dashoffset: 16; } 80%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 16; } }
 
-    @keyframes pack1 {
-      0%, 82% { opacity: 0; transform: translate(-10px, -6px); }
-      86%, 95% { opacity: 1; transform: translate(0, 0); }
-      99%, 100% { opacity: 0; transform: translate(-10px, -6px); }
-    }
-    @keyframes pack2 {
-      0%, 84% { opacity: 0; transform: translate(0, 8px); }
-      88%, 95% { opacity: 1; transform: translate(0, 0); }
-      99%, 100% { opacity: 0; transform: translate(0, 8px); }
-    }
-    @keyframes pack3 {
-      0%, 86% { opacity: 0; transform: translate(10px, -6px); }
-      90%, 95% { opacity: 1; transform: translate(0, 0); }
-      99%, 100% { opacity: 0; transform: translate(10px, -6px); }
-    }
-    @keyframes packReady {
-      0%, 88% { opacity: 0.2; }
-      91%, 95% { opacity: 1; }
-      99%, 100% { opacity: 0.2; }
-    }
-
-    /* Progress Bar */
-    .progress-fill {
-      fill: var(--accent);
-      transform-box: fill-box;
-      transform-origin: left center;
-      animation: progressLoop 9s linear infinite;
-    }
-    @keyframes progressLoop {
-      0% { transform: scaleX(0.05); opacity: 0.8; }
-      94% { transform: scaleX(1); opacity: 1; }
-      99%, 100% { transform: scaleX(0.05); opacity: 0.3; }
-    }
+    /* Stage 7: Export pack assembles with tick */
+    .pack-tile { animation: packIn 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    .pack-tick { stroke-dasharray: 16; stroke-dashoffset: 16; animation: packTick 9s ease-out infinite; }
+    @keyframes packIn { 0%, 84% { transform: translateX(-8px); opacity: 0.2; } 90%, 96% { transform: translateX(0); opacity: 1; } 99%, 100% { transform: translateX(-8px); opacity: 0.2; } }
+    @keyframes packTick { 0%, 87% { stroke-dashoffset: 16; } 92%, 96% { stroke-dashoffset: 0; } 99%, 100% { stroke-dashoffset: 16; } }
   </style>
 
   <defs>
     <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
+      <circle cx="10" cy="10" r="0.75" fill="var(--line)" opacity="0.5" />
     </pattern>
   </defs>
 
-  <!-- Subtle Background Grid (no hard-coded background color) -->
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.45" />
 
   <!-- Header -->
   <g id="header">
-    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
-    <text x="34" y="32" class="title-main">AI Automation for Graphic Design</text>
-    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
-    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+    <circle cx="20" cy="23" r="3.8" fill="var(--accent)" />
+    <text x="30" y="27" class="title-main">AI Automation for Graphic Design</text>
+    <rect x="466" y="13" width="158" height="20" rx="10" class="chip-bg" />
+    <circle cx="477" cy="23" r="2.2" fill="var(--accent)" />
+    <text x="484" y="26" class="method-text">Forward-deployed · Embedded</text>
   </g>
 
   <!-- Flow Paths -->
   <g id="flow-paths">
-    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
-    <path class="flow-path" d="M 216 278 C 248 278, 250 232, 250 194" />
-    <path class="flow-path" d="M 330 132 C 354 132, 354 188, 354 224" />
-    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
-    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
+    <!-- 1 -> 2 -->
+    <path class="flow-path flow-accent" d="M 86 156 L 86 208" />
+    <!-- 2 -> 3 -->
+    <path class="flow-path" d="M 156 248 C 178 248, 174 110, 196 110" />
+    <!-- 3 -> 4 -->
+    <path class="flow-path" d="M 276 166 L 276 208" />
+    <!-- 4 -> 5 FAN-OUT (five paths) -->
+    <path class="flow-path flow-accent" d="M 356 248 C 392 248, 396 66, 434 66" />
+    <path class="flow-path flow-accent" d="M 356 248 C 402 248, 434 74, 530 74" />
+    <path class="flow-path flow-accent" d="M 356 248 C 396 248, 404 126, 434 126" />
+    <path class="flow-path flow-accent" d="M 356 248 C 412 248, 444 134, 530 134" />
+    <path class="flow-path flow-accent" d="M 356 248 C 406 248, 424 190, 480 190" />
+    <!-- 5 -> 6 Converge -->
+    <path class="flow-path" d="M 480 210 C 420 270, 390 340, 364 354" />
+    <path class="flow-path" d="M 576 154 C 550 246, 440 320, 364 348" />
+    <!-- 6 -> 7 -->
+    <path class="flow-path flow-accent" d="M 364 356 L 472 356" />
   </g>
 
-  <!-- Travelling Data Packets -->
+  <!-- Travelling Packets -->
   <g id="packets">
-    <circle class="packet packet-1" r="3.5" />
-    <circle class="packet packet-2" r="3.5" />
-    <circle class="packet packet-3" r="3.5" />
-    <circle class="packet packet-4" r="3.5" />
-    <circle class="packet packet-5" r="3.5" />
+    <circle class="packet p-12" r="3" />
+    <circle class="packet p-23" r="3" />
+    <circle class="packet p-34" r="3" />
+    <circle class="packet p-45a" r="3" />
+    <circle class="packet p-45b" r="3" />
+    <circle class="packet p-45c" r="3" />
+    <circle class="packet p-56" r="3" />
+    <circle class="packet p-67" r="3.2" />
   </g>
 
-  <!-- STAGE 1: Task In -->
+  <!-- Connective Tissue Chips -->
+  <g id="connector-chips">
+    <!-- 1 -> 2: Form submit -> Zapier -->
+    <rect x="36" y="167" width="100" height="15" rx="7.5" class="chip-bg" />
+    <text x="44" y="177" class="chip-text-accent">Form submit → Zapier</text>
+    <!-- 2 in: Google Drive -->
+    <rect x="46" y="186" width="80" height="14" rx="7" class="chip-bg" />
+    <text x="61" y="195.5" class="chip-text">Google Drive</text>
+    <!-- 2 -> 3: API call -->
+    <rect x="150" y="132" width="46" height="15" rx="7.5" class="chip-bg" />
+    <text x="159" y="142" class="chip-text-accent">API call</text>
+    <!-- 3 -> 4: Make scenario -->
+    <rect x="236" y="179" width="80" height="15" rx="7.5" class="chip-bg" />
+    <text x="249" y="189" class="chip-text-accent">Make scenario</text>
+    <!-- 4 -> 5: auto-resize -->
+    <rect x="368" y="218" width="62" height="15" rx="7.5" class="chip-bg" />
+    <text x="377" y="228" class="chip-text-accent">auto-resize</text>
+    <!-- 6 -> 7: Google Drive folder -->
+    <rect x="370" y="346" width="96" height="15" rx="7.5" class="chip-bg" />
+    <text x="377" y="356" class="chip-text-accent">→ Google Drive folder</text>
+  </g>
+
+  <!-- STAGE 1: TRIGGER Brief lands -->
   <g id="stage-1" class="node">
-    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
-    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
-    <text x="26" y="86" class="stage-num">01 · TASK IN</text>
-    <text x="26" y="101" class="stage-title">Brief arrives</text>
-    <!-- Mini brief icon -->
-    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="33" y1="119" x2="78" y2="119" stroke="var(--ink)" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" />
-    <line x1="33" y1="126" x2="64" y2="126" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" />
-    <circle cx="99" cy="124" r="5" fill="var(--accent)" fill-opacity="0.35" />
-    <text x="26" y="152" class="stage-copy">Design brief + brand</text>
-    <text x="26" y="163" class="stage-copy">files + copy</text>
+    <rect x="16" y="52" width="140" height="104" rx="10" class="card-bg" />
+    <rect x="16" y="52" width="140" height="104" rx="10" class="highlight-ring" />
+    <text x="26" y="66" class="stage-num">01 · TRIGGER</text>
+    <text x="26" y="79" class="stage-title">Brief lands</text>
+    <text x="26" y="90" class="stage-copy">Shared request form</text>
+    <!-- Typing brief lines -->
+    <rect x="26" y="98" width="120" height="48" rx="5" fill="none" stroke="var(--line)" stroke-width="0.8" />
+    <rect x="33" y="106" width="88" height="4" rx="2" fill="var(--accent)" class="brief-l1" />
+    <rect x="33" y="116" width="102" height="4" rx="2" fill="var(--accent)" fill-opacity="0.7" class="brief-l2" />
+    <rect x="33" y="126" width="74" height="4" rx="2" fill="var(--accent)" fill-opacity="0.85" class="brief-l3" />
+    <text x="33" y="140" class="stage-copy">campaign_brief.form</text>
   </g>
 
-  <!-- STAGE 2: Router Agent -->
+  <!-- STAGE 2: Brand kit loaded -->
   <g id="stage-2" class="node">
-    <rect x="92" y="232" width="124" height="114" rx="10" class="card-bg" />
-    <rect x="92" y="232" width="124" height="114" rx="10" class="highlight-ring" />
-    <text x="102" y="248" class="stage-num">02 · ROUTER</text>
-    <text x="102" y="263" class="stage-title">Router agent</text>
-    <text x="102" y="276" class="stage-copy">Sorts job &amp; picks</text>
-    <text x="102" y="286" class="stage-copy">template + size set</text>
-    <!-- Format selector pills -->
-    <rect x="102" y="294" width="32" height="14" rx="4" class="router-active" />
-    <rect x="102" y="294" width="32" height="14" rx="4" fill="none" stroke="var(--line)" stroke-width="0.7" />
-    <text x="107" y="303.5" class="tag-text">Social</text>
-    <rect x="137" y="294" width="34" height="14" rx="4" fill="none" stroke="var(--line)" stroke-width="0.7" />
-    <text x="141" y="303.5" class="tag-text">Banner</text>
-    <rect x="174" y="294" width="32" height="14" rx="4" fill="none" stroke="var(--line)" stroke-width="0.7" />
-    <text x="180" y="303.5" class="tag-text">Print</text>
-    <!-- Tag: AI agent -->
-    <g class="ai-badge">
-      <rect x="102" y="320" width="54" height="16" rx="8" class="pill-bg" />
-      <circle cx="111" cy="328" r="2.2" class="ai-pulse-dot" />
-      <text x="117" y="330.5" class="tag-text-accent">AI agent</text>
-    </g>
+    <rect x="16" y="208" width="140" height="110" rx="10" class="card-bg" />
+    <rect x="16" y="208" width="140" height="110" rx="10" class="highlight-ring" />
+    <text x="26" y="222" class="stage-num">02 · BRAND KIT</text>
+    <text x="26" y="235" class="stage-title">Brand kit loaded</text>
+    <text x="26" y="246" class="stage-copy">Palette, fonts &amp; logo</text>
+    <!-- Swatches popping in + font line -->
+    <circle cx="36" cy="266" r="7" fill="var(--accent)" class="sw-1" />
+    <circle cx="56" cy="266" r="7" fill="var(--accent)" class="sw-2" />
+    <circle cx="76" cy="266" r="7" fill="var(--ink)" class="sw-3" />
+    <text x="94" y="269" class="brand-text">Aa Bb</text>
+    <rect x="26" y="284" width="118" height="4" rx="2" fill="var(--accent)" class="font-line" />
+    <text x="26" y="304" class="stage-copy">Brand rules locked</text>
   </g>
 
-  <!-- STAGE 3: AI Stage A - Generate -->
+  <!-- STAGE 3: Concepts generated -->
   <g id="stage-3" class="node">
-    <rect x="192" y="62" width="138" height="132" rx="10" class="card-bg" />
-    <rect x="192" y="62" width="138" height="132" rx="10" class="highlight-ring" />
-    <text x="202" y="78" class="stage-num">03 · AI STAGE A</text>
-    <circle cx="316" cy="75" r="3" class="ai-pulse-dot" />
-    <text x="202" y="92" class="stage-title">Generate</text>
-    <text x="202" y="104" class="stage-copy">Drafts layout in brand</text>
-    <text x="202" y="114" class="stage-copy">colours &amp; fonts</text>
+    <rect x="196" y="52" width="160" height="114" rx="10" class="card-bg" />
+    <rect x="196" y="52" width="160" height="114" rx="10" class="highlight-ring" />
+    <text x="206" y="66" class="stage-num">03 · CONCEPTS</text>
+    <circle cx="342" cy="64" r="2.8" class="ai-pulse" />
+    <text x="206" y="79" class="stage-title">Concepts generated</text>
 
-    <!-- Mini live-drawing layout preview + cycling swatches -->
-    <rect x="202" y="119" width="34" height="22" rx="4" fill="none" stroke="var(--accent)" stroke-width="1" class="gen-canvas-stroke" />
-    <rect x="205" y="122" width="16" height="3.5" rx="1.5" fill="var(--accent)" class="gen-block-1" />
-    <rect x="205" y="128" width="28" height="10" rx="2" fill="var(--accent)" fill-opacity="0.38" class="gen-block-2" />
-    <circle cx="207" cy="147" r="2.5" fill="var(--accent)" class="swatch-1" style="transform-box: fill-box; transform-origin: center;" />
-    <circle cx="216" cy="147" r="2.5" fill="var(--accent)" fill-opacity="0.6" class="swatch-2" style="transform-box: fill-box; transform-origin: center;" />
-    <circle cx="225" cy="147" r="2.5" fill="var(--ink)" fill-opacity="0.55" class="swatch-3" style="transform-box: fill-box; transform-origin: center;" />
+    <!-- Three image frames sketching themselves in -->
+    <rect x="206" y="88" width="26" height="22" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.2" class="frm-1" />
+    <rect x="237" y="88" width="26" height="22" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.2" class="frm-2" />
+    <rect x="268" y="88" width="26" height="22" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.2" class="frm-3" />
 
-    <!-- Logos: Adobe Firefly, Canva -->
-    <g transform="translate(242, 121)">
-      <!-- Simplified Firefly spark mark -->
-      <path d="M5 1 C6.5 4, 9 5.5, 9 7.5 C9 9.5, 7.2 11, 5 11 C2.8 11, 1 9.5, 1 7.5 C1 5.5, 3.5 4, 5 1 Z" fill="var(--accent)" fill-opacity="0.85" />
-      <text x="13" y="9" class="brand-text">Adobe Firefly</text>
-    </g>
-    <g transform="translate(242, 136)">
-      <!-- Simplified Canva circle mark -->
-      <circle cx="5" cy="5.5" r="4.5" fill="none" stroke="var(--accent)" stroke-width="1.5" />
-      <path d="M6.8 4.2 A2.2 2.2 0 1 0 6.8 6.8" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round" />
-      <text x="13" y="8.5" class="brand-text">Canva</text>
-    </g>
+    <text x="206" y="124" class="brand-text">Adobe Firefly · Midjourney</text>
 
-    <!-- Tags: generative AI, text-to-image, diffusion model -->
     <g class="ai-badge">
-      <rect x="200" y="154" width="58" height="14" rx="7" class="pill-bg" />
-      <text x="206" y="163.5" class="tag-text-accent">generative AI</text>
-      <rect x="262" y="154" width="60" height="14" rx="7" class="pill-bg" />
-      <text x="268" y="163.5" class="tag-text">text-to-image</text>
-      <rect x="200" y="172" width="68" height="14" rx="7" class="pill-bg" />
-      <text x="206" y="181.5" class="tag-text">diffusion model</text>
+      <rect x="206" y="134" width="128" height="16" rx="8" class="chip-bg" />
+      <text x="214" y="144.5" class="chip-text-accent">text-to-image · generative AI</text>
     </g>
   </g>
 
-  <!-- STAGE 4: AI Stage B - Adapt -->
+  <!-- STAGE 4: Layout built -->
   <g id="stage-4" class="node">
-    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
-    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
-    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
-    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
-    <text x="312" y="254" class="stage-title">Adapt</text>
-    <text x="312" y="266" class="stage-copy">Auto-resizes every</text>
-    <text x="312" y="276" class="stage-copy">format, copy checked</text>
+    <rect x="196" y="208" width="160" height="96" rx="10" class="card-bg" />
+    <rect x="196" y="208" width="160" height="96" rx="10" class="highlight-ring" />
+    <text x="206" y="222" class="stage-num">04 · LAYOUT</text>
+    <circle cx="342" cy="220" r="2.8" class="ai-pulse" />
+    <text x="206" y="235" class="stage-title">Layout built</text>
 
-    <!-- Multi-format animated tiles -->
-    <g transform="translate(312, 283)">
-      <rect x="0" y="2" width="12" height="16" rx="2" fill="var(--accent)" fill-opacity="0.3" stroke="var(--accent)" stroke-width="0.8" class="adapt-tile-a" />
-      <rect x="15" y="0" width="18" height="10" rx="2" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.8" class="adapt-tile-b" />
-      <rect x="15" y="12" width="18" height="6" rx="1.5" fill="var(--accent)" fill-opacity="0.45" class="adapt-tile-c" />
-    </g>
+    <!-- Grid blocks snapping into place -->
+    <rect x="206" y="244" width="46" height="32" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
+    <rect x="210" y="248" width="18" height="10" rx="1.5" fill="var(--accent)" class="grid-b1" />
+    <rect x="231" y="248" width="17" height="10" rx="1.5" fill="var(--accent)" fill-opacity="0.6" class="grid-b2" />
+    <rect x="210" y="261" width="38" height="11" rx="1.5" fill="var(--accent)" fill-opacity="0.4" class="grid-b3" />
 
-    <!-- Logos: Figma, Midjourney -->
-    <g transform="translate(352, 282)">
-      <!-- Simplified Figma 5-part mark -->
-      <rect x="1" y="0" width="4" height="4" rx="2" fill="var(--accent)" />
-      <rect x="5" y="0" width="4" height="4" rx="2" fill="var(--ink)" fill-opacity="0.6" />
-      <rect x="1" y="4" width="4" height="4" rx="2" fill="var(--ink)" fill-opacity="0.6" />
-      <circle cx="7" cy="6" r="2" fill="var(--accent)" />
-      <rect x="1" y="8" width="4" height="4" rx="2" fill="var(--accent)" fill-opacity="0.6" />
-      <text x="13" y="8.5" class="brand-text">Figma</text>
-    </g>
-    <g transform="translate(352, 298)">
-      <!-- Simplified Midjourney sail mark -->
-      <path d="M2 9 L5 1 L7 9 Z" fill="var(--accent)" />
-      <path d="M6.5 9 L8.5 3 L10 9 Z" fill="var(--ink)" fill-opacity="0.65" />
-      <path d="M1 10.5 Q5.5 12 10.5 10.5" fill="none" stroke="var(--accent)" stroke-width="1" stroke-linecap="round" />
-      <text x="13" y="8.5" class="brand-text">Midjourney</text>
-    </g>
-
-    <!-- Tag: multimodal AI -->
-    <g class="ai-badge">
-      <rect x="312" y="326" width="74" height="16" rx="8" class="pill-bg" />
-      <circle cx="321" cy="334" r="2.2" class="ai-pulse-dot" />
-      <text x="327" y="336.5" class="tag-text-accent">multimodal AI</text>
-    </g>
+    <text x="260" y="257" class="brand-text">Canva / Figma</text>
+    <text x="260" y="269" class="stage-copy">Template applied</text>
   </g>
 
-  <!-- STAGE 5: Human Check -->
+  <!-- STAGE 5: Every size made (FAN-OUT of 5 variant cards) -->
   <g id="stage-5" class="node">
-    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
-    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
-    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
-    <text x="426" y="100" class="stage-title">Human check</text>
-    <text x="426" y="113" class="stage-copy">Designer approves</text>
-    <text x="426" y="123" class="stage-copy">or tweaks</text>
+    <text x="434" y="42" class="stage-num">05 · FAN-OUT VARIANTS</text>
+    <rect x="426" y="46" width="204" height="172" rx="10" class="highlight-ring" />
 
-    <!-- Approval check badge -->
-    <g class="check-pop" transform="translate(494, 92)">
-      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- 1: Post 1:1 -->
+    <g transform="translate(434, 52)">
+      <rect x="0" y="0" width="88" height="44" rx="7" class="variant-card" />
+      <rect x="7" y="8" width="18" height="18" rx="2" fill="var(--accent)" fill-opacity="0.35" class="var-box" />
+      <text x="31" y="20" class="variant-label">Post 1:1</text>
+      <text x="31" y="31" class="stage-copy">1080×1080</text>
     </g>
 
-    <!-- Badge: human-in-the-loop -->
-    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
-    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
+    <!-- 2: Story 9:16 -->
+    <g transform="translate(530, 52)">
+      <rect x="0" y="0" width="92" height="44" rx="7" class="variant-card" />
+      <rect x="8" y="6" width="12" height="22" rx="2" fill="var(--accent)" fill-opacity="0.45" class="var-box" />
+      <text x="27" y="20" class="variant-label">Story 9:16</text>
+      <text x="27" y="31" class="stage-copy">1080×1920</text>
+    </g>
+
+    <!-- 3: Banner -->
+    <g transform="translate(434, 108)">
+      <rect x="0" y="0" width="88" height="44" rx="7" class="variant-card" />
+      <rect x="7" y="14" width="22" height="10" rx="2" fill="var(--accent)" fill-opacity="0.4" class="var-box" />
+      <text x="34" y="20" class="variant-label">Banner</text>
+      <text x="34" y="31" class="stage-copy">1200×628</text>
+    </g>
+
+    <!-- 4: LinkedIn -->
+    <g transform="translate(530, 108)">
+      <rect x="0" y="0" width="92" height="44" rx="7" class="variant-card" />
+      <rect x="7" y="10" width="18" height="14" rx="2" fill="var(--accent)" fill-opacity="0.5" class="var-box" />
+      <text x="31" y="20" class="variant-label">LinkedIn</text>
+      <text x="31" y="31" class="stage-copy">1200×627</text>
+    </g>
+
+    <!-- 5: Print A4 -->
+    <g transform="translate(480, 164)">
+      <rect x="0" y="0" width="96" height="46" rx="7" class="variant-card" />
+      <rect x="8" y="8" width="14" height="20" rx="2" fill="var(--accent)" fill-opacity="0.55" class="var-box" />
+      <text x="29" y="21" class="variant-label">Print A4</text>
+      <text x="29" y="32" class="stage-copy">300 DPI PDF</text>
+    </g>
   </g>
 
-  <!-- STAGE 6: End Result -->
+  <!-- STAGE 6: Designer picks (Bottom Centre) -->
   <g id="stage-6" class="node">
-    <rect x="502" y="224" width="122" height="130" rx="10" class="card-bg" />
-    <rect x="502" y="224" width="122" height="130" rx="10" class="highlight-ring" />
-    <text x="512" y="240" class="stage-num">06 · DELIVERED</text>
-    <text x="512" y="254" class="stage-title">Export pack ready</text>
-
-    <!-- Self-assembling output pack -->
-    <g transform="translate(512, 263)">
-      <rect x="0" y="0" width="102" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="6" y="6" width="26" height="32" rx="3" fill="var(--accent)" fill-opacity="0.28" stroke="var(--accent)" stroke-width="0.8" class="pack-item-1" />
-      <rect x="36" y="6" width="32" height="15" rx="3" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.8" class="pack-item-2" />
-      <rect x="36" y="24" width="32" height="14" rx="3" fill="var(--accent)" fill-opacity="0.4" stroke="var(--accent)" stroke-width="0.8" class="pack-item-3" />
-      <g class="pack-ready-badge" transform="translate(75, 13)">
-        <circle cx="10" cy="9" r="8" fill="var(--accent)" />
-        <path d="M6.5 9 L9 11.5 L13.8 6.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
+    <rect x="196" y="324" width="168" height="62" rx="10" class="card-bg" />
+    <rect x="196" y="324" width="168" height="62" rx="10" class="highlight-ring" />
+    <text x="206" y="338" class="stage-num">06 · REVIEW</text>
+    <text x="206" y="351" class="stage-title">Designer picks</text>
+    <g class="ai-badge">
+      <rect x="206" y="360" width="92" height="15" rx="7.5" class="chip-bg" />
+      <text x="214" y="370" class="chip-text-accent">human-in-the-loop</text>
     </g>
-
-    <text x="512" y="324" class="stage-copy">All sizes, named files,</text>
-    <text x="512" y="335" class="stage-copy">in the team's folder</text>
+    <circle cx="342" cy="354" r="10" fill="var(--accent)" fill-opacity="0.18" stroke="var(--accent)" stroke-width="1.2" />
+    <path d="M337.5 354 L340.5 357 L346.5 351" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="pick-tick" />
   </g>
 
-  <!-- Footer: Workflow Automation + Loop Progress -->
-  <g id="footer">
-    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="24" y="386.5" class="tag-text">workflow automation</text>
-
-    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+  <!-- STAGE 7: Export pack ready (Bottom Right) -->
+  <g id="stage-7" class="node">
+    <rect x="472" y="320" width="152" height="66" rx="10" class="card-bg" />
+    <rect x="472" y="320" width="152" height="66" rx="10" class="highlight-ring" />
+    <text x="482" y="334" class="stage-num">07 · DELIVERED</text>
+    <text x="482" y="347" class="stage-title">Export pack ready</text>
+    <g class="pack-tile" transform="translate(482, 355)">
+      <rect x="0" y="0" width="102" height="22" rx="4" fill="var(--accent)" fill-opacity="0.14" stroke="var(--accent)" stroke-width="0.8" />
+      <text x="8" y="13.5" class="chip-text">All 5 sizes · named files</text>
+    </g>
+    <circle cx="603" cy="364" r="9" fill="var(--accent)" />
+    <path d="M599 364 L601.8 366.8 L607.2 361.5" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="pack-tick" />
   </g>
 </svg>
 </div>

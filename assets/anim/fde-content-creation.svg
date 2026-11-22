@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Content Creation</title>
-  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation handles content creation: a topic arrives, Perplexity gathers research with stacking source cards, Claude and OpenAI write the draft with typing text lines, AI edits for brand voice, a human approves, and the published article is delivered.</desc>
+  <desc id="svg-desc">Six-stage hub-and-spoke workflow for content creation automation: a voice note lands via Zapier, loads into the central Notion voice-guide hub, fans out to four channel spokes (Blog, LinkedIn, Newsletter, Social) with Claude and OpenAI, passes Perplexity fact-checking, enters human edit and approval, and delivers the week's content pack to a Notion calendar.</desc>
 
   <style>
     svg {
@@ -14,36 +14,49 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 15px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 11px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 8.2px; fill: var(--muted); }
-    .tag-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.4px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.8px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
-    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+
+    .title-main { font-size: 14px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.8px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 7.4px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 9.8px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 7.4px; fill: var(--muted); }
+    .brand-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
+    .chip-text { font-size: 6.8px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.8px; font-weight: 700; fill: var(--accent); }
+
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-1 { offset-path: path("M 102 174 C 102 204, 128 204, 128 232"); animation: pkt1 9s linear infinite; }
-    .packet-2 { offset-path: path("M 218 278 C 248 278, 250 232, 250 194"); animation: pkt2 9s linear infinite; }
-    .packet-3 { offset-path: path("M 330 132 C 354 132, 354 188, 354 224"); animation: pkt3 9s linear infinite; }
-    .packet-4 { offset-path: path("M 440 280 C 468 280, 468 220, 468 178"); animation: pkt4 9s linear infinite; }
-    .packet-5 { offset-path: path("M 526 126 C 562 126, 562 182, 562 224"); animation: pkt5 9s linear infinite; }
+    .p-12 { offset-path: path("M 290 100 L 290 140"); animation: p12 9s linear infinite; }
+    .p-tl { offset-path: path("M 250 164 L 150 92"); animation: pSpoke 9s linear infinite; }
+    .p-tr { offset-path: path("M 330 164 L 496 92"); animation: pSpoke 9s linear infinite; }
+    .p-bl { offset-path: path("M 250 208 L 150 262"); animation: pSpoke 9s linear infinite; }
+    .p-br { offset-path: path("M 330 208 L 496 262"); animation: pSpoke 9s linear infinite; }
+    .p-34 { offset-path: path("M 496 120 C 460 138, 440 144, 424 154"); animation: p34 9s linear infinite; }
+    .p-45 { offset-path: path("M 424 222 C 380 260, 290 290, 240 318"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 312 351 L 368 351"); animation: p56 9s linear infinite; }
 
-    @keyframes pkt1 { 0%, 10% { offset-distance: 0%; opacity: 0; } 12% { opacity: 1; } 20% { offset-distance: 100%; opacity: 1; } 22%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt2 { 0%, 25% { offset-distance: 0%; opacity: 0; } 27% { opacity: 1; } 35% { offset-distance: 100%; opacity: 1; } 37%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt3 { 0%, 44% { offset-distance: 0%; opacity: 0; } 46% { opacity: 1; } 54% { offset-distance: 100%; opacity: 1; } 56%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt4 { 0%, 62% { offset-distance: 0%; opacity: 0; } 64% { opacity: 1; } 72% { offset-distance: 100%; opacity: 1; } 74%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt5 { 0%, 76% { offset-distance: 0%; opacity: 0; } 78% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes pSpoke { 0%, 28% { offset-distance: 0%; opacity: 0; } 30% { opacity: 1; } 42% { offset-distance: 100%; opacity: 1; } 44%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p34 { 0%, 48% { offset-distance: 0%; opacity: 0; } 50% { opacity: 1; } 58% { offset-distance: 100%; opacity: 1; } 60%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p45 { 0%, 64% { offset-distance: 0%; opacity: 0; } 66% { opacity: 1; } 74% { offset-distance: 100%; opacity: 1; } 76%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p56 { 0%, 78% { offset-distance: 0%; opacity: 0; } 80% { opacity: 1; } 88% { offset-distance: 100%; opacity: 1; } 90%, 100% { offset-distance: 100%; opacity: 0; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
+    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 1.8; opacity: 0; }
     #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
     #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
     #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
@@ -51,216 +64,218 @@
     #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
     #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 15% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 30% { opacity: 0; } 35%, 48% { opacity: 1; } 54%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit4 { 0%, 48% { opacity: 0; } 53%, 66% { opacity: 1; } 72%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 66% { opacity: 0; } 71%, 80% { opacity: 1; } 86%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 80% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.2; } 3%, 14% { opacity: 1; } 18% { opacity: 0.25; } }
+    @keyframes lit2 { 0%, 15% { opacity: 0; } 19%, 30% { opacity: 1; } 34%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit3 { 0%, 31% { opacity: 0; } 36%, 50% { opacity: 1; } 54%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit4 { 0%, 51% { opacity: 0; } 55%, 66% { opacity: 1; } 70%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit5 { 0%, 67% { opacity: 0; } 71%, 82% { opacity: 1; } 86%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit6 { 0%, 83% { opacity: 0; } 87%, 96% { opacity: 1; } 100% { opacity: 0; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
+    .ai-pulse { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
     @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
 
-    /* Stage 2: Source cards stacking inside Research */
-    .src-card-1 { animation: src1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .src-card-2 { animation: src2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .src-card-3 { animation: src3 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    @keyframes src1 { 0%, 18% { opacity: 0.2; transform: translateY(6px); } 23%, 94% { opacity: 0.9; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
-    @keyframes src2 { 0%, 21% { opacity: 0.2; transform: translateY(6px); } 26%, 94% { opacity: 0.9; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
-    @keyframes src3 { 0%, 24% { opacity: 0.2; transform: translateY(6px); } 29%, 94% { opacity: 0.95; transform: translateY(0); } 98%, 100% { opacity: 0.2; transform: translateY(6px); } }
+    /* Stage 1: Waveform bars */
+    .wave-bar { transform-box: fill-box; transform-origin: center; }
+    .wb-1 { animation: waveA 0.9s ease-in-out infinite; }
+    .wb-2 { animation: waveB 0.9s ease-in-out infinite 0.15s; }
+    .wb-3 { animation: waveA 0.9s ease-in-out infinite 0.3s; }
+    .wb-4 { animation: waveB 0.9s ease-in-out infinite 0.45s; }
+    @keyframes waveA { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
+    @keyframes waveB { 0%, 100% { transform: scaleY(0.95); } 50% { transform: scaleY(0.3); } }
 
-    /* Stage 3: Text lines typing inside Draft */
-    .draft-l1, .draft-l2, .draft-l3 { transform-box: fill-box; transform-origin: left center; }
-    .draft-l1 { animation: dl1 9s ease-out infinite; }
-    .draft-l2 { animation: dl2 9s ease-out infinite; }
-    .draft-l3 { animation: dl3 9s ease-out infinite; }
-    @keyframes dl1 { 0%, 33% { opacity: 0.15; transform: scaleX(0.05); } 38%, 94% { opacity: 0.95; transform: scaleX(1); } 98%, 100% { opacity: 0.15; transform: scaleX(0.05); } }
-    @keyframes dl2 { 0%, 37% { opacity: 0.15; transform: scaleX(0.05); } 42%, 94% { opacity: 0.85; transform: scaleX(1); } 98%, 100% { opacity: 0.15; transform: scaleX(0.05); } }
-    @keyframes dl3 { 0%, 41% { opacity: 0.15; transform: scaleX(0.05); } 46%, 94% { opacity: 0.9; transform: scaleX(1); } 98%, 100% { opacity: 0.15; transform: scaleX(0.05); } }
+    /* Stage 2: Hub rim rule-lines loading */
+    .hub-rim { stroke-dasharray: 290; stroke-dashoffset: 290; animation: rimLoad 9s ease-out infinite; }
+    @keyframes rimLoad { 0%, 16% { stroke-dashoffset: 290; } 28%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 290; } }
 
-    /* Stage 5: Self-drawing check */
-    .check-pop { transform-box: fill-box; transform-origin: center; animation: checkPop 9s ease-out infinite; }
-    .check-stroke { stroke-dasharray: 16; stroke-dashoffset: 16; animation: checkDraw 9s ease-out infinite; }
-    @keyframes checkPop { 0%, 70% { opacity: 0.25; transform: scale(0.75); } 74%, 94% { opacity: 1; transform: scale(1.05); } 98%, 100% { opacity: 0.25; transform: scale(0.75); } }
-    @keyframes checkDraw { 0%, 71% { stroke-dashoffset: 16; } 78%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 16; } }
+    /* Stage 3: Typing lines inside spokes */
+    .sp-l1, .sp-l2 { transform-box: fill-box; transform-origin: left center; }
+    .sp-l1 { animation: spl1 9s ease-out infinite; }
+    .sp-l2 { animation: spl2 9s ease-out infinite; }
+    @keyframes spl1 { 0%, 34% { transform: scaleX(0.1); opacity: 0.2; } 42%, 94% { transform: scaleX(1); opacity: 0.9; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
+    @keyframes spl2 { 0%, 39% { transform: scaleX(0.1); opacity: 0.2; } 47%, 94% { transform: scaleX(1); opacity: 0.75; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
 
-    /* Stage 6: Published article assembling */
-    .pub-1 { animation: pub1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .pub-2 { animation: pub2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    @keyframes pub1 { 0%, 82% { opacity: 0; transform: translateY(-6px); } 87%, 95% { opacity: 1; transform: translateY(0); } 99%, 100% { opacity: 0; transform: translateY(-6px); } }
-    @keyframes pub2 { 0%, 85% { opacity: 0; transform: translateY(6px); } 90%, 95% { opacity: 1; transform: translateY(0); } 99%, 100% { opacity: 0; transform: translateY(6px); } }
+    /* Stage 4: Fact-check ticks */
+    .fc-1 { animation: fcA 9s ease-out infinite; }
+    .fc-2 { animation: fcB 9s ease-out infinite; }
+    @keyframes fcA { 0%, 53% { opacity: 0.2; } 58%, 94% { opacity: 1; } 98%, 100% { opacity: 0.2; } }
+    @keyframes fcB { 0%, 57% { opacity: 0.2; } 62%, 94% { opacity: 1; } 98%, 100% { opacity: 0.2; } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 5: Pen underline + tick */
+    .pen-line { transform-box: fill-box; transform-origin: left center; animation: penDraw 9s ease-out infinite; }
+    .rev-tick { stroke-dasharray: 14; stroke-dashoffset: 14; animation: rtDraw 9s ease-out infinite; }
+    @keyframes penDraw { 0%, 69% { transform: scaleX(0.1); opacity: 0.2; } 75%, 94% { transform: scaleX(1); opacity: 1; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
+    @keyframes rtDraw { 0%, 73% { stroke-dashoffset: 14; } 79%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 14; } }
+
+    /* Stage 6: End pack tick */
+    .end-tick { stroke-dasharray: 16; stroke-dashoffset: 16; animation: etDraw 9s ease-out infinite; }
+    @keyframes etDraw { 0%, 86% { stroke-dashoffset: 16; } 92%, 96% { stroke-dashoffset: 0; } 99%, 100% { stroke-dashoffset: 16; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
-
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
-
+  <!-- Header -->
   <g id="header">
-    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
-    <text x="34" y="32" class="title-main">AI Automation for Content Creation</text>
-    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
-    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+    <circle cx="20" cy="22" r="3.8" fill="var(--accent)" />
+    <text x="30" y="26" class="title-main">AI Automation for Content Creation</text>
+    <rect x="466" y="12" width="158" height="20" rx="10" class="chip-bg" />
+    <circle cx="477" cy="22" r="2.2" fill="var(--accent)" />
+    <text x="484" y="25" class="method-text">Forward-deployed · Embedded</text>
   </g>
 
+  <!-- Radial Spokes & Flow Paths -->
   <g id="flow-paths">
-    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
-    <path class="flow-path" d="M 218 278 C 248 278, 250 232, 250 194" />
-    <path class="flow-path" d="M 330 132 C 354 132, 354 188, 354 224" />
-    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
-    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
+    <path class="flow-path flow-accent" d="M 290 100 L 290 140" />
+    <path class="flow-path flow-accent" d="M 250 164 L 150 92" />
+    <path class="flow-path flow-accent" d="M 330 164 L 496 92" />
+    <path class="flow-path flow-accent" d="M 250 208 L 150 262" />
+    <path class="flow-path flow-accent" d="M 330 208 L 496 262" />
+    <path class="flow-path" d="M 496 120 C 460 138, 440 144, 424 154" />
+    <path class="flow-path" d="M 424 222 C 380 260, 290 290, 240 318" />
+    <path class="flow-path" d="M 110 298 L 110 318" />
+    <path class="flow-path flow-accent" d="M 312 351 L 368 351" />
   </g>
 
   <g id="packets">
-    <circle class="packet packet-1" r="3.5" />
-    <circle class="packet packet-2" r="3.5" />
-    <circle class="packet packet-3" r="3.5" />
-    <circle class="packet packet-4" r="3.5" />
-    <circle class="packet packet-5" r="3.5" />
+    <circle class="packet p-12" r="3" />
+    <circle class="packet p-tl" r="3" />
+    <circle class="packet p-tr" r="3" />
+    <circle class="packet p-bl" r="3" />
+    <circle class="packet p-br" r="3" />
+    <circle class="packet p-34" r="3" />
+    <circle class="packet p-45" r="3" />
+    <circle class="packet p-56" r="3.2" />
   </g>
 
-  <!-- STAGE 1: Topic In -->
+  <!-- Connector Chips -->
+  <g id="connector-chips">
+    <rect x="210" y="106" width="76" height="14" rx="7" class="chip-bg" />
+    <text x="217" y="115.5" class="chip-text-accent">Upload → Zapier</text>
+
+    <rect x="294" y="106" width="84" height="14" rx="7" class="chip-bg" />
+    <text x="301" y="115.5" class="chip-text">Notion voice guide</text>
+
+    <rect x="160" y="128" width="76" height="14" rx="7" class="chip-bg" />
+    <text x="167" y="137.5" class="chip-text-accent">agent per channel</text>
+
+    <rect x="434" y="132" width="58" height="14" rx="7" class="chip-bg" />
+    <text x="441" y="141.5" class="chip-text">source check</text>
+
+    <rect x="302" y="344" width="78" height="15" rx="7.5" class="chip-bg" />
+    <text x="308" y="354" class="chip-text-accent">→ Notion calendar</text>
+  </g>
+
+  <!-- STAGE 1: TRIGGER Voice note lands -->
   <g id="stage-1" class="node">
-    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
-    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
-    <text x="26" y="86" class="stage-num">01 · TASK IN</text>
-    <text x="26" y="101" class="stage-title">Topic in</text>
-    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="33" y1="119" x2="92" y2="119" stroke="var(--ink)" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" />
-    <line x1="33" y1="127" x2="72" y2="127" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" />
-    <text x="26" y="152" class="stage-copy">Topic, angle &amp; target</text>
-    <text x="26" y="163" class="stage-copy">audience</text>
+    <rect x="212" y="40" width="156" height="60" rx="10" class="card-bg" />
+    <rect x="212" y="40" width="156" height="60" rx="10" class="highlight-ring" />
+    <text x="222" y="54" class="stage-num">01 · TRIGGER</text>
+    <text x="222" y="67" class="stage-title">Voice note lands</text>
+    <text x="222" y="79" class="stage-copy">Voice memo or rough draft</text>
+    <!-- Animated waveform -->
+    <g transform="translate(332, 56)">
+      <rect x="0" y="6" width="3" height="12" rx="1.5" fill="var(--accent)" class="wave-bar wb-1" />
+      <rect x="6" y="3" width="3" height="18" rx="1.5" fill="var(--accent)" class="wave-bar wb-2" />
+      <rect x="12" y="5" width="3" height="14" rx="1.5" fill="var(--accent)" class="wave-bar wb-3" />
+      <rect x="18" y="2" width="3" height="20" rx="1.5" fill="var(--accent)" class="wave-bar wb-4" />
+    </g>
   </g>
 
-  <!-- STAGE 2: Research Gathered -->
+  <!-- STAGE 2: CENTRAL HUB Idea + voice loaded -->
   <g id="stage-2" class="node">
-    <rect x="92" y="232" width="126" height="114" rx="10" class="card-bg" />
-    <rect x="92" y="232" width="126" height="114" rx="10" class="highlight-ring" />
-    <text x="102" y="248" class="stage-num">02 · RESEARCH</text>
-    <text x="102" y="263" class="stage-title">Research gathered</text>
-
-    <!-- Source cards stacking inside Research -->
-    <g transform="translate(102, 271)">
-      <rect x="0" y="0" width="32" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.7" class="src-card-1" />
-      <rect x="2" y="12" width="32" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.3" stroke="var(--accent)" stroke-width="0.7" class="src-card-2" />
-      <rect x="4" y="24" width="32" height="10" rx="2.5" fill="var(--accent)" fill-opacity="0.45" stroke="var(--accent)" stroke-width="0.7" class="src-card-3" />
-    </g>
-
-    <!-- Logo: Perplexity -->
-    <g transform="translate(144, 282)">
-      <path d="M5 1 L5 10 M1 5.5 L9 5.5 M2 2.5 L8 8.5 M8 2.5 L2 8.5" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" />
-      <rect x="2.5" y="3" width="5" height="5" fill="none" stroke="var(--ink)" stroke-opacity="0.6" stroke-width="0.8" />
-      <text x="12" y="8.5" class="brand-text">Perplexity</text>
-    </g>
-
+    <circle cx="290" cy="186" r="46" class="card-bg" />
+    <circle cx="290" cy="186" r="46" stroke="var(--accent)" stroke-width="2" fill="none" class="hub-rim" />
+    <circle cx="290" cy="186" r="46" class="highlight-ring" />
+    <text x="266" y="172" class="stage-num">02 · HUB</text>
+    <text x="257" y="185" class="stage-title">Idea + voice</text>
+    <text x="264" y="196" class="stage-copy">rules loaded</text>
     <g class="ai-badge">
-      <rect x="102" y="320" width="54" height="16" rx="8" class="pill-bg" />
-      <circle cx="111" cy="328" r="2.2" class="ai-pulse-dot" />
-      <text x="117" y="330.5" class="tag-text-accent">AI agent</text>
+      <rect x="272" y="203" width="36" height="14" rx="7" class="chip-bg" />
+      <text x="282" y="212.5" class="chip-text-accent">LLM</text>
     </g>
   </g>
 
-  <!-- STAGE 3: AI Stage A - Draft Written -->
+  <!-- STAGE 3: FOUR SPOKES -->
   <g id="stage-3" class="node">
-    <rect x="192" y="62" width="138" height="132" rx="10" class="card-bg" />
-    <rect x="192" y="62" width="138" height="132" rx="10" class="highlight-ring" />
-    <text x="202" y="78" class="stage-num">03 · AI STAGE A</text>
-    <circle cx="316" cy="75" r="3" class="ai-pulse-dot" />
-    <text x="202" y="92" class="stage-title">Draft written</text>
-    <text x="202" y="104" class="stage-copy">Structured &amp; cited</text>
-
-    <!-- Text lines typing inside Draft -->
-    <rect x="202" y="114" width="36" height="28" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-    <rect x="206" y="119" width="26" height="3.2" rx="1.5" fill="var(--accent)" class="draft-l1" />
-    <rect x="206" y="126" width="28" height="3.2" rx="1.5" fill="var(--accent)" fill-opacity="0.7" class="draft-l2" />
-    <rect x="206" y="133" width="20" height="3.2" rx="1.5" fill="var(--accent)" fill-opacity="0.9" class="draft-l3" />
-
-    <!-- Logos: Claude, OpenAI -->
-    <g transform="translate(246, 116)">
-      <path d="M4.5 1 L4.5 8 M1 4.5 L8 4.5 M2 2 L7 7 M7 2 L2 7" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" />
-      <text x="12" y="7.5" class="brand-text">Claude</text>
-    </g>
-    <g transform="translate(246, 132)">
-      <polygon points="4.5,0.6 8,2.6 8,6.6 4.5,8.6 1,6.6 1,2.6" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <text x="12" y="7.5" class="brand-text">OpenAI</text>
+    <!-- Top-Left: Blog draft -->
+    <g transform="translate(16, 48)">
+      <rect x="0" y="0" width="134" height="74" rx="10" class="card-bg" />
+      <rect x="0" y="0" width="134" height="74" rx="10" class="highlight-ring" />
+      <text x="10" y="14" class="stage-num">03A · SPOKE</text>
+      <text x="10" y="27" class="stage-title">Blog draft</text>
+      <text x="10" y="38" class="brand-text">Claude</text>
+      <rect x="10" y="46" width="106" height="3.5" rx="1.5" fill="var(--accent)" class="sp-l1" />
+      <rect x="10" y="54" width="84" height="3.5" rx="1.5" fill="var(--accent)" fill-opacity="0.7" class="sp-l2" />
     </g>
 
-    <g class="ai-badge">
-      <rect x="200" y="162" width="42" height="15" rx="7.5" class="pill-bg" />
-      <text x="211" y="172" class="tag-text-accent">LLM</text>
-      <rect x="246" y="162" width="64" height="15" rx="7.5" class="pill-bg" />
-      <text x="253" y="172" class="tag-text">generative AI</text>
+    <!-- Top-Right: LinkedIn post -->
+    <g transform="translate(496, 48)">
+      <rect x="0" y="0" width="130" height="74" rx="10" class="card-bg" />
+      <rect x="0" y="0" width="130" height="74" rx="10" class="highlight-ring" />
+      <text x="10" y="14" class="stage-num">03B · SPOKE</text>
+      <text x="10" y="27" class="stage-title">LinkedIn post</text>
+      <text x="10" y="38" class="brand-text">OpenAI</text>
+      <rect x="10" y="46" width="100" height="3.5" rx="1.5" fill="var(--accent)" class="sp-l2" />
+      <rect x="10" y="54" width="76" height="3.5" rx="1.5" fill="var(--accent)" fill-opacity="0.7" class="sp-l1" />
+    </g>
+
+    <!-- Bottom-Left: Newsletter -->
+    <g transform="translate(16, 224)">
+      <rect x="0" y="0" width="134" height="74" rx="10" class="card-bg" />
+      <rect x="0" y="0" width="134" height="74" rx="10" class="highlight-ring" />
+      <text x="10" y="14" class="stage-num">03C · SPOKE</text>
+      <text x="10" y="27" class="stage-title">Newsletter</text>
+      <text x="10" y="38" class="brand-text">Claude</text>
+      <text x="10" y="56" class="stage-copy">Weekly digest edition</text>
+    </g>
+
+    <!-- Bottom-Right: Social posts -->
+    <g transform="translate(496, 224)">
+      <rect x="0" y="0" width="130" height="74" rx="10" class="card-bg" />
+      <rect x="0" y="0" width="130" height="74" rx="10" class="highlight-ring" />
+      <text x="10" y="14" class="stage-num">03D · SPOKE</text>
+      <text x="10" y="27" class="stage-title">Social posts</text>
+      <text x="10" y="38" class="brand-text">OpenAI</text>
+      <text x="10" y="56" class="stage-copy">Short-form hooks</text>
     </g>
   </g>
 
-  <!-- STAGE 4: AI Stage B - Edited & On-Brand -->
+  <!-- STAGE 4: Facts checked -->
   <g id="stage-4" class="node">
-    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
-    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
-    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
-    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
-    <text x="312" y="254" class="stage-title">Edited &amp; on-brand</text>
-    <text x="312" y="266" class="stage-copy">Tone, facts &amp; links</text>
-    <text x="312" y="276" class="stage-copy">matched to style guide</text>
-
-    <rect x="312" y="286" width="118" height="24" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <circle cx="323" cy="298" r="5" fill="var(--accent)" fill-opacity="0.25" />
-    <path d="M320.5 298 L322.2 299.8 L325.5 296.5" fill="none" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" />
-    <text x="333" y="300.5" class="tag-text">Brand voice verified</text>
-
+    <rect x="366" y="152" width="116" height="70" rx="10" class="card-bg" />
+    <rect x="366" y="152" width="116" height="70" rx="10" class="highlight-ring" />
+    <text x="375" y="166" class="stage-num">04 · VERIFY</text>
+    <text x="375" y="179" class="stage-title">Facts checked</text>
+    <path d="M376 190 L379 193 L384 188" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" class="fc-1" />
+    <text x="389" y="193" class="stage-copy">Sources linked</text>
+    <path d="M376 202 L379 205 L384 200" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" class="fc-2" />
+    <text x="389" y="205" class="stage-copy">Claims verified</text>
     <g class="ai-badge">
-      <rect x="312" y="326" width="76" height="16" rx="8" class="pill-bg" />
-      <circle cx="321" cy="334" r="2" class="ai-pulse-dot" />
-      <text x="327" y="336.5" class="tag-text-accent">RAG · style check</text>
+      <rect x="374" y="210" width="98" height="14" rx="7" class="chip-bg" />
+      <text x="381" y="219.5" class="chip-text-accent">Perplexity · fact-check</text>
     </g>
   </g>
 
-  <!-- STAGE 5: Human Approval -->
+  <!-- STAGE 5: Bottom Tray Left - You edit + approve -->
   <g id="stage-5" class="node">
-    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
-    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
-    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
-    <text x="426" y="100" class="stage-title">Human approval</text>
-    <text x="426" y="113" class="stage-copy">Editor signs off</text>
-    <text x="426" y="123" class="stage-copy">before publish</text>
-    <g class="check-pop" transform="translate(494, 92)">
-      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-stroke" />
+    <rect x="16" y="318" width="296" height="66" rx="10" class="card-bg" />
+    <rect x="16" y="318" width="296" height="66" rx="10" class="highlight-ring" />
+    <text x="28" y="334" class="stage-num">05 · HUMAN GATE</text>
+    <text x="28" y="349" class="stage-title">You edit + approve</text>
+    <rect x="28" y="356" width="120" height="3" rx="1.5" fill="var(--accent)" class="pen-line" />
+    <g class="ai-badge">
+      <rect x="172" y="346" width="92" height="16" rx="8" class="chip-bg" />
+      <text x="180" y="356.5" class="chip-text-accent">human-in-the-loop</text>
     </g>
-    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
-    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
+    <circle cx="288" cy="352" r="10" fill="var(--accent)" fill-opacity="0.18" stroke="var(--accent)" stroke-width="1.2" />
+    <path d="M284 352 L286.8 354.8 L292 349.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" class="rev-tick" />
   </g>
 
-  <!-- STAGE 6: Published Article -->
+  <!-- STAGE 6: Bottom Tray Right - Week's content pack -->
   <g id="stage-6" class="node">
-    <rect x="502" y="224" width="122" height="130" rx="10" class="card-bg" />
-    <rect x="502" y="224" width="122" height="130" rx="10" class="highlight-ring" />
-    <text x="512" y="240" class="stage-num">06 · DELIVERED</text>
-    <text x="512" y="254" class="stage-title">Published article</text>
-
-    <g transform="translate(512, 263)">
-      <rect x="0" y="0" width="102" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="6" y="7" width="64" height="12" rx="2.5" fill="var(--accent)" fill-opacity="0.32" class="pub-1" />
-      <rect x="6" y="23" width="64" height="14" rx="2.5" fill="var(--accent)" fill-opacity="0.2" class="pub-2" />
-      <circle cx="86" cy="22" r="8" fill="var(--accent)" />
-      <path d="M82.5 22 L85 24.5 L89.8 19.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-    </g>
-
-    <text x="512" y="324" class="stage-copy">Live on CMS, formatted</text>
-    <text x="512" y="335" class="stage-copy">&amp; ready to share</text>
-  </g>
-
-  <g id="footer">
-    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="24" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+    <rect x="368" y="318" width="258" height="66" rx="10" class="card-bg" />
+    <rect x="368" y="318" width="258" height="66" rx="10" class="highlight-ring" />
+    <text x="380" y="334" class="stage-num">06 · DELIVERED</text>
+    <text x="380" y="349" class="stage-title">Week's content pack</text>
+    <text x="380" y="364" class="stage-copy">Blog + LinkedIn + Newsletter + Social ready</text>
+    <circle cx="600" cy="352" r="10" fill="var(--accent)" />
+    <path d="M595.5 352 L598.8 355 L604.5 349" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="end-tick" />
   </g>
 </svg>

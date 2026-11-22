@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Video Creation</title>
-  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation handles video creation: a brief arrives, OpenAI and Claude write the script, Runway and HeyGen generate scenes with cycling frames, ElevenLabs adds voiceover with an animated waveform, a human reviews, and a finished video with a scrubbing timeline is delivered.</desc>
+  <desc id="svg-desc">Seven-stage filmstrip timeline workflow for video creation automation: raw clips upload via webhook, ElevenLabs API transcribes speech with moving waveform and typing captions, best moments highlight on the filmstrip, Runway and HeyGen assemble cuts via API, captions and 9:16, 1:1, and 16:9 sizes pop out, a human reviews, and finished videos land in the scheduler queue.</desc>
 
   <style>
     svg {
@@ -14,281 +14,303 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 15px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 11px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 8.2px; fill: var(--muted); }
-    .tag-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.4px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.8px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
-    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+
+    .title-main { font-size: 14px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.8px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 7.4px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 9.8px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 7.4px; fill: var(--muted); }
+    .brand-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
+    .chip-text { font-size: 6.8px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.8px; font-weight: 700; fill: var(--accent); }
+
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
     .flow-path {
-      fill: none; stroke: var(--line); stroke-width: 1.6;
-      stroke-linecap: round; stroke-dasharray: 5 5;
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
       animation: dashFlow 1s linear infinite;
     }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
+    /* Travelling Packets */
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-1 { offset-path: path("M 102 174 C 102 204, 128 204, 128 232"); animation: pkt1 9s linear infinite; }
-    .packet-2 { offset-path: path("M 218 278 C 248 278, 250 232, 250 194"); animation: pkt2 9s linear infinite; }
-    .packet-3 { offset-path: path("M 330 132 C 354 132, 354 188, 354 224"); animation: pkt3 9s linear infinite; }
-    .packet-4 { offset-path: path("M 440 280 C 468 280, 468 220, 468 178"); animation: pkt4 9s linear infinite; }
-    .packet-5 { offset-path: path("M 526 126 C 562 126, 562 182, 562 224"); animation: pkt5 9s linear infinite; }
+    .p-12 { offset-path: path("M 82 142 L 82 176 L 154 252"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 192 252 L 192 176 L 234 142"); animation: p23 9s linear infinite; }
+    .p-34 { offset-path: path("M 268 142 L 268 176 L 316 252"); animation: p34 9s linear infinite; }
+    .p-45 { offset-path: path("M 352 252 L 352 176 L 396 142"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 432 142 L 432 176 L 488 252"); animation: p56 9s linear infinite; }
+    .p-67 { offset-path: path("M 526 252 L 526 176 L 558 142"); animation: p67 9s linear infinite; }
 
-    @keyframes pkt1 { 0%, 10% { offset-distance: 0%; opacity: 0; } 12% { opacity: 1; } 20% { offset-distance: 100%; opacity: 1; } 22%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt2 { 0%, 25% { offset-distance: 0%; opacity: 0; } 27% { opacity: 1; } 35% { offset-distance: 100%; opacity: 1; } 37%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt3 { 0%, 44% { offset-distance: 0%; opacity: 0; } 46% { opacity: 1; } 54% { offset-distance: 100%; opacity: 1; } 56%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt4 { 0%, 62% { offset-distance: 0%; opacity: 0; } 64% { opacity: 1; } 72% { offset-distance: 100%; opacity: 1; } 74%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt5 { 0%, 76% { offset-distance: 0%; opacity: 0; } 78% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p23 { 0%, 22% { offset-distance: 0%; opacity: 0; } 24% { opacity: 1; } 32% { offset-distance: 100%; opacity: 1; } 34%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p34 { 0%, 36% { offset-distance: 0%; opacity: 0; } 38% { opacity: 1; } 46% { offset-distance: 100%; opacity: 1; } 48%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p45 { 0%, 50% { offset-distance: 0%; opacity: 0; } 52% { opacity: 1; } 60% { offset-distance: 100%; opacity: 1; } 62%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p56 { 0%, 64% { offset-distance: 0%; opacity: 0; } 66% { opacity: 1; } 74% { offset-distance: 100%; opacity: 1; } 76%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p67 { 0%, 78% { offset-distance: 0%; opacity: 0; } 80% { opacity: 1; } 88% { offset-distance: 100%; opacity: 1; } 90%, 100% { offset-distance: 100%; opacity: 0; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
+    /* Sequential Stage Lighting */
+    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 1.8; opacity: 0; }
     #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
     #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
     #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
     #stage-4 .highlight-ring { animation: lit4 9s ease-in-out infinite; }
     #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
     #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    #stage-7 .highlight-ring { animation: lit7 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 15% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 30% { opacity: 0; } 35%, 48% { opacity: 1; } 54%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit4 { 0%, 48% { opacity: 0; } 53%, 66% { opacity: 1; } 72%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 66% { opacity: 0; } 71%, 80% { opacity: 1; } 86%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 80% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.2; } 3%, 12% { opacity: 1; } 16% { opacity: 0.25; } }
+    @keyframes lit2 { 0%, 14% { opacity: 0; } 18%, 27% { opacity: 1; } 31%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit3 { 0%, 28% { opacity: 0; } 32%, 42% { opacity: 1; } 46%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit4 { 0%, 42% { opacity: 0; } 46%, 56% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit5 { 0%, 56% { opacity: 0; } 60%, 70% { opacity: 1; } 74%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit6 { 0%, 70% { opacity: 0; } 74%, 83% { opacity: 1; } 87%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
+    @keyframes lit7 { 0%, 84% { opacity: 0; } 88%, 96% { opacity: 1; } 100% { opacity: 0; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
+    .ai-pulse { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
     @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
 
-    /* Stage 3: Scene frames cycling */
-    .scene-f1 { animation: scene1 9s ease-in-out infinite; }
-    .scene-f2 { animation: scene2 9s ease-in-out infinite; }
-    .scene-f3 { animation: scene3 9s ease-in-out infinite; }
-    @keyframes scene1 { 0%, 33%, 41%, 100% { opacity: 0.25; } 35%, 39% { opacity: 1; } }
-    @keyframes scene2 { 0%, 39%, 47%, 100% { opacity: 0.25; } 41%, 45% { opacity: 1; } }
-    @keyframes scene3 { 0%, 45%, 100% { opacity: 0.25; } 47%, 94% { opacity: 1; } }
+    /* Filmstrip Playhead */
+    .playhead { animation: sweepHead 9s linear infinite; }
+    @keyframes sweepHead { 0% { transform: translateX(0px); } 92% { transform: translateX(576px); } 98%, 100% { transform: translateX(0px); } }
 
-    /* Stage 4: Audio waveform bars moving */
+    /* Strip Highlight Blocks (Stage 3) */
+    .strip-hl-1 { animation: shl1 9s ease-in-out infinite; }
+    .strip-hl-2 { animation: shl2 9s ease-in-out infinite; }
+    @keyframes shl1 { 0%, 30% { opacity: 0.12; } 36%, 94% { opacity: 0.55; } 98%, 100% { opacity: 0.12; } }
+    @keyframes shl2 { 0%, 34% { opacity: 0.12; } 40%, 94% { opacity: 0.55; } 98%, 100% { opacity: 0.12; } }
+
+    /* Stage 1: Clip fade + duration counter */
+    .clip-thumb { animation: clipFade 9s ease-out infinite; }
+    .dur-1 { animation: d1 9s linear infinite; }
+    .dur-2 { animation: d2 9s linear infinite; }
+    .dur-3 { animation: d3 9s linear infinite; }
+    @keyframes clipFade { 0%, 96%, 100% { opacity: 0.25; } 6%, 92% { opacity: 1; } }
+    @keyframes d1 { 0%, 5% { opacity: 1; } 6%, 100% { opacity: 0; } }
+    @keyframes d2 { 0%, 5% { opacity: 0; } 6%, 11% { opacity: 1; } 12%, 100% { opacity: 0; } }
+    @keyframes d3 { 0%, 11% { opacity: 0; } 12%, 95% { opacity: 1; } 98%, 100% { opacity: 0; } }
+
+    /* Stage 2: Waveform + caption lines */
     .wave-bar { transform-box: fill-box; transform-origin: center; }
     .wb-1 { animation: waveA 0.9s ease-in-out infinite; }
     .wb-2 { animation: waveB 0.9s ease-in-out infinite 0.15s; }
     .wb-3 { animation: waveA 0.9s ease-in-out infinite 0.3s; }
     .wb-4 { animation: waveB 0.9s ease-in-out infinite 0.45s; }
-    .wb-5 { animation: waveA 0.9s ease-in-out infinite 0.6s; }
     @keyframes waveA { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
     @keyframes waveB { 0%, 100% { transform: scaleY(0.95); } 50% { transform: scaleY(0.3); } }
+    .cap-l1, .cap-l2 { transform-box: fill-box; transform-origin: left center; }
+    .cap-l1 { animation: cl1 9s ease-out infinite; }
+    .cap-l2 { animation: cl2 9s ease-out infinite; }
+    @keyframes cl1 { 0%, 17% { transform: scaleX(0.1); opacity: 0.2; } 23%, 94% { transform: scaleX(1); opacity: 0.9; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
+    @keyframes cl2 { 0%, 20% { transform: scaleX(0.1); opacity: 0.2; } 26%, 94% { transform: scaleX(1); opacity: 0.75; } 98%, 100% { transform: scaleX(0.1); opacity: 0.2; } }
 
-    /* Stage 5: Self-drawing check */
-    .check-pop { transform-box: fill-box; transform-origin: center; animation: checkPop 9s ease-out infinite; }
-    .check-stroke { stroke-dasharray: 16; stroke-dashoffset: 16; animation: checkDraw 9s ease-out infinite; }
-    @keyframes checkPop { 0%, 70% { opacity: 0.25; transform: scale(0.75); } 74%, 94% { opacity: 1; transform: scale(1.05); } 98%, 100% { opacity: 0.25; transform: scale(0.75); } }
-    @keyframes checkDraw { 0%, 71% { stroke-dashoffset: 16; } 78%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 16; } }
+    /* Stage 4: Frames shuffling into order */
+    .shuf-a { animation: shA 9s ease-in-out infinite; }
+    .shuf-b { animation: shB 9s ease-in-out infinite; }
+    @keyframes shA { 0%, 44% { transform: translateX(12px); } 52%, 94% { transform: translateX(0px); } 98%, 100% { transform: translateX(12px); } }
+    @keyframes shB { 0%, 44% { transform: translateX(-12px); } 52%, 94% { transform: translateX(0px); } 98%, 100% { transform: translateX(-12px); } }
 
-    /* Stage 6: Playhead scrubbing mini timeline */
-    .playhead { animation: scrub 9s ease-in-out infinite; }
-    @keyframes scrub {
-      0%, 82% { transform: translateX(0px); opacity: 0.35; }
-      84% { opacity: 1; }
-      94% { transform: translateX(58px); opacity: 1; }
-      98%, 100% { transform: translateX(0px); opacity: 0.35; }
-    }
+    /* Stage 5: Three mini-frames popping out */
+    .size-pop { transform-box: fill-box; transform-origin: center; animation: szPop 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+    @keyframes szPop { 0%, 57% { transform: scale(0.7); opacity: 0.25; } 64%, 94% { transform: scale(1); opacity: 1; } 98%, 100% { transform: scale(0.7); opacity: 0.25; } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 6: Play triangle pulse + tick */
+    .rev-tick { stroke-dasharray: 14; stroke-dashoffset: 14; animation: rtDraw 9s ease-out infinite; }
+    @keyframes rtDraw { 0%, 76% { stroke-dashoffset: 14; } 82%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 14; } }
+
+    /* Stage 7: End tick */
+    .end-tick { stroke-dasharray: 16; stroke-dashoffset: 16; animation: etDraw 9s ease-out infinite; }
+    @keyframes etDraw { 0%, 86% { stroke-dashoffset: 16; } 92%, 96% { stroke-dashoffset: 0; } 99%, 100% { stroke-dashoffset: 16; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
-
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
-
+  <!-- Header -->
   <g id="header">
-    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
-    <text x="34" y="32" class="title-main">AI Automation for Video Creation</text>
-    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
-    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+    <circle cx="20" cy="22" r="3.8" fill="var(--accent)" />
+    <text x="30" y="26" class="title-main">AI Automation for Video Creation</text>
+    <rect x="466" y="12" width="158" height="20" rx="10" class="chip-bg" />
+    <circle cx="477" cy="22" r="2.2" fill="var(--accent)" />
+    <text x="484" y="25" class="method-text">Forward-deployed · Embedded</text>
   </g>
 
+  <!-- FILMSTRIP TIMELINE ACROSS MIDDLE -->
+  <g id="filmstrip">
+    <rect x="20" y="176" width="600" height="48" rx="6" fill="var(--surface)" stroke="var(--line)" stroke-width="1.2" />
+    <!-- Sprocket holes top & bottom -->
+    <g fill="var(--line)" opacity="0.65">
+      <rect x="30" y="180" width="8" height="4" rx="1" /><rect x="66" y="180" width="8" height="4" rx="1" /><rect x="102" y="180" width="8" height="4" rx="1" /><rect x="138" y="180" width="8" height="4" rx="1" /><rect x="174" y="180" width="8" height="4" rx="1" /><rect x="210" y="180" width="8" height="4" rx="1" /><rect x="246" y="180" width="8" height="4" rx="1" /><rect x="282" y="180" width="8" height="4" rx="1" /><rect x="318" y="180" width="8" height="4" rx="1" /><rect x="354" y="180" width="8" height="4" rx="1" /><rect x="390" y="180" width="8" height="4" rx="1" /><rect x="426" y="180" width="8" height="4" rx="1" /><rect x="462" y="180" width="8" height="4" rx="1" /><rect x="498" y="180" width="8" height="4" rx="1" /><rect x="534" y="180" width="8" height="4" rx="1" /><rect x="570" y="180" width="8" height="4" rx="1" /><rect x="602" y="180" width="8" height="4" rx="1" />
+      <rect x="30" y="216" width="8" height="4" rx="1" /><rect x="66" y="216" width="8" height="4" rx="1" /><rect x="102" y="216" width="8" height="4" rx="1" /><rect x="138" y="216" width="8" height="4" rx="1" /><rect x="174" y="216" width="8" height="4" rx="1" /><rect x="210" y="216" width="8" height="4" rx="1" /><rect x="246" y="216" width="8" height="4" rx="1" /><rect x="282" y="216" width="8" height="4" rx="1" /><rect x="318" y="216" width="8" height="4" rx="1" /><rect x="354" y="216" width="8" height="4" rx="1" /><rect x="390" y="216" width="8" height="4" rx="1" /><rect x="426" y="216" width="8" height="4" rx="1" /><rect x="462" y="216" width="8" height="4" rx="1" /><rect x="498" y="216" width="8" height="4" rx="1" /><rect x="534" y="216" width="8" height="4" rx="1" /><rect x="570" y="216" width="8" height="4" rx="1" /><rect x="602" y="216" width="8" height="4" rx="1" />
+    </g>
+    <!-- Highlight blocks on strip frames (Stage 3) -->
+    <rect x="170" y="187" width="68" height="26" rx="3" fill="var(--accent)" class="strip-hl-1" />
+    <rect x="252" y="187" width="82" height="26" rx="3" fill="var(--accent)" class="strip-hl-2" />
+    <rect x="350" y="187" width="76" height="26" rx="3" fill="var(--accent)" class="strip-hl-1" />
+    <!-- Sweeping Playhead -->
+    <g class="playhead">
+      <line x1="28" y1="170" x2="28" y2="230" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" />
+      <polygon points="23,170 33,170 28,176" fill="var(--accent)" />
+    </g>
+  </g>
+
+  <!-- Flow Paths connecting alternating stages to strip -->
   <g id="flow-paths">
-    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
-    <path class="flow-path" d="M 218 278 C 248 278, 250 232, 250 194" />
-    <path class="flow-path" d="M 330 132 C 354 132, 354 188, 354 224" />
-    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
-    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
+    <path class="flow-path flow-accent" d="M 82 142 L 82 176 L 154 252" />
+    <path class="flow-path" d="M 192 252 L 192 176 L 234 142" />
+    <path class="flow-path" d="M 268 142 L 268 176 L 316 252" />
+    <path class="flow-path flow-accent" d="M 352 252 L 352 176 L 396 142" />
+    <path class="flow-path" d="M 432 142 L 432 176 L 488 252" />
+    <path class="flow-path flow-accent" d="M 526 252 L 526 176 L 558 142" />
   </g>
 
   <g id="packets">
-    <circle class="packet packet-1" r="3.5" />
-    <circle class="packet packet-2" r="3.5" />
-    <circle class="packet packet-3" r="3.5" />
-    <circle class="packet packet-4" r="3.5" />
-    <circle class="packet packet-5" r="3.5" />
+    <circle class="packet p-12" r="3" />
+    <circle class="packet p-23" r="3" />
+    <circle class="packet p-34" r="3" />
+    <circle class="packet p-45" r="3" />
+    <circle class="packet p-56" r="3" />
+    <circle class="packet p-67" r="3" />
   </g>
 
-  <!-- STAGE 1: Brief In -->
+  <!-- Connector Chips -->
+  <g id="connector-chips">
+    <rect x="34" y="154" width="84" height="15" rx="7.5" class="chip-bg" />
+    <text x="41" y="164" class="chip-text-accent">Upload → webhook</text>
+
+    <rect x="148" y="232" width="76" height="15" rx="7.5" class="chip-bg" />
+    <text x="157" y="242" class="chip-text-accent">ElevenLabs API</text>
+
+    <rect x="328" y="232" width="32" height="15" rx="7.5" class="chip-bg" />
+    <text x="337" y="242" class="chip-text-accent">API</text>
+
+    <rect x="498" y="154" width="86" height="15" rx="7.5" class="chip-bg" />
+    <text x="505" y="164" class="chip-text-accent">→ scheduler queue</text>
+  </g>
+
+  <!-- STAGE 1 (Above, Far Left): TRIGGER Raw clips in -->
   <g id="stage-1" class="node">
-    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
-    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
-    <text x="26" y="86" class="stage-num">01 · TASK IN</text>
-    <text x="26" y="101" class="stage-title">Brief in</text>
-    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <polygon points="35,118 35,130 45,124" fill="var(--accent)" fill-opacity="0.65" />
-    <line x1="51" y1="121" x2="104" y2="121" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.4" stroke-linecap="round" />
-    <line x1="51" y1="127" x2="88" y2="127" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.4" stroke-linecap="round" />
-    <text x="26" y="152" class="stage-copy">Video brief, talking</text>
-    <text x="26" y="163" class="stage-copy">points &amp; brand clips</text>
+    <rect x="16" y="42" width="132" height="100" rx="10" class="card-bg" />
+    <rect x="16" y="42" width="132" height="100" rx="10" class="highlight-ring" />
+    <text x="25" y="56" class="stage-num">01 · TRIGGER</text>
+    <text x="25" y="69" class="stage-title">Raw clips in</text>
+    <rect x="25" y="76" width="46" height="30" rx="4" fill="var(--accent)" fill-opacity="0.22" stroke="var(--accent)" stroke-width="0.8" class="clip-thumb" />
+    <polygon points="44,86 44,96 52,91" fill="var(--accent)" />
+    <text x="78" y="90" class="stage-copy">Length:</text>
+    <text x="78" y="102" class="chip-text-accent dur-1">0:12</text>
+    <text x="78" y="102" class="chip-text-accent dur-2">0:45</text>
+    <text x="78" y="102" class="chip-text-accent dur-3">1:20</text>
+    <text x="25" y="124" class="stage-copy">Phone / camera upload</text>
   </g>
 
-  <!-- STAGE 2: Script Written -->
+  <!-- STAGE 2 (Below, Left): Transcribed -->
   <g id="stage-2" class="node">
-    <rect x="92" y="232" width="126" height="114" rx="10" class="card-bg" />
-    <rect x="92" y="232" width="126" height="114" rx="10" class="highlight-ring" />
-    <text x="102" y="248" class="stage-num">02 · SCRIPT</text>
-    <text x="102" y="263" class="stage-title">Script written</text>
-    <text x="102" y="275" class="stage-copy">Hooks, scenes &amp; timing</text>
+    <rect x="78" y="252" width="144" height="114" rx="10" class="card-bg" />
+    <rect x="78" y="252" width="144" height="114" rx="10" class="highlight-ring" />
+    <text x="87" y="266" class="stage-num">02 · TRANSCRIBE</text>
+    <circle cx="208" cy="264" r="2.6" class="ai-pulse" />
+    <text x="87" y="279" class="stage-title">Transcribed</text>
 
-    <!-- Logos: OpenAI, Claude -->
-    <g transform="translate(102, 284)">
-      <polygon points="4,0.6 7.2,2.4 7.2,6 4,7.8 0.8,6 0.8,2.4" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <text x="10" y="6.8" class="brand-text">OpenAI</text>
-    </g>
-    <g transform="translate(156, 284)">
-      <path d="M4 0.8 L4 7.2 M0.8 4 L7.2 4 M1.8 1.8 L6.2 6.2 M6.2 1.8 L1.8 6.2" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round" />
-      <text x="10" y="6.8" class="brand-text">Claude</text>
+    <!-- Moving waveform + typing captions -->
+    <g transform="translate(87, 286)">
+      <rect x="4" y="4" width="3" height="10" rx="1.5" fill="var(--accent)" class="wave-bar wb-1" />
+      <rect x="10" y="2" width="3" height="14" rx="1.5" fill="var(--accent)" class="wave-bar wb-2" />
+      <rect x="16" y="3" width="3" height="12" rx="1.5" fill="var(--accent)" class="wave-bar wb-3" />
+      <rect x="22" y="1" width="3" height="16" rx="1.5" fill="var(--accent)" class="wave-bar wb-4" />
+      <rect x="34" y="4" width="84" height="3.5" rx="1.5" fill="var(--accent)" class="cap-l1" />
+      <rect x="34" y="11" width="66" height="3.5" rx="1.5" fill="var(--accent)" fill-opacity="0.7" class="cap-l2" />
     </g>
 
     <g class="ai-badge">
-      <rect x="102" y="318" width="54" height="16" rx="8" class="pill-bg" />
-      <circle cx="111" cy="326" r="2.2" class="ai-pulse-dot" />
-      <text x="117" y="328.5" class="tag-text-accent">AI agent</text>
-      <rect x="160" y="318" width="38" height="16" rx="8" class="pill-bg" />
-      <text x="171" y="328.5" class="tag-text">LLM</text>
+      <rect x="87" y="336" width="76" height="16" rx="8" class="chip-bg" />
+      <text x="97" y="346.5" class="chip-text-accent">speech-to-text</text>
     </g>
   </g>
 
-  <!-- STAGE 3: AI Stage A - Scenes Generated -->
+  <!-- STAGE 3 (Above, Centre-Left): Best moments found -->
   <g id="stage-3" class="node">
-    <rect x="192" y="62" width="138" height="132" rx="10" class="card-bg" />
-    <rect x="192" y="62" width="138" height="132" rx="10" class="highlight-ring" />
-    <text x="202" y="78" class="stage-num">03 · AI STAGE A</text>
-    <circle cx="316" cy="75" r="3" class="ai-pulse-dot" />
-    <text x="202" y="92" class="stage-title">Scenes generated</text>
-    <text x="202" y="104" class="stage-copy">Clips &amp; presenter frames</text>
-
-    <!-- Scene frames cycling inside card -->
-    <g transform="translate(202, 114)">
-      <rect x="0" y="0" width="11" height="24" rx="2" fill="var(--accent)" fill-opacity="0.35" stroke="var(--accent)" stroke-width="0.9" class="scene-f1" />
-      <rect x="13" y="0" width="11" height="24" rx="2" fill="var(--accent)" fill-opacity="0.35" stroke="var(--accent)" stroke-width="0.9" class="scene-f2" />
-      <rect x="26" y="0" width="11" height="24" rx="2" fill="var(--accent)" fill-opacity="0.35" stroke="var(--accent)" stroke-width="0.9" class="scene-f3" />
-    </g>
-
-    <!-- Logos: Runway, HeyGen -->
-    <g transform="translate(248, 115)">
-      <rect x="1" y="1" width="7" height="7" rx="1.5" fill="none" stroke="var(--accent)" stroke-width="1.2" />
-      <polygon points="3.5,3 3.5,6 6,4.5" fill="var(--accent)" />
-      <text x="11" y="7.5" class="brand-text">Runway</text>
-    </g>
-    <g transform="translate(248, 130)">
-      <circle cx="4.5" cy="4.5" r="3.8" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="1.1" />
-      <circle cx="4.5" cy="4.5" r="1.4" fill="var(--accent)" />
-      <text x="11" y="7.5" class="brand-text">HeyGen</text>
-    </g>
-
-    <g class="ai-badge">
-      <rect x="200" y="162" width="60" height="15" rx="7.5" class="pill-bg" />
-      <text x="206" y="172" class="tag-text-accent">generative AI</text>
-      <rect x="264" y="162" width="58" height="15" rx="7.5" class="pill-bg" />
-      <text x="270" y="172" class="tag-text">text-to-video</text>
-    </g>
+    <rect x="166" y="42" width="140" height="100" rx="10" class="card-bg" />
+    <rect x="166" y="42" width="140" height="100" rx="10" class="highlight-ring" />
+    <text x="175" y="56" class="stage-num">03 · HIGHLIGHTS</text>
+    <circle cx="292" cy="54" r="2.6" class="ai-pulse" />
+    <text x="175" y="69" class="stage-title">Best moments found</text>
+    <text x="175" y="83" class="stage-copy">Agent scans transcript &amp;</text>
+    <text x="175" y="94" class="stage-copy">marks strongest segments</text>
+    <text x="175" y="105" class="stage-copy">directly on the filmstrip</text>
   </g>
 
-  <!-- STAGE 4: AI Stage B - Voiceover Added -->
+  <!-- STAGE 4 (Below, Centre): Cuts assembled -->
   <g id="stage-4" class="node">
-    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
-    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
-    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
-    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
-    <text x="312" y="254" class="stage-title">Voiceover added</text>
-    <text x="312" y="266" class="stage-copy">Studio voice &amp; sync</text>
+    <rect x="244" y="252" width="144" height="114" rx="10" class="card-bg" />
+    <rect x="244" y="252" width="144" height="114" rx="10" class="highlight-ring" />
+    <text x="253" y="266" class="stage-num">04 · ASSEMBLE</text>
+    <circle cx="374" cy="264" r="2.6" class="ai-pulse" />
+    <text x="253" y="279" class="stage-title">Cuts assembled</text>
 
-    <!-- Moving audio waveform inside card -->
-    <g transform="translate(312, 276)">
-      <rect x="0" y="0" width="38" height="26" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="5" y="7" width="3" height="12" rx="1.5" fill="var(--accent)" class="wave-bar wb-1" />
-      <rect x="11" y="5" width="3" height="16" rx="1.5" fill="var(--accent)" class="wave-bar wb-2" />
-      <rect x="17" y="6" width="3" height="14" rx="1.5" fill="var(--accent)" class="wave-bar wb-3" />
-      <rect x="23" y="4" width="3" height="18" rx="1.5" fill="var(--accent)" class="wave-bar wb-4" />
-      <rect x="29" y="8" width="3" height="10" rx="1.5" fill="var(--accent)" class="wave-bar wb-5" />
-    </g>
+    <!-- Shuffling frames -->
+    <rect x="253" y="287" width="18" height="16" rx="2" fill="var(--accent)" fill-opacity="0.35" stroke="var(--accent)" stroke-width="0.8" class="shuf-a" />
+    <rect x="275" y="287" width="18" height="16" rx="2" fill="var(--accent)" fill-opacity="0.5" stroke="var(--accent)" stroke-width="0.8" class="shuf-b" />
+    <rect x="297" y="287" width="18" height="16" rx="2" fill="var(--accent)" fill-opacity="0.65" stroke="var(--accent)" stroke-width="0.8" />
 
-    <!-- Logo: ElevenLabs -->
-    <g transform="translate(358, 284)">
-      <rect x="1" y="1" width="2.5" height="8" rx="1" fill="var(--accent)" />
-      <rect x="5.5" y="1" width="2.5" height="8" rx="1" fill="var(--accent)" />
-      <text x="12" y="8" class="brand-text">ElevenLabs</text>
+    <text x="253" y="320" class="brand-text">Runway · HeyGen</text>
+    <g class="ai-badge">
+      <rect x="253" y="336" width="64" height="16" rx="8" class="chip-bg" />
+      <text x="262" y="346.5" class="chip-text-accent">text-to-video</text>
     </g>
+  </g>
+
+  <!-- STAGE 5 (Above, Centre-Right): Captions + sizes -->
+  <g id="stage-5" class="node">
+    <rect x="324" y="42" width="144" height="100" rx="10" class="card-bg" />
+    <rect x="324" y="42" width="144" height="100" rx="10" class="highlight-ring" />
+    <text x="333" y="56" class="stage-num">05 · FORMATS</text>
+    <text x="333" y="69" class="stage-title">Captions + sizes</text>
+    <text x="333" y="81" class="stage-copy">Burned-in captions</text>
+
+    <!-- Three mini-frames popping out -->
+    <g class="size-pop" transform="translate(333, 90)">
+      <rect x="0" y="0" width="32" height="30" rx="4" class="chip-bg" />
+      <text x="7" y="18" class="chip-text-accent">9:16</text>
+      <rect x="38" y="0" width="32" height="30" rx="4" class="chip-bg" />
+      <text x="47" y="18" class="chip-text-accent">1:1</text>
+      <rect x="76" y="0" width="34" height="30" rx="4" class="chip-bg" />
+      <text x="83" y="18" class="chip-text-accent">16:9</text>
+    </g>
+  </g>
+
+  <!-- STAGE 6 (Below, Right): Human review -->
+  <g id="stage-6" class="node">
+    <rect x="412" y="252" width="144" height="114" rx="10" class="card-bg" />
+    <rect x="412" y="252" width="144" height="114" rx="10" class="highlight-ring" />
+    <text x="421" y="266" class="stage-num">06 · REVIEW</text>
+    <text x="421" y="279" class="stage-title">Human review</text>
+    <text x="421" y="291" class="stage-copy">Watches &amp; approves</text>
+
+    <!-- Play triangle + tick -->
+    <circle cx="436" cy="312" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1" />
+    <polygon points="433.5,308 433.5,316 440.5,312" fill="var(--accent)" />
+    <circle cx="464" cy="312" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1" />
+    <path d="M460 312 L462.8 314.8 L468 309.5" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="rev-tick" />
 
     <g class="ai-badge">
-      <rect x="312" y="326" width="70" height="16" rx="8" class="pill-bg" />
-      <circle cx="321" cy="334" r="2" class="ai-pulse-dot" />
-      <text x="327" y="336.5" class="tag-text-accent">multimodal AI</text>
+      <rect x="421" y="336" width="92" height="16" rx="8" class="chip-bg" />
+      <text x="429" y="346.5" class="chip-text-accent">human-in-the-loop</text>
     </g>
   </g>
 
-  <!-- STAGE 5: Human Review -->
-  <g id="stage-5" class="node">
-    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
-    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
-    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
-    <text x="426" y="100" class="stage-title">Human review</text>
-    <text x="426" y="113" class="stage-copy">Director checks</text>
-    <text x="426" y="123" class="stage-copy">pacing &amp; tone</text>
-    <g class="check-pop" transform="translate(494, 92)">
-      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-stroke" />
-    </g>
-    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
-    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
-  </g>
-
-  <!-- STAGE 6: Finished Video (Playhead scrubbing mini timeline) -->
-  <g id="stage-6" class="node">
-    <rect x="502" y="224" width="122" height="130" rx="10" class="card-bg" />
-    <rect x="502" y="224" width="122" height="130" rx="10" class="highlight-ring" />
-    <text x="512" y="240" class="stage-num">06 · DELIVERED</text>
-    <text x="512" y="254" class="stage-title">Finished video</text>
-
-    <g transform="translate(512, 263)">
-      <rect x="0" y="0" width="102" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
-      <!-- Mini timeline tracks -->
-      <rect x="8" y="12" width="66" height="8" rx="2" fill="var(--accent)" fill-opacity="0.3" />
-      <rect x="8" y="24" width="66" height="6" rx="2" fill="var(--accent)" fill-opacity="0.5" />
-      <!-- Scrubbing playhead -->
-      <g class="playhead">
-        <line x1="10" y1="6" x2="10" y2="36" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" />
-        <circle cx="10" cy="6" r="2.5" fill="var(--accent)" />
-      </g>
-      <circle cx="88" cy="22" r="8" fill="var(--accent)" />
-      <polygon points="86,18.5 86,25.5 92,22" fill="#ffffff" />
-    </g>
-
-    <text x="512" y="324" class="stage-copy">Ready for social, ads</text>
-    <text x="512" y="335" class="stage-copy">&amp; landing pages</text>
-  </g>
-
-  <g id="footer">
-    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="24" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+  <!-- STAGE 7 (Above, Far Right): Ready to post -->
+  <g id="stage-7" class="node">
+    <rect x="488" y="42" width="136" height="100" rx="10" class="card-bg" />
+    <rect x="488" y="42" width="136" height="100" rx="10" class="highlight-ring" />
+    <text x="497" y="56" class="stage-num">07 · DELIVERED</text>
+    <text x="497" y="69" class="stage-title">Ready to post</text>
+    <text x="497" y="83" class="stage-copy">All formats queued</text>
+    <circle cx="598" cy="112" r="10" fill="var(--accent)" />
+    <path d="M593.5 112 L596.8 115 L602.5 109" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="end-tick" />
+    <text x="497" y="116" class="chip-text-accent">Ready to publish</text>
   </g>
 </svg>
