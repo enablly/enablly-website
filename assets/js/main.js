@@ -222,14 +222,63 @@
         stageAnim.innerHTML = `<img src="${animSrc}" alt="${title}" style="width:100%;height:100%;display:block;" />`;
       }
       requestAnimationFrame(() => stageCard.classList.remove("is-switching"));
+      scheduleAutoAdvance();
     }
 
+    const LOOP_MS = 9000;
+    const showcase = stageCard.closest(".hero-showcase") || stageCard;
+    const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let autoTimer = null;
+    let isHovered = false;
+
+    function clearAutoAdvance() {
+      if (autoTimer !== null) {
+        clearTimeout(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function scheduleAutoAdvance() {
+      clearAutoAdvance();
+      if (prefersReducedMotion || isHovered || document.hidden || tabs.length < 2) return;
+      autoTimer = setTimeout(() => {
+        autoTimer = null;
+        const candidates = Array.from(tabs).filter((t) => t.getAttribute("data-slug") !== activeSlug);
+        if (!candidates.length) return;
+        const nextTab = candidates[Math.floor(Math.random() * candidates.length)];
+        selectTab(nextTab);
+      }, LOOP_MS);
+    }
+
+    showcase.addEventListener("mouseenter", () => {
+      isHovered = true;
+      clearAutoAdvance();
+    });
+
+    showcase.addEventListener("mouseleave", () => {
+      isHovered = false;
+      scheduleAutoAdvance();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearAutoAdvance();
+      } else {
+        scheduleAutoAdvance();
+      }
+    });
+
     tabs.forEach((tab) => {
-      tab.addEventListener("click", () => selectTab(tab));
+      tab.addEventListener("click", () => {
+        scheduleAutoAdvance();
+        selectTab(tab);
+      });
     });
 
     if (!initialSvg && initialTab) {
       selectTab(initialTab);
+    } else {
+      scheduleAutoAdvance();
     }
   }
 
