@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Email Campaigns</title>
   <desc id="svg-desc">Animated branching workflow showing how Enablly's forward-deployed AI automation runs email campaigns: a campaign brief arrives, a segment agent visibly splits list rows into three branches (New leads, Existing customers, Dormant contacts) with tailored copy via Claude and HubSpot, all merge into Send with streaming envelope packets, and a results dashboard shows growing open-rate bars.</desc>

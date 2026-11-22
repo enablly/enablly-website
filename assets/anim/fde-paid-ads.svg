@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Paid Ads</title>
   <desc id="svg-desc">Animated branching workflow with a feedback loop showing how Enablly's forward-deployed AI automation runs paid ads: a campaign goal arrives, a creative agent splits into Variant A and Variant B using Meta and Adobe Firefly, both launch, performance is compared with ticking counters and a drawing winner chart, budget shifts toward the winner with a loop-back arrow, and the winning campaign scales.</desc>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Customer Support</title>
   <desc id="svg-desc">Animated branching decision-tree workflow showing how Enablly's forward-deployed AI automation handles customer support: customer messages arrive via email, chat, and WhatsApp; an AI triage agent sorts intent and urgency at a decision diamond into three branches — Branch A (common questions answered automatically via RAG with OpenAI and Claude), Branch B (billing or account issues prepared via tool calling with HubSpot and Zendesk), and Branch C (urgent or angry customers fast-tracked straight to a human without automation). Branches B and C merge at a human-in-the-loop check, and three outcome cards show every message handled.</desc>

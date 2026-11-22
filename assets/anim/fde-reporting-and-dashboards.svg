@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Reporting and Dashboards</title>
   <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation handles reporting and dashboards: raw data arrives from spreadsheets, CRM, and ad platforms; a data agent cleans and matches columns; AI builds live charts with Microsoft Copilot and Google Gemini; an LLM writes plain-English commentary with Claude and OpenAI; a manager checks the numbers; and a live dashboard plus team summary is ready in one click.</desc>

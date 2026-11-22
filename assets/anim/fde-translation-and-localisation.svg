@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Translation &amp; Localisation</title>
   <desc id="svg-desc">Animated parallel-language branching workflow showing how Enablly's forward-deployed AI automation handles translation and localisation: source content arrives, a translation agent splits into Malay (with morphing text), Chinese (with DeepL and OpenAI and swapping speech-bubble words), and Japanese, each reviewed by a native speaker, and all three language badges light up in sequence as they publish together.</desc>

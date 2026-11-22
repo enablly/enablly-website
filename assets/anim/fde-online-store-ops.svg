@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Online Store Ops</title>
   <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation runs online store operations: product and stock updates arrive, Shopify and Claude rewrite listings with refreshing product cards, prices and stock sync with ticking stock counters, images are checked, a human spot-checks, and in-stock badges pop in the final store-ready card.</desc>
