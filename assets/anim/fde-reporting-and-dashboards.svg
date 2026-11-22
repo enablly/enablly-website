@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
-  <title id="svg-title">AI Automation for Reporting and Dashboards</title>
-  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation handles reporting and dashboards: raw data arrives from spreadsheets, CRM, and ad platforms; a data agent cleans and matches columns; AI builds live charts with Microsoft Copilot and Google Gemini; an LLM writes plain-English commentary with Claude and OpenAI; a manager checks the numbers; and a live dashboard plus team summary is ready in one click.</desc>
+  <title id="svg-title">AI Automation for Reporting &amp; Dashboards</title>
+  <desc id="svg-desc">Seven-stage scheduled pipeline and chart wall workflow for reporting and dashboards: a Monday 8:00 cron schedule triggers an API pull from Ads, CRM and Sheets into a central chart wall where Microsoft Copilot and Gemini build bar charts, line charts and KPI counters, changes vs baseline are highlighted, Claude drafts plain-English commentary in a bottom ribbon, a human checks accuracy, and the report delivers to Looker Studio and email.</desc>
 
   <style>
     svg {
@@ -15,543 +15,271 @@
       background: var(--bg);
     }
 
-    /* Typography */
-    .title-main {
-      font-size: 14.5px;
-      font-weight: 700;
-      fill: var(--ink);
-      letter-spacing: -0.02em;
-    }
-    .stage-num {
-      font-size: 8.5px;
-      font-weight: 700;
-      fill: var(--accent);
-      letter-spacing: 0.04em;
-    }
-    .stage-title {
-      font-size: 10.5px;
-      font-weight: 700;
-      fill: var(--ink);
-    }
-    .stage-copy {
-      font-size: 8.2px;
-      fill: var(--muted);
-    }
-    .tag-text {
-      font-size: 7.3px;
-      font-weight: 600;
-      fill: var(--ink);
-    }
-    .tag-text-accent {
-      font-size: 7.3px;
-      font-weight: 600;
-      fill: var(--accent);
-    }
-    .brand-text {
-      font-size: 7.8px;
-      font-weight: 600;
-      fill: var(--ink);
-    }
-    .method-text {
-      font-size: 8px;
-      font-weight: 600;
-      fill: var(--muted);
-    }
+    .title-main { font-size: 13.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.5px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 6.7px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 8.8px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.6px; fill: var(--muted); }
+    .chip-text { font-size: 6.2px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.2px; font-weight: 700; fill: var(--accent); }
+    .kpi-num { font-size: 10.5px; font-weight: 700; fill: var(--accent); }
 
-    /* Card and Badge Surfaces */
-    .card-bg {
-      fill: var(--surface);
-      stroke: var(--line);
-      stroke-width: 1.2;
-    }
-    .pill-bg {
-      fill: var(--surface);
-      stroke: var(--line);
-      stroke-width: 0.9;
-    }
-    .ai-badge .pill-bg {
-      stroke: var(--accent);
-      stroke-opacity: 0.55;
-    }
-    .node {
-      transform-box: fill-box;
-      transform-origin: center;
-    }
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .node { transform-box: fill-box; transform-origin: center; }
 
-    /* Flow Lines */
     .flow-path {
       fill: none;
       stroke: var(--line);
-      stroke-width: 1.6;
+      stroke-width: 1.4;
       stroke-linecap: round;
-      stroke-dasharray: 5 5;
+      stroke-dasharray: 4 4;
       animation: dashFlow 1s linear infinite;
     }
-    @keyframes dashFlow {
-      from { stroke-dashoffset: 20; }
-      to { stroke-dashoffset: 0; }
-    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
-    /* Data Packets */
-    .packet {
-      fill: var(--accent);
-      opacity: 0;
-    }
-    .packet-1 {
-      offset-path: path("M 102 174 C 102 204, 128 204, 128 232");
-      animation: pkt1 9s linear infinite;
-    }
-    .packet-2 {
-      offset-path: path("M 218 278 C 248 278, 250 232, 250 194");
-      animation: pkt2 9s linear infinite;
-    }
-    .packet-3 {
-      offset-path: path("M 332 132 C 354 132, 354 188, 354 224");
-      animation: pkt3 9s linear infinite;
-    }
-    .packet-4 {
-      offset-path: path("M 440 280 C 468 280, 468 220, 468 178");
-      animation: pkt4 9s linear infinite;
-    }
-    .packet-5 {
-      offset-path: path("M 526 126 C 562 126, 562 182, 562 224");
-      animation: pkt5 9s linear infinite;
-    }
+    .packet { fill: var(--accent); opacity: 0; }
+    .p-12 { offset-path: path("M 196 66 L 266 66"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 394 98 L 394 128"); animation: p23 9s linear infinite; }
+    .p-34 { offset-path: path("M 444 206 L 454 206"); animation: p34 9s linear infinite; }
+    .p-35 { offset-path: path("M 146 286 L 146 316"); animation: p35 9s linear infinite; }
+    .p-56 { offset-path: path("M 244 352 L 262 352"); animation: p56 9s linear infinite; }
+    .p-67 { offset-path: path("M 392 352 L 502 352"); animation: p67 9s linear infinite; }
 
-    @keyframes pkt1 {
-      0%, 10% { offset-distance: 0%; opacity: 0; }
-      12% { opacity: 1; }
-      20% { offset-distance: 100%; opacity: 1; }
-      22%, 100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes pkt2 {
-      0%, 25% { offset-distance: 0%; opacity: 0; }
-      27% { opacity: 1; }
-      35% { offset-distance: 100%; opacity: 1; }
-      37%, 100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes pkt3 {
-      0%, 44% { offset-distance: 0%; opacity: 0; }
-      46% { opacity: 1; }
-      54% { offset-distance: 100%; opacity: 1; }
-      56%, 100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes pkt4 {
-      0%, 62% { offset-distance: 0%; opacity: 0; }
-      64% { opacity: 1; }
-      72% { offset-distance: 100%; opacity: 1; }
-      74%, 100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes pkt5 {
-      0%, 76% { offset-distance: 0%; opacity: 0; }
-      78% { opacity: 1; }
-      85% { offset-distance: 100%; opacity: 1; }
-      87%, 100% { offset-distance: 100%; opacity: 0; }
-    }
+    @keyframes p12 { 0%,10% { opacity:0; offset-distance:0%; } 12% { opacity:1; } 18% { opacity:1; offset-distance:100%; } 21%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,22% { opacity:0; offset-distance:0%; } 24% { opacity:1; } 30% { opacity:1; offset-distance:100%; } 33%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p34 { 0%,44% { opacity:0; offset-distance:0%; } 46% { opacity:1; } 51% { opacity:1; offset-distance:100%; } 54%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p35 { 0%,56% { opacity:0; offset-distance:0%; } 58% { opacity:1; } 64% { opacity:1; offset-distance:100%; } 67%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,70% { opacity:0; offset-distance:0%; } 72% { opacity:1; } 77% { opacity:1; offset-distance:100%; } 80%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p67 { 0%,80% { opacity:0; offset-distance:0%; } 82% { opacity:1; } 89% { opacity:1; offset-distance:100%; } 92%,100% { opacity:0; offset-distance:100%; } }
 
-    /* Sequential Node Lighting */
-    .highlight-ring {
-      fill: none;
-      stroke: var(--accent);
-      stroke-width: 2;
-      opacity: 0;
-    }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-4 .highlight-ring { animation: lit4 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .card-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .card-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .card-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
+    #stage-7 .card-bg { animation: s7Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 {
-      0%, 96%, 100% { opacity: 0.15; }
-      4%, 14% { opacity: 1; }
-      20% { opacity: 0.25; }
-    }
-    @keyframes lit2 {
-      0%, 15% { opacity: 0; }
-      20%, 30% { opacity: 1; }
-      36%, 95% { opacity: 0.25; }
-      100% { opacity: 0; }
-    }
-    @keyframes lit3 {
-      0%, 30% { opacity: 0; }
-      35%, 48% { opacity: 1; }
-      54%, 95% { opacity: 0.25; }
-      100% { opacity: 0; }
-    }
-    @keyframes lit4 {
-      0%, 48% { opacity: 0; }
-      53%, 66% { opacity: 1; }
-      72%, 95% { opacity: 0.25; }
-      100% { opacity: 0; }
-    }
-    @keyframes lit5 {
-      0%, 66% { opacity: 0; }
-      71%, 80% { opacity: 1; }
-      86%, 95% { opacity: 0.25; }
-      100% { opacity: 0; }
-    }
-    @keyframes lit6 {
-      0%, 80% { opacity: 0; }
-      85%, 95% { opacity: 1; }
-      100% { opacity: 0; }
-    }
+    @keyframes s1Hi { 0%,14% { stroke: var(--accent); stroke-width: 1.7; } 18%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,13% { stroke: var(--line); stroke-width: 1.1; } 17%,28% { stroke: var(--accent); stroke-width: 1.7; } 32%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,27% { stroke: var(--line); stroke-width: 1.1; } 30%,47% { stroke: var(--accent); stroke-width: 1.7; } 51%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,45% { stroke: var(--line); stroke-width: 1.1; } 48%,61% { stroke: var(--accent); stroke-width: 1.7; } 65%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,59% { stroke: var(--line); stroke-width: 1.1; } 62%,74% { stroke: var(--accent); stroke-width: 1.7; } 78%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,72% { stroke: var(--line); stroke-width: 1.1; } 75%,84% { stroke: var(--accent); stroke-width: 1.7; } 88%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s7Hi { 0%,83% { stroke: var(--line); stroke-width: 1.1; } 86%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    /* AI Node Pulse */
-    .ai-pulse-dot {
-      fill: var(--accent);
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: aiPulse 1.5s ease-in-out infinite;
-    }
-    @keyframes aiPulse {
-      0%, 100% { opacity: 0.45; transform: scale(0.85); }
-      50% { opacity: 1; transform: scale(1.25); }
-    }
+    /* Stage 1: Clock Hand Sweeps to 8:00 */
+    .clk-hand { transform-box: fill-box; transform-origin: 0px 100%; animation: clkSweep 9s ease-out infinite; }
+    @keyframes clkSweep { 0% { transform: rotate(-90deg); } 12%,92% { transform: rotate(240deg); } 100% { transform: rotate(-90deg); } }
 
-    /* Stage 2 Data Source Selector */
-    .data-active {
-      fill: var(--accent);
-      opacity: 0.18;
-      animation: dataCycle 9s ease-in-out infinite;
-    }
-    @keyframes dataCycle {
-      0%, 18%, 100% { transform: translateX(0px); }
-      22%, 25% { transform: translateX(35px); }
-      27%, 95% { transform: translateX(70px); }
-    }
+    /* Stage 2: Three Streams Pour into Funnel */
+    .strm { stroke-dasharray: 24; stroke-dashoffset: 24; animation: pourIn 9s ease-out infinite; }
+    @keyframes pourIn { 0%,15% { stroke-dashoffset: 24; } 26%,90% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 24; } }
 
-    /* Stage 3 Dashboard Bars Rebuilding */
-    .bar-grow-1 {
-      transform-box: fill-box;
-      transform-origin: bottom center;
-      animation: bar1 9s ease-out infinite;
-    }
-    .bar-grow-2 {
-      transform-box: fill-box;
-      transform-origin: bottom center;
-      animation: bar2 9s ease-out infinite;
-    }
-    .bar-grow-3 {
-      transform-box: fill-box;
-      transform-origin: bottom center;
-      animation: bar3 9s ease-out infinite;
-    }
-    @keyframes bar1 {
-      0%, 33% { transform: scaleY(0.1); opacity: 0.25; }
-      40%, 94% { transform: scaleY(1); opacity: 0.95; }
-      98%, 100% { transform: scaleY(0.1); opacity: 0.25; }
-    }
-    @keyframes bar2 {
-      0%, 35% { transform: scaleY(0.1); opacity: 0.25; }
-      42%, 94% { transform: scaleY(1); opacity: 0.8; }
-      98%, 100% { transform: scaleY(0.1); opacity: 0.25; }
-    }
-    @keyframes bar3 {
-      0%, 37% { transform: scaleY(0.1); opacity: 0.25; }
-      44%, 94% { transform: scaleY(1); opacity: 1; }
-      98%, 100% { transform: scaleY(0.1); opacity: 0.25; }
-    }
+    /* Stage 3: Bars Grow, Line Chart Draws, KPI Ticks Up */
+    .bar-g { transform-box: fill-box; transform-origin: bottom center; animation: barGrow 9s ease-out infinite; }
+    .line-draw { stroke-dasharray: 140; stroke-dashoffset: 140; animation: drawChart 9s ease-out infinite; }
+    @keyframes barGrow { 0%,28% { transform: scaleY(0.1); opacity:0.35; } 42%,92% { transform: scaleY(1); opacity:1; } 98%,100% { transform: scaleY(0.1); opacity:0.35; } }
+    @keyframes drawChart { 0%,30% { stroke-dashoffset: 140; } 46%,92% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 140; } }
 
-    /* Stage 4 KPI Ticking Up + Commentary Lines */
-    .kpi-tick {
-      font-size: 9px;
-      font-weight: 800;
-      fill: var(--accent);
-    }
-    .kpi-step-1 { animation: kpi1 9s linear infinite; }
-    .kpi-step-2 { animation: kpi2 9s linear infinite; }
-    .kpi-step-3 { animation: kpi3 9s linear infinite; }
-    @keyframes kpi1 {
-      0%, 54% { opacity: 1; }
-      55%, 100% { opacity: 0; }
-    }
-    @keyframes kpi2 {
-      0%, 54% { opacity: 0; }
-      55%, 60% { opacity: 1; }
-      61%, 100% { opacity: 0; }
-    }
-    @keyframes kpi3 {
-      0%, 60% { opacity: 0; }
-      61%, 96% { opacity: 1; }
-      98%, 100% { opacity: 0; }
-    }
-    .note-line-1 { transform-box: fill-box; transform-origin: left center; animation: noteDraw1 9s ease-out infinite; }
-    .note-line-2 { transform-box: fill-box; transform-origin: left center; animation: noteDraw2 9s ease-out infinite; }
-    @keyframes noteDraw1 {
-      0%, 52% { opacity: 0.2; transform: scaleX(0.15); }
-      58%, 94% { opacity: 0.9; transform: scaleX(1); }
-      98%, 100% { opacity: 0.2; transform: scaleX(0.15); }
-    }
-    @keyframes noteDraw2 {
-      0%, 55% { opacity: 0.2; transform: scaleX(0.15); }
-      61%, 94% { opacity: 0.8; transform: scaleX(1); }
-      98%, 100% { opacity: 0.2; transform: scaleX(0.15); }
-    }
+    .kpi-1 { opacity: 1; animation: k1 9s linear infinite; }
+    .kpi-2 { opacity: 0; animation: k2 9s linear infinite; }
+    .kpi-3 { opacity: 0; animation: k3 9s linear infinite; }
+    @keyframes k1 { 0%,34% { opacity:1; } 36%,95% { opacity:0; } 98%,100% { opacity:1; } }
+    @keyframes k2 { 0%,34% { opacity:0; } 36%,41% { opacity:1; } 43%,100% { opacity:0; } }
+    @keyframes k3 { 0%,41% { opacity:0; } 43%,94% { opacity:1; } 98%,100% { opacity:0; } }
 
-    /* Stage 5 Human Approval Check */
-    .check-pop {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: checkPop 9s ease-out infinite;
-    }
-    @keyframes checkPop {
-      0%, 70% { opacity: 0.25; transform: scale(0.75); }
-      74%, 94% { opacity: 1; transform: scale(1.05); }
-      98%, 100% { opacity: 0.25; transform: scale(0.75); }
-    }
+    /* Stage 4: Mover Flash + Highlight Ring */
+    .mover-ring { opacity: 0; animation: ringPulse 9s ease-in-out infinite; }
+    @keyframes ringPulse { 0%,48% { opacity:0; } 53%,60% { opacity:1; } 64%,92% { opacity:0.55; } 98%,100% { opacity:0; } }
 
-    /* Stage 6 End Result Assembling Card */
-    .dash-item-1 { animation: dash1 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .dash-item-2 { animation: dash2 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .dash-item-3 { animation: dash3 9s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-    .dash-ready-badge { animation: dashReady 9s ease-out infinite; }
+    /* Stage 5: Commentary Types Out */
+    .com-1 { transform-box: fill-box; transform-origin: left center; animation: cm1 9s ease-out infinite; }
+    .com-2 { transform-box: fill-box; transform-origin: left center; animation: cm2 9s ease-out infinite; }
+    @keyframes cm1 { 0%,61% { transform: scaleX(0.05); opacity:0.3; } 68%,92% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.05); opacity:0.3; } }
+    @keyframes cm2 { 0%,64% { transform: scaleX(0.05); opacity:0.3; } 71%,92% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.05); opacity:0.3; } }
 
-    @keyframes dash1 {
-      0%, 82% { opacity: 0; transform: translate(-8px, -4px); }
-      86%, 95% { opacity: 1; transform: translate(0, 0); }
-      99%, 100% { opacity: 0; transform: translate(-8px, -4px); }
-    }
-    @keyframes dash2 {
-      0%, 84% { opacity: 0; transform: translate(0, 8px); }
-      88%, 95% { opacity: 1; transform: translate(0, 0); }
-      99%, 100% { opacity: 0; transform: translate(0, 8px); }
-    }
-    @keyframes dash3 {
-      0%, 86% { opacity: 0; transform: translate(8px, -4px); }
-      90%, 95% { opacity: 1; transform: translate(0, 0); }
-      99%, 100% { opacity: 0; transform: translate(8px, -4px); }
-    }
-    @keyframes dashReady {
-      0%, 88% { opacity: 0.2; }
-      91%, 95% { opacity: 1; }
-      99%, 100% { opacity: 0.2; }
-    }
-
-    /* Progress Bar */
-    .progress-fill {
-      fill: var(--accent);
-      transform-box: fill-box;
-      transform-origin: left center;
-      animation: progressLoop 9s linear infinite;
-    }
-    @keyframes progressLoop {
-      0% { transform: scaleX(0.05); opacity: 0.8; }
-      94% { transform: scaleX(1); opacity: 1; }
-      99%, 100% { transform: scaleX(0.05); opacity: 0.3; }
-    }
+    /* Stage 6 and 7: Human Tick + Final Delivery Tick */
+    .hum-tick { stroke-dasharray: 18; stroke-dashoffset: 18; animation: drawHum 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawFinal 9s ease-out infinite; }
+    @keyframes drawHum { 0%,75% { stroke-dashoffset: 18; } 82%,94% { stroke-dashoffset: 0; } 99%,100% { stroke-dashoffset: 18; } }
+    @keyframes drawFinal { 0%,87% { stroke-dashoffset: 24; } 94%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 24; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
-
-  <!-- Subtle Background Grid (no hard-coded background color) -->
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
-
   <!-- Header -->
-  <g id="header">
-    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
-    <text x="34" y="32" class="title-main">AI Automation for Reporting and Dashboards</text>
-    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
-    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+  <text x="20" y="21" class="title-main">Reporting &amp; Dashboards</text>
+  <text x="620" y="21" text-anchor="end" class="method-text">Monday 8:00 cron → API pull → chart wall → Looker Studio</text>
+
+  <!-- Flow Connectors -->
+  <path d="M 196 66 L 266 66" class="flow-path" />
+  <path d="M 394 98 L 394 128" class="flow-path flow-accent" />
+  <path d="M 444 206 L 454 206" class="flow-path flow-accent" />
+  <path d="M 146 286 L 146 316" class="flow-path" />
+  <path d="M 244 352 L 262 352" class="flow-path" />
+  <path d="M 392 352 L 502 352" class="flow-path flow-accent" />
+
+  <!-- Travelling Packets -->
+  <circle r="3.1" class="packet p-12" />
+  <circle r="3.1" class="packet p-23" />
+  <circle r="3.1" class="packet p-34" />
+  <circle r="3.1" class="packet p-35" />
+  <circle r="3.1" class="packet p-56" />
+  <circle r="3.2" class="packet p-67" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(231, 66)">
+    <rect x="-30" y="-7.5" width="60" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text">cron schedule</text>
+  </g>
+  <g transform="translate(394, 113)">
+    <rect x="-24" y="-7.5" width="48" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">API pull</text>
+  </g>
+  <g transform="translate(146, 301)">
+    <rect x="-38" y="-7.5" width="76" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text">draft commentary</text>
+  </g>
+  <g transform="translate(447, 352)">
+    <rect x="-48" y="-8" width="96" height="16" rx="8" class="chip-bg" />
+    <text x="0" y="2.3" text-anchor="middle" class="chip-text-accent">→ Looker Studio + email</text>
   </g>
 
-  <!-- Flow Paths -->
-  <g id="flow-paths">
-    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
-    <path class="flow-path" d="M 218 278 C 248 278, 250 232, 250 194" />
-    <path class="flow-path" d="M 332 132 C 354 132, 354 188, 354 224" />
-    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
-    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
-  </g>
-
-  <!-- Travelling Data Packets -->
-  <g id="packets">
-    <circle class="packet packet-1" r="3.5" />
-    <circle class="packet packet-2" r="3.5" />
-    <circle class="packet packet-3" r="3.5" />
-    <circle class="packet packet-4" r="3.5" />
-    <circle class="packet packet-5" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: Task In -->
+  <!-- STAGE 1: TRIGGER "Monday 8:00 — schedule fires" -->
   <g id="stage-1" class="node">
-    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
-    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
-    <text x="26" y="86" class="stage-num">01 · TASK IN</text>
-    <text x="26" y="101" class="stage-title">Raw data</text>
-    <!-- Mini data sources graphic -->
-    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <rect x="32" y="116" width="20" height="16" rx="2" fill="none" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="0.9" />
-    <line x1="32" y1="121" x2="52" y2="121" stroke="var(--ink)" stroke-opacity="0.35" stroke-width="0.8" />
-    <line x1="40" y1="116" x2="40" y2="132" stroke="var(--ink)" stroke-opacity="0.35" stroke-width="0.8" />
-    <circle cx="68" cy="124" r="6" fill="var(--accent)" fill-opacity="0.28" />
-    <rect x="82" y="122" width="6" height="10" rx="1" fill="var(--accent)" fill-opacity="0.5" />
-    <rect x="91" y="117" width="6" height="15" rx="1" fill="var(--accent)" fill-opacity="0.8" />
-    <text x="26" y="152" class="stage-copy">Spreadsheets, CRM,</text>
-    <text x="26" y="163" class="stage-copy">ad platforms</text>
+    <rect x="16" y="34" width="180" height="64" rx="10" class="card-bg" />
+    <text x="26" y="49" class="stage-num">01 · TRIGGER</text>
+    <text x="26" y="61" class="stage-title">Monday 8:00</text>
+    <text x="26" y="74" class="stage-copy">Schedule fires</text>
+
+    <!-- Clock Face -->
+    <g transform="translate(162, 66)">
+      <circle cx="0" cy="0" r="16" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.3" />
+      <line x1="0" y1="0" x2="-8" y2="-4" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round" />
+      <line x1="0" y1="0" x2="0" y2="-11" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" class="clk-hand" />
+      <circle cx="0" cy="0" r="1.8" fill="var(--accent)" />
+    </g>
   </g>
 
-  <!-- STAGE 2: Router (Data Agent) -->
+  <!-- STAGE 2: "Numbers pulled" (Top Centre, 3 Source Chips + Funnel Streams) -->
   <g id="stage-2" class="node">
-    <rect x="92" y="232" width="126" height="114" rx="10" class="card-bg" />
-    <rect x="92" y="232" width="126" height="114" rx="10" class="highlight-ring" />
-    <text x="102" y="248" class="stage-num">02 · ROUTER</text>
-    <text x="102" y="263" class="stage-title">Data agent</text>
-    <text x="102" y="275" class="stage-copy">Cleans, matches cols</text>
-    <text x="102" y="285" class="stage-copy">&amp; flags gaps/dupes</text>
-    <!-- 3 source buckets -->
-    <rect x="102" y="294" width="32" height="14" rx="4" class="data-active" />
-    <rect x="102" y="294" width="32" height="14" rx="4" fill="none" stroke="var(--line)" stroke-width="0.7" />
-    <text x="106" y="303.5" class="tag-text">Sheets</text>
-    <rect x="137" y="294" width="32" height="14" rx="4" fill="none" stroke="var(--line)" stroke-width="0.7" />
-    <text x="144" y="303.5" class="tag-text">CRM</text>
-    <rect x="172" y="294" width="32" height="14" rx="4" fill="none" stroke="var(--line)" stroke-width="0.7" />
-    <text x="180" y="303.5" class="tag-text">Ads</text>
-    <!-- Tag: AI agent -->
-    <g class="ai-badge">
-      <rect x="102" y="320" width="54" height="16" rx="8" class="pill-bg" />
-      <circle cx="111" cy="328" r="2.2" class="ai-pulse-dot" />
-      <text x="117" y="330.5" class="tag-text-accent">AI agent</text>
-    </g>
+    <rect x="266" y="34" width="256" height="64" rx="10" class="card-bg" />
+    <text x="276" y="49" class="stage-num">02 · INGEST</text>
+    <text x="276" y="61" class="stage-title">Numbers pulled</text>
+
+    <rect x="372" y="42" width="38" height="14" rx="7" class="chip-bg" />
+    <text x="391" y="51.5" text-anchor="middle" class="chip-text">Ads</text>
+    <rect x="416" y="42" width="38" height="14" rx="7" class="chip-bg" />
+    <text x="435" y="51.5" text-anchor="middle" class="chip-text">CRM</text>
+    <rect x="460" y="42" width="46" height="14" rx="7" class="chip-bg" />
+    <text x="483" y="51.5" text-anchor="middle" class="chip-text">Sheets</text>
+
+    <path d="M 391 56 L 435 84" fill="none" stroke="var(--accent)" stroke-width="1.3" class="strm" />
+    <path d="M 435 56 L 435 84" fill="none" stroke="var(--accent)" stroke-width="1.3" class="strm" />
+    <path d="M 483 56 L 435 84" fill="none" stroke="var(--accent)" stroke-width="1.3" class="strm" />
+    <polygon points="424,84 446,84 440,92 430,92" fill="var(--accent)" fill-opacity="0.25" stroke="var(--accent)" stroke-width="1" />
   </g>
 
-  <!-- STAGE 3: AI Stage A - Build -->
+  <!-- STAGE 3: "Dashboard builds" (Centre Chart Wall) -->
   <g id="stage-3" class="node">
-    <rect x="190" y="62" width="142" height="132" rx="10" class="card-bg" />
-    <rect x="190" y="62" width="142" height="132" rx="10" class="highlight-ring" />
-    <text x="200" y="78" class="stage-num">03 · AI STAGE A</text>
-    <circle cx="318" cy="75" r="3" class="ai-pulse-dot" />
-    <text x="200" y="92" class="stage-title">Build</text>
-    <text x="200" y="104" class="stage-copy">Charts &amp; dashboards</text>
-    <text x="200" y="114" class="stage-copy">rebuild from clean data</text>
+    <rect x="16" y="128" width="428" height="158" rx="10" class="card-bg" />
+    <text x="28" y="145" class="stage-num">03 · CHART WALL</text>
+    <text x="28" y="158" class="stage-title">Dashboard builds</text>
 
-    <!-- Mini live-rebuilding bar chart -->
-    <rect x="200" y="121" width="32" height="26" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-    <rect x="205" y="132" width="5" height="11" rx="1" fill="var(--accent)" class="bar-grow-1" />
-    <rect x="213" y="128" width="5" height="15" rx="1" fill="var(--accent)" class="bar-grow-2" />
-    <rect x="221" y="125" width="5" height="18" rx="1" fill="var(--accent)" class="bar-grow-3" />
-
-    <!-- Logos: Microsoft Copilot, Google Gemini -->
-    <g transform="translate(238, 122)">
-      <!-- Simplified Copilot ribbon/fold mark -->
-      <rect x="1" y="1" width="4" height="4" rx="1" fill="var(--accent)" />
-      <rect x="5.5" y="1" width="4" height="4" rx="1" fill="var(--ink)" fill-opacity="0.55" />
-      <rect x="1" y="5.5" width="4" height="4" rx="1" fill="var(--ink)" fill-opacity="0.55" />
-      <rect x="5.5" y="5.5" width="4" height="4" rx="1" fill="var(--accent)" fill-opacity="0.7" />
-      <text x="12" y="8" class="brand-text">Microsoft Copilot</text>
-    </g>
-    <g transform="translate(238, 137)">
-      <!-- Simplified Gemini 4-point star mark -->
-      <path d="M5 0.5 C5.4 3.5, 6.5 4.6, 9.5 5 C6.5 5.4, 5.4 6.5, 5 9.5 C4.6 6.5, 3.5 5.4, 0.5 5 C3.5 4.6, 4.6 3.5, 5 0.5 Z" fill="var(--accent)" />
-      <text x="12" y="8" class="brand-text">Google Gemini</text>
-    </g>
-
-    <!-- Tags: AI copilot, workflow automation -->
     <g class="ai-badge">
-      <rect x="197" y="162" width="46" height="15" rx="7.5" class="pill-bg" />
-      <text x="203" y="172" class="tag-text-accent">AI copilot</text>
-      <rect x="246" y="162" width="80" height="15" rx="7.5" class="pill-bg" />
-      <text x="251" y="172" class="tag-text">workflow automation</text>
+      <rect x="292" y="136" width="84" height="14" rx="7" class="chip-bg" />
+      <text x="334" y="145.5" text-anchor="middle" class="chip-text-accent">Microsoft Copilot</text>
+      <rect x="382" y="136" width="48" height="14" rx="7" class="chip-bg" />
+      <text x="406" y="145.5" text-anchor="middle" class="chip-text-accent">Gemini</text>
+    </g>
+
+    <!-- Growing Bar Chart -->
+    <g transform="translate(30, 178)">
+      <rect x="0" y="0" width="128" height="90" rx="6" class="chip-bg" />
+      <text x="10" y="15" class="stage-copy">Weekly Revenue</text>
+      <rect x="16" y="48" width="14" height="32" rx="2" fill="var(--accent)" fill-opacity="0.45" class="bar-g" />
+      <rect x="36" y="38" width="14" height="42" rx="2" fill="var(--accent)" fill-opacity="0.6" class="bar-g" />
+      <rect x="56" y="44" width="14" height="36" rx="2" fill="var(--accent)" fill-opacity="0.55" class="bar-g" />
+      <rect x="76" y="26" width="14" height="54" rx="2" fill="var(--accent)" fill-opacity="0.8" class="bar-g" />
+      <rect x="96" y="18" width="14" height="62" rx="2" fill="var(--accent)" class="bar-g" />
+    </g>
+
+    <!-- Self-Drawing Line Chart -->
+    <g transform="translate(172, 178)">
+      <rect x="0" y="0" width="142" height="90" rx="6" class="chip-bg" />
+      <text x="10" y="15" class="stage-copy">Conversion Trend</text>
+      <path d="M 14 72 L 38 60 L 62 64 L 88 42 L 110 46 L 128 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="line-draw" />
+    </g>
+
+    <!-- Ticking KPI Counter -->
+    <g transform="translate(328, 178)">
+      <rect x="0" y="0" width="102" height="90" rx="6" class="chip-bg" />
+      <text x="10" y="15" class="stage-copy">Pipeline</text>
+      <text x="10" y="44" class="kpi-num kpi-1">$48k</text>
+      <text x="10" y="44" class="kpi-num kpi-2">$64k</text>
+      <text x="10" y="44" class="kpi-num kpi-3">$82k</text>
+      <text x="10" y="64" class="stage-copy">vs last week</text>
     </g>
   </g>
 
-  <!-- STAGE 4: AI Stage B - Explain -->
+  <!-- STAGE 4: "Changes spotted" (Right of Panel) -->
   <g id="stage-4" class="node">
-    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
-    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
-    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
-    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
-    <text x="312" y="254" class="stage-title">Explain</text>
-    <text x="312" y="266" class="stage-copy">Plain-English notes:</text>
-    <text x="312" y="276" class="stage-copy">what changed &amp; why</text>
+    <rect x="454" y="128" width="170" height="158" rx="10" class="card-bg" />
+    <text x="466" y="145" class="stage-num">04 · MOVERS</text>
+    <text x="466" y="158" class="stage-title">Changes spotted</text>
 
-    <!-- Mini KPI ticking up + commentary lines -->
-    <rect x="312" y="283" width="34" height="26" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-    <text x="316" y="294" class="kpi-tick kpi-step-1">+12%</text>
-    <text x="316" y="294" class="kpi-tick kpi-step-2">+18%</text>
-    <text x="316" y="294" class="kpi-tick kpi-step-3">+24%</text>
-    <rect x="316" y="299" width="24" height="2.8" rx="1.4" fill="var(--accent)" fill-opacity="0.75" class="note-line-1" />
-    <rect x="316" y="304" width="18" height="2.8" rx="1.4" fill="var(--accent)" fill-opacity="0.45" class="note-line-2" />
-
-    <!-- Logos: Claude, OpenAI -->
-    <g transform="translate(354, 283)">
-      <!-- Simplified Claude sunburst mark -->
-      <path d="M5 1 L5 9 M1 5 L9 5 M2.2 2.2 L7.8 7.8 M7.8 2.2 L2.2 7.8" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" />
-      <text x="13" y="8" class="brand-text">Claude</text>
-    </g>
-    <g transform="translate(354, 299)">
-      <!-- Simplified OpenAI hex/knot mark -->
-      <polygon points="5,0.8 8.8,3 8.8,7.4 5,9.6 1.2,7.4 1.2,3" fill="none" stroke="var(--accent)" stroke-width="1.2" />
-      <circle cx="5" cy="5.2" r="1.5" fill="var(--ink)" fill-opacity="0.65" />
-      <text x="13" y="8" class="brand-text">OpenAI</text>
+    <!-- Two KPI Chips + Highlight Ring on Biggest Mover -->
+    <g transform="translate(468, 178)">
+      <rect x="0" y="0" width="142" height="36" rx="7" class="chip-bg" />
+      <rect x="-3" y="-3" width="148" height="42" rx="9" fill="none" stroke="var(--accent)" stroke-width="1.6" class="mover-ring" />
+      <text x="12" y="16" class="stage-title">▲ +18% Leads</text>
+      <text x="12" y="28" class="stage-copy">Biggest mover</text>
     </g>
 
-    <!-- Tag: LLM -->
-    <g class="ai-badge">
-      <rect x="312" y="326" width="42" height="16" rx="8" class="pill-bg" />
-      <circle cx="321" cy="334" r="2" class="ai-pulse-dot" />
-      <text x="327" y="336.5" class="tag-text-accent">LLM</text>
+    <g transform="translate(468, 228)">
+      <rect x="0" y="0" width="142" height="36" rx="7" class="chip-bg" />
+      <text x="12" y="16" class="stage-title">▼ -6% CPL</text>
+      <text x="12" y="28" class="stage-copy">Improved cost</text>
     </g>
   </g>
 
-  <!-- STAGE 5: Human Check -->
+  <!-- STAGE 5: "Story explained" (Bottom Ribbon) -->
   <g id="stage-5" class="node">
-    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
-    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
-    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
-    <text x="426" y="100" class="stage-title">Human check</text>
-    <text x="426" y="113" class="stage-copy">Manager checks</text>
-    <text x="426" y="123" class="stage-copy">numbers before send</text>
-
-    <!-- Approval check badge -->
-    <g class="check-pop" transform="translate(494, 92)">
-      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    <rect x="16" y="316" width="228" height="72" rx="10" class="card-bg" />
+    <text x="26" y="331" class="stage-num">05 · NARRATIVE</text>
+    <text x="26" y="343" class="stage-title">Story explained</text>
+    <g class="ai-badge">
+      <rect x="192" y="322" width="42" height="14" rx="7" class="chip-bg" />
+      <text x="213" y="331.5" text-anchor="middle" class="chip-text-accent">Claude</text>
     </g>
 
-    <!-- Badge: human-in-the-loop -->
-    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
-    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
+    <rect x="26" y="354" width="194" height="5" rx="2.5" fill="var(--accent)" fill-opacity="0.7" class="com-1" />
+    <rect x="26" y="366" width="166" height="5" rx="2.5" fill="var(--ink)" fill-opacity="0.45" class="com-2" />
   </g>
 
-  <!-- STAGE 6: End Result -->
+  <!-- STAGE 6: "Human check" (Bottom Right-Centre) -->
   <g id="stage-6" class="node">
-    <rect x="492" y="224" width="132" height="130" rx="10" class="card-bg" />
-    <rect x="492" y="224" width="132" height="130" rx="10" class="highlight-ring" />
-    <text x="502" y="240" class="stage-num">06 · DELIVERED</text>
-    <text x="502" y="254" class="stage-title" style="font-size: 9.6px;">Report ready in one click</text>
-
-    <!-- Self-assembling output pack -->
-    <g transform="translate(508, 263)">
-      <rect x="0" y="0" width="106" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
-      <!-- KPI block -->
-      <rect x="6" y="6" width="28" height="14" rx="2.5" fill="var(--accent)" fill-opacity="0.32" stroke="var(--accent)" stroke-width="0.7" class="dash-item-1" />
-      <!-- Mini chart block -->
-      <rect x="6" y="23" width="28" height="15" rx="2.5" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.7" class="dash-item-2" />
-      <!-- Team summary block -->
-      <rect x="38" y="6" width="34" height="32" rx="2.5" fill="var(--accent)" fill-opacity="0.38" stroke="var(--accent)" stroke-width="0.7" class="dash-item-3" />
-      <g class="dash-ready-badge" transform="translate(79, 13)">
-        <circle cx="10" cy="9" r="8" fill="var(--accent)" />
-        <path d="M6.5 9 L9 11.5 L13.8 6.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
+    <rect x="262" y="316" width="130" height="72" rx="10" class="card-bg" />
+    <text x="272" y="331" class="stage-num">06 · CHECK</text>
+    <text x="272" y="343" class="stage-title">Human check</text>
+    <g class="ai-badge">
+      <rect x="272" y="352" width="84" height="14" rx="7" class="chip-bg" />
+      <text x="314" y="361.5" text-anchor="middle" class="chip-text-accent">human-in-the-loop</text>
     </g>
-
-    <text x="508" y="324" class="stage-copy">Live dashboard + summary</text>
-    <text x="508" y="335" class="stage-copy">sent to the team</text>
+    <path d="M 368 358 L 372 362 L 380 353" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="hum-tick" />
   </g>
 
-  <!-- Footer: Workflow Automation + Loop Progress -->
-  <g id="footer">
-    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="24" y="386.5" class="tag-text">workflow automation</text>
+  <!-- STAGE 7: "Report delivered" (Far Right, End) -->
+  <g id="stage-7" class="node">
+    <rect x="502" y="316" width="122" height="72" rx="10" class="card-bg" />
+    <text x="512" y="331" class="stage-num">07 · DELIVERED</text>
+    <text x="512" y="343" class="stage-title">Report ready</text>
+    <text x="512" y="358" class="stage-copy">On schedule</text>
 
-    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+    <circle cx="598" cy="364" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 593 364 L 596.5 367.5 L 603.5 360.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>

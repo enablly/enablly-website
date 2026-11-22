@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Spreadsheets &amp; Data</title>
-  <desc id="svg-desc">Animated workflow showing how Enablly's forward-deployed AI automation cleans and enriches spreadsheets: a messy sheet arrives, duplicate rows fade out during cleanup, Microsoft Copilot and OpenAI fill formulas down a column, errors are flagged, a human checks, and a tidy sheet with a growing bar chart is delivered.</desc>
+  <desc id="svg-desc">Seven-stage three-stream confluence and exception side-tray workflow for spreadsheets and data: three messy files arrive from email attachments, form export and supplier file, pass through a Power Automate standardisation gate, deduplicate, match VLOOKUP-style via Claude, divert unclear rows into an exception side-tray for human-in-the-loop resolution, and rejoin into one clean table in Google Sheets or Excel.</desc>
 
   <style>
     svg {
@@ -14,251 +14,283 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 14.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 10.5px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 8.2px; fill: var(--muted); }
-    .tag-text { font-size: 7.4px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.4px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.6px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
-    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+
+    .title-main { font-size: 13.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.4px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 6.6px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 8.6px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.5px; fill: var(--muted); }
+    .chip-text { font-size: 6.1px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.1px; font-weight: 700; fill: var(--accent); }
+
+    .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-1 { offset-path: path("M 102 174 C 102 204, 128 204, 128 232"); animation: pkt1 9s linear infinite; }
-    .packet-2 { offset-path: path("M 218 278 C 248 278, 250 232, 250 194"); animation: pkt2 9s linear infinite; }
-    .packet-3 { offset-path: path("M 332 132 C 354 132, 354 188, 354 224"); animation: pkt3 9s linear infinite; }
-    .packet-4 { offset-path: path("M 440 280 C 468 280, 468 220, 468 178"); animation: pkt4 9s linear infinite; }
-    .packet-5 { offset-path: path("M 526 126 C 562 126, 562 182, 562 224"); animation: pkt5 9s linear infinite; }
+    .p-12a { offset-path: path("M 118 76 L 184 134"); animation: p12 9s linear infinite; }
+    .p-12b { offset-path: path("M 118 156 L 184 156"); animation: p12 9s linear infinite; }
+    .p-12c { offset-path: path("M 118 236 L 184 178"); animation: p12 9s linear infinite; }
+    .p-23 { offset-path: path("M 274 156 L 334 156"); animation: p23 9s linear infinite; }
+    .p-34 { offset-path: path("M 422 156 L 438 156"); animation: p34 9s linear infinite; }
+    .p-45 { offset-path: path("M 378 214 L 378 256 L 255 256 L 255 292"); animation: p45 9s linear infinite; }
+    .p-56 { offset-path: path("M 326 338 L 350 338"); animation: p56 9s linear infinite; }
+    .p-47 { offset-path: path("M 526 156 L 576 156 L 576 244"); animation: p47 9s linear infinite; }
+    .p-67 { offset-path: path("M 484 338 L 516 338"); animation: p67 9s linear infinite; }
 
-    @keyframes pkt1 { 0%, 10% { offset-distance: 0%; opacity: 0; } 12% { opacity: 1; } 20% { offset-distance: 100%; opacity: 1; } 22%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt2 { 0%, 25% { offset-distance: 0%; opacity: 0; } 27% { opacity: 1; } 35% { offset-distance: 100%; opacity: 1; } 37%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt3 { 0%, 44% { offset-distance: 0%; opacity: 0; } 46% { opacity: 1; } 54% { offset-distance: 100%; opacity: 1; } 56%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt4 { 0%, 62% { offset-distance: 0%; opacity: 0; } 64% { opacity: 1; } 72% { offset-distance: 100%; opacity: 1; } 74%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pkt5 { 0%, 76% { offset-distance: 0%; opacity: 0; } 78% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,10% { opacity:0; offset-distance:0%; } 12% { opacity:1; } 18% { opacity:1; offset-distance:100%; } 21%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,24% { opacity:0; offset-distance:0%; } 26% { opacity:1; } 31% { opacity:1; offset-distance:100%; } 34%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p34 { 0%,38% { opacity:0; offset-distance:0%; } 40% { opacity:1; } 44% { opacity:1; offset-distance:100%; } 47%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p45 { 0%,52% { opacity:0; offset-distance:0%; } 54% { opacity:1; } 61% { opacity:1; offset-distance:100%; } 64%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,65% { opacity:0; offset-distance:0%; } 67% { opacity:1; } 71% { opacity:1; offset-distance:100%; } 74%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p47 { 0%,75% { opacity:0; offset-distance:0%; } 77% { opacity:1; } 85% { opacity:1; offset-distance:100%; } 88%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p67 { 0%,77% { opacity:0; offset-distance:0%; } 79% { opacity:1; } 85% { opacity:1; offset-distance:100%; } 88%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-4 .highlight-ring { animation: lit4 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .src-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .card-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .card-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .card-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
+    #stage-7 .card-bg { animation: s7Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 15% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 30% { opacity: 0; } 35%, 48% { opacity: 1; } 54%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit4 { 0%, 48% { opacity: 0; } 53%, 66% { opacity: 1; } 72%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 66% { opacity: 0; } 71%, 80% { opacity: 1; } 86%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 80% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,14% { stroke: var(--accent); stroke-width: 1.6; } 18%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,14% { stroke: var(--line); stroke-width: 1.1; } 17%,29% { stroke: var(--accent); stroke-width: 1.7; } 33%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,28% { stroke: var(--line); stroke-width: 1.1; } 31%,43% { stroke: var(--accent); stroke-width: 1.7; } 47%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,42% { stroke: var(--line); stroke-width: 1.1; } 45%,57% { stroke: var(--accent); stroke-width: 1.7; } 61%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,56% { stroke: var(--line); stroke-width: 1.1; } 59%,70% { stroke: var(--accent); stroke-width: 1.7; } 74%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,68% { stroke: var(--line); stroke-width: 1.1; } 71%,82% { stroke: var(--accent); stroke-width: 1.7; } 86%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s7Hi { 0%,82% { stroke: var(--line); stroke-width: 1.1; } 85%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Mini-Tables Slide In */
+    .src-slide { animation: sSlide 9s ease-out infinite; }
+    @keyframes sSlide { 0% { opacity:0.35; transform:translateX(-8px); } 10%,90% { opacity:1; transform:translateX(0); } 98%,100% { opacity:0.35; transform:translateX(-8px); } }
 
-    /* Stage 2: Duplicate rows fading out inside Clean */
-    .dupe-row-fade { animation: dupeFade 9s ease-out infinite; }
-    @keyframes dupeFade { 0%, 18% { opacity: 0.9; } 28%, 94% { opacity: 0.12; } 98%, 100% { opacity: 0.9; } }
+    /* Stage 2: Column Headers Snap Aligned */
+    .col-snap-l { animation: snapL 9s ease-in-out infinite; }
+    .col-snap-r { animation: snapR 9s ease-in-out infinite; }
+    @keyframes snapL { 0%,16% { transform: translateX(10px); } 26%,90% { transform: translateX(0px); } 98%,100% { transform: translateX(10px); } }
+    @keyframes snapR { 0%,16% { transform: translateX(-10px); } 26%,90% { transform: translateX(0px); } 98%,100% { transform: translateX(-10px); } }
 
-    /* Stage 3: Cells highlighting and filling down a column */
-    .cell-f1 { animation: cf1 9s ease-out infinite; }
-    .cell-f2 { animation: cf2 9s ease-out infinite; }
-    .cell-f3 { animation: cf3 9s ease-out infinite; }
-    @keyframes cf1 { 0%, 33% { fill-opacity: 0.12; } 38%, 94% { fill-opacity: 0.85; } 98%, 100% { fill-opacity: 0.12; } }
-    @keyframes cf2 { 0%, 37% { fill-opacity: 0.12; } 42%, 94% { fill-opacity: 0.85; } 98%, 100% { fill-opacity: 0.12; } }
-    @keyframes cf3 { 0%, 41% { fill-opacity: 0.12; } 46%, 94% { fill-opacity: 0.85; } 98%, 100% { fill-opacity: 0.12; } }
+    /* Stage 3: Duplicate Row Dissolves */
+    .dup-dissolve { animation: dissRow 9s ease-in-out infinite; }
+    @keyframes dissRow { 0%,32% { opacity: 0.9; transform: translateY(0px); } 40%,90% { opacity: 0; transform: translateY(-6px); } 98%,100% { opacity: 0.9; transform: translateY(0px); } }
 
-    /* Stage 5: Self-drawing check */
-    .check-pop { transform-box: fill-box; transform-origin: center; animation: checkPop 9s ease-out infinite; }
-    .check-stroke { stroke-dasharray: 16; stroke-dashoffset: 16; animation: checkDraw 9s ease-out infinite; }
-    @keyframes checkPop { 0%, 70% { opacity: 0.25; transform: scale(0.75); } 74%, 94% { opacity: 1; transform: scale(1.05); } 98%, 100% { opacity: 0.25; transform: scale(0.75); } }
-    @keyframes checkDraw { 0%, 71% { stroke-dashoffset: 16; } 78%, 94% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 16; } }
+    /* Stage 4: Dotted Match-Lines Connect */
+    .match-line { stroke-dasharray: 28; stroke-dashoffset: 28; animation: drawMatch 9s ease-out infinite; }
+    @keyframes drawMatch { 0%,44% { stroke-dashoffset: 28; } 54%,90% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 28; } }
 
-    /* Stage 6: Bar chart growing in final card */
-    .fbar-1, .fbar-2, .fbar-3 { transform-box: fill-box; transform-origin: bottom center; }
-    .fbar-1 { animation: fb1 9s ease-out infinite; }
-    .fbar-2 { animation: fb2 9s ease-out infinite; }
-    .fbar-3 { animation: fb3 9s ease-out infinite; }
-    @keyframes fb1 { 0%, 80% { transform: scaleY(0.15); } 87%, 95% { transform: scaleY(1); } 99%, 100% { transform: scaleY(0.15); } }
-    @keyframes fb2 { 0%, 82% { transform: scaleY(0.15); } 89%, 95% { transform: scaleY(1); } 99%, 100% { transform: scaleY(0.15); } }
-    @keyframes fb3 { 0%, 84% { transform: scaleY(0.15); } 91%, 95% { transform: scaleY(1); } 99%, 100% { transform: scaleY(0.15); } }
+    /* Stage 5: Exception Rows Slide into Tray */
+    .exc-drop { animation: excIn 9s ease-out infinite; }
+    @keyframes excIn { 0%,56% { opacity:0.25; transform:translateY(-8px); } 66%,90% { opacity:1; transform:translateY(0); } 98%,100% { opacity:0.25; } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 6 and 7: Tray Ticks + Final Table Settle */
+    .tray-tick { stroke-dasharray: 16; stroke-dashoffset: 16; animation: drawTray 9s ease-out infinite; }
+    .clean-row { animation: rowSet 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawFinal 9s ease-out infinite; }
+    @keyframes drawTray { 0%,71% { stroke-dashoffset: 16; } 78%,94% { stroke-dashoffset: 0; } 99%,100% { stroke-dashoffset: 16; } }
+    @keyframes rowSet { 0%,82% { opacity:0.3; transform:translateY(-4px); } 89%,96% { opacity:1; transform:translateY(0); } 100% { opacity:0.3; } }
+    @keyframes drawFinal { 0%,88% { stroke-dashoffset: 24; } 94%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 24; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="21" class="title-main">Spreadsheets &amp; Data Cleanup</text>
+  <text x="620" y="21" text-anchor="end" class="method-text">3 messy files → Power Automate → match + tray → Sheets / Excel</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <!-- Flow Connectors -->
+  <path d="M 118 76 L 184 134" class="flow-path" />
+  <path d="M 118 156 L 184 156" class="flow-path flow-accent" />
+  <path d="M 118 236 L 184 178" class="flow-path" />
+  <path d="M 274 156 L 334 156" class="flow-path flow-accent" />
+  <path d="M 422 156 L 438 156" class="flow-path flow-accent" />
+  <path d="M 378 214 L 378 256 L 255 256 L 255 292" class="flow-path" />
+  <path d="M 326 338 L 350 338" class="flow-path" />
+  <path d="M 526 156 L 576 156 L 576 244" class="flow-path flow-accent" />
+  <path d="M 484 338 L 516 338" class="flow-path flow-accent" />
 
-  <g id="header">
-    <circle cx="24" cy="28" r="4" fill="var(--accent)" />
-    <text x="34" y="32" class="title-main">AI Automation for Spreadsheets &amp; Data</text>
-    <rect x="462" y="18" width="160" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="28" r="2.5" fill="var(--accent)" />
-    <text x="481" y="31" class="method-text">Forward-deployed · Embedded</text>
+  <!-- Travelling Packets -->
+  <circle r="3" class="packet p-12a" />
+  <circle r="3" class="packet p-12b" />
+  <circle r="3" class="packet p-12c" />
+  <circle r="3.1" class="packet p-23" />
+  <circle r="3.1" class="packet p-34" />
+  <circle r="3.1" class="packet p-45" />
+  <circle r="3.1" class="packet p-56" />
+  <circle r="3.2" class="packet p-47" />
+  <circle r="3.1" class="packet p-67" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(148, 86)">
+    <rect x="-34" y="-7" width="68" height="14" rx="7" class="chip-bg" />
+    <text x="0" y="2" text-anchor="middle" class="chip-text">email attachments</text>
+  </g>
+  <g transform="translate(150, 156)">
+    <rect x="-26" y="-7" width="52" height="14" rx="7" class="chip-bg" />
+    <text x="0" y="2" text-anchor="middle" class="chip-text-accent">form export</text>
+  </g>
+  <g transform="translate(148, 226)">
+    <rect x="-28" y="-7" width="56" height="14" rx="7" class="chip-bg" />
+    <text x="0" y="2" text-anchor="middle" class="chip-text">supplier file</text>
+  </g>
+  <g transform="translate(304, 156)">
+    <rect x="-38" y="-7.5" width="76" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">Power Automate flow</text>
+  </g>
+  <g transform="translate(322, 256)">
+    <rect x="-28" y="-7.5" width="56" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text">can't resolve</text>
+  </g>
+  <g transform="translate(576, 200)">
+    <rect x="-44" y="-7.5" width="88" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">→ Google Sheets / Excel</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 102 174 C 102 204, 128 204, 128 232" />
-    <path class="flow-path" d="M 218 278 C 248 278, 250 232, 250 194" />
-    <path class="flow-path" d="M 332 132 C 354 132, 354 188, 354 224" />
-    <path class="flow-path" d="M 440 280 C 468 280, 468 220, 468 178" />
-    <path class="flow-path" d="M 526 126 C 562 126, 562 182, 562 224" />
-  </g>
-
-  <g id="packets">
-    <circle class="packet packet-1" r="3.5" />
-    <circle class="packet packet-2" r="3.5" />
-    <circle class="packet packet-3" r="3.5" />
-    <circle class="packet packet-4" r="3.5" />
-    <circle class="packet packet-5" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: Messy Spreadsheet In -->
+  <!-- STAGE 1: TRIGGER "Files land" (Far Left, Three Stream Sources) -->
   <g id="stage-1" class="node">
-    <rect x="16" y="70" width="108" height="104" rx="10" class="card-bg" />
-    <rect x="16" y="70" width="108" height="104" rx="10" class="highlight-ring" />
-    <text x="26" y="86" class="stage-num">01 · SHEET IN</text>
-    <text x="26" y="101" class="stage-title">Messy sheet</text>
-    <rect x="26" y="110" width="88" height="28" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="26" y1="119" x2="114" y2="119" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="26" y1="128" x2="114" y2="128" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="56" y1="110" x2="56" y2="138" stroke="var(--line)" stroke-width="0.7" />
-    <text x="26" y="152" class="stage-copy">Raw CSVs, dupes &amp;</text>
-    <text x="26" y="163" class="stage-copy">broken formats</text>
+    <!-- Stream A -->
+    <g class="src-slide">
+      <rect x="16" y="44" width="102" height="62" rx="9" class="card-bg src-bg" />
+      <text x="24" y="58" class="stage-num">01A · TRIGGER</text>
+      <text x="24" y="70" class="stage-title">Files land</text>
+      <rect x="24" y="78" width="24" height="4" rx="1.5" fill="var(--accent)" />
+      <rect x="52" y="78" width="20" height="4" rx="1.5" fill="var(--muted)" />
+      <rect x="76" y="78" width="28" height="4" rx="1.5" fill="var(--ink)" fill-opacity="0.45" />
+      <rect x="24" y="88" width="78" height="4" rx="1.5" fill="var(--muted)" fill-opacity="0.4" />
+    </g>
+
+    <!-- Stream B -->
+    <g class="src-slide">
+      <rect x="16" y="124" width="102" height="62" rx="9" class="card-bg src-bg" />
+      <text x="24" y="138" class="stage-num">01B · FORM</text>
+      <text x="24" y="150" class="stage-title">Web export</text>
+      <rect x="24" y="158" width="20" height="4" rx="1.5" fill="var(--muted)" />
+      <rect x="48" y="158" width="28" height="4" rx="1.5" fill="var(--accent)" />
+      <rect x="80" y="158" width="24" height="4" rx="1.5" fill="var(--ink)" fill-opacity="0.45" />
+      <rect x="24" y="168" width="74" height="4" rx="1.5" fill="var(--muted)" fill-opacity="0.4" />
+    </g>
+
+    <!-- Stream C -->
+    <g class="src-slide">
+      <rect x="16" y="204" width="102" height="62" rx="9" class="card-bg src-bg" />
+      <text x="24" y="218" class="stage-num">01C · SUPPLIER</text>
+      <text x="24" y="230" class="stage-title">CSV sheet</text>
+      <rect x="24" y="238" width="28" height="4" rx="1.5" fill="var(--ink)" fill-opacity="0.45" />
+      <rect x="56" y="238" width="20" height="4" rx="1.5" fill="var(--accent)" />
+      <rect x="80" y="238" width="24" height="4" rx="1.5" fill="var(--muted)" />
+      <rect x="24" y="248" width="76" height="4" rx="1.5" fill="var(--muted)" fill-opacity="0.4" />
+    </g>
   </g>
 
-  <!-- STAGE 2: Cleaned & De-duplicated (Duplicate rows fading out) -->
+  <!-- STAGE 2: "Formats standardised" (Filter Gate) -->
   <g id="stage-2" class="node">
-    <rect x="92" y="232" width="126" height="114" rx="10" class="card-bg" />
-    <rect x="92" y="232" width="126" height="114" rx="10" class="highlight-ring" />
-    <text x="102" y="248" class="stage-num">02 · CLEAN</text>
-    <text x="102" y="263" class="stage-title">De-duplicated</text>
+    <rect x="184" y="110" width="90" height="94" rx="10" class="card-bg" />
+    <text x="192" y="125" class="stage-num">02 · GATE</text>
+    <text x="192" y="137" class="stage-title">Formats</text>
+    <text x="192" y="148" class="stage-title">standardised</text>
 
-    <!-- Duplicate rows fading out -->
-    <g transform="translate(102, 272)">
-      <rect x="0" y="0" width="104" height="6" rx="2" fill="var(--accent)" fill-opacity="0.65" />
-      <rect x="0" y="9" width="104" height="6" rx="2" fill="var(--accent)" fill-opacity="0.65" class="dupe-row-fade" />
-      <rect x="0" y="18" width="104" height="6" rx="2" fill="var(--accent)" fill-opacity="0.65" />
-      <rect x="0" y="27" width="104" height="6" rx="2" fill="var(--accent)" fill-opacity="0.65" class="dupe-row-fade" />
-    </g>
-
-    <g class="ai-badge">
-      <rect x="102" y="318" width="54" height="16" rx="8" class="pill-bg" />
-      <circle cx="111" cy="326" r="2.2" class="ai-pulse-dot" />
-      <text x="117" y="328.5" class="tag-text-accent">AI agent</text>
-    </g>
+    <!-- Snapping Column Headers -->
+    <rect x="194" y="162" width="20" height="7" rx="2" fill="var(--accent)" class="col-snap-l" />
+    <rect x="218" y="162" width="22" height="7" rx="2" fill="var(--ink)" fill-opacity="0.55" />
+    <rect x="244" y="162" width="20" height="7" rx="2" fill="var(--muted)" class="col-snap-r" />
+    <text x="194" y="186" class="stage-copy">Columns aligned</text>
   </g>
 
-  <!-- STAGE 3: Formulas & Enrichment Added (Cells filling down a column) -->
+  <!-- STAGE 3: "Duplicates removed" (Centre) -->
   <g id="stage-3" class="node">
-    <rect x="190" y="62" width="142" height="132" rx="10" class="card-bg" />
-    <rect x="190" y="62" width="142" height="132" rx="10" class="highlight-ring" />
-    <text x="200" y="78" class="stage-num">03 · AI STAGE A</text>
-    <circle cx="318" cy="75" r="3" class="ai-pulse-dot" />
-    <text x="200" y="92" class="stage-title">Formulas &amp; enrich</text>
-    <text x="200" y="104" class="stage-copy">Auto-fills column logic</text>
+    <rect x="334" y="98" width="88" height="116" rx="10" class="card-bg" />
+    <text x="342" y="114" class="stage-num">03 · DEDUPE</text>
+    <text x="342" y="126" class="stage-title">Duplicates</text>
+    <text x="342" y="137" class="stage-title">removed</text>
 
-    <!-- Cells filling down a column -->
-    <g transform="translate(200, 114)">
-      <rect x="0" y="0" width="32" height="28" rx="4" fill="none" stroke="var(--line)" stroke-width="0.8" />
-      <rect x="4" y="4" width="24" height="5" rx="1.5" fill="var(--accent)" class="cell-f1" />
-      <rect x="4" y="11" width="24" height="5" rx="1.5" fill="var(--accent)" class="cell-f2" />
-      <rect x="4" y="18" width="24" height="5" rx="1.5" fill="var(--accent)" class="cell-f3" />
-    </g>
-
-    <!-- Logos: Microsoft Copilot, OpenAI -->
-    <g transform="translate(238, 115)">
-      <rect x="1" y="1" width="3.5" height="3.5" rx="0.8" fill="var(--accent)" />
-      <rect x="5" y="1" width="3.5" height="3.5" rx="0.8" fill="var(--ink)" fill-opacity="0.55" />
-      <rect x="1" y="5" width="3.5" height="3.5" rx="0.8" fill="var(--ink)" fill-opacity="0.55" />
-      <rect x="5" y="5" width="3.5" height="3.5" rx="0.8" fill="var(--accent)" fill-opacity="0.7" />
-      <text x="11" y="7.5" class="brand-text">Microsoft Copilot</text>
-    </g>
-    <g transform="translate(238, 131)">
-      <polygon points="4.5,0.6 8,2.6 8,6.6 4.5,8.6 1,6.6 1,2.6" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <text x="11" y="7.5" class="brand-text">OpenAI</text>
-    </g>
-
-    <g class="ai-badge">
-      <rect x="200" y="162" width="54" height="15" rx="7.5" class="pill-bg" />
-      <text x="208" y="172" class="tag-text-accent">AI copilot</text>
-    </g>
+    <rect x="342" y="150" width="70" height="10" rx="3" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.9" />
+    <rect x="342" y="166" width="70" height="10" rx="3" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="0.9" class="dup-dissolve" />
+    <rect x="342" y="182" width="70" height="10" rx="3" fill="var(--surface)" stroke="var(--line)" stroke-width="0.9" />
   </g>
 
-  <!-- STAGE 4: Errors Flagged -->
+  <!-- STAGE 4: "Records matched" (Centre Right) -->
   <g id="stage-4" class="node">
-    <rect x="302" y="224" width="138" height="130" rx="10" class="card-bg" />
-    <rect x="302" y="224" width="138" height="130" rx="10" class="highlight-ring" />
-    <text x="312" y="240" class="stage-num">04 · AI STAGE B</text>
-    <circle cx="426" cy="237" r="3" class="ai-pulse-dot" />
-    <text x="312" y="254" class="stage-title">Errors flagged</text>
-    <text x="312" y="266" class="stage-copy">Outliers &amp; mismatches</text>
-    <text x="312" y="276" class="stage-copy">highlighted for review</text>
-
-    <rect x="312" y="286" width="118" height="24" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <circle cx="323" cy="298" r="5" fill="var(--accent)" fill-opacity="0.25" />
-    <text x="321.5" y="301" fill="var(--accent)" font-size="8" font-weight="800">!</text>
-    <text x="333" y="300.5" class="tag-text">2 anomalies flagged</text>
+    <rect x="438" y="98" width="88" height="116" rx="10" class="card-bg" />
+    <text x="446" y="114" class="stage-num">04 · MATCH</text>
+    <text x="446" y="126" class="stage-title">Records</text>
+    <text x="446" y="137" class="stage-title">matched</text>
 
     <g class="ai-badge">
-      <rect x="312" y="326" width="42" height="16" rx="8" class="pill-bg" />
-      <circle cx="321" cy="334" r="2" class="ai-pulse-dot" />
-      <text x="327" y="336.5" class="tag-text-accent">LLM</text>
+      <rect x="446" y="143" width="38" height="13" rx="6.5" class="chip-bg" />
+      <text x="465" y="152" text-anchor="middle" class="chip-text-accent">Claude</text>
     </g>
+
+    <!-- Dotted VLOOKUP-style Match Lines -->
+    <circle cx="452" cy="172" r="3" fill="var(--accent)" />
+    <line x1="455" y1="172" x2="508" y2="172" stroke="var(--accent)" stroke-width="1.3" stroke-dasharray="2 2" class="match-line" />
+    <circle cx="511" cy="172" r="3" fill="var(--accent)" />
+
+    <circle cx="452" cy="190" r="3" fill="var(--accent)" />
+    <line x1="455" y1="190" x2="508" y2="190" stroke="var(--accent)" stroke-width="1.3" stroke-dasharray="2 2" class="match-line" />
+    <circle cx="511" cy="190" r="3" fill="var(--accent)" />
   </g>
 
-  <!-- STAGE 5: Human Check -->
+  <!-- STAGE 5: "Exceptions peel off" (Side-Tray, Bottom Centre) -->
   <g id="stage-5" class="node">
-    <rect x="416" y="70" width="110" height="108" rx="10" class="card-bg" />
-    <rect x="416" y="70" width="110" height="108" rx="10" class="highlight-ring" />
-    <text x="426" y="86" class="stage-num">05 · REVIEW</text>
-    <text x="426" y="100" class="stage-title">Human check</text>
-    <text x="426" y="113" class="stage-copy">Analyst confirms</text>
-    <text x="426" y="123" class="stage-copy">flagged cells</text>
-    <g class="check-pop" transform="translate(494, 92)">
-      <circle cx="10" cy="10" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-      <path d="M6 10.2 L8.8 13 L14.2 7.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-stroke" />
+    <rect x="184" y="292" width="142" height="94" rx="10" class="card-bg" />
+    <text x="194" y="307" class="stage-num">05 · SIDE-TRAY</text>
+    <text x="194" y="319" class="stage-title">Exceptions peel off</text>
+
+    <g class="exc-drop">
+      <rect x="194" y="330" width="120" height="18" rx="4" class="chip-bg" />
+      <text x="202" y="341.5" class="stage-copy">Row #14 · missing ID</text>
+      <text x="304" y="342" text-anchor="middle" class="chip-text-accent">?</text>
+
+      <rect x="194" y="354" width="120" height="18" rx="4" class="chip-bg" />
+      <text x="202" y="365.5" class="stage-copy">Row #29 · mismatch</text>
+      <text x="304" y="366" text-anchor="middle" class="chip-text-accent">?</text>
     </g>
-    <rect x="425" y="148" width="92" height="16" rx="8" class="pill-bg" />
-    <text x="433" y="158.5" class="tag-text-accent">human-in-the-loop</text>
   </g>
 
-  <!-- STAGE 6: Tidy Sheet + Chart Out (Bar chart growing) -->
+  <!-- STAGE 6: "You resolve the tray" (Tray Gate) -->
   <g id="stage-6" class="node">
-    <rect x="502" y="224" width="122" height="130" rx="10" class="card-bg" />
-    <rect x="502" y="224" width="122" height="130" rx="10" class="highlight-ring" />
-    <text x="512" y="240" class="stage-num">06 · DELIVERED</text>
-    <text x="512" y="254" class="stage-title">Tidy sheet + chart</text>
+    <rect x="350" y="292" width="134" height="94" rx="10" class="card-bg" />
+    <text x="360" y="307" class="stage-num">06 · RESOLVE</text>
+    <text x="360" y="319" class="stage-title">You resolve tray</text>
 
-    <g transform="translate(512, 263)">
-      <rect x="0" y="0" width="102" height="44" rx="6" fill="var(--accent)" fill-opacity="0.06" stroke="var(--line)" stroke-width="0.8" />
-      <!-- Growing bar chart -->
-      <rect x="12" y="20" width="9" height="18" rx="1.5" fill="var(--accent)" class="fbar-1" />
-      <rect x="26" y="13" width="9" height="25" rx="1.5" fill="var(--accent)" fill-opacity="0.8" class="fbar-2" />
-      <rect x="40" y="7" width="9" height="31" rx="1.5" fill="var(--accent)" class="fbar-3" />
-      <circle cx="84" cy="22" r="8" fill="var(--accent)" />
-      <path d="M80.5 22 L83 24.5 L87.8 19.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    <g class="ai-badge">
+      <rect x="360" y="325" width="84" height="14" rx="7" class="chip-bg" />
+      <text x="402" y="334.5" text-anchor="middle" class="chip-text-accent">human-in-the-loop</text>
     </g>
 
-    <text x="512" y="324" class="stage-copy">Clean table &amp; live</text>
-    <text x="512" y="335" class="stage-copy">summary chart ready</text>
+    <path d="M 364 356 L 368 360 L 375 352" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="tray-tick" />
+    <text x="382" y="358" class="stage-copy">Row #14 fixed</text>
+
+    <path d="M 364 371 L 368 375 L 375 367" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="tray-tick" />
+    <text x="382" y="373" class="stage-copy">Row #29 fixed</text>
   </g>
 
-  <g id="footer">
-    <rect x="16" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="24" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="132" y="382" width="492" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="132" y="382" width="492" height="4" rx="2" class="progress-fill" />
+  <!-- STAGE 7: "One clean table" (Far Right, End) -->
+  <g id="stage-7" class="node">
+    <rect x="516" y="244" width="110" height="142" rx="10" class="card-bg" />
+    <text x="524" y="260" class="stage-num">07 · TABLE</text>
+    <text x="524" y="272" class="stage-title">One clean table</text>
+
+    <g class="clean-row">
+      <rect x="524" y="284" width="94" height="9" rx="2" fill="var(--accent)" fill-opacity="0.25" />
+      <rect x="524" y="297" width="94" height="9" rx="2" fill="var(--ink)" fill-opacity="0.16" />
+      <rect x="524" y="310" width="94" height="9" rx="2" fill="var(--ink)" fill-opacity="0.16" />
+      <rect x="524" y="323" width="94" height="9" rx="2" fill="var(--ink)" fill-opacity="0.16" />
+    </g>
+
+    <circle cx="571" cy="360" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 566 360 L 569.5 363.5 L 576.5 356.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>

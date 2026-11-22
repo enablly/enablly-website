@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Team Management</title>
-  <desc id="svg-desc">Animated parallel-lane branching workflow showing how Enablly's forward-deployed AI automation handles team management: the week's tasks arrive, a coordinator agent assigns parallel lanes to Designer, Writer, and Operations with filling progress bars and popping checkmarks, all merge into a human progress check, and a weekly status summary types out.</desc>
+  <desc id="svg-desc">Six-stage dispatch hub-and-spoke workflow with return pings for team management: meeting decisions arrive via webhook, Claude writes and routes tasks from the central hub to Planner or Asana across four owner nodes (Design, Sales, Ops, Support), status pings return to the hub, Power Automate sends scheduled nudges, an overdue exception waves a flag down an escalation path, and a compiled status summary lands in the manager's inbox.</desc>
 
   <style>
     svg {
@@ -14,221 +14,270 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 14.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 7.8px; fill: var(--muted); }
-    .branch-label { font-size: 7.2px; font-weight: 700; fill: var(--accent); }
-    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+
+    .title-main { font-size: 13.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.6px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 6.7px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 8.8px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.6px; fill: var(--muted); }
+    .chip-text { font-size: 6.2px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6.2px; font-weight: 700; fill: var(--accent); }
+
     .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
-    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1.1; }
-    .card-rich { fill: var(--accent); fill-opacity: 0.09; stroke: var(--accent); stroke-opacity: 0.7; stroke-width: 1.1; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    .flow-branch-a { stroke: var(--accent); stroke-opacity: 0.55; }
-    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.8; }
-    .flow-branch-c { stroke: var(--accent); stroke-opacity: 1; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    .flow-return { fill: none; stroke: var(--muted); stroke-width: 0.95; stroke-dasharray: 2 3; opacity: 0.7; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-in { offset-path: path("M 98 200 L 126 200"); animation: pktIn 9s linear infinite; }
-    .packet-a1 { offset-path: path("M 174 146 C 194 92, 232 92, 270 92"); animation: pktBranch 9s linear infinite; }
-    .packet-b1 { offset-path: path("M 222 200 L 270 200"); animation: pktBranch 9s linear infinite; }
-    .packet-c1 { offset-path: path("M 174 254 C 194 312, 232 312, 270 312"); animation: pktBranch 9s linear infinite; }
-    .packet-a2 { offset-path: path("M 396 92 C 414 92, 414 176, 424 188"); animation: pktMerge 9s linear infinite; }
-    .packet-b2 { offset-path: path("M 396 200 L 424 200"); animation: pktMerge 9s linear infinite; }
-    .packet-c2 { offset-path: path("M 396 312 C 414 312, 414 236, 424 226"); animation: pktMerge 9s linear infinite; }
-    .packet-out { offset-path: path("M 512 200 L 534 200"); animation: pktOut 9s linear infinite; }
+    .packet-ret { fill: var(--ink); opacity: 0; }
+    .p-12 { offset-path: path("M 87 124 L 87 170"); animation: p12 9s linear infinite; }
+    .p-23a { offset-path: path("M 182 200 Q 256 68 332 68"); animation: p23 9s linear infinite; }
+    .p-23b { offset-path: path("M 182 216 Q 290 130 404 130"); animation: p23 9s linear infinite; }
+    .p-23c { offset-path: path("M 182 236 Q 290 198 404 198"); animation: p23 9s linear infinite; }
+    .p-23d { offset-path: path("M 182 254 Q 256 262 332 262"); animation: p23 9s linear infinite; }
+    .p-ret1 { offset-path: path("M 404 138 Q 290 142 182 224"); animation: pret 9s linear infinite; }
+    .p-ret2 { offset-path: path("M 332 270 Q 256 274 182 262"); animation: pret 9s linear infinite; }
+    .p-24 { offset-path: path("M 102 294 L 102 354 L 190 354"); animation: p24 9s linear infinite; }
+    .p-35 { offset-path: path("M 442 256 L 498 246"); animation: p35 9s linear infinite; }
+    .p-56 { offset-path: path("M 561 278 L 561 318"); animation: p56 9s linear infinite; }
+    .p-46 { offset-path: path("M 352 354 L 434 354"); animation: p46 9s linear infinite; }
 
-    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 40%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktMerge { 0%, 50% { offset-distance: 0%; opacity: 0; } 52% { opacity: 1; } 62% { offset-distance: 100%; opacity: 1; } 64%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,10% { opacity:0; offset-distance:0%; } 12% { opacity:1; } 18% { opacity:1; offset-distance:100%; } 21%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,27% { opacity:0; offset-distance:0%; } 29% { opacity:1; } 36% { opacity:1; offset-distance:100%; } 39%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes pret { 0%,44% { opacity:0; offset-distance:0%; } 46% { opacity:0.85; } 53% { opacity:0.85; offset-distance:100%; } 56%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p24 { 0%,52% { opacity:0; offset-distance:0%; } 54% { opacity:1; } 61% { opacity:1; offset-distance:100%; } 64%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p35 { 0%,64% { opacity:0; offset-distance:0%; } 66% { opacity:1; } 72% { opacity:1; offset-distance:100%; } 75%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,75% { opacity:0; offset-distance:0%; } 77% { opacity:1; } 84% { opacity:1; offset-distance:100%; } 87%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p46 { 0%,77% { opacity:0; offset-distance:0%; } 79% { opacity:1; } 86% { opacity:1; offset-distance:100%; } 89%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring, #stage-4 .highlight-ring, #branch-c .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .owner-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-4 .card-bg { animation: s4Hi 9s ease-in-out infinite; }
+    #stage-5 .card-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 54% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 58% { opacity: 0; } 62%, 76% { opacity: 1; } 82%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 78% { opacity: 0; } 82%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,14% { stroke: var(--accent); stroke-width: 1.7; } 18%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,14% { stroke: var(--line); stroke-width: 1.1; } 18%,32% { stroke: var(--accent); stroke-width: 1.7; } 36%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,32% { stroke: var(--line); stroke-width: 1.1; } 36%,54% { stroke: var(--accent); stroke-width: 1.7; } 58%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s4Hi { 0%,54% { stroke: var(--line); stroke-width: 1.1; } 58%,70% { stroke: var(--accent); stroke-width: 1.7; } 74%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,66% { stroke: var(--line); stroke-width: 1.1; } 70%,82% { stroke: var(--accent); stroke-width: 1.9; } 86%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,80% { stroke: var(--line); stroke-width: 1.1; } 84%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Decision Lines Type */
+    .dec-1 { transform-box: fill-box; transform-origin: left center; animation: dl1 9s ease-out infinite; }
+    .dec-2 { transform-box: fill-box; transform-origin: left center; animation: dl2 9s ease-out infinite; }
+    @keyframes dl1 { 0%,2% { transform: scaleX(0.05); opacity:0.3; } 8%,90% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.05); opacity:0.3; } }
+    @keyframes dl2 { 0%,5% { transform: scaleX(0.05); opacity:0.3; } 11%,90% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.05); opacity:0.3; } }
 
-    /* Lane progress bars filling and checkmarks popping */
-    .lane-fill-a, .lane-fill-b { transform-box: fill-box; transform-origin: left center; }
-    .lane-fill-a { animation: lfA 9s ease-out infinite; }
-    .lane-fill-b { animation: lfB 9s ease-out infinite; }
-    @keyframes lfA { 0%, 35% { transform: scaleX(0.15); } 48%, 94% { transform: scaleX(1); } 98%, 100% { transform: scaleX(0.15); } }
-    @keyframes lfB { 0%, 38% { transform: scaleX(0.15); } 51%, 94% { transform: scaleX(1); } 98%, 100% { transform: scaleX(0.15); } }
+    /* Stage 2: Task Cards Fan Inside Hub */
+    .fan-l { transform-box: fill-box; transform-origin: bottom center; animation: fL 9s ease-in-out infinite; }
+    .fan-r { transform-box: fill-box; transform-origin: bottom center; animation: fR 9s ease-in-out infinite; }
+    @keyframes fL { 0%,18% { transform: rotate(0deg); } 25%,32% { transform: rotate(-10deg); } 40%,100% { transform: rotate(0deg); } }
+    @keyframes fR { 0%,18% { transform: rotate(0deg); } 25%,32% { transform: rotate(10deg); } 40%,100% { transform: rotate(0deg); } }
 
-    .lane-chk { transform-box: fill-box; transform-origin: center; animation: lcPop 9s ease-out infinite; }
-    @keyframes lcPop { 0%, 46% { opacity: 0.2; transform: scale(0.6); } 52%, 94% { opacity: 1; transform: scale(1); } 98%, 100% { opacity: 0.2; transform: scale(0.6); } }
+    /* Stage 3: Owner Checkboxes Tick Staggered */
+    .ow-1 { stroke-dasharray: 14; stroke-dashoffset: 14; animation: o1 9s ease-out infinite; }
+    .ow-2 { stroke-dasharray: 14; stroke-dashoffset: 14; animation: o2 9s ease-out infinite; }
+    .ow-3 { stroke-dasharray: 14; stroke-dashoffset: 14; animation: o3 9s ease-out infinite; }
+    .ow-4 { stroke-dasharray: 14; stroke-dashoffset: 14; animation: o4 9s ease-out infinite; }
+    @keyframes o1 { 0%,35% { stroke-dashoffset: 14; } 40%,92% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 14; } }
+    @keyframes o2 { 0%,38% { stroke-dashoffset: 14; } 43%,92% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 14; } }
+    @keyframes o3 { 0%,41% { stroke-dashoffset: 14; } 46%,92% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 14; } }
+    @keyframes o4 { 0%,44% { stroke-dashoffset: 14; } 49%,92% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 14; } }
 
-    /* Final card: summary lines typing */
-    .sum-l1, .sum-l2, .sum-l3 { transform-box: fill-box; transform-origin: left center; }
-    .sum-l1 { animation: sl1 9s ease-out infinite; }
-    .sum-l2 { animation: sl2 9s ease-out infinite; }
-    .sum-l3 { animation: sl3 9s ease-out infinite; }
-    @keyframes sl1 { 0%, 78% { opacity: 0.15; transform: scaleX(0.1); } 84%, 95% { opacity: 0.95; transform: scaleX(1); } 99%, 100% { opacity: 0.15; transform: scaleX(0.1); } }
-    @keyframes sl2 { 0%, 81% { opacity: 0.15; transform: scaleX(0.1); } 87%, 95% { opacity: 0.85; transform: scaleX(1); } 99%, 100% { opacity: 0.15; transform: scaleX(0.1); } }
-    @keyframes sl3 { 0%, 84% { opacity: 0.15; transform: scaleX(0.1); } 90%, 95% { opacity: 0.9; transform: scaleX(1); } 99%, 100% { opacity: 0.15; transform: scaleX(0.1); } }
+    /* Stage 4: Bell Pulses Twice */
+    .nudge-bell { transform-box: fill-box; transform-origin: top center; animation: bellPulse 9s ease-in-out infinite; }
+    @keyframes bellPulse { 0%,57%,68%,100% { transform: rotate(0deg); } 60% { transform: rotate(12deg); } 62% { transform: rotate(-10deg); } 64% { transform: rotate(10deg); } 66% { transform: rotate(-6deg); } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 5: Exception Flag Waves */
+    .flag-wave { transform-box: fill-box; transform-origin: left center; animation: waveF 9s ease-in-out infinite; }
+    @keyframes waveF { 0%,68%,84%,100% { transform: rotate(0deg); } 72% { transform: rotate(-8deg); } 76% { transform: rotate(8deg); } 80% { transform: rotate(-6deg); } }
+
+    /* Stage 6: Summary Lines Fill + End Tick */
+    .sum-1 { transform-box: fill-box; transform-origin: left center; animation: sm1 9s ease-out infinite; }
+    .sum-2 { transform-box: fill-box; transform-origin: left center; animation: sm2 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawFinal 9s ease-out infinite; }
+    @keyframes sm1 { 0%,82% { transform: scaleX(0.05); opacity:0.3; } 88%,96% { transform: scaleX(1); opacity:1; } 100% { transform: scaleX(0.05); opacity:0.3; } }
+    @keyframes sm2 { 0%,85% { transform: scaleX(0.05); opacity:0.3; } 91%,96% { transform: scaleX(1); opacity:1; } 100% { transform: scaleX(0.05); opacity:0.3; } }
+    @keyframes drawFinal { 0%,88% { stroke-dashoffset: 24; } 94%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 24; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="21" class="title-main">Team Management &amp; Follow-Up</text>
+  <text x="620" y="21" text-anchor="end" class="method-text">Meeting notes → hub → 4 owners → inbox</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
+  <!-- Flow Connectors (Out & Back Spokes) -->
+  <path d="M 87 124 L 87 170" class="flow-path" />
+  <path d="M 182 200 Q 256 68 332 68" class="flow-path flow-accent" />
+  <path d="M 182 216 Q 290 130 404 130" class="flow-path flow-accent" />
+  <path d="M 182 236 Q 290 198 404 198" class="flow-path flow-accent" />
+  <path d="M 182 254 Q 256 262 332 262" class="flow-path flow-accent" />
+  <!-- Thinner Return Ping Paths -->
+  <path d="M 404 138 Q 290 142 182 224" class="flow-return" />
+  <path d="M 332 270 Q 256 274 182 262" class="flow-return" />
 
-  <g id="header">
-    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
-    <text x="32" y="30" class="title-main">AI Automation for Team Management</text>
-    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
-    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  <path d="M 102 294 L 102 354 L 190 354" class="flow-path" />
+  <path d="M 442 256 L 498 246" class="flow-path" />
+  <path d="M 561 278 L 561 318" class="flow-path flow-accent" />
+  <path d="M 352 354 L 434 354" class="flow-path flow-accent" />
+
+  <!-- Travelling Packets (Out & Return Pings) -->
+  <circle r="3.2" class="packet p-12" />
+  <circle r="3" class="packet p-23a" />
+  <circle r="3" class="packet p-23b" />
+  <circle r="3" class="packet p-23c" />
+  <circle r="3" class="packet p-23d" />
+  <circle r="2.4" class="packet-ret p-ret1" />
+  <circle r="2.4" class="packet-ret p-ret2" />
+  <circle r="3.1" class="packet p-24" />
+  <circle r="3" class="packet p-35" />
+  <circle r="3.1" class="packet p-56" />
+  <circle r="3.1" class="packet p-46" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(87, 147)">
+    <rect x="-46" y="-7.5" width="92" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text">Meeting notes → webhook</text>
+  </g>
+  <g transform="translate(262, 146)">
+    <rect x="-36" y="-7.5" width="72" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">→ Planner / Asana</text>
+  </g>
+  <g transform="translate(124, 354)">
+    <rect x="-34" y="-7.5" width="68" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text">scheduled nudge</text>
+  </g>
+  <g transform="translate(561, 298)">
+    <rect x="-24" y="-7.5" width="48" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">escalation</text>
+  </g>
+  <g transform="translate(393, 354)">
+    <rect x="-28" y="-7.5" width="56" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">→ your inbox</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 98 200 L 126 200" />
-    <path class="flow-path flow-branch-a" d="M 174 146 C 194 92, 232 92, 270 92" />
-    <path class="flow-path flow-branch-b" d="M 222 200 L 270 200" />
-    <path class="flow-path flow-branch-c" d="M 174 254 C 194 312, 232 312, 270 312" />
-    <path class="flow-path flow-branch-a" d="M 396 92 C 414 92, 414 176, 424 188" />
-    <path class="flow-path flow-branch-b" d="M 396 200 L 424 200" />
-    <path class="flow-path flow-branch-c" d="M 396 312 C 414 312, 414 236, 424 226" />
-    <path class="flow-path" d="M 512 200 L 534 200" />
-  </g>
-
-  <g id="branch-labels">
-    <text x="200" y="84" class="branch-label">A · Design</text>
-    <text x="223" y="193" class="branch-label">B · Writing</text>
-    <text x="206" y="326" class="branch-label">C · Ops</text>
-  </g>
-
-  <g id="packets">
-    <circle class="packet packet-in" r="3.2" />
-    <circle class="packet packet-a1" r="3.2" />
-    <circle class="packet packet-b1" r="3.2" />
-    <circle class="packet packet-c1" r="3.2" />
-    <circle class="packet packet-a2" r="3.2" />
-    <circle class="packet packet-b2" r="3.2" />
-    <circle class="packet packet-c2" r="3.2" />
-    <circle class="packet packet-out" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: Week's Tasks In -->
+  <!-- STAGE 1: TRIGGER "Decisions land" (Top Left) -->
   <g id="stage-1" class="node">
-    <rect x="14" y="148" width="84" height="104" rx="10" class="card-bg" />
-    <rect x="14" y="148" width="84" height="104" rx="10" class="highlight-ring" />
-    <text x="22" y="164" class="stage-num">01 · TASKS IN</text>
-    <text x="22" y="178" class="stage-title">Week's tasks</text>
-    <rect x="22" y="186" width="68" height="24" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <line x1="28" y1="194" x2="72" y2="194" stroke="var(--ink)" stroke-opacity="0.45" stroke-width="1.3" stroke-linecap="round" />
-    <line x1="28" y1="201" x2="60" y2="201" stroke="var(--muted)" stroke-opacity="0.5" stroke-width="1.3" stroke-linecap="round" />
-    <text x="22" y="224" class="stage-copy">Backlog, owners</text>
-    <text x="22" y="235" class="stage-copy">&amp; due dates</text>
+    <rect x="16" y="40" width="142" height="84" rx="10" class="card-bg" />
+    <text x="25" y="55" class="stage-num">01 · TRIGGER</text>
+    <text x="25" y="67" class="stage-title">Decisions land</text>
+    <text x="25" y="79" class="stage-copy">Meeting notes + chat</text>
+    <rect x="25" y="88" width="114" height="4.5" rx="2" fill="var(--accent)" fill-opacity="0.7" class="dec-1" />
+    <rect x="25" y="97" width="94" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" class="dec-2" />
+    <rect x="25" y="106" width="104" height="4.5" rx="2" fill="var(--muted)" fill-opacity="0.45" class="dec-2" />
   </g>
 
-  <!-- STAGE 2: Coordinator Agent (Diamond) -->
+  <!-- STAGE 2: HUB "Tasks written + routed" (Centre-Left Hub) -->
   <g id="stage-2" class="node">
-    <polygon points="174,146 222,200 174,254 126,200" class="card-bg" />
-    <polygon points="174,146 222,200 174,254 126,200" class="highlight-ring" />
-    <text x="147" y="186" class="stage-num">02 · ASSIGN</text>
-    <text x="142" y="200" class="stage-title">Coordinator</text>
-    <text x="145" y="212" class="stage-copy">Assigns lanes</text>
+    <rect x="24" y="170" width="158" height="124" rx="14" class="card-bg" />
+    <text x="34" y="186" class="stage-num">02 · HUB</text>
+    <text x="34" y="198" class="stage-title">Tasks written + routed</text>
+
     <g class="ai-badge">
-      <rect x="147" y="262" width="54" height="14" rx="7" class="pill-bg" />
-      <circle cx="155" cy="269" r="2" class="ai-pulse-dot" />
-      <text x="161" y="271.5" class="tag-text-accent">AI agent</text>
+      <rect x="34" y="205" width="38" height="14" rx="7" class="chip-bg" />
+      <text x="53" y="214.5" text-anchor="middle" class="chip-text-accent">Claude</text>
+    </g>
+
+    <!-- Fanning Task Cards Inside Hub -->
+    <g transform="translate(88, 232)">
+      <rect x="0" y="0" width="32" height="42" rx="4" class="chip-bg fan-l" />
+      <rect x="4" y="0" width="32" height="42" rx="4" class="chip-bg fan-r" />
+      <rect x="2" y="0" width="32" height="42" rx="4" class="chip-bg" />
+      <rect x="7" y="10" width="22" height="3.5" rx="1.5" fill="var(--accent)" />
+      <rect x="7" y="18" width="18" height="3.5" rx="1.5" fill="var(--ink)" fill-opacity="0.4" />
+    </g>
+    <text x="34" y="280" class="stage-copy">Assigned</text>
+  </g>
+
+  <!-- STAGE 3: OWNERS (Four Owner Nodes in Right-Hand Arc) -->
+  <g id="stage-3" class="node">
+    <!-- Design -->
+    <rect x="332" y="40" width="110" height="54" rx="9" class="card-bg owner-bg" />
+    <text x="342" y="55" class="stage-num">03A · OWNER</text>
+    <text x="342" y="67" class="stage-title">Design</text>
+    <text x="342" y="81" class="stage-copy">Mockups task</text>
+    <rect x="418" y="56" width="14" height="14" rx="3" class="chip-bg" />
+    <path d="M 421 63 L 424 66 L 429 60" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="ow-1" />
+
+    <!-- Sales -->
+    <rect x="404" y="104" width="110" height="54" rx="9" class="card-bg owner-bg" />
+    <text x="414" y="119" class="stage-num">03B · OWNER</text>
+    <text x="414" y="131" class="stage-title">Sales</text>
+    <text x="414" y="145" class="stage-copy">Follow-up call</text>
+    <rect x="490" y="120" width="14" height="14" rx="3" class="chip-bg" />
+    <path d="M 493 127 L 496 130 L 501 124" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="ow-2" />
+
+    <!-- Ops -->
+    <rect x="404" y="170" width="110" height="54" rx="9" class="card-bg owner-bg" />
+    <text x="414" y="185" class="stage-num">03C · OWNER</text>
+    <text x="414" y="197" class="stage-title">Ops</text>
+    <text x="414" y="211" class="stage-copy">Vendor check</text>
+    <rect x="490" y="186" width="14" height="14" rx="3" class="chip-bg" />
+    <path d="M 493 193 L 496 196 L 501 190" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="ow-3" />
+
+    <!-- Support -->
+    <rect x="332" y="234" width="110" height="54" rx="9" class="card-bg owner-bg" />
+    <text x="342" y="249" class="stage-num">03D · OWNER</text>
+    <text x="342" y="261" class="stage-title">Support</text>
+    <text x="342" y="275" class="stage-copy">Ticket reply</text>
+    <rect x="418" y="250" width="14" height="14" rx="3" class="chip-bg" />
+    <path d="M 421 257 L 424 260 L 429 254" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="ow-4" />
+  </g>
+
+  <!-- STAGE 4: "Progress chased" (Bottom Centre) -->
+  <g id="stage-4" class="node">
+    <rect x="190" y="318" width="162" height="70" rx="10" class="card-bg" />
+    <text x="200" y="333" class="stage-num">04 · CHASE</text>
+    <text x="200" y="345" class="stage-title">Progress chased</text>
+    <g class="ai-badge">
+      <rect x="200" y="352" width="70" height="14" rx="7" class="chip-bg" />
+      <text x="235" y="361.5" text-anchor="middle" class="chip-text-accent">Power Automate</text>
+    </g>
+    <!-- Bell Icon Pulsing -->
+    <g class="nudge-bell" transform="translate(324, 344)">
+      <path d="M 0 0 C -5 0 -7 5 -7 11 L -9 14 H 9 L 7 11 C 7 5 5 0 0 0 Z" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.3" />
+      <circle cx="0" cy="17" r="2" fill="var(--accent)" />
     </g>
   </g>
 
-  <!-- STAGE 3: Lane A - Designer (Progress bar filling + checkmark) -->
-  <g id="stage-3" class="node">
-    <rect x="270" y="50" width="126" height="84" rx="10" class="card-soft" />
-    <rect x="270" y="50" width="126" height="84" rx="10" class="highlight-ring" />
-    <text x="279" y="64" class="stage-num">LANE A · DESIGN</text>
-    <text x="279" y="77" class="stage-title">Designer</text>
-    <rect x="279" y="88" width="84" height="7" rx="3.5" fill="var(--line)" opacity="0.4" />
-    <rect x="279" y="88" width="84" height="7" rx="3.5" fill="var(--accent)" class="lane-fill-a" />
-    <circle cx="376" cy="91.5" r="6" fill="var(--accent)" class="lane-chk" />
-    <path d="M373.5 91.5 L375.3 93.3 L378.5 90" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" class="lane-chk" />
-    <text x="279" y="114" class="stage-copy">Mockups &amp; assets</text>
-  </g>
-
-  <!-- STAGE 4: Lane B - Writer (Progress bar filling + checkmark) -->
-  <g id="stage-4" class="node">
-    <rect x="270" y="156" width="126" height="88" rx="10" class="card-bg" />
-    <rect x="270" y="156" width="126" height="88" rx="10" class="highlight-ring" />
-    <text x="279" y="170" class="stage-num">LANE B · COPY</text>
-    <text x="279" y="183" class="stage-title">Writer</text>
-    <rect x="279" y="194" width="84" height="7" rx="3.5" fill="var(--line)" opacity="0.4" />
-    <rect x="279" y="194" width="84" height="7" rx="3.5" fill="var(--accent)" class="lane-fill-b" />
-    <circle cx="376" cy="197.5" r="6" fill="var(--accent)" class="lane-chk" />
-    <path d="M373.5 197.5 L375.3 199.3 L378.5 196" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" class="lane-chk" />
-    <text x="279" y="220" class="stage-copy">Drafts &amp; approvals</text>
-  </g>
-
-  <!-- BRANCH C: Lane C - Operations -->
-  <g id="branch-c" class="node">
-    <rect x="270" y="268" width="126" height="82" rx="10" class="card-rich" />
-    <rect x="270" y="268" width="126" height="82" rx="10" class="highlight-ring" />
-    <text x="279" y="282" class="stage-num">LANE C · OPS</text>
-    <text x="279" y="295" class="stage-title">Operations</text>
-    <text x="279" y="308" class="stage-copy">QA, billing &amp; launch</text>
-    <circle cx="376" cy="304" r="6" fill="var(--accent)" class="lane-chk" />
-    <path d="M373.5 304 L375.3 305.8 L378.5 302.5" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" class="lane-chk" />
-  </g>
-
-  <!-- STAGE 5: Progress Check -->
+  <!-- STAGE 5: "Exception flagged" (Owner Exception + Flag) -->
   <g id="stage-5" class="node">
-    <rect x="424" y="140" width="88" height="122" rx="10" class="card-bg" />
-    <rect x="424" y="140" width="88" height="122" rx="10" class="highlight-ring" />
-    <text x="432" y="156" class="stage-num">04 · CHECK</text>
-    <text x="432" y="170" class="stage-title">Progress check</text>
-    <text x="432" y="182" class="stage-copy">Lead reviews blockers</text>
-    <text x="432" y="192" class="stage-copy">&amp; milestones</text>
-    <circle cx="468" cy="212" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-    <path d="M464 212 L466.8 214.8 L472.2 209.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" />
-    <rect x="431" y="234" width="74" height="15" rx="7.5" class="pill-bg" />
-    <text x="436" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
+    <rect x="498" y="214" width="126" height="64" rx="10" class="card-bg" />
+    <text x="507" y="229" class="stage-num">05 · EXCEPTION</text>
+    <text x="507" y="241" class="stage-title">Exception flagged</text>
+    <text x="507" y="254" class="stage-copy">Overdue / blocked</text>
+
+    <!-- Waving Flag -->
+    <g transform="translate(602, 232)">
+      <line x1="0" y1="0" x2="0" y2="28" stroke="var(--ink)" stroke-width="1.4" stroke-linecap="round" />
+      <polygon points="0,0 14,4 0,10" fill="var(--accent)" class="flag-wave" />
+    </g>
   </g>
 
-  <!-- STAGE 6: Weekly Status Summary (Lines typing in) -->
+  <!-- STAGE 6: "Status summary ready" (Bottom Right, End) -->
   <g id="stage-6" class="node">
-    <rect x="534" y="136" width="94" height="130" rx="10" class="card-bg" />
-    <rect x="534" y="136" width="94" height="130" rx="10" class="highlight-ring" />
-    <text x="542" y="152" class="stage-num">05 · SUMMARY</text>
-    <text x="542" y="166" class="stage-title">Weekly status</text>
-    <rect x="542" y="176" width="78" height="44" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <rect x="548" y="185" width="64" height="4" rx="2" fill="var(--accent)" class="sum-l1" />
-    <rect x="548" y="195" width="52" height="4" rx="2" fill="var(--accent)" fill-opacity="0.75" class="sum-l2" />
-    <rect x="548" y="205" width="58" height="4" rx="2" fill="var(--accent)" fill-opacity="0.9" class="sum-l3" />
-    <text x="542" y="236" class="stage-copy">Sent to leadership</text>
-    <text x="542" y="247" class="stage-copy">every Friday</text>
-  </g>
+    <rect x="434" y="318" width="190" height="70" rx="10" class="card-bg" />
+    <text x="444" y="333" class="stage-num">06 · SUMMARY</text>
+    <text x="444" y="345" class="stage-title">Status summary ready</text>
 
-  <g id="footer">
-    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="22" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+    <rect x="444" y="355" width="128" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.45" class="sum-1" />
+    <rect x="444" y="365" width="106" height="4.5" rx="2" fill="var(--muted)" fill-opacity="0.45" class="sum-2" />
+
+    <circle cx="598" cy="356" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 593 356 L 596.5 359.5 L 603.5 352.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>
