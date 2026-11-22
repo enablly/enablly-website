@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">AI Automation for Translation &amp; Localisation</title>
-  <desc id="svg-desc">Animated parallel-language branching workflow showing how Enablly's forward-deployed AI automation handles translation and localisation: source content arrives, a translation agent splits into Malay (with morphing text), Chinese (with DeepL and OpenAI and swapping speech-bubble words), and Japanese, each reviewed by a native speaker, and all three language badges light up in sequence as they publish together.</desc>
+  <desc id="svg-desc">Six-stage parallel language lanes workflow for translation and localisation: source content arrives from CMS export via webhook, passes a glossary gate locking brand names and units, splits into five simultaneous language lanes (ES, FR, DE, JA, ZH) powered by Claude, Gemini and DeepL with mid-lane local adaptation markers, crosses a human-in-the-loop review bar to the finish line, and delivers all locales together to the CMS.</desc>
 
   <style>
     svg {
@@ -14,235 +14,242 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
     }
-    .title-main { font-size: 14px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
-    .stage-num { font-size: 8px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
-    .stage-title { font-size: 10px; font-weight: 700; fill: var(--ink); }
-    .stage-copy { font-size: 7.8px; fill: var(--muted); }
-    .branch-label { font-size: 7.2px; font-weight: 700; fill: var(--accent); }
-    .tag-text { font-size: 7.2px; font-weight: 600; fill: var(--ink); }
-    .tag-text-accent { font-size: 7.2px; font-weight: 600; fill: var(--accent); }
-    .brand-text { font-size: 7.6px; font-weight: 600; fill: var(--ink); }
-    .method-text { font-size: 8px; font-weight: 600; fill: var(--muted); }
+
+    .title-main { font-size: 13.5px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
+    .method-text { font-size: 7.4px; font-weight: 600; fill: var(--muted); }
+    .stage-num { font-size: 6.5px; font-weight: 700; fill: var(--accent); letter-spacing: 0.04em; }
+    .stage-title { font-size: 8.5px; font-weight: 700; fill: var(--ink); }
+    .stage-copy { font-size: 6.4px; fill: var(--muted); }
+    .chip-text { font-size: 6px; font-weight: 600; fill: var(--ink); }
+    .chip-text-accent { font-size: 6px; font-weight: 700; fill: var(--accent); }
+
     .card-bg { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
-    .card-soft { fill: var(--accent); fill-opacity: 0.04; stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1.1; }
-    .card-rich { fill: var(--accent); fill-opacity: 0.09; stroke: var(--accent); stroke-opacity: 0.7; stroke-width: 1.1; }
-    .pill-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.9; }
-    .ai-badge .pill-bg { stroke: var(--accent); stroke-opacity: 0.55; }
+    .chip-bg { fill: var(--surface); stroke: var(--line); stroke-width: 0.85; }
+    .ai-badge .chip-bg { stroke: var(--accent); stroke-opacity: 0.55; }
     .node { transform-box: fill-box; transform-origin: center; }
 
-    .flow-path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 5; animation: dashFlow 1s linear infinite; }
-    .flow-branch-a { stroke: var(--accent); stroke-opacity: 0.55; }
-    .flow-branch-b { stroke: var(--accent); stroke-opacity: 0.8; }
-    .flow-branch-c { stroke: var(--accent); stroke-opacity: 1; }
-    @keyframes dashFlow { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+    .flow-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.3;
+      stroke-linecap: round;
+      stroke-dasharray: 4 4;
+      animation: dashFlow 1s linear infinite;
+    }
+    .flow-accent { stroke: var(--accent); stroke-opacity: 0.55; }
+    @keyframes dashFlow { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
 
     .packet { fill: var(--accent); opacity: 0; }
-    .packet-in { offset-path: path("M 98 200 L 126 200"); animation: pktIn 9s linear infinite; }
-    .packet-a1 { offset-path: path("M 174 146 C 194 92, 232 92, 270 92"); animation: pktBranch 9s linear infinite; }
-    .packet-b1 { offset-path: path("M 222 200 L 270 200"); animation: pktBranch 9s linear infinite; }
-    .packet-c1 { offset-path: path("M 174 254 C 194 312, 232 312, 270 312"); animation: pktBranch 9s linear infinite; }
-    .packet-a2 { offset-path: path("M 396 92 C 414 92, 414 176, 424 188"); animation: pktMerge 9s linear infinite; }
-    .packet-b2 { offset-path: path("M 396 200 L 424 200"); animation: pktMerge 9s linear infinite; }
-    .packet-c2 { offset-path: path("M 396 312 C 414 312, 414 236, 424 226"); animation: pktMerge 9s linear infinite; }
-    .packet-out { offset-path: path("M 512 200 L 534 200"); animation: pktOut 9s linear infinite; }
+    .p-12 { offset-path: path("M 110 214 L 138 214"); animation: p12 9s linear infinite; }
+    .p-23a { offset-path: path("M 212 79 L 234 79"); animation: p23 9s linear infinite; }
+    .p-23b { offset-path: path("M 212 145 L 234 145"); animation: p23 9s linear infinite; }
+    .p-23c { offset-path: path("M 212 211 L 234 211"); animation: p23 9s linear infinite; }
+    .p-23d { offset-path: path("M 212 277 L 234 277"); animation: p23 9s linear infinite; }
+    .p-23e { offset-path: path("M 212 343 L 234 343"); animation: p23 9s linear infinite; }
+    .p-56 { offset-path: path("M 538 211 L 556 211"); animation: p56 9s linear infinite; }
 
-    @keyframes pktIn { 0%, 8% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 18% { offset-distance: 100%; opacity: 1; } 20%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktBranch { 0%, 24% { offset-distance: 0%; opacity: 0; } 26% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 40%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktMerge { 0%, 50% { offset-distance: 0%; opacity: 0; } 52% { opacity: 1; } 62% { offset-distance: 100%; opacity: 1; } 64%, 100% { offset-distance: 100%; opacity: 0; } }
-    @keyframes pktOut { 0%, 74% { offset-distance: 0%; opacity: 0; } 76% { opacity: 1; } 85% { offset-distance: 100%; opacity: 1; } 87%, 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes p12 { 0%,10% { opacity:0; offset-distance:0%; } 12% { opacity:1; } 17% { opacity:1; offset-distance:100%; } 20%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p23 { 0%,26% { opacity:0; offset-distance:0%; } 28% { opacity:1; } 33% { opacity:1; offset-distance:100%; } 36%,100% { opacity:0; offset-distance:100%; } }
+    @keyframes p56 { 0%,78% { opacity:0; offset-distance:0%; } 80% { opacity:1; } 86% { opacity:1; offset-distance:100%; } 89%,100% { opacity:0; offset-distance:100%; } }
 
-    .highlight-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; }
-    #stage-1 .highlight-ring { animation: lit1 9s ease-in-out infinite; }
-    #stage-2 .highlight-ring { animation: lit2 9s ease-in-out infinite; }
-    #stage-3 .highlight-ring, #stage-4 .highlight-ring, #branch-c .highlight-ring { animation: lit3 9s ease-in-out infinite; }
-    #stage-5 .highlight-ring { animation: lit5 9s ease-in-out infinite; }
-    #stage-6 .highlight-ring { animation: lit6 9s ease-in-out infinite; }
+    /* Stage Active Highlights */
+    #stage-1 .card-bg { animation: s1Hi 9s ease-in-out infinite; }
+    #stage-2 .card-bg { animation: s2Hi 9s ease-in-out infinite; }
+    #stage-3 .lane-bg { animation: s3Hi 9s ease-in-out infinite; }
+    #stage-5 .card-bg { animation: s5Hi 9s ease-in-out infinite; }
+    #stage-6 .card-bg { animation: s6Hi 9s ease-in-out infinite; }
 
-    @keyframes lit1 { 0%, 96%, 100% { opacity: 0.15; } 4%, 14% { opacity: 1; } 20% { opacity: 0.25; } }
-    @keyframes lit2 { 0%, 16% { opacity: 0; } 20%, 30% { opacity: 1; } 36%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit3 { 0%, 36% { opacity: 0; } 40%, 54% { opacity: 1; } 60%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit5 { 0%, 58% { opacity: 0; } 62%, 76% { opacity: 1; } 82%, 95% { opacity: 0.25; } 100% { opacity: 0; } }
-    @keyframes lit6 { 0%, 78% { opacity: 0; } 82%, 95% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1Hi { 0%,14% { stroke: var(--accent); stroke-width: 1.7; } 18%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s2Hi { 0%,14% { stroke: var(--line); stroke-width: 1.1; } 17%,29% { stroke: var(--accent); stroke-width: 1.7; } 33%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s3Hi { 0%,29% { stroke: var(--line); stroke-width: 1.1; } 33%,58% { stroke: var(--accent); stroke-width: 1.7; } 62%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s5Hi { 0%,60% { stroke: var(--line); stroke-width: 1.1; } 64%,79% { stroke: var(--accent); stroke-width: 1.7; } 83%,100% { stroke: var(--line); stroke-width: 1.1; } }
+    @keyframes s6Hi { 0%,79% { stroke: var(--line); stroke-width: 1.1; } 83%,98% { stroke: var(--accent); stroke-width: 1.7; } 100% { stroke: var(--line); stroke-width: 1.1; } }
 
-    .ai-pulse-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: aiPulse 1.5s ease-in-out infinite; }
-    @keyframes aiPulse { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.25); } }
+    /* Stage 1: Source Lines Type */
+    .src-type { transform-box: fill-box; transform-origin: left center; animation: srTy 9s ease-out infinite; }
+    @keyframes srTy { 0%,1% { transform: scaleX(0.1); opacity:0.3; } 10%,90% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.1); opacity:0.3; } }
 
-    /* Branch A: Text morphing between languages */
-    .morph-en { animation: mEn 9s linear infinite; }
-    .morph-my { animation: mMy 9s linear infinite; }
-    @keyframes mEn { 0%, 42% { opacity: 1; } 45%, 94% { opacity: 0; } 98%, 100% { opacity: 1; } }
-    @keyframes mMy { 0%, 42% { opacity: 0; } 45%, 94% { opacity: 1; } 98%, 100% { opacity: 0; } }
+    /* Stage 2: Glossary Term Chips Stamp */
+    .gl-stamp { transform-box: fill-box; transform-origin: center; animation: glSt 9s ease-out infinite; }
+    @keyframes glSt { 0%,15% { opacity:0.25; transform:scale(1.2); } 23%,90% { opacity:1; transform:scale(1); } 98%,100% { opacity:0.25; } }
 
-    /* Branch B: Speech-bubble words swapping */
-    .swp-en { animation: sEn 9s linear infinite; }
-    .swp-zh { animation: sZh 9s linear infinite; }
-    @keyframes sEn { 0%, 43% { opacity: 1; } 46%, 94% { opacity: 0; } 98%, 100% { opacity: 1; } }
-    @keyframes sZh { 0%, 43% { opacity: 0; } 46%, 94% { opacity: 1; } 98%, 100% { opacity: 0; } }
+    /* Stage 3: Simultaneous Typing Across Lanes */
+    .ln-type { transform-box: fill-box; transform-origin: left center; animation: lnTy 9s ease-out infinite; }
+    @keyframes lnTy { 0%,30% { transform: scaleX(0.05); opacity:0.25; } 44%,92% { transform: scaleX(1); opacity:1; } 98%,100% { transform: scaleX(0.05); opacity:0.25; } }
 
-    /* Final card: 3 language labels lighting in sequence */
-    .lang-lit-1 { animation: ll1 9s ease-in-out infinite; }
-    .lang-lit-2 { animation: ll2 9s ease-in-out infinite; }
-    .lang-lit-3 { animation: ll3 9s ease-in-out infinite; }
-    @keyframes ll1 { 0%, 78% { opacity: 0.35; } 82%, 95% { opacity: 1; } 99%, 100% { opacity: 0.35; } }
-    @keyframes ll2 { 0%, 82% { opacity: 0.35; } 86%, 95% { opacity: 1; } 99%, 100% { opacity: 0.35; } }
-    @keyframes ll3 { 0%, 86% { opacity: 0.35; } 90%, 95% { opacity: 1; } 99%, 100% { opacity: 0.35; } }
+    /* Stage 4: Adaptation Chips Flip On */
+    .ad-flip { transform-box: fill-box; transform-origin: center; animation: adFl 9s ease-out infinite; }
+    @keyframes adFl { 0%,46% { opacity:0.2; transform:scale(0.75); } 56%,92% { opacity:1; transform:scale(1); } 98%,100% { opacity:0.2; } }
 
-    .progress-fill { fill: var(--accent); transform-box: fill-box; transform-origin: left center; animation: progressLoop 9s linear infinite; }
-    @keyframes progressLoop { 0% { transform: scaleX(0.05); opacity: 0.8; } 94% { transform: scaleX(1); opacity: 1; } 99%, 100% { transform: scaleX(0.05); opacity: 0.3; } }
+    /* Stage 5 and 6: Review Sweep + Ticks + Pack Stack */
+    .rev-sweep { animation: rvSw 9s ease-in-out infinite; }
+    .rev-tick { stroke-dasharray: 14; stroke-dashoffset: 14; animation: rvCk 9s ease-out infinite; }
+    .pack-stack { animation: pkSt 9s ease-out infinite; }
+    .final-tick { stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawFinal 9s ease-out infinite; }
+
+    @keyframes rvSw { 0%,60% { opacity:0.2; transform:translateY(0); } 70% { opacity:0.85; transform:translateY(240px); } 78%,100% { opacity:0.2; transform:translateY(0); } }
+    @keyframes rvCk { 0%,64% { stroke-dashoffset: 14; } 74%,92% { stroke-dashoffset: 0; } 98%,100% { stroke-dashoffset: 14; } }
+    @keyframes pkSt { 0%,80% { opacity:0.3; transform:translateX(-6px); } 88%,96% { opacity:1; transform:translateX(0); } 100% { opacity:0.3; } }
+    @keyframes drawFinal { 0%,86% { stroke-dashoffset: 24; } 93%,97% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 24; } }
   </style>
 
-  <defs>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.8" fill="var(--line)" opacity="0.55" />
-    </pattern>
-  </defs>
+  <!-- Header -->
+  <text x="20" y="21" class="title-main">Translation &amp; Localisation</text>
+  <text x="620" y="21" text-anchor="end" class="method-text">CMS webhook → glossary → 5 parallel lanes → all locales</text>
 
-  <rect x="0" y="0" width="640" height="400" fill="url(#dot-grid)" opacity="0.5" />
-
-  <g id="header">
-    <circle cx="22" cy="26" r="4" fill="var(--accent)" />
-    <text x="32" y="30" class="title-main">AI Automation for Translation &amp; Localisation</text>
-    <rect x="462" y="16" width="162" height="20" rx="10" class="pill-bg" />
-    <circle cx="474" cy="26" r="2.5" fill="var(--accent)" />
-    <text x="481" y="29" class="method-text">Forward-deployed · Embedded</text>
+  <!-- AI Badges for 5 Lanes -->
+  <g class="ai-badge">
+    <rect x="234" y="32" width="38" height="13" rx="6.5" class="chip-bg" /><text x="253" y="41" text-anchor="middle" class="chip-text-accent">Claude</text>
+    <rect x="276" y="32" width="40" height="13" rx="6.5" class="chip-bg" /><text x="296" y="41" text-anchor="middle" class="chip-text-accent">Gemini</text>
+    <rect x="320" y="32" width="38" height="13" rx="6.5" class="chip-bg" /><text x="339" y="41" text-anchor="middle" class="chip-text-accent">DeepL</text>
   </g>
 
-  <g id="flow-paths">
-    <path class="flow-path" d="M 98 200 L 126 200" />
-    <path class="flow-path flow-branch-a" d="M 174 146 C 194 92, 232 92, 270 92" />
-    <path class="flow-path flow-branch-b" d="M 222 200 L 270 200" />
-    <path class="flow-path flow-branch-c" d="M 174 254 C 194 312, 232 312, 270 312" />
-    <path class="flow-path flow-branch-a" d="M 396 92 C 414 92, 414 176, 424 188" />
-    <path class="flow-path flow-branch-b" d="M 396 200 L 424 200" />
-    <path class="flow-path flow-branch-c" d="M 396 312 C 414 312, 414 236, 424 226" />
-    <path class="flow-path" d="M 512 200 L 534 200" />
+  <!-- Flow Connectors -->
+  <path d="M 110 214 L 138 214" class="flow-path" />
+  <path d="M 212 79 L 234 79" class="flow-path flow-accent" />
+  <path d="M 212 145 L 234 145" class="flow-path flow-accent" />
+  <path d="M 212 211 L 234 211" class="flow-path flow-accent" />
+  <path d="M 212 277 L 234 277" class="flow-path flow-accent" />
+  <path d="M 212 343 L 234 343" class="flow-path flow-accent" />
+  <path d="M 538 211 L 556 211" class="flow-path flow-accent" />
+
+  <!-- Finish Line -->
+  <line x1="546" y1="52" x2="546" y2="370" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.65" />
+
+  <!-- Travelling Packets -->
+  <circle r="3" class="packet p-12" />
+  <circle r="2.8" class="packet p-23a" />
+  <circle r="2.8" class="packet p-23b" />
+  <circle r="2.8" class="packet p-23c" />
+  <circle r="2.8" class="packet p-23d" />
+  <circle r="2.8" class="packet p-23e" />
+  <circle r="3.1" class="packet p-56" />
+
+  <!-- Connector Chips -->
+  <g transform="translate(88, 38)">
+    <rect x="-40" y="-7" width="80" height="14" rx="7" class="chip-bg" />
+    <text x="0" y="2" text-anchor="middle" class="chip-text">CMS export → webhook</text>
+  </g>
+  <g transform="translate(175, 38)">
+    <rect x="-26" y="-7" width="52" height="14" rx="7" class="chip-bg" />
+    <text x="0" y="2" text-anchor="middle" class="chip-text-accent">your glossary</text>
+  </g>
+  <g transform="translate(588, 92)">
+    <rect x="-36" y="-7.5" width="72" height="15" rx="7.5" class="chip-bg" />
+    <text x="0" y="2.2" text-anchor="middle" class="chip-text-accent">→ CMS, all locales</text>
   </g>
 
-  <g id="branch-labels">
-    <text x="200" y="84" class="branch-label">A · Malay</text>
-    <text x="223" y="193" class="branch-label">B · Chinese</text>
-    <text x="200" y="326" class="branch-label">C · Japanese</text>
-  </g>
-
-  <g id="packets">
-    <circle class="packet packet-in" r="3.2" />
-    <circle class="packet packet-a1" r="3.2" />
-    <circle class="packet packet-b1" r="3.2" />
-    <circle class="packet packet-c1" r="3.2" />
-    <circle class="packet packet-a2" r="3.2" />
-    <circle class="packet packet-b2" r="3.2" />
-    <circle class="packet packet-c2" r="3.2" />
-    <circle class="packet packet-out" r="3.5" />
-  </g>
-
-  <!-- STAGE 1: Source Content In -->
+  <!-- STAGE 1: TRIGGER "Source content lands" (Far Left, Tall Card) -->
   <g id="stage-1" class="node">
-    <rect x="14" y="148" width="84" height="104" rx="10" class="card-bg" />
-    <rect x="14" y="148" width="84" height="104" rx="10" class="highlight-ring" />
-    <text x="22" y="164" class="stage-num">01 · SOURCE</text>
-    <text x="22" y="178" class="stage-title">Source copy</text>
-    <rect x="26" y="186" width="60" height="24" rx="5" fill="var(--accent)" fill-opacity="0.08" stroke="var(--line)" stroke-width="0.7" />
-    <text x="34" y="201" class="tag-text-accent">EN master</text>
-    <text x="22" y="224" class="stage-copy">Pages, UI strings</text>
-    <text x="22" y="235" class="stage-copy">&amp; glossary</text>
+    <rect x="16" y="52" width="94" height="318" rx="10" class="card-bg" />
+    <text x="24" y="68" class="stage-num">01 · TRIGGER</text>
+    <text x="24" y="80" class="stage-title">Source content</text>
+    <text x="24" y="91" class="stage-title">lands</text>
+    <text x="24" y="106" class="stage-copy">EN master copy</text>
+
+    <rect x="24" y="122" width="76" height="5" rx="2" fill="var(--accent)" class="src-type" />
+    <rect x="24" y="136" width="66" height="5" rx="2" fill="var(--ink)" fill-opacity="0.45" class="src-type" />
+    <rect x="24" y="150" width="72" height="5" rx="2" fill="var(--ink)" fill-opacity="0.45" class="src-type" />
+    <rect x="24" y="164" width="58" height="5" rx="2" fill="var(--muted)" fill-opacity="0.45" class="src-type" />
   </g>
 
-  <!-- STAGE 2: Translation Agent -->
+  <!-- STAGE 2: "Glossary locks terms" (Left Gate) -->
   <g id="stage-2" class="node">
-    <polygon points="174,146 222,200 174,254 126,200" class="card-bg" />
-    <polygon points="174,146 222,200 174,254 126,200" class="highlight-ring" />
-    <text x="148" y="186" class="stage-num">02 · SPLIT</text>
-    <text x="146" y="200" class="stage-title">Translator</text>
-    <text x="145" y="212" class="stage-copy">3 languages</text>
-    <g class="ai-badge">
-      <rect x="147" y="262" width="54" height="14" rx="7" class="pill-bg" />
-      <circle cx="155" cy="269" r="2" class="ai-pulse-dot" />
-      <text x="161" y="271.5" class="tag-text-accent">AI agent</text>
+    <rect x="138" y="52" width="74" height="318" rx="10" class="card-bg" />
+    <text x="145" y="68" class="stage-num">02 · GATE</text>
+    <text x="145" y="80" class="stage-title">Glossary</text>
+    <text x="145" y="91" class="stage-title">locks terms</text>
+
+    <g class="gl-stamp">
+      <rect x="144" y="114" width="62" height="22" rx="5" class="chip-bg" />
+      <text x="175" y="124" text-anchor="middle" class="chip-text-accent">brand names</text>
+      <text x="175" y="132" text-anchor="middle" class="stage-copy">stay fixed</text>
+
+      <rect x="144" y="148" width="62" height="22" rx="5" class="chip-bg" />
+      <text x="175" y="158" text-anchor="middle" class="chip-text-accent">units → local</text>
+      <text x="175" y="166" text-anchor="middle" class="stage-copy">locked</text>
     </g>
   </g>
 
-  <!-- STAGE 3: Branch A - Malay (Text morphing) -->
+  <!-- STAGE 3: FIVE PARALLEL LANGUAGE LANES -->
   <g id="stage-3" class="node">
-    <rect x="270" y="50" width="126" height="84" rx="10" class="card-soft" />
-    <rect x="270" y="50" width="126" height="84" rx="10" class="highlight-ring" />
-    <text x="279" y="64" class="stage-num">BRANCH A · MY</text>
-    <text x="279" y="77" class="stage-title">Malay</text>
-    <rect x="279" y="86" width="84" height="20" rx="4" fill="var(--accent)" fill-opacity="0.12" />
-    <text x="287" y="99" class="tag-text morph-en">Hello →</text>
-    <text x="287" y="99" class="tag-text-accent morph-my">Selamat datang</text>
+    <!-- ES -->
+    <rect x="234" y="52" width="252" height="54" rx="8" class="card-bg lane-bg" />
+    <text x="244" y="68" class="stage-num">ES</text>
+    <text x="262" y="68" class="stage-title">Hola</text>
+    <rect x="244" y="76" width="118" height="5" rx="2" fill="var(--accent)" fill-opacity="0.7" class="ln-type" />
+    <rect x="244" y="86" width="96" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.4" class="ln-type" />
+
+    <!-- FR -->
+    <rect x="234" y="118" width="252" height="54" rx="8" class="card-bg lane-bg" />
+    <text x="244" y="134" class="stage-num">FR</text>
+    <text x="262" y="134" class="stage-title">Bonjour</text>
+    <rect x="244" y="142" width="118" height="5" rx="2" fill="var(--accent)" fill-opacity="0.7" class="ln-type" />
+    <rect x="244" y="152" width="96" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.4" class="ln-type" />
+
+    <!-- DE -->
+    <rect x="234" y="184" width="252" height="54" rx="8" class="card-bg lane-bg" />
+    <text x="244" y="200" class="stage-num">DE</text>
+    <text x="262" y="200" class="stage-title">Hallo</text>
+    <rect x="244" y="208" width="118" height="5" rx="2" fill="var(--accent)" fill-opacity="0.7" class="ln-type" />
+    <rect x="244" y="218" width="96" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.4" class="ln-type" />
+
+    <!-- JA -->
+    <rect x="234" y="250" width="252" height="54" rx="8" class="card-bg lane-bg" />
+    <text x="244" y="266" class="stage-num">JA</text>
+    <text x="262" y="266" class="stage-title">こんにちは</text>
+    <rect x="244" y="274" width="118" height="5" rx="2" fill="var(--accent)" fill-opacity="0.7" class="ln-type" />
+    <rect x="244" y="284" width="96" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.4" class="ln-type" />
+
+    <!-- ZH -->
+    <rect x="234" y="316" width="252" height="54" rx="8" class="card-bg lane-bg" />
+    <text x="244" y="332" class="stage-num">ZH</text>
+    <text x="262" y="332" class="stage-title">你好</text>
+    <rect x="244" y="340" width="118" height="5" rx="2" fill="var(--accent)" fill-opacity="0.7" class="ln-type" />
+    <rect x="244" y="350" width="96" height="4.5" rx="2" fill="var(--ink)" fill-opacity="0.4" class="ln-type" />
   </g>
 
-  <!-- STAGE 4: Branch B - Chinese (DeepL, OpenAI + Speech bubble swapping) -->
+  <!-- STAGE 4: "Local adaptation" (Mid-Lane Markers) -->
   <g id="stage-4" class="node">
-    <rect x="270" y="152" width="126" height="96" rx="10" class="card-bg" />
-    <rect x="270" y="152" width="126" height="96" rx="10" class="highlight-ring" />
-    <text x="279" y="166" class="stage-num">BRANCH B · ZH</text>
-    <circle cx="384" cy="164" r="2.6" class="ai-pulse-dot" />
-    <text x="279" y="179" class="stage-title">Chinese</text>
+    <g class="ad-flip">
+      <rect x="382" y="70" width="88" height="16" rx="8" class="chip-bg" />
+      <text x="426" y="80.5" text-anchor="middle" class="chip-text-accent">km → miles</text>
 
-    <!-- Speech-bubble words swapping -->
-    <rect x="279" y="186" width="46" height="18" rx="6" fill="var(--accent)" fill-opacity="0.15" stroke="var(--accent)" stroke-width="0.7" />
-    <text x="290" y="198" class="tag-text swp-en">Hello</text>
-    <text x="290" y="198" class="tag-text-accent swp-zh">你好</text>
+      <rect x="382" y="136" width="88" height="16" rx="8" class="chip-bg" />
+      <text x="426" y="146.5" text-anchor="middle" class="chip-text-accent">€ format</text>
 
-    <!-- Logos: DeepL, OpenAI -->
-    <g transform="translate(332, 187)">
-      <polygon points="4,0.5 7.5,2.5 7.5,6.5 4,8.5 0.5,6.5 0.5,2.5" fill="var(--accent)" fill-opacity="0.75" />
-      <text x="10" y="7" class="brand-text">DeepL</text>
-    </g>
-    <g transform="translate(332, 202)">
-      <polygon points="4,0.6 7.2,2.4 7.2,6 4,7.8 0.8,6 0.8,2.4" fill="none" stroke="var(--accent)" stroke-width="1.1" />
-      <text x="10" y="6.8" class="brand-text">OpenAI</text>
-    </g>
-
-    <g class="ai-badge">
-      <rect x="279" y="220" width="42" height="15" rx="7.5" class="pill-bg" />
-      <text x="290" y="230" class="tag-text-accent">LLM</text>
+      <rect x="382" y="202" width="88" height="16" rx="8" class="chip-bg" />
+      <text x="426" y="212.5" text-anchor="middle" class="chip-text-accent">date format</text>
     </g>
   </g>
 
-  <!-- BRANCH C: Japanese -->
-  <g id="branch-c" class="node">
-    <rect x="270" y="268" width="126" height="82" rx="10" class="card-rich" />
-    <rect x="270" y="268" width="126" height="82" rx="10" class="highlight-ring" />
-    <text x="279" y="282" class="stage-num">BRANCH C · JA</text>
-    <text x="279" y="295" class="stage-title">Japanese</text>
-    <text x="279" y="307" class="stage-copy">Adapted for local</text>
-    <text x="279" y="317" class="stage-copy">tone &amp; honorifics</text>
-  </g>
-
-  <!-- STAGE 5: Native Speaker Review -->
+  <!-- STAGE 5: "Human review" (Right, Before Finish Line) -->
   <g id="stage-5" class="node">
-    <rect x="424" y="140" width="88" height="122" rx="10" class="card-bg" />
-    <rect x="424" y="140" width="88" height="122" rx="10" class="highlight-ring" />
-    <text x="432" y="156" class="stage-num">04 · REVIEW</text>
-    <text x="432" y="170" class="stage-title">Native review</text>
-    <text x="432" y="182" class="stage-copy">Native speakers</text>
-    <text x="432" y="192" class="stage-copy">check nuance</text>
-    <circle cx="468" cy="212" r="9" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="1.2" />
-    <path d="M464 212 L466.8 214.8 L472.2 209.5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" />
-    <rect x="431" y="234" width="74" height="15" rx="7.5" class="pill-bg" />
-    <text x="436" y="244" class="tag-text-accent" style="font-size: 6.4px;">human-in-the-loop</text>
+    <rect x="498" y="52" width="40" height="318" rx="9" class="card-bg" />
+    <g class="ai-badge">
+      <rect x="472" y="32" width="84" height="13" rx="6.5" class="chip-bg" />
+      <text x="514" y="41" text-anchor="middle" class="chip-text-accent">human-in-the-loop</text>
+    </g>
+    <rect x="504" y="74" width="28" height="16" rx="4" fill="var(--accent)" fill-opacity="0.22" class="rev-sweep" />
+    <path d="M 512 145 L 516 149 L 523 141" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="rev-tick" />
+    <path d="M 512 277 L 516 281 L 523 273" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" class="rev-tick" />
   </g>
 
-  <!-- STAGE 6: Published Together (3 language labels lighting in sequence) -->
+  <!-- STAGE 6: "All markets live together" (Far Right Stack, End) -->
   <g id="stage-6" class="node">
-    <rect x="534" y="136" width="94" height="130" rx="10" class="card-bg" />
-    <rect x="534" y="136" width="94" height="130" rx="10" class="highlight-ring" />
-    <text x="542" y="152" class="stage-num">05 · LIVE</text>
-    <text x="542" y="166" class="stage-title">Published</text>
-    <rect x="542" y="176" width="78" height="18" rx="4" class="card-soft lang-lit-1" />
-    <text x="550" y="188" class="tag-text lang-lit-1">MY · Malay live</text>
-    <rect x="542" y="198" width="78" height="18" rx="4" class="card-bg lang-lit-2" />
-    <text x="550" y="210" class="tag-text lang-lit-2">ZH · Chinese live</text>
-    <rect x="542" y="220" width="78" height="18" rx="4" class="card-rich lang-lit-3" />
-    <text x="550" y="232" class="tag-text lang-lit-3">JA · Japanese live</text>
-  </g>
+    <rect x="556" y="118" width="70" height="186" rx="10" class="card-bg" />
+    <text x="591" y="135" text-anchor="middle" class="stage-num">06 · LIVE</text>
+    <text x="591" y="147" text-anchor="middle" class="stage-title">All markets</text>
 
-  <g id="footer">
-    <rect x="14" y="376" width="104" height="16" rx="8" class="pill-bg" />
-    <text x="22" y="386.5" class="tag-text">workflow automation</text>
-    <rect x="130" y="382" width="498" height="4" rx="2" fill="var(--line)" opacity="0.4" />
-    <rect x="130" y="382" width="498" height="4" rx="2" class="progress-fill" />
+    <g class="pack-stack" transform="translate(566, 160)">
+      <rect x="0" y="0" width="50" height="11" rx="3" class="chip-bg" />
+      <rect x="0" y="15" width="50" height="11" rx="3" class="chip-bg" />
+      <rect x="0" y="30" width="50" height="11" rx="3" class="chip-bg" />
+      <rect x="0" y="45" width="50" height="11" rx="3" class="chip-bg" />
+      <rect x="0" y="60" width="50" height="11" rx="3" class="chip-bg" />
+    </g>
+
+    <circle cx="591" cy="272" r="11" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="1.3" />
+    <path d="M 586 272 L 589.5 275.5 L 596.5 268.5" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="final-tick" />
   </g>
 </svg>
